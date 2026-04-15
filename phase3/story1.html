@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ngul Yoen</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(120deg,#fce4ec,#fff9c4);
+}
+
+.navbar {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 40px;
+    background:linear-gradient(90deg,#d32f2f,#fbc02d);
+    color:white;
+    position:sticky;
+    top:0;
+}
+
+.logo { font-size:24px; font-weight:bold; }
+
+.nav-links a {
+    margin-left:20px;
+    text-decoration:none;
+    color:white;
+    padding:8px 14px;
+    border-radius:6px;
+    font-weight:bold;
+}
+
+.nav-links a:hover { background:rgba(0,0,0,0.2); }
+
+.hero {
+    text-align:center;
+    padding:60px 20px;
+    background:linear-gradient(135deg,#d32f2f,#7b1fa2);
+    color:white;
+    animation:fadeIn 1s ease-in;
+}
+
+.hero h1 { font-size:42px; }
+
+.container {
+    max-width:900px;
+    margin:40px auto;
+    padding:20px;
+    display:grid;
+    gap:25px;
+}
+
+.card {
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    line-height:1.7;
+    position:relative;
+    transition:0.3s;
+}
+
+.card::before {
+    content:"";
+    position:absolute;
+    top:0; left:0;
+    width:100%;
+    height:5px;
+    background:linear-gradient(90deg,#ff5252,#ffca28);
+}
+
+.card:hover {
+    transform:translateY(-6px);
+    box-shadow:0 15px 30px rgba(0,0,0,0.2);
+}
+
+.card h2 { text-align:center; }
+
+.btn {
+    display:inline-block;
+    margin-top:15px;
+    padding:10px 20px;
+    background:linear-gradient(135deg,#ff5252,#ffca28);
+    color:black;
+    text-decoration:none;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+.btn:hover { transform:scale(1.05); }
+
+footer {
+    text-align:center;
+    padding:20px;
+    background:#2c3e50;
+    color:white;
+}
+
+footer a { color:white; margin:10px; text-decoration:none; }
+
+@keyframes fadeIn {
+    from {opacity:0; transform:translateY(20px);} 
+    to {opacity:1; transform:translateY(0);} 
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="logo">Ngul~Yoen</div>
+    <div class="nav-links">
+        <a href="abt.html">About</a>
+        <a href="rd.html">Report</a>
+        <a href="fd.html">Findings</a>
+        <a href="ct.html">Contact</a>
+    </div>
+</div>
+
+<div class="hero">
+    <h1>Welcome!</h1>
+    <p>Amazing story on Mobile Banking feature integration</p>
+</div>
+
+<div class="container">
+
+<div class="card"><h2>mBOB Budgeting and Expense Tracking Features</h2></div>
+
+<div class="card"><p>Tashi, Sonam, and Pema sat on chairs around a small round table in the busy Tobgay canteen of Gedu College of Business Studies (GCBS). It was their usual tea break spot: warm suja in hand, plates of momos on the table, and the soft hum of students chatting after class. The three of them: Tashi, Sonam, and Pema had just come out of their financial management lecture. The topic had been budgeting and personal financial control, and now, unknowingly, they were about to test those ideas in real life.</p></div>
+
+<div class="card"><p>Tashi, who also worked as a Class Representative, was staring at his phone with a slightly stressed expression. “I collected SEMSO contributions from five of my self-funded mates yesterday,” he said. “Now I just want to confirm one payment… but mBOB only shows the last 10 transactions.” He shook his head. “The one I need isn’t even old: it’s just from yesterday. Now I have to request a statement and wait for the email.” Sonam sighed. “Same problem. It’s like the app has the data but not in a way that helps us quickly.”</p></div>
+
+<div class="card"><p>Just then, Pema joined them, pulling a chair closer. “You both look like you’re fighting with your bank,” she joked. “We kind of are,” Tashi replied. Pema smiled and leaned forward. “You know… what if mBOB actually worked like how we studied in class today?” Tashi raised an eyebrow. “Meaning?” “Let’s start with expenses,” Pema said. “Imagine when you make a payment, the app automatically suggests a category.” “Like what?” Sonam asked. “Like if you transfer money to a friend for food, it could show options like ‘Food & Drinks’, ‘Fund Collection (SEMSO)’, or ‘Personal Transfer’ based on the transaction pattern,” Pema explained. “And you can just tap the most relevant one instead of typing everything.”</p></div>
+
+<div class="card"><p>Tashi nodded slowly. “That would save time.” “And not just that,” Pema continued. “There should also be an option to create your own category: like ‘SEMSO Collection,’ ‘Group Study Expenses,’ or anything personal. Over time, the app learns your habits and suggests the most likely category automatically.” Sonam smiled. “That would actually help us understand where our money goes. Right now, it’s just numbers but no meaning behind them.” Tashi leaned forward, now more interested. “But what about saving?” he asked. “Everything is mixed in one account. It’s hard to separate money mentally.”</p></div>
+
+<div class="card"><p>Pema nodded. “That’s where goal-based pockets come in.” “Pockets?” Sonam repeated. “Yes,” Pema said. “Imagine within your main account, you can create custom mini-accounts like: • SEMSO/Fund Collection • Food & Drinks • Travel • Personal Savings And you can keep them only as long as you need.” Tashi’s eyes widened. “So I could create a SEMSO pocket just for this semester… and remove it later?” “Exactly,” Pema said. “And when you make a payment, the app asks: ‘Which pocket do you want to use?’” Sonam laughed. “That’s like choosing which wallet to pay from!” “Yes!” Pema said.</p></div>
+
+<div class="card"><p>The canteen noise faded into the background as their ideas became more vivid. “And then,” Sonam added, “imagine opening the app and seeing a dashboard charts showing how much you spent on food, travel, or SEMSO.” Tashi smiled. “That would actually make us aware of our habits. Not just checking balance, but understanding behavior.” Pema nodded. “Right now, mBOB gives us data… but it doesn’t guide us.”</p></div>
+
+<div class="card"><p>They paused, finishing their tea and momo. Around them, students continued their conversations, unaware that a simple tea break had turned into a powerful discussion on the future of mobile banking. Pema finally spoke, softly: “If these features were added, mBOB wouldn’t just be a banking app… it would become a smart financial companion, especially for students like us.”</p></div>
+
+<div class="card"><p>As they stood up, gathering their books, Sonam smiled. “We learned budgeting in class,” she said, “but if mBOB evolves like this, we can actually practice it in real life.” Tashi nodded. “And that’s when banking becomes more than just transactions,” he said. Pema added quietly, “It becomes understanding, control… and smarter living.”</p></div>
+
+<div class="card">
+<h2>Go to Prototype</h2>
+<p>Feel free to reach out for more insights or collaboration opportunities.</p>
+<a href="/project/Prototype/Prototype.html" class="btn">Go to Prototype</a>
+</div>
+
+</div>
+
+<footer>
+<p>© 2026 Ngul Yoen | Banking Scope Bhutan | Hema Luitel | Internship</p>
+<a href="abt.html">About Project</a>
+<a href="rd.html">Full Report</a>
+<a href="fd.html">Insights</a>
+<a href="ct.html">Contact</a>
+</footer>
+
+</body>
+</html>

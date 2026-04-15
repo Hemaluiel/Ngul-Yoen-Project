@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>mBOB Feature Flow</title>
+
+<style>
+body {
+    margin: 0;
+    background: #dfe7f2;
+    font-family: Arial;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.phone {
+    width: 360px;
+    height: 720px;
+    background: #f5f7fb;
+    border-radius: 30px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background: #003f88;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+.screen {
+    flex: 1;
+    display: none;
+    padding: 10px;
+    overflow-y: auto;
+}
+.active { display:block; }
+
+.card {
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: white;
+}
+
+.btn {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+}
+.primary { background:#003f88; color:white; }
+.secondary { background:#ccc; }
+
+/* Bars */
+.bar { background:#eee; border-radius:10px; margin-bottom:8px; }
+.fill { height:18px; color:white; text-align:center; font-size:12px; }
+
+/* Clickable feature */
+.feature {
+    text-align:center;
+    cursor:pointer;
+}
+.feature:hover {
+    transform: scale(1.05);
+}
+
+/* Category */
+.category button {
+    margin:4px;
+    padding:6px;
+    border-radius:10px;
+    border:1px solid #003f88;
+}
+.category .active {
+    background:#003f88;
+    color:white;
+}
+
+input {
+    width:100%;
+    padding:8px;
+    margin:5px 0;
+    border-radius:8px;
+    border:1px solid #ccc;
+}
+
+.transaction {
+    padding:6px 0;
+    border-bottom:1px solid #eee;
+}
+.filterBtn {
+    padding:6px 10px;
+    border:none;
+    border-radius:10px;
+    background:#e0e7ff;
+    cursor:pointer;
+}
+
+.filterBtn.active {
+    background:#003f88;
+    color:white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="phone">
+
+<div class="header">
+    <h3>mBOB Smart Features</h3>
+</div>
+
+<!-- HOME -->
+<div class="screen active" id="screen0">
+
+    <div style="display:flex; justify-content:space-between;">
+        <span>☰</span>
+        <span>🔔</span>
+    </div>
+
+    <p><b>Hi, Tashi!</b></p>
+
+    <div style="background:#1e88e5; color:white; padding:15px; border-radius:15px;">
+        <p>Account No: 123456789</p>
+        <p>Available Balance: Nu. 25,000</p>
+    </div>
+
+    <!-- Existing Features -->
+    <div class="card">
+        <h3>Services</h3>
+        <div style="display:flex; justify-content:space-between;">
+            <div class="feature" onclick="goTo(1)">💸<br><small>Transfer</small></div>
+            <div class="feature" onclick="goTo(3)">📊<br><small>Mini Statement</small></div>
+            <div>🎮<br><small>Entertainment</small></div>
+            <div>📱<br><small>Top Up</small></div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between;margin-top: 10px;">
+            <div>📄<br><small>Statement</small></div>
+            <div>📷<br><small>Scan & Pay</small></div>
+            <div>💡<br><small>Bills</small></div>
+            <div>➕<br><small>Others</small></div>
+        </div>
+    </div>
+
+    <!-- NEW FEATURE -->
+    <div class="card">
+        <h3>💼 Pockets</h3>
+        <p id="pocketSummary"></p>
+        <div style="display:flex; justify-content:space-around;">
+            <div class="feature" onclick="goTo(2)">
+                💼<br><small>Create Pocket</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div class="card">
+        <h3>💸 Expense Pattern</h3>
+
+        <select id="monthSelect" onchange="updateDashboard()" style="width:100%; padding:8px; margin-bottom:10px;">
+        </select>
+
+        <!--  TOTAL DISPLAY -->
+        <h4 id="totalExpense" style="text-align:center; margin-bottom:10px;"></h4>
+
+        <canvas id="expenseChart" width="300" height="300"></canvas>
+    </div>
+
+</div>
+
+<!--  SCREEN 2 (Feature 1: Payment) -->
+
+<div class="screen" id="screen1">
+    <div class="card">
+        <h3>Make Payment</h3>
+
+        <!-- SELECT ACCOUNT -->
+        <label><b>Debit From:</b></label>
+        <select id="accountSelect"></select>
+
+        <input id="amountInput" type="number" placeholder="Amount">
+        <input id="receiverInput" placeholder="Receiver">
+
+        <!-- SUGGESTION -->
+        <p>Suggested Purpose:</p>
+        <p id="suggestionText" style="color:#003f88; font-weight:bold;"></p>
+
+        <!--  CATEGORY -->
+        <div class="category">
+            <button onclick="selectCategory(this)">Food</button>
+            <button onclick="selectCategory(this)">Transport</button>
+            <button onclick="selectCategory(this)">Shopping</button>
+            <button onclick="selectCategory(this)">SEMSO</button>
+        </div>
+
+        <!-- CUSTOM DESCRIPTION -->
+        <input id="descInput" placeholder="Custom Description (optional)">
+
+        <button class="btn primary" onclick="makeTransfer()">Send</button>
+    </div>
+</div>
+
+
+<!-- SCREEN 3 (Feature 2: Create Pocket) -->
+<div class="screen" id="screen2">
+    <div class="card">
+        <h3>Create Pocket</h3>
+
+        <input id="pName" placeholder="Pocket Name">
+        <input id="pAmount" type="number" placeholder="Amount">
+
+        <label>Start Date:</label>
+        <input id="pStart" type="date">
+
+        <label>Duration:</label>
+        <input id="pDuration" type="number" placeholder="Enter number">
+
+        <select id="pType">
+            <option value="days">Days</option>
+            <option value="months">Months</option>
+            <option value="years">Years</option>
+        </select>
+
+        <button class="btn primary" onclick="createPocket()">Create</button>
+    </div>
+</div>
+
+
+
+<!-- SCREEN 4 (Feature 3: Mini Statement) -->
+<div class="screen" id="screen3">
+    <div class="card">
+        <h3>📊 Mini Statement</h3>
+
+        <!-- Filters -->
+        <div style="display:flex; justify-content:space-around; margin-bottom:10px;">
+            <button class="filterBtn active" onclick="showTransactions('last50', this)">Last 50</button>
+            <button class="filterBtn" onclick="showTransactions('today', this)">Today</button>
+            <button class="filterBtn" onclick="showTransactions('custom', this)">Specific Date</button>
+        </div>
+
+        <!-- Transaction List -->
+        <div id="transactionList">
+
+            <!-- Default: Last 50 -->
+            <div class="transaction">Nu. 500 - Food 🍜</div>
+            <div class="transaction">Nu. 1200 - Shopping 🛍️</div>
+            <div class="transaction">Nu. 300 - Transport 🚌</div>
+            <div class="transaction">Nu. 2000 - SEMSO 💼</div>
+            <div class="transaction">Nu. 150 - Snacks 🍟</div>
+
+        </div>
+    </div>
+</div>
+
+<!-- SCREEN 5: Edit Pocket -->
+<div class="screen" id="screen4">
+    <div class="card">
+        <h3>Edit Pocket</h3>
+
+        <input id="editName" placeholder="Pocket Name">
+        <input id="editAmount" type="number" placeholder="Amount">
+
+        <label>Start Date:</label>
+        <input id="editStart" type="date">
+
+        <label>Duration:</label>
+        <input id="editDuration" type="number">
+
+        <select id="editType">
+            <option value="days">Days</option>
+            <option value="months">Months</option>
+            <option value="years">Years</option>
+        </select>
+
+        <button class="btn primary" onclick="saveEdit()">Save</button>
+    </div>
+</div>
+
+<!-- Footer -->
+ 
+<div class="footer" id="footerNav">
+    <button class="btn secondary" onclick="prevScreen()">Back</button>
+    <button class="btn primary" onclick="nextScreen()">Proceed</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+let transactions = [
+    {amount: 500, category: "Food", date: "2026-01-10"},
+    {amount: 1200, category: "Shopping", date: "2026-01-15"},
+    {amount: 300, category: "Transport", date: "2026-02-05"},
+    {amount: 2000, category: "SEMSO", date: "2026-02-20"},
+    {amount: 150, category: "Snacks", date: "2026-03-01"},
+    {amount: 800, category: "Food", date: "2026-03-12"},
+    {amount: 600, category: "Shopping", date: "2026-04-02"}
+];
+
+function loadMonths(){
+    let select = document.getElementById("monthSelect");
+    let today = new Date();
+
+    for(let i = 0; i < 12; i++){
+        let d = new Date(today.getFullYear(), today.getMonth() - i, 1);
+
+        let value = d.toISOString().slice(0,7); // YYYY-MM
+        let label = d.toLocaleString('default', {month:'long', year:'numeric'});
+
+        let option = document.createElement("option");
+        option.value = value;
+        option.text = label;
+
+        select.appendChild(option);
+    }
+}
+
+// Fixed Pocket Values 
+let mainBalance = 25000;
+
+let pockets = [
+    {name:"Food", amount:10000, start:"2026-01-01", duration:30, type:"days"},
+    {name:"Shopping", amount:5000, start:"2026-01-01", duration:1, type:"months"},
+    {name:"Transport", amount:5000, start:"2026-01-01", duration:1, type:"months"},
+    {name:"SEMSO", amount:0, start:"2026-01-01", duration:1, type:"years"},
+    {name:"Snacks", amount:5000, start:"2026-01-01", duration:15, type:"days"}
+];
+
+let current = 0;
+
+function createPocket(){
+
+    let name = document.getElementById("pName").value;
+    let amount = parseInt(document.getElementById("pAmount").value);
+    let start = document.getElementById("pStart").value;
+    let duration = parseInt(document.getElementById("pDuration").value);
+    let type = document.getElementById("pType").value;
+
+    if(!name || !amount || !start || !duration){
+        alert("Fill all fields!");
+        return;
+    }
+
+    let totalUsed = pockets.reduce((sum,p)=>sum+p.amount,0);
+
+    if(totalUsed + amount > mainBalance){
+        alert("Not enough balance!");
+        return;
+    }
+
+    pockets.push({
+        name,
+        amount,
+        start,
+        duration,
+        type
+    });
+
+    alert("Pocket Created!");
+
+    updatePockets();
+    goTo(0);
+}
+
+let selectedPocketIndex = 0;
+
+function updatePockets(){
+
+    let totalUsed = pockets.reduce((sum,p)=>sum+p.amount,0);
+    let remaining = mainBalance - totalUsed;
+
+    let selected = pockets[selectedPocketIndex];
+
+    let html = `
+        <b>Available Balance: Nu.${remaining}</b><br><br>
+
+        <!-- 🔹 HORIZONTAL POCKET BUTTONS -->
+        <div style="display:flex; overflow-x:auto; gap:8px; margin-bottom:10px;">
+    `;
+
+    pockets.forEach((p,index)=>{
+        html += `
+            <button class="btn ${index===selectedPocketIndex ? 'primary' : 'secondary'}"
+                onclick="selectPocket(${index})">
+                ${p.name}
+            </button>
+        `;
+    });
+
+    html += `</div>`;
+
+    //  BIG DISPLAY CARD
+    html += `
+        <div class="card" onclick="openEditScreen(${selectedPocketIndex})">
+            <h4>${selected.name}</h4>
+            <p>Amount: Nu.${selected.amount}</p>
+            <p>Start: ${selected.start}</p>
+            <p>Duration: ${selected.duration} ${selected.type}</p>
+            <small>Click to edit ✏️</small>
+        </div>
+    `;
+
+    document.getElementById("pocketSummary").innerHTML = html;
+}
+
+function selectPocket(index){
+    selectedPocketIndex = index;
+    updatePockets();
+}
+
+function openEditScreen(index){
+
+    let p = pockets[index];
+    selectedPocketIndex = index;
+
+    document.getElementById("editName").value = p.name;
+    document.getElementById("editAmount").value = p.amount;
+    document.getElementById("editStart").value = p.start;
+    document.getElementById("editDuration").value = p.duration;
+    document.getElementById("editType").value = p.type;
+
+    goTo(4);
+}
+
+function saveEdit(){
+
+    let name = document.getElementById("editName").value;
+    let amount = parseInt(document.getElementById("editAmount").value);
+    let start = document.getElementById("editStart").value;
+    let duration = parseInt(document.getElementById("editDuration").value);
+    let type = document.getElementById("editType").value;
+
+    if(!name || !amount || !start || !duration){
+        alert("Fill all fields!");
+        return;
+    }
+
+    let totalUsed = pockets.reduce((sum,p,i)=>
+        i !== selectedPocketIndex ? sum + p.amount : sum, 0
+    );
+
+    if(totalUsed + amount > mainBalance){
+        alert("Not enough balance!");
+        return;
+    }
+
+    pockets[selectedPocketIndex] = {
+        name,
+        amount,
+        start,
+        duration,
+        type
+    };
+
+    alert("Updated!");
+
+    updatePockets();
+    goTo(0);
+}
+
+function updateDashboard(){
+
+    let selectedMonth = document.getElementById("monthSelect").value;
+
+    let totals = {
+        Food: 0,
+        Transport: 0,
+        Shopping: 0,
+        SEMSO: 0,
+        Snacks: 0
+    };
+
+    // FILTER BY MONTH
+    let filtered = transactions.filter(t => t.date.startsWith(selectedMonth));
+
+    filtered.forEach(t => {
+        totals[t.category] += t.amount;
+    });
+
+    let labels = Object.keys(totals);
+    let data = Object.values(totals);
+
+    // CALCULATE TOTAL EXPENSE
+    let totalExpense = data.reduce((a,b) => a + b, 0);
+
+    // DISPLAY TOTAL ABOVE CHART
+    document.getElementById("totalExpense").innerText =
+        "Total Expense: Nu. " + totalExpense;
+
+    let ctx = document.getElementById("expenseChart").getContext("2d");
+
+    if(window.myChart){
+        window.myChart.destroy();
+    }
+
+    window.myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: labels,
+            datasets: [{
+                data: data,
+                backgroundColor: [
+                    "#ff7043",
+                    "#4caf50",
+                    "#2196f3",
+                    "#9c27b0",
+                    "#ff9800"
+                ]
+            }]
+        },
+        options: {
+            plugins: {
+                legend: { position: 'bottom' },
+
+                // TOOLTIP WITH NAME + AMOUNT + %
+                tooltip: {
+                    callbacks: {
+                        label: function(context){
+                            let value = context.raw;
+                            let total = context.dataset.data.reduce((a,b)=>a+b,0);
+                            let percent = total ? ((value/total)*100).toFixed(1) : 0;
+
+                            return `${context.label}: Nu.${value} (${percent}%)`;
+                        }
+                    }
+                }
+            }
+        }
+    });
+}
+
+
+function loadAccounts(){
+
+    let select = document.getElementById("accountSelect");
+    select.innerHTML = "";
+
+    // Main account
+    let option = document.createElement("option");
+    option.value = "main";
+    option.text = "Main Account";
+    select.appendChild(option);
+
+    // Pockets
+    pockets.forEach((p, index)=>{
+        let opt = document.createElement("option");
+        opt.value = index;
+        opt.text = "Pocket: " + p.name + " (Nu." + p.amount + ")";
+        select.appendChild(opt);
+    });
+}
+
+function makeTransfer(){
+
+    let account = document.getElementById("accountSelect").value;
+    let amount = parseInt(document.getElementById("amountInput").value);
+    let receiver = document.getElementById("receiverInput").value;
+    let desc = document.getElementById("descInput").value;
+
+    let categoryBtn = document.querySelector(".category .active");
+    let category = categoryBtn ? categoryBtn.innerText : "Other";
+
+    if(!amount || !receiver){
+        alert("Fill all fields!");
+        return;
+    }
+
+    //  DETERMINE SOURCE
+    if(account === "main"){
+
+        if(amount > mainBalance){
+            alert("Insufficient main balance!");
+            return;
+        }
+
+        mainBalance -= amount;
+
+    } else {
+
+        let index = parseInt(account);
+
+        if(amount > pockets[index].amount){
+            alert("Not enough in pocket!");
+            return;
+        }
+
+        pockets[index].amount -= amount;
+    }
+
+    //  SAVE TRANSACTION
+    let today = new Date().toISOString().slice(0,10);
+
+    transactions.push({
+        amount: amount,
+        category: category,
+        date: today
+    });
+
+    alert("Transfer Successful!");
+
+    //  REFRESH SYSTEM
+    updatePockets();
+    updateDashboard();
+    updateSuggestion();
+
+    goTo(0);
+}
+
+
+function updateSuggestion(){
+
+    let totals = {};
+
+    transactions.forEach(t=>{
+        totals[t.category] = (totals[t.category] || 0) + t.amount;
+    });
+
+    let maxCategory = Object.keys(totals).reduce((a,b)=>
+        totals[a] > totals[b] ? a : b
+    );
+
+    document.getElementById("suggestionText").innerText =
+        "You usually spend on: " + maxCategory;
+}
+
+
+function showScreen(i){
+    document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+    document.getElementById("screen" + i).classList.add("active");
+
+    // CONTROL FOOTER VISIBILITY
+    let footer = document.getElementById("footerNav");
+
+    if(i === 0){
+        footer.style.display = "none"; // hide on home
+    } else {
+        footer.style.display = "flex"; // show on others
+    }
+}
+
+window.onload = function(){
+    loadMonths();          // IMPORTANT
+    updateDashboard();
+    updatePockets();
+    updateSuggestion();
+    showScreen(0);
+}
+
+
+function goTo(i){
+    const screen = document.getElementById("screen" + i);
+    if(screen){
+        current = i;
+        showScreen(i);
+
+        if(i === 1){
+            loadAccounts(); // IMPORTANT
+        }
+    }
+}
+
+function nextScreen(){
+    if(current === 0){
+        current = 1;
+        showScreen(current);
+    } else {
+        current = 0;
+        showScreen(current);
+    }
+}
+
+function prevScreen(){
+    current = 0;
+    showScreen(0);
+}
+
+function selectCategory(btn){
+    document.querySelectorAll(".category button").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+}
+
+function showTransactions(type, btn){
+
+    document.querySelectorAll(".filterBtn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    const list = document.getElementById("transactionList");
+
+    if(type === "last50"){
+        list.innerHTML = `
+            <div class="transaction">Nu. 500 - Food 🍜</div>
+            <div class="transaction">Nu. 1200 - Shopping 🛍️</div>
+            <div class="transaction">Nu. 300 - Transport 🚌</div>
+            <div class="transaction">Nu. 2000 - SEMSO 💼</div>
+            <div class="transaction">Nu. 150 - Snacks 🍟</div>
+        `;
+    }
+
+    else if(type === "today"){
+        list.innerHTML = `
+            <div class="transaction">Nu. 300 - Lunch 🍜</div>
+            <div class="transaction">Nu. 150 - Juice 🧃</div>
+        `;
+    }
+
+    else if(type === "custom"){
+        list.innerHTML = `
+            <input type="date">
+            <div class="transaction">Nu. 800 - Travel ✈️</div>
+            <div class="transaction">Nu. 400 - Grocery 🥬</div>
+        `;
+    }
+}
+
+// RUN EVERYTHING
+updateDashboard();
+updatePockets();
+updateSuggestion();
+</script>
+
+</body>
+</html>

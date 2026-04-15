@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Findings - Ngul Yoen</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: #f4f6f9;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background: #15035c;
+            color: white;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .nav-links a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: white;
+            padding: 8px 14px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: #20295c;
+        }
+
+        /* HEADER */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(to right, #574158, #760a58);
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* CONTENT */
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        .findings{
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        .container2{
+            text-align: left;
+            margin: 30px;
+        }
+        li{
+            margin: auto; 
+            margin-top: 20px;
+            text-align: justify;
+            font-size: 16px;
+            font: bold;
+        }
+
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 6px 20px;
+            background: #2c3e50;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #010f25;
+        }
+
+        /* DASHBOARD */
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: #15035c;
+            color: white;
+            margin-top: 40px;
+        }
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 8px 14px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo">Ngul~Yoen</div>
+    <div class="nav-links">
+        <a href="ng.html">Home</a>
+        <a href="abt.html">About</a>
+        <a href="rd.html">Report</a>
+        <a href="ct.html">Contact</a>
+    </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>Customer Banking Choices</h1>
+    <p>Kuzuzangpo la! Explore key insights on the customer banking choices in Bhutan.</p>
+</div>
+
+<!-- CONTENT -->
+<div class="container">
+
+    <div class = "findings">
+        <h2> Key Findings </h2>
+        <div class ="container2">
+            <ol>    
+                <li>
+                    Most respondents (103 out of 111) have bank accounts, but a small group remains unbanked due to lack of awareness, income, or age limitations.
+                </li>
+                <li>
+                    The Bank of Bhutan (BOB) is the most preferred bank, with about 84% of respondents choosing it.            
+                </li>
+                <li>
+                    Key factors influencing bank choice include trust, service quality, accessibility, and ease of use.Trust is a major factor, with over 80% of customers expressing confidence in their bank, though a few still have security concerns.
+                </li>
+                <li>
+                    Service quality is generally good, but around 7–10% of users reported dissatisfaction, indicating gaps that need improvement.
+                </li>
+                <li>
+                    Accessibility varies by location: rural users face limited access to ATMs/branches, while urban users experience congestion.
+                </li>
+                <li>
+                    Ease of use of digital banking is positive overall, but network issues and lack of awareness affect some users.   
+                </li>
+                <li>
+                    A significant number of customers are uncertain or willing to switch banks, showing opportunities for banks to improve services and retain customers.            
+                </li> 
+                <li>
+                    There is a clear gap in financial literacy and awareness about available banking services.            
+                </li>  
+            </ol>   
+        
+            </div>
+    </div>
+
+    <div class="card">
+        <p>
+            The interactive dashboard below presents detailed key findings from the exploration  
+            on customer banking choices in Bhutan. It highlights patterns, preferences,
+            and important factors such as trust, service quality, accessibility, and ease of use.
+        </p>
+
+        <a href="ng.html" class="btn"> Home</a>
+        <a href="rd.html" class="btn"> Full Report</a>
+    </div>
+
+    <div class="card">
+        <h2>📊 Interactive Dashboard</h2>
+
+        <!-- Replace this with your Tableau public link -->
+        <iframe src="tableau-dashboard.html"></iframe>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 Ngul Yoen | Banking Scope Bhutan | Hema Luitel | Internship </p>
+    <a href="ng.html">Home</a>
+    <a href="abt.html">About</a>
+    <a href="rd.html">Report</a>
+    <a href="ct.html">Contact</a>
+</footer>
+
+</body>
+</html>
+
+

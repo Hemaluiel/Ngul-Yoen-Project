@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ngul Yoen</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: #f4f6f9;
+    }
+
+    /* NAVBAR */
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        background: linear-gradient(90deg, #d32f2f, #fbc02d);
+        color: white;
+        position: sticky;
+        top: 0;
+    }
+
+    .logo { font-size: 26px; font-weight: bold; }
+
+    .nav-links a {
+        margin-left: 20px;
+        text-decoration: none;
+        color: white;
+        padding: 8px 14px;
+        border-radius: 5px;
+    }
+
+    .nav-links a:hover { background: rgba(0,0,0,0.2); }
+
+    /* HERO */
+    .hero {
+        text-align: center;
+        padding: 70px 20px;
+        background: linear-gradient(135deg, #d32f2f, #7b1fa2);
+        color: white;
+    }
+
+    .hero h1 { font-size: 42px; }
+
+    /* STATS */
+    .stats {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        padding: 30px;
+        background: white;
+    }
+
+    .stat {
+        text-align: center;
+    }
+
+    .stat h2 {
+        font-size: 32px;
+        color: #d32f2f;
+    }
+
+    /* CONTAINER */
+    .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+        padding: 50px;
+        max-width: 1300px;
+        margin: auto;
+    }
+
+    /* CARD */
+    .card {
+        background: linear-gradient(135deg, #ffffff, #fce4ec);
+        padding: 35px;
+        border-radius: 18px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        text-align: center;
+        transition: all 0.35s ease;
+        min-height: 250px;
+        cursor: pointer;
+    }
+
+    .card:hover {
+        transform: translateY(-12px) scale(1.03);
+        box-shadow: 0 0 25px rgba(255, 82, 82, 0.6);
+    }
+
+    .icon {
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+
+    .card h2 { font-size: 22px; }
+
+    .btn {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 12px 22px;
+        background: linear-gradient(135deg, #ff5252, #ffca28);
+        color: black;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+    }
+
+    .btn:hover {
+        transform: scale(1.05);
+        background: linear-gradient(135deg, #e53935, #fdd835);
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+        background: #2c3e50;
+        color: white;
+    }
+
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="logo">Ngul~Yoen</div>
+    <div class="nav-links">
+        <a href="abt.html">About</a>
+        <a href="rd.html">Report</a>
+        <a href="fd.html">Findings</a>
+        <a href="ct.html">Contact</a>
+    </div>
+</div>
+
+<div class="hero">
+    <h1>Welcome to Ngul~Yoen</h1>
+    <p>Banking Insights and Scope in Bhutan 🇧🇹</p>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+    <div class="stat">
+        <h2 id="count1">0</h2>
+        <p>Respondents</p>
+    </div>
+    <div class="stat">
+        <h2 id="count2">0</h2>
+        <p>Banks Studied</p>
+    </div>
+    <div class="stat">
+        <h2 id="count3">0</h2>
+        <p>Key Factors</p>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="card">
+        <div class="icon">📘</div>
+        <h2>About Project</h2>
+        <p>Explore Bhutan’s banking insights.</p>
+        <a href="ab1.html" class="btn">Explore</a>
+    </div>
+
+    <div class="card">
+        <div class="icon">👤</div>
+        <h2>About Me</h2>
+        <p>Hema Luitel – Data Science Intern.</p>
+        <a href="ab1.html" class="btn">Read More</a>
+    </div>
+
+    <div class="card">
+        <div class="icon">📊</div>
+        <h2>Report</h2>
+        <p>Insights from 111 respondents.</p>
+        <a href="rd.html" class="btn">View</a>
+    </div>
+
+    <div class="card">
+        <div class="icon">📈</div>
+        <h2>Findings</h2>
+        <p>Customer satisfaction and trends.</p>
+        <a href="fd.html" class="btn">See</a>
+    </div>
+    
+    <div class="card">
+        <div class="icon">💡</div>
+        <h2>Solutions</h2>
+        <p>Interactive recommendations.</p>
+        <a href="Solutions.html" class="btn">Try</a>
+    </div>
+
+    <div class="card">
+        <div class="icon">🚀</div>
+        <h2>Prototype</h2>
+        <p>Explore banking innovation.</p>
+        <a href="prototype.html" class="btn">Open</a>
+    </div>
+
+    <div class="card">
+        <div class="icon">🎮</div>
+        <h2>Banking Quiz</h2>
+        <p>Answer a few questions to get your ideal bank recommendation.</p>
+        <button class="btn" onclick="startQuiz()">Start Quiz</button>
+    </div>
+
+    <div class="card">
+        <div class="icon">📖</div>
+        <h2>Story Experience</h2>
+        <p>Follow a short story of a Bhutanese user exploring banking choices.</p>
+        <button class="btn" onclick="startStory()">Start Story</button>
+    </div>
+
+</div>
+
+<!-- QUIZ MODAL -->
+<div id="quizModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center;">
+    <div style="background:white; padding:30px; border-radius:12px; width:300px; text-align:center;">
+        <h3 id="question">Question</h3>
+        <button class="btn" onclick="answer('digital')">Prefer Digital</button>
+        <button class="btn" onclick="answer('service')">Prefer Service</button>
+        <p id="result"></p>
+        <button onclick="closeQuiz()">Close</button>
+    </div>
+</div>
+
+<!-- STORY MODAL -->
+<div id="storyModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center;">
+    <div style="background:white; padding:30px; border-radius:12px; width:400px; text-align:center;">
+        <h3>Story</h3>
+        <p id="storyText">Karma from Thimphu wants a reliable bank...</p>
+        <button class="btn" onclick="nextStory()">Next</button>
+        <button onclick="closeStory()">Close</button>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 Ngul Yoen | Bhutan Banking Insights</p>
+</footer>
+
+<script>
+    // Counter animation
+    function animate(id, target) {
+        let count = 0;
+        let interval = setInterval(() => {
+            count++;
+            document.getElementById(id).innerText = count;
+            if(count >= target) clearInterval(interval);
+        }, 20);
+    }
+
+    animate('count1', 111);
+    animate('count2', 6);
+    animate('count3', 4);
+    // QUIZ FUNCTIONS
+    function startQuiz(){
+        document.getElementById('quizModal').style.display='flex';
+    }
+
+    function answer(type){
+        let result = type === 'digital' ? 'Recommended: Digital-focused bank 📱' : 'Recommended: Service-focused bank 🏦';
+        document.getElementById('result').innerText = result;
+    }
+
+    function closeQuiz(){
+        document.getElementById('quizModal').style.display='none';
+    }
+
+    // STORY FUNCTIONS
+    let step = 0;
+    const story = [
+        "Karma from Thimphu wants a reliable bank.",
+        "He values trust and good service.",
+        "He also wants easy mobile banking.",
+        "Finally, he chooses Bank of Bhutan for balance."
+    ];
+
+    function startStory(){
+        step = 0;
+        document.getElementById('storyModal').style.display='flex';
+        document.getElementById('storyText').innerText = story[step];
+    }
+
+    function nextStory(){
+        step++;
+        if(step < story.length){
+            document.getElementById('storyText').innerText = story[step];
+        }
+    }
+
+    function closeStory(){
+        document.getElementById('storyModal').style.display='none';
+    }
+</script>
+
+</body>
+</html>
