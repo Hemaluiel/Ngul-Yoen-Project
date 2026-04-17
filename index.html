@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ngul Yoen - Analyzer</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f6f9;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: linear-gradient(90deg, #d32f2f, #fbc02d);
+    color: white;
+    position: sticky;
+    top: 0;
+}
+
+.logo { font-size: 26px; font-weight: bold; }
+
+.nav-links a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 5px;
+}
+
+.nav-links a:hover { background: rgba(0,0,0,0.2); }
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #d32f2f, #7b1fa2);
+    color: white;
+}
+
+.hero h1 { font-size: 40px; }
+
+/* CONTAINER */
+.container {
+    padding: 40px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* CARD */
+.card {
+    background: linear-gradient(135deg, #ffffff, #fce4ec);
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    text-align: center;
+    transition: all 0.35s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+/* BUTTON */
+.btn {
+    margin-top: 15px;
+    padding: 12px 22px;
+    background: linear-gradient(135deg, #ff5252, #ffca28);
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+/* DASHBOARD */
+#dashboard {
+    display: none;
+    margin-top: 30px;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.stat-box {
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    width: 30%;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #2c3e50;
+    color: white;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo">Ngul~Yoen</div>
+    <div class="nav-links">
+        <a href="/phase3/hm.html">Home</a>
+        <a href="/phase3/ab1.html">About</a>
+        <a href="/phase3/rd2.html">Report</a>
+    </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>Expense Analyzer</h1>
+    <p>Upload your bank statement and discover your spending patterns</p>
+</div>
+
+<div class="container">
+
+    <!-- UPLOAD CARD -->
+    <div class="card">
+        <h2>📂 Upload Bank Statement</h2>
+        <p>Select your PDF file to analyze your expenses</p>
+
+        <input type="file" id="fileInput" accept="application/pdf">
+        <br>
+        <button class="btn" onclick="analyzePDF()">Analyze</button>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="dashboard" class="card">
+        <h2>📊 Expense Dashboard</h2>
+
+        <div class="stats">
+            <div class="stat-box">
+                <h3>Total Debit</h3>
+                <p id="totalDebit">0</p>
+            </div>
+            <div class="stat-box">
+                <h3>Top Category</h3>
+                <p id="topCategory">-</p>
+            </div>
+            <div class="stat-box">
+                <h3>Categories</h3>
+                <p id="numCategories">0</p>
+            </div>
+        </div>
+
+        <canvas id="pieChart"></canvas>
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 Ngul Yoen | Expense Insights</p>
+</footer>
+
+<script>
+function analyzePDF() {
+    const file = document.getElementById("fileInput").files[0];
+
+    if (!file) {
+        alert("Upload a PDF first");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    fetch("http://127.0.0.1:5000/analyze", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+        showDashboard(data.categories);
+    })
+    .catch(err => console.error(err));
+}
+
+function showDashboard(data) {
+    document.getElementById("dashboard").style.display = "block";
+
+    let total = Object.values(data).reduce((a, b) => a + b, 0);
+
+    document.getElementById("totalDebit").innerText = total;
+
+    let topCategory = Object.keys(data).reduce((a, b) =>
+        data[a] > data[b] ? a : b
+    );
+
+    document.getElementById("topCategory").innerText = topCategory;
+    document.getElementById("numCategories").innerText = Object.keys(data).length;
+
+    const ctx = document.getElementById("pieChart").getContext("2d");
+
+    new Chart(ctx, {
+        type: "pie",
+        data: {
+            labels: Object.keys(data),
+            datasets: [{
+                data: Object.values(data)
+            }]
+        }
+    });
+}
+</script>
+
+</body>
+</html>
