@@ -163,6 +163,7 @@ footer {
         </div>
 
         <canvas id="pieChart"></canvas>
+        <div id="topExpenses"></div>
     </div>
 
 </div>
@@ -190,16 +191,47 @@ function analyzePDF() {
     .then(res => res.json())
     .then(data => {
         showDashboard(data.categories);
+        showTopExpenses(data.top5);
     })
+    // .then(data => {
+    //     showDashboard(data.categories);
+    // })
     .catch(err => console.error(err));
 }
+
+// function showDashboard(data) {
+//     document.getElementById("dashboard").style.display = "block";
+
+//     let total = Object.values(data).reduce((a, b) => a + b, 0);
+
+//     document.getElementById("totalDebit").innerText = total;
+
+//     let topCategory = Object.keys(data).reduce((a, b) =>
+//         data[a] > data[b] ? a : b
+//     );
+
+//     document.getElementById("topCategory").innerText = topCategory;
+//     document.getElementById("numCategories").innerText = Object.keys(data).length;
+
+//     const ctx = document.getElementById("pieChart").getContext("2d");
+
+//     new Chart(ctx, {
+//         type: "pie",
+//         data: {
+//             labels: Object.keys(data),
+//             datasets: [{
+//                 data: Object.values(data)
+//             }]
+//         }
+//     });
+// }
 
 function showDashboard(data) {
     document.getElementById("dashboard").style.display = "block";
 
     let total = Object.values(data).reduce((a, b) => a + b, 0);
 
-    document.getElementById("totalDebit").innerText = total;
+    document.getElementById("totalDebit").innerText = total.toFixed(2);
 
     let topCategory = Object.keys(data).reduce((a, b) =>
         data[a] > data[b] ? a : b
@@ -208,18 +240,43 @@ function showDashboard(data) {
     document.getElementById("topCategory").innerText = topCategory;
     document.getElementById("numCategories").innerText = Object.keys(data).length;
 
+    // Calculate percentages
+    let labels = [];
+    let values = [];
+
+    for (let key in data) {
+        let percent = ((data[key] / total) * 100).toFixed(1);
+        labels.push(`${key} (${percent}%)`);
+        values.push(data[key]);
+    }
+
     const ctx = document.getElementById("pieChart").getContext("2d");
 
-    new Chart(ctx, {
+    if (window.myChart) {
+        window.myChart.destroy(); // prevent duplicate charts
+    }
+
+    window.myChart = new Chart(ctx, {
         type: "pie",
         data: {
-            labels: Object.keys(data),
+            labels: labels,
             datasets: [{
-                data: Object.values(data)
+                data: values
             }]
         }
     });
 }
+
+function showTopExpenses(top5) {
+    let html = "<h3>Top 5 Expenses</h3>";
+
+    top5.forEach(t => {
+        html += `<p>💸 ${t.name} - ${t.amount}</p>`;
+    });
+
+    document.getElementById("topExpenses").innerHTML = html;
+}
+
 </script>
 
 </body>

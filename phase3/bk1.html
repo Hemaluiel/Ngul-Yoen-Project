@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bhutan Banking Insights</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: #f4f6f9;
+    }
+
+    /* NAVBAR */
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        background: linear-gradient(90deg, #d32f2f, #fbc02d);
+        color: white;
+        position: sticky;
+        top: 0;
+    }
+
+    .logo { font-size: 26px; font-weight: bold; }
+
+    .nav-links a {
+        margin-left: 20px;
+        text-decoration: none;
+        color: white;
+        padding: 8px 14px;
+        border-radius: 5px;
+    }
+
+    .nav-links a:hover { background: rgba(0,0,0,0.2); }
+
+    /* HERO */
+    .hero {
+        text-align: center;
+        padding: 70px 20px;
+        background: linear-gradient(135deg, #d32f2f, #7b1fa2);
+        color: white;
+    }
+
+    .hero h1 { font-size: 42px; }
+
+    /* STATS */
+    .stats {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        padding: 30px;
+        background: white;
+    }
+
+    .stat {
+        text-align: center;
+    }
+
+    .stat h2 {
+        font-size: 32px;
+        color: #d32f2f;
+    }
+
+    /* CONTAINER */
+    .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+        padding: 50px;
+        max-width: 1300px;
+        margin: auto;
+    }
+
+    /* CARD */
+    .card {
+        background: linear-gradient(135deg, #ffffff, #fce4ec);
+        padding: 35px;
+        border-radius: 18px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        text-align: center;
+        transition: all 0.35s ease;
+        min-height: 220px;
+    }
+
+    .card:hover {
+        transform: translateY(-12px) scale(1.03);
+        box-shadow: 0 0 25px rgba(255, 82, 82, 0.6);
+    }
+
+    .icon {
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+
+    .card h2 { font-size: 20px; color: #2c3e50; }
+
+    .info {
+        font-size: 14px;
+        margin-top: 10px;
+        line-height: 1.6;
+    }
+
+    .tag {
+        display: inline-block;
+        background: #e3f2fd;
+        color: #0d47a1;
+        padding: 4px 10px;
+        border-radius: 5px;
+        font-size: 12px;
+        margin-top: 10px;
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+        background: #2c3e50;
+        color: white;
+    }
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo">Ngul~Yoen</div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="abt.html">About</a>
+        <a href="fd.html">Findings</a>
+    </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>🏦 Bhutan Banking Insights</h1>
+    <p>Key overview of major banks in Bhutan</p>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+    <div class="stat">
+        <h2>6</h2>
+        <p>Major Banks</p>
+    </div>
+    <div class="stat">
+        <h2>100+</h2>
+        <p>Branches</p>
+    </div>
+    <div class="stat">
+        <h2>Nationwide</h2>
+        <p>ATM Coverage</p>
+    </div>
+</div>
+
+<!-- BANK CARDS -->
+<div class="container">
+
+    <div class="card">
+        <div class="icon">🏦</div>
+        <h2>Bank of Bhutan (BoB)</h2>
+        <div class="tag">Est. 1968</div>
+        <div class="info">
+            Oldest bank in Bhutan<br>
+            Retail & corporate banking<br>
+            ~47+ branches<br>
+            Nationwide ATM network
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="icon">💳</div>
+        <h2>Bhutan National Bank</h2>
+        <div class="tag">Est. 1997</div>
+        <div class="info">
+            Digital + retail banking<br>
+            Strong mobile banking (mPay)<br>
+            ~30+ branches<br>
+            Strong ATM network
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="icon">📱</div>
+        <h2>T Bank</h2>
+        <div class="tag">Modern Bank</div>
+        <div class="info">
+            Digital-first banking<br>
+            TPay & mobile services<br>
+            Limited branches<br>
+            Growing ATM network
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="icon">🌾</div>
+        <h2>Bhutan Development Bank</h2>
+        <div class="tag">Rural Finance</div>
+        <div class="info">
+            Focus on agriculture & SME<br>
+            Rural financial support<br>
+            Wide rural presence<br>
+            Limited ATMs
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="icon">🏢</div>
+        <h2>Druk PNB Bank</h2>
+        <div class="tag">Est. 2010</div>
+        <div class="info">
+            Commercial banking<br>
+            Loans & trade finance<br>
+            Urban-focused branches<br>
+            Moderate ATM coverage
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="icon">🏛️</div>
+        <h2>Royal Monetary Authority</h2>
+        <div class="tag">Central Bank</div>
+        <div class="info">
+            Bhutan’s central bank<br>
+            Monetary policy control<br>
+            Banking regulation<br>
+            No retail services
+        </div>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 Ngul Yoen | Bhutan Banking Insights</p>
+</footer>
+
+</body>
+</html>

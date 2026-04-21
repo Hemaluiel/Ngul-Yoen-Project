@@ -14,12 +14,11 @@ def categorize_transactions(rows):
     categories = {
         "Food": ["restaurant", "cafe", "zomato", "drinks", "water", "juice", "food", "meal", "dining", "snack", "coffee", "tea", "fastfood", "dinner", "lunch", "breakfast", "momo", "Maggie", "rice"],
         "Transport": ["taxi", "fuel", "bus", "train", "car", "taxifare", "travel", "transport"],
-        "Shopping": ["store", "mall", "amazon", "grocery", "supermarket", "clothing", "electronics", "shopping", "groceries", "vegetables", "fruits"],
+        "Shopping": ["store", "mall", "amazon", "grocery", "supermarket", "clothing", "electronics", "shopping", "groceries", "vegetables", "fruits", "shoes", "accessories", "shop", "shopp"],
         "Bills and utilities": ["electricity", "waterbill", "internet", "recharge", "rent", "utilities", "ebill", "subscription", "999", "777", "gas", "BT Recharge"],
         "Entertainment": ["movie", "netflix", "spotify", "concert", "entertainment", "game", "gaming", "theater", "music"],
         "Health": ["pharmacy", "doctor", "hospital", "medicine", "health"],
-        "Personal Care": ["fitness", "gym", "salon", "spa", "personalcare", "cream", "shampoo", "skincare", "haircut", "barber", "cosmetics"],
-        "Education": ["book", "course", "education", "school", "university", "tuition", "onlinecourse", "learning", "coursefee", "oen and pencil", "stationery"],
+        "Personal Care": ["fitness", "gym", "salon", "spa", "personalcare", "cream", "shampoo", "skincare", "haircut"],
         "Others": []
     }
 
@@ -58,6 +57,8 @@ def categorize_transactions(rows):
 
 
 @app.route("/analyze", methods=["POST"])
+
+
 def analyze():
     file = request.files["file"]
 
@@ -75,10 +76,40 @@ def analyze():
     data = categorize_transactions(all_rows)
     total = sum(data.values())
 
+    # return jsonify({
+    #     "categories": data,
+    #     "total": total
+    # })
+
+    top5 = extract_top_expenses(all_rows)
+
     return jsonify({
         "categories": data,
-        "total": total
+        "total": total,
+        "top5": top5
     })
+
+def extract_top_expenses(rows):
+    transactions = []
+
+    for row in rows:
+        try:
+            particulars = row[1]
+            debit = row[4]
+
+            if debit and float(debit) > 0:
+                transactions.append({
+                    "name": particulars,
+                    "amount": float(debit)
+                })
+        except:
+            continue
+
+    # Sort descending
+    transactions.sort(key=lambda x: x["amount"], reverse=True)
+
+    return transactions[:5]
+
 
 
 if __name__ == "__main__":
