@@ -1,7 +1,6 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import pdfplumber
-from flask import send_from_directory
 
 app = Flask(__name__)
 CORS(app)
@@ -12,7 +11,7 @@ CORS(app)
 def serve_frontend():
     return send_from_directory(".", "index.html")
 
-@app.route("/")
+@app.route("/status")
 def home():
     return "Server is running for Ngul~Yoen PDF Analysis"
 
