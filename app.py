@@ -11,9 +11,9 @@ CORS(app)
 def serve_frontend():
     return send_from_directory(".", "index.html")
 
-@app.route("/status")
-def home():
-    return "Server is running for Ngul~Yoen PDF Analysis"
+# @app.route("/")
+# def home():
+#     return "Server is running for Ngul~Yoen PDF Analysis"
 
 
 def categorize_transactions(rows):
