@@ -185,7 +185,7 @@ function analyzePDF() {
     formData.append("file", file);
 
     // fetch("http://127.0.0.1:5000/analyze", {
-    fetch("https://your-app-name.onrender.com/analyze", {
+    fetch("https://epc-txkc.onrender.com/analyze", {  
         method: "POST",
         body: formData
     })
@@ -199,33 +199,6 @@ function analyzePDF() {
     // })
     .catch(err => console.error(err));
 }
-
-// function showDashboard(data) {
-//     document.getElementById("dashboard").style.display = "block";
-
-//     let total = Object.values(data).reduce((a, b) => a + b, 0);
-
-//     document.getElementById("totalDebit").innerText = total;
-
-//     let topCategory = Object.keys(data).reduce((a, b) =>
-//         data[a] > data[b] ? a : b
-//     );
-
-//     document.getElementById("topCategory").innerText = topCategory;
-//     document.getElementById("numCategories").innerText = Object.keys(data).length;
-
-//     const ctx = document.getElementById("pieChart").getContext("2d");
-
-//     new Chart(ctx, {
-//         type: "pie",
-//         data: {
-//             labels: Object.keys(data),
-//             datasets: [{
-//                 data: Object.values(data)
-//             }]
-//         }
-//     });
-// }
 
 function showDashboard(data) {
     document.getElementById("dashboard").style.display = "block";
