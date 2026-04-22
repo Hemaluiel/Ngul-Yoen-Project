@@ -1,266 +1,266 @@
 <!DOCTYPE html>
 <html lang="en">
-        
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Summary Report</title>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Summary Report | Ngul Yoen</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-        <style>
-            body {
-                margin: 0;
-                font-family: 'Segoe UI', sans-serif;
-                background: #f4f6f9;
-                scroll-behavior: smooth;
-            }
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(120deg, #fce4ec, #fff9c4);
+}
 
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: linear-gradient(90deg, #d32f2f, #fbc02d);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 
-            .navbar {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 15px 40px;
-                background: #2c3e50;
-                color: white;
-            }
+.logo {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size: 24px;
+    font-weight: bold;
+}
 
-            nav {
-                position: sticky;
-                top: 0;
-                background: #2c3e50;
-                padding: 15px;
-                text-align: center;
-                z-index: 1000;
-            }
-            .logo {
-                color: white;
-                font-size: 24px;
-                font-weight: bold;
-            }
+.logo img { height:40px; }
 
-            nav a {
-                font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-                color: rgb(245, 240, 240);
-                margin: 0 12px;
-                text-decoration: none;
-                font-size: 16px;
-                margin-right: 20px;
-                text-align: right;
-                transition: 0.3s;
-            }
+nav a {
+    color: white;
+    margin: 0 12px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
 
-            nav a:hover {
-                color: #8d1616;
-            }
+nav a:hover { opacity: 0.7; }
 
-            header {
-                text-align: center;
-                padding: 50px;
-                background: linear-gradient(to right, #f55252, #520210);
-                color: white;
-            }
+header {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #d32f2f, #7b1fa2);
+    color: white;
+}
 
-            section {
-                margin: 30px;
-                padding: 25px;
-                background: rgb(234, 214, 214);
-                border-radius: 10px;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            }
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 30px;
+    display: grid;
+    gap: 25px;
+}
 
-            h2, h3 {
-                color: #410101;
-            }
+section {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: 0.3s;
+    position: relative;
+}
 
-            .card {
-                padding: 15px;
-                background: #bdbfc0;
-                margin-top: 10px;
-                border-radius: 8px;
-            }
+section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
 
-            ul {
-                padding-left: 20px;
-            }
+section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #ff5252, #ffca28);
+}
 
-            /* IMAGE / GRAPH PLACEHOLDER */
-            .image-box {
-                margin-top: 15px;
-                padding: 20px;
-                border: 2px dashed #ccc;
-                text-align: center;
-                color: #888;
-            }
+h2, h3 { color: #2c3e50; }
 
-            .report {
-                margin-top: 20px;
-                padding: 20px;
-                background: #e6d7d7;
-                border-top-left-radius: 8px;
-                border-top-right-radius: 8px;
-            }
-            .report p {
-                font-size: 16px;
-                color: #360101;
-                margin-bottom: 10px;
-            }
-            .report a {
-                color: #68010f;
-                /* font-family:Arial, sans-serif; */
-                text-decoration: underline;
-            }
+p {
+    color: #444;
+    line-height: 1.6;
+}
 
-            footer {
-                text-align: center;
-                padding: 20px;
-                background: #2c3e50;
-                color: white;
-            }
-            footer a {
-                margin: 0 10px;
-                text-decoration: none;
-                color: white;
-                padding: 8px 14px;
-            }
+.card {
+    background: #f3e5f5;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
 
-        </style>
-    </head>
+ul { padding-left: 20px; }
 
-    <body>
+.image-box {
+    margin-top: 15px;
+    padding: 20px;
+    border: 2px dashed #ccc;
+    text-align: center;
+    color: #888;
+    border-radius: 10px;
+}
 
+.report {
+    margin: 30px;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
 
-        <div class="navbar">
-            <div class="logo">Ngul~Yoen</div>
-            <nav>
-                <a href="#intro">Introduction</a>
-                <a href="#findings">Findings</a>
-                <a href="#solution">Solutions</a>
-                <a href="#conclusion">Conclusion</a>
-            </nav>
-        </div>
+.report a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #ff5252, #ffca28);
+    color: black;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
 
+.report a:hover { transform: scale(1.05); }
 
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #2c3e50;
+    color: white;
+}
 
-        <header>
-            <h1>Customer Banking Choices in Bhutan</h1>
-            <p>Understanding Trust, Service Quality, Accessibility & Ease of Use</p>
-        </header>
+footer a {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+}
 
+</style>
+</head>
 
-        <section id="intro">
-            <h2>Introduction</h2>
-            <p>
-                Banking services are essential in Bhutan’s growing digital economy.
-                With increasing use of mobile and internet banking, customer expectations
-                are rapidly evolving.
-            </p>
+<body>
 
-            <h3>Problem Statement</h3>
-            <p>
-                Customers experience differences in trust, service quality,
-                accessibility, and ease of use across banks.
-            </p>
+<div class="navbar">
+    <div class="logo">
+        <img src="logo.png"> Ngul~Yoen
+    </div>
+    <nav>
+        <a href="#intro">Introduction</a>
+        <a href="#findings">Findings</a>
+        <a href="#solution">Solutions</a>
+        <a href="#conclusion">Conclusion</a>
+    </nav>
+</div>
 
-            <h3>Main Motives</h3>
-            <div class="card">
-                <ul>
-                    <li>Understand banking choices</li>
-                    <li>Identify service gaps</li>
-                    <li>Provide solutions</li>
-                </ul>
-            </div>
+<header>
+    <h1>Customer Banking Choices in Bhutan</h1>
+    <p style="color:white">Understanding Trust, Service Quality, Accessibility & Ease of Use</p>
+</header>
 
-            <h3>Research Questions</h3>
-            <ul>
-                <li>What influences banking choices?</li>
-                <li>What needs improvement?</li>
-            </ul>
+<div class="container">
 
-            <h3>Methodology</h3>
-            <p>
-                Data collected from 111 respondents using surveys.
-                Tools: Google Forms, Sheets, Tableau, Website.
-            </p>
-        </section>
+<section id="intro">
+<h2>Introduction</h2>
+<p>Banking services are essential in Bhutan’s growing digital economy. With increasing use of mobile and internet banking, customer expectations are rapidly evolving.</p>
 
+<h3>Problem Statement</h3>
+<p>Customers experience differences in trust, service quality, accessibility, and ease of use across banks.</p>
 
+<h3>Main Motives</h3>
+<div class="card">
+<ul>
+<li>Understand banking choices</li>
+<li>Identify service gaps</li>
+<li>Provide solutions</li>
+</ul>
+</div>
 
-        <section id="findings">
-            <h2>Findings & Analysis</h2>
+<h3>Research Questions</h3>
+<ul>
+<li>What influences banking choices?</li>
+<li>What needs improvement?</li>
+</ul>
 
-            <h3>Overview</h3>
-            <p>Most people have bank accounts, but some lack awareness.</p>
+<h3>Methodology</h3>
+<p>Data collected from 111 respondents using surveys. Tools: Google Forms, Sheets, Tableau, Website.</p>
+</section>
 
-            <div class="image-box">Tableau Chart Here</div>
+<section id="findings">
+<h2>Findings & Analysis</h2>
 
-            <h3>Customer Banking Choices</h3>
-            <p>Bank of Bhutan dominates with ~84% preference.</p>
+<h3>Overview</h3>
+<p>Most people have bank accounts, but some lack awareness.</p>
+<div class="image-box">Tableau Chart Here</div>
 
-            <div class="image-box">Bank Preference Chart</div>
+<h3>Customer Banking Choices</h3>
+<p>Bank of Bhutan dominates with ~84% preference.</p>
+<div class="image-box">Bank Preference Chart</div>
 
-            <h3>Trust</h3>
-            <p>Over 80% trust their bank, but security concerns exist.</p>
+<h3>Trust</h3>
+<p>Over 80% trust their bank, but security concerns exist.</p>
 
-            <h3>Service Quality</h3>
-            <p>Majority satisfied, but small dissatisfaction exists.</p>
+<h3>Service Quality</h3>
+<p>Majority satisfied, but small dissatisfaction exists.</p>
 
-            <h3>Accessibility</h3>
-            <p>Urban congestion & rural access issues observed.</p>
+<h3>Accessibility</h3>
+<p>Urban congestion & rural access issues observed.</p>
 
-            <h3>Ease of Use</h3>
-            <p>Digital services good, but network issues affect usage.</p>
+<h3>Ease of Use</h3>
+<p>Digital services good, but network issues affect usage.</p>
 
-            <h2>Future Insight</h2>
-            <p>
-                Many customers are unsure about switching banks,
-                showing opportunity for improvement.
-            </p>
+<h2>Future Insight</h2>
+<p>Many customers are unsure about switching banks, showing opportunity for improvement.</p>
+</section>
 
-        </section>
+<section id="solution">
+<h2>Discussion & Solutions</h2>
 
+<h3>Banking Assistance Website</h3>
+<div class="card">
+<ul>
+<li>Compare banks</li>
+<li>Learn services</li>
+<li>Make better decisions</li>
+</ul>
+</div>
 
-        <section id="solution">
-            <h2>Discussion & Solutions</h2>
+<h3>Suggestions to BOB</h3>
+<div class="card">
+<ul>
+<li>Improve internet banking</li>
+<li>Add budgeting tools</li>
+</ul>
+</div>
+</section>
 
-            <h3>Banking Assistance Website</h3>
-            <div class="card">
-                Helps users:
-                <ul>
-                    <li>Compare banks</li>
-                    <li>Learn services</li>
-                    <li>Make better decisions</li>
-                </ul>
-            </div>
+<section id="conclusion">
+<h2>Conclusion</h2>
+<p>Trust, service quality, accessibility, and ease of use strongly influence customer banking choices. Improving these can increase satisfaction and loyalty.</p>
+</section>
 
-            <h3>Suggestions to BOB</h3>
-            <div class="card">
-                <ul>
-                    <li>Improve internet banking</li>
-                    <li>Add budgeting tools</li>
-                </ul>
-            </div>
-        </section>
+</div>
 
+<div class="report">
+<p>For detailed insights, please refer to the full report.</p>
+<a href="Project report writing111111.pdf" target="_blank">Open Full Report</a>
+</div>
 
-        <section id="conclusion">
-            <h2>Conclusion</h2>
-            <p>
-                Trust, service quality, accessibility, and ease of use strongly influence
-                customer banking choices. Improving these can increase satisfaction and loyalty.
-            </p>
-        </section>
-        <div class="report">
-            <p> For detailed insights, please refer to the full report.</p>
-            <a href="Project report writing111111.pdf" target="_blank">Open project report</a>
-        </div>
+<footer>
+<p style="color:white">© 2026 Ngul Yoen | Banking Scope Bhutan | Hema Luitel</p>
+<a href="hm.html">Home</a>
+<a href="ab1.html">About</a>
+<a href="fd1.html">Findings</a>
+<a href="ct1.html">Contact</a>
+</footer>
 
-
-        <footer>
-            <p>© 2026 Ngul Yoen | Banking Scope Bhutan | Hema Luitel | Internship </p>
-            <a href="Ngul Yoen.html">Home</a>
-            <a href="about.html">About Project</a>
-            <a href="findings.html">Findings</a>
-            <a href="contact.html">Contact</a>
-        </footer>
-    </body>
+</body>
 </html>

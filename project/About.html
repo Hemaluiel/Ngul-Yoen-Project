@@ -1,196 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
-        
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>About</title>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | Ngul Yoen</title>
 
-        <style>
-            body {
-                margin: 0;
-                font-family: 'Segoe UI', sans-serif;
-                background: #f4f6f9;
-                scroll-behavior: smooth;
-            }
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(120deg, #fce4ec, #fff9c4);
+        scroll-behavior: smooth;
+    }
 
-            .navbar {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 15px 40px;
-                background: #2c3e50;
-                color: white;
-            }
+    /* NAVBAR */
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 40px;
+        background: linear-gradient(90deg, #fbc02d, #b05e01);
+        color: white;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
 
-            nav {
-                position: sticky;
-                top: 0;
-                background: #2c3e50;
-                padding: 15px;
-                text-align: center;
-                z-index: 1000;
-            }
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 24px;
+        font-weight: bold;
+    }
 
-            .logo {
-                /* color: white; */
-                font-size: 24px;
-                font-weight: bold;
-            }
+    .logo img { height: 40px; border-radius: 6px; }
 
+    nav a {
+        color: white;
+        margin: 0 12px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
+    }
 
-            nav a {
-                font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-                color: rgb(245, 240, 240);
-                margin: 0 12px;
-                text-decoration: none;
-                font-size: 16px;
-                margin-right: 20px;
-                text-align: right;
-                transition: 0.3s;
-            }
+    nav a:hover { opacity: 0.7; }
 
-            nav a:hover {
-                color: #8d1616;
-            }
+    /* HERO */
+    header {
+        text-align: center;
+        padding: 60px 20px;
+        background: linear-gradient(135deg, #ed9118, #b05e01);
+        color: white;
+        animation: fadeIn 1s ease-in;
+    }
 
-            header {
-                text-align: center;
-                padding: 50px;
-                background: linear-gradient(to right, #f55252, #520210);
-                color: white;
-            }
+    header h1 { font-size: 40px; }
 
-            section {
-                margin: 30px;
-                /* padding: 25px; */
-                padding: 25px 20px;
-                background: rgb(234, 214, 214);
-                border-radius: 10px;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            }
+    /* CONTAINER */
+    .container {
+        max-width: 1100px;
+        margin: auto;
+        padding: 30px;
+        display: grid;
+        gap: 25px;
+    }
 
-            h2, h3 {
-                color: #410101;
-            }
+    /* CARD SECTIONS */
+    section {
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        transition: 0.3s;
+        position: relative;
+        overflow: hidden;
+    }
 
-            .report {
-                margin-top: 20px;
-                padding: 20px;
-                background: #e6d7d7;
-                border-radius: 8px;
-            }
-            .report p {
-                font-size: 16px;
-                color: #360101;
-                margin-bottom: 10px;
-            }
-            .report a {
-                color: #68010f;
-                /* font-family:Arial, sans-serif; */
-                text-decoration: underline;
-            }
+    section:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+    }
 
-            footer {
-                text-align: center;
-                padding: 20px;
-                background: #2c3e50;
-                color: white;
-            }
-            footer a {
-                margin: 0 10px;
-                text-decoration: none;
-                color: white;
-                padding: 8px 14px;
-            }
+    section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, rgb(255, 234, 0), orange);
+    }
 
-        </style>
-    </head>
+    h2 { color: #2c3e50; }
 
-    <body>
+    p {
+        color: #444;
+        line-height: 1.6;
+        font-size: 15px;
+    }
 
-        <div class="navbar">
-            <div class="logo">Ngul~Yoen</div>
-            <nav>
-                <a href="#ngul">About Ngul~Yoen</a>
-                <a href="#project">About Project</a>
-                <a href="#me">About Me</a>
-                <a href="#bds">About BDS</a>
+    /* FLOATING NAV BUTTON */
+    .top-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #d32f2f;
+        color: white;
+        padding: 12px 15px;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
 
-            </nav>
-        </div>
+    .top-btn:hover { background: #b71c1c; }
 
-        <header>
-            <h1>ABOUT</h1>
-            <p>Ngul~Yoen | Customer Banking Choices in Bhutan | Hema Luitel | Bhutan Data Scientists Pvt. Ltd.</p>
-        </header>
+    /* FOOTER */
+    footer {
+        text-align: center;
+        padding: 20px;
+        background: #2c3e50;
+        color: white;
+    }
 
+    footer a {
+        margin: 0 10px;
+        color: white;
+        text-decoration: none;
+    }
 
-        <section id="ngul">
-  
-            <h2>About Ngul~Yoen </h2>
-            <p> Ngul Yoen is the project website aimed at providing insights into the banking choices in Bhutan, helps people choose the right bank for them and make informed decisions about their banking needs.</p>
+    /* ANIMATION */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px);} 
+        to { opacity: 1; transform: translateY(0);} 
+    }
 
+</style>
+</head>
 
-        </section>
-        <section id="project">
-  
-            <h2>About Customer Banking Choices </h2>
-            <p> 
-                This proejct gives a deeper insights into customer banking choices and the factors affecting those choices (such as trust, satisfaction, service quality, accessibility and ease of use). 
-                It also focus solution driven and result oriented outcome.
-            </p>
-            <p> 
-                The main aim of the project is to get clear insight into customer banking choice and patterns, and helping bank idenify the areas for improvement and the opportunities for incorporating additional services. 
-                So that the customers can make informed decisions about their banking needs.
-            </p>
-             <p>
-                Moreover, the project also aims to provide insights into the banking sector in Bhutan, and help people make informed decisions about their banking needs as the solution to the current customer challenges through this web-based platform.
-            </p>
+<body>
 
-        </section>
+<div class="navbar">
+    <div class="logo">
+        <img src="logo.png">
+        Ngul~Yoen
+    </div>
+    <nav>
+        <a href="#ngul">Ngul~Yoen</a>
+        <a href="#project">Project</a>
+        <a href="#me">Me</a>
+        <a href="#bds">BDS</a>
+    </nav>
+</div>
 
-        <section id="me">
-            <h2>About Me</h2>
+<header>
+    <h1>About Ngul Yoen</h1>
+    <p style="color:white">Customer Banking Choices in Bhutan 🇧🇹</p>
+</header>
 
-            <p>
-                I am Hema Luitel, a third-year student at Gedu College of Business Studies, pursuing a Bachelor of Business Intelligence with a major in Financial Engineering. 
-            </p>
-            <p>
-                This work is a part of the six-month internship at Bhutan Data Scientists Pvt. Ltd. as a data practitioner. 
-            </p>
-            <p>
-                As part of the internship, I did project on Customer Banking Choices and the Factors Affecting Those Choices in Bhutan. 
-                Based on the insights from the project, I have created this website to share the findings and insights with the public, and to help people make informed decisions about their banking needs as a solution to customer challenges.
-            </p>
+<div class="container">
 
-        </section>
+<section id="ngul">
+    <h2>About Ngul~Yoen</h2>
+    <p>Ngul Yoen is a web-based platform providing insights into banking choices in Bhutan, helping users make informed financial decisions.</p>
+</section>
 
-        <section id="bds">
-            <h2>About Bhutan Data Scientists Pvt. Ltd.</h2>
+<section id="project">
+    <h2>About the Project</h2>
+    <p>This project analyzes customer banking choices and key factors like trust, service quality, accessibility, and ease of use.</p>
+    <p>It aims to identify improvement areas for banks and empower customers with better decision-making.</p>
+</section>
 
-            <p>
-                Bhutan Data Scientists Pvt. Ltd. is a data science company in Bhutan, providing data-driven solutions to various clients. 
-            </p>
-            <p>
-                They specialize in survey data collection and data analysis to help organizations make informed decisions and improve their operations. 
-            </p>
-            <p>
-                As an intern at Bhutan Data Scientists, I have had the opportunity to work on real-world projects and gain valuable experience in the field of data science, particularly in understanding customer banking choices in Bhutan. 
-            </p>
-            <p>
-                This project has allowed me to explore more on the area of my interest and apply my skills in data analysis and visualization to uncover insights that can help both customers and banks in the Bhutanese banking sector.
-            </p>
+<section id="me">
+    <h2>About Me</h2>
+    <p>I am Hema Luitel, a third-year student at Gedu College of Business Studies pursuing Business Intelligence.</p>
+    <p>This project was completed during my internship at Bhutan Data Scientists Pvt. Ltd.</p>
+</section>
 
-        </section>
+<section id="bds">
+    <h2>About Bhutan Data Scientists</h2>
+    <p>A Bhutan-based data science company providing data-driven solutions and analytics services.</p>
+    <p>This internship helped me gain real-world experience in data analysis and insights.</p>
+</section>
 
+</div>
 
-        <footer>
-            <p>© 2026 Ngul Yoen | Banking Scope Bhutan | Hema Luitel | Internship </p>
-            <a href="Ngul Yoen.html">Home</a>
-            <a href="report.html">Full Report</a>
-            <a href="findings.html">Findings</a>
-            <a href="contact.html">Contact</a>
-        </footer>
-    </body>
+<div class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+<footer>
+    <p style="color:white">© 2026 Ngul Yoen | Bhutan Banking Insights | Hema Luitel</p>
+    <a href="hm.html">Home</a>
+    <a href="rd1.html">Report</a>
+    <a href="fd1.html">Findings</a>
+    <a href="ct1.html">Contact</a>
+</footer>
+
+</body>
 </html>
