@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+
 from parser.detect_bank import detect_bank
 from parser.bob_parser import parse_bob
 from parser.dk_parser import parse_dk
@@ -7,7 +8,17 @@ from parser.generic_parser import parse_generic
 from utils.pdf_reader import extract_text
 from utils.categorizer import categorize
 
+
 app = Flask(__name__)
+
+
+@app.route("/")
+def home():
+    return jsonify({
+        "status": "success",
+        "message": "Ngul Yoen API is running"
+    })
+
 
 @app.route("/upload", methods=["POST"])
 def upload_pdf():
@@ -21,7 +32,7 @@ def upload_pdf():
     print("Detected Bank:", bank)
 
     # Step 3: route parser
-    file.seek(0)  # reset file pointer
+    file.seek(0)
 
     if bank == "BOB":
         data = parse_bob(file)
@@ -39,6 +50,7 @@ def upload_pdf():
         "bank": bank,
         "transactions": result
     })
+
 
 if __name__ == "__main__":
     app.run(debug=True)
