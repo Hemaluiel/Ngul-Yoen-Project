@@ -44,7 +44,16 @@ def upload_pdf():
     else:
         data = parse_generic(text)
 
-    print("DATA:", data)
+    # 🔥 STOP EARLY IF PARSER FAILS
+    if not data or len(data) == 0:
+        print("❌ PARSER FAILED - NO TRANSACTIONS FOUND")
+        return jsonify({
+            "error": "No transactions parsed from PDF",
+            "bank": bank
+        }), 400
+
+    print("DATA FROM PARSER:", data[:5])
+    print("TOTAL TRANSACTIONS:", len(data))
 
     result = categorize(data)
 
