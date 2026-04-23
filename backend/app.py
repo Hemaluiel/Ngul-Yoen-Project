@@ -20,24 +20,19 @@ def home():
 
 @app.route("/upload", methods=["POST"])
 def upload_pdf():
+
+    if "file" not in request.files:
+        return jsonify({"error": "No file uploaded"}), 400
+
     file = request.files["file"]
 
-    # to check if file is received
     print("FILE RECEIVED:", file.filename)
 
-    # Step 1: extract text
     text = extract_text(file)
 
-    # Step 2: detect bank
     bank = detect_bank(text)
-    
-    # to check detected bank
-    print("Detected Bank:", bank) 
-    print("BANK:", bank)
-    print("RAW DATA:", data)
-    print("TRANSACTIONS LENGTH:", len(data))
+    print("BANK DETECTED:", bank)
 
-    # Step 3: route parser
     file.seek(0)
 
     if bank == "BOB":
@@ -49,19 +44,15 @@ def upload_pdf():
     else:
         data = parse_generic(text)
 
-    # Step 4: categorize
+    print("DATA:", data)
+
     result = categorize(data)
 
-    # to check the number of transactions parsed
-    print("DATA LENGTH:", len(result))
+    print("FINAL RESULT LENGTH:", len(result))
 
-    # return jsonify({
-    #     "bank": bank,
-    #     "transactions": result
-    # })
     return jsonify({
         "bank": bank,
-        "transactions": [{"category": "Test", "amount": 100}]
+        "transactions": result
     })
 
 
