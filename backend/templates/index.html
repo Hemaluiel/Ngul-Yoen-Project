@@ -175,35 +175,6 @@ footer {
 </footer>
 
 <script>
-// function analyzePDF() {
-//     const file = document.getElementById("fileInput").files[0];
-
-//     if (!file) {
-//         alert("Upload a PDF first");
-//         return;
-//     }
-
-//     const formData = new FormData();
-//     formData.append("file", file);
-
-//     // fetch("http://127.0.0.1:5000/analyze", {
-//     // fetch("https://epc-txkc.onrender.com/analyze", { 
-//     fetch("https://epc-txkc.onrender.com/upload", {
-//         method: "POST",
-//         body: formData
-//     })
-//     .then(res => {
-//         console.log("Status:", res.status);
-//         return res.json();
-//     })
-//     .then(data => {
-//         console.log("DATA:", data);
-//     })
-//     .catch(err => {
-//         console.error("UPLOAD ERROR:", err);
-//     });
-// }
-
 
 function analyzePDF() {
     const file = document.getElementById("fileInput").files[0];
@@ -222,28 +193,22 @@ function analyzePDF() {
         method: "POST",
         body: formData
     })
-    .then(async (res) => {
+    .then(res => res.json())
+    .then(data => {
 
-        const text = await res.text();
-        console.log("RAW RESPONSE:", text);
+        console.log("DATA:", data);
 
-        let data;
-
-        try {
-            data = JSON.parse(text);
-        } catch (e) {
-            throw new Error("Backend did NOT return JSON. Check server logs.");
+        if (!data.transactions || data.transactions.length === 0) {
+            throw new Error("No transactions found");
         }
 
-        if (!res.ok) {
-            throw new Error(data.error || "Upload failed");
+        if (!data.categories) {
+            throw new Error("No categories returned");
         }
 
-        if (!data.transactions) {
-            throw new Error("No transactions returned");
-        }
+        showDashboard(data.categories);
+        showTopExpenses(data.transactions); // FIX ADDED
 
-        showDashboard(data.transactions);
     })
     .catch(err => {
         console.error("ERROR:", err);
@@ -251,10 +216,10 @@ function analyzePDF() {
     });
 }
 
-function showDashboard(data) {
-    document.getElementById("dashboard").style.display = "block";
 
-    // let total = Object.values(data).reduce((a, b) => a + b, 0);
+function showDashboard(data) {
+
+    document.getElementById("dashboard").style.display = "block";
 
     let valuesArray = Object.values(data || {});
 
@@ -263,7 +228,7 @@ function showDashboard(data) {
         return;
     }
 
-    let total = valuesArray.reduce((a, b) => a + b, 0);
+    let total = valuesArray.reduce((a, b) => Number(a) + Number(b), 0);
 
     document.getElementById("totalDebit").innerText = total.toFixed(2);
 
@@ -274,15 +239,6 @@ function showDashboard(data) {
     document.getElementById("topCategory").innerText = topCategory;
     document.getElementById("numCategories").innerText = Object.keys(data).length;
 
-    if (!data || Object.keys(data).length === 0) {
-    document.getElementById("dashboard").style.display = "block";
-    document.getElementById("topCategory").innerText = "No Data";
-    document.getElementById("totalDebit").innerText = "0";
-    document.getElementById("numCategories").innerText = "0";
-    return;
-}
-
-    // Calculate percentages
     let labels = [];
     let values = [];
 
@@ -295,7 +251,7 @@ function showDashboard(data) {
     const ctx = document.getElementById("pieChart").getContext("2d");
 
     if (window.myChart) {
-        window.myChart.destroy(); // prevent duplicate charts
+        window.myChart.destroy();
     }
 
     window.myChart = new Chart(ctx, {
@@ -309,11 +265,19 @@ function showDashboard(data) {
     });
 }
 
-function showTopExpenses(top5) {
+
+function showTopExpenses(transactions) {
+
+    // sort by amount descending
+    let sorted = transactions
+        .filter(t => t.type === "debit") // only expenses
+        .sort((a, b) => b.amount - a.amount)
+        .slice(0, 5);
+
     let html = "<h3>Top 5 Expenses</h3>";
 
-    top5.forEach(t => {
-        html += `<p>💸 ${t.name} - ${t.amount}</p>`;
+    sorted.forEach(t => {
+        html += `<p>💸 ${t.description} - ${t.amount}</p>`;
     });
 
     document.getElementById("topExpenses").innerHTML = html;
