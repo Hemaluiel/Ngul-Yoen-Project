@@ -4,6 +4,7 @@ import re
 def parse_bob(file):
 
     data = []
+    seen = set()
 
     with pdfplumber.open(file) as pdf:
 
@@ -17,12 +18,11 @@ def parse_bob(file):
 
             for line in lines:
 
-                # detect transaction line by date
+                # must start with date
                 if not re.match(r"\d{2}/\d{2}/\d{4}", line):
                     continue
 
                 try:
-                    # extract all amounts
                     amounts = re.findall(r"\d{1,3}(?:,\d{3})*\.\d{2}", line)
 
                     if len(amounts) < 2:
@@ -31,15 +31,26 @@ def parse_bob(file):
                     debit = float(amounts[0].replace(",", ""))
                     credit = float(amounts[1].replace(",", ""))
 
-                    amount = debit if debit > 0 else credit
+                    # Fix: only take debit (expense)
+                    if debit <= 0:
+                        continue
 
-                    # remove numbers → get description
+                    amount = debit
+
+                    # extract description FIRST
                     desc = re.sub(r"\d{1,3}(?:,\d{3})*\.\d{2}", "", line)
                     desc = re.sub(r"\d{2}/\d{2}/\d{4}", "", desc)
-                    desc = desc.strip()
+                    desc = re.sub(r"[^a-zA-Z ]", " ", desc)
+                    desc = re.sub(r"\s+", " ", desc).strip()
 
-                    if amount == 0:
+                    if not desc:
                         continue
+
+                    # remove duplicates safely
+                    key = f"{line[:10]}-{amount}-{desc}"
+                    if key in seen:
+                        continue
+                    seen.add(key)
 
                     data.append({
                         "date": line[:10],
