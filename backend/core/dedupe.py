@@ -1,16 +1,12 @@
 def dedupe(transactions):
-
     seen = set()
     clean = []
 
     for t in transactions:
+        key = f"{t['date']}-{t['amount']}-{t['description']}"
 
-        key = (t["date"], t["description"], t["amount"], t["type"])
-
-        if key in seen:
-            continue
-
-        seen.add(key)
-        clean.append(t)
+        if key not in seen:
+            seen.add(key)
+            clean.append(t)
 
     return clean

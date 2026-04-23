@@ -37,6 +37,7 @@ def upload():
     # STEP 2: parse transactions
     raw = route_parser(bank, file)
     print("RAW COUNT:", len(raw))
+    
 
     # STEP 3: remove duplicates
     clean = dedupe(raw)
