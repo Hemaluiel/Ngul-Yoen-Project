@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 
 from parser.detect_bank import detect_bank
 from parser.bob_parser import parse_bob
@@ -11,13 +11,9 @@ from utils.categorizer import categorize
 
 app = Flask(__name__)
 
-
 @app.route("/")
 def home():
-    return jsonify({
-        "status": "success",
-        "message": "Ngul Yoen API is running"
-    })
+    return render_template("index.html")
 
 
 @app.route("/upload", methods=["POST"])
