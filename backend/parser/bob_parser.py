@@ -7,6 +7,7 @@ def parse_bob(file):
 
     with pdfplumber.open(file) as pdf:
         for page in pdf.pages:
+
             text = page.extract_text()
 
             if not text:
@@ -16,21 +17,24 @@ def parse_bob(file):
 
             for line in lines:
 
-                # detect transaction line
+                print("LINE:", line)  # 🔍 DEBUG
+
+                # must contain date
                 if not re.search(r"\d{2}/\d{2}/\d{4}", line):
                     continue
 
+                # extract numbers
                 nums = re.findall(r"\d{1,3}(?:,\d{3})*\.\d{2}", line)
 
-                if len(nums) < 2:
+                # 🔥 FIX: accept even ONE number
+                if len(nums) == 0:
                     continue
 
                 try:
-                    debit = float(nums[0].replace(",", ""))
-                    credit = float(nums[1].replace(",", ""))
+                    # take LAST number as amount (most reliable)
+                    amount = float(nums[-1].replace(",", ""))
 
-                    amount = debit if debit > 0 else credit
-
+                    # skip tiny balances (optional)
                     if amount == 0:
                         continue
 
@@ -40,7 +44,8 @@ def parse_bob(file):
                         "amount": amount
                     })
 
-                except:
+                except Exception as e:
+                    print("ERROR:", e)
                     continue
 
     print("TOTAL PARSED:", len(data))
