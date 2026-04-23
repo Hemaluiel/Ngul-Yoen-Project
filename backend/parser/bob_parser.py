@@ -1,16 +1,6 @@
 import pdfplumber
 import re
 
-def clean_amount(x):
-    if not x:
-        return 0
-    x = str(x).replace(",", "").replace("H", "").strip()
-    try:
-        return float(x)
-    except:
-        return 0
-
-
 def parse_bob(file):
 
     data = []
@@ -25,46 +15,34 @@ def parse_bob(file):
 
             lines = text.split("\n")
 
-            for i, line in enumerate(lines):
+            for line in lines:
 
-                # ✅ detect transaction line by DATE
+                # detect transaction line by date
                 if not re.match(r"\d{2}/\d{2}/\d{4}", line):
                     continue
 
                 try:
-                    parts = line.split()
+                    # extract all amounts
+                    amounts = re.findall(r"\d{1,3}(?:,\d{3})*\.\d{2}", line)
 
-                    date = parts[0]
-
-                    # extract numbers (debit, credit, balance)
-                    nums = re.findall(r"\d{1,3}(?:,\d{3})*\.\d{2}", line)
-
-                    if len(nums) < 2:
+                    if len(amounts) < 2:
                         continue
 
-                    debit = clean_amount(nums[0])
-                    credit = clean_amount(nums[1])
+                    debit = float(amounts[0].replace(",", ""))
+                    credit = float(amounts[1].replace(",", ""))
 
                     amount = debit if debit > 0 else credit
 
-                    # 🔥 extract description
-                    desc = line.replace(date, "")
-
-                    for num in nums:
-                        desc = desc.replace(num, "")
-
+                    # remove numbers → get description
+                    desc = re.sub(r"\d{1,3}(?:,\d{3})*\.\d{2}", "", line)
+                    desc = re.sub(r"\d{2}/\d{2}/\d{4}", "", desc)
                     desc = desc.strip()
 
-                    # ✅ if description too short → take next line
-                    if len(desc) < 3 and i + 1 < len(lines):
-                        desc = lines[i + 1].strip()
-
-                    # ❌ skip empty rows
                     if amount == 0:
                         continue
 
                     data.append({
-                        "date": date,
+                        "date": line[:10],
                         "description": desc,
                         "amount": amount
                     })
@@ -74,5 +52,4 @@ def parse_bob(file):
                     continue
 
     print("TOTAL PARSED:", len(data))
-
     return data
