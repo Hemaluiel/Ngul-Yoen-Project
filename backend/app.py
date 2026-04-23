@@ -33,6 +33,9 @@ def upload_pdf():
     
     # to check detected bank
     print("Detected Bank:", bank) 
+    print("BANK:", bank)
+    print("RAW DATA:", data)
+    print("TRANSACTIONS LENGTH:", len(data))
 
     # Step 3: route parser
     file.seek(0)
@@ -52,9 +55,13 @@ def upload_pdf():
     # to check the number of transactions parsed
     print("DATA LENGTH:", len(result))
 
+    # return jsonify({
+    #     "bank": bank,
+    #     "transactions": result
+    # })
     return jsonify({
         "bank": bank,
-        "transactions": result
+        "transactions": [{"category": "Test", "amount": 100}]
     })
 
 

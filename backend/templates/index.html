@@ -247,7 +247,16 @@ function analyzePDF() {
 function showDashboard(data) {
     document.getElementById("dashboard").style.display = "block";
 
-    let total = Object.values(data).reduce((a, b) => a + b, 0);
+    // let total = Object.values(data).reduce((a, b) => a + b, 0);
+
+    let valuesArray = Object.values(data || {});
+
+    if (valuesArray.length === 0) {
+        alert("No transactions found in this statement");
+        return;
+    }
+
+    let total = valuesArray.reduce((a, b) => a + b, 0);
 
     document.getElementById("totalDebit").innerText = total.toFixed(2);
 
@@ -257,6 +266,14 @@ function showDashboard(data) {
 
     document.getElementById("topCategory").innerText = topCategory;
     document.getElementById("numCategories").innerText = Object.keys(data).length;
+
+    if (!data || Object.keys(data).length === 0) {
+    document.getElementById("dashboard").style.display = "block";
+    document.getElementById("topCategory").innerText = "No Data";
+    document.getElementById("totalDebit").innerText = "0";
+    document.getElementById("numCategories").innerText = "0";
+    return;
+}
 
     // Calculate percentages
     let labels = [];
