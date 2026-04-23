@@ -7,7 +7,7 @@ CATEGORY_MAP = {
     "Bills and utilities": ["electricity", "waterbill", "internet", "recharge", "rent", "utilities", "ebill", "subscription", "999", "777", "gas", "BT Recharge", "wifi", "utility"],
     "Entertainment": ["movie", "netflix", "spotify", "concert", "entertainment", "game", "gaming", "theater", "music"],
     "Health": ["pharmacy", "doctor", "hospital", "medicine", "health"],
-    "Transfer": ["transfer", "sent", "bank", "account", "payment", "pay", "withdrawal", "deposit"],
+    "Transfer": ["transfer", "sent", "bank", "account", "payment", "pay", "withdrawal", "deposit", "ATM"],
     "Loans": ["loan", "borrow", "lending", "debt", "credit"],
     "Education": ["school", "college", "university", "education", "course", "tuition", "books", "study", "training", "class", "workshop", "seminar", "onlinecourse", "webinar", "educationfee", "examfee", "library", "stationery", "pencil", "notebook", "backpack", "laptop", "software", "edtech"],
     "Support and Donations": ["donation", "charity", "contribution", "fundraiser", "support", "help", "aid", "sponsorship", "SEMSO", "semso", "donate", "donated", "small contribution", "contribution", "volunteer", "volunteering"],

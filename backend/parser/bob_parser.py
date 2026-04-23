@@ -1,5 +1,6 @@
 import pdfplumber
 import re
+from utils.text_utils import merge_lines
 
 def parse_bob(file):
 
@@ -56,8 +57,9 @@ def parse_bob(file):
                     continue
 
                 lines = text.split("\n")
+                merged_lines = merge_lines(lines)
 
-                for line in lines:
+                for line in merged_lines:
 
                     if not re.match(r"\d{2}/\d{2}/\d{4}", line):
                         continue
