@@ -175,6 +175,36 @@ footer {
 </footer>
 
 <script>
+// function analyzePDF() {
+//     const file = document.getElementById("fileInput").files[0];
+
+//     if (!file) {
+//         alert("Upload a PDF first");
+//         return;
+//     }
+
+//     const formData = new FormData();
+//     formData.append("file", file);
+
+//     // fetch("http://127.0.0.1:5000/analyze", {
+//     // fetch("https://epc-txkc.onrender.com/analyze", { 
+//     fetch("https://epc-txkc.onrender.com/upload", {
+//         method: "POST",
+//         body: formData
+//     })
+//     .then(res => {
+//         console.log("Status:", res.status);
+//         return res.json();
+//     })
+//     .then(data => {
+//         console.log("DATA:", data);
+//     })
+//     .catch(err => {
+//         console.error("UPLOAD ERROR:", err);
+//     });
+// }
+
+
 function analyzePDF() {
     const file = document.getElementById("fileInput").files[0];
 
@@ -186,21 +216,31 @@ function analyzePDF() {
     const formData = new FormData();
     formData.append("file", file);
 
-    // fetch("http://127.0.0.1:5000/analyze", {
-    // fetch("https://epc-txkc.onrender.com/analyze", { 
+    console.log("Uploading file...");
+
     fetch("https://epc-txkc.onrender.com/upload", {
         method: "POST",
         body: formData
     })
-    .then(res => {
+    .then(async (res) => {
         console.log("Status:", res.status);
-        return res.json();
-    })
-    .then(data => {
-        console.log("DATA:", data);
+
+        const data = await res.json();
+        console.log("Response:", data);
+
+        if (!res.ok) {
+            throw new Error(data.error || "Server error");
+        }
+
+        if (!data.transactions) {
+            throw new Error("No transactions returned from backend");
+        }
+
+        showDashboardFromTransactions(data.transactions);
     })
     .catch(err => {
-        console.error("UPLOAD ERROR:", err);
+        console.error("ERROR:", err);
+        alert("Upload failed: " + err.message);
     });
 }
 

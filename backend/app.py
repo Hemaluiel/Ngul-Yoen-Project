@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, render_template
-
+from flask_cors import CORS
 from parser.detect_bank import detect_bank
 from parser.bob_parser import parse_bob
 from parser.dk_parser import parse_dk
@@ -11,6 +11,8 @@ from utils.categorizer import categorize
 
 app = Flask(__name__)
 
+CORS(app)
+
 @app.route("/")
 def home():
     return render_template("index.html")
@@ -20,12 +22,17 @@ def home():
 def upload_pdf():
     file = request.files["file"]
 
+    # to check if file is received
+    print("FILE RECEIVED:", file.filename)
+
     # Step 1: extract text
     text = extract_text(file)
 
     # Step 2: detect bank
     bank = detect_bank(text)
-    print("Detected Bank:", bank)
+    
+    # to check detected bank
+    print("Detected Bank:", bank) 
 
     # Step 3: route parser
     file.seek(0)
@@ -41,6 +48,9 @@ def upload_pdf():
 
     # Step 4: categorize
     result = categorize(data)
+
+    # to check the number of transactions parsed
+    print("DATA LENGTH:", len(result))
 
     return jsonify({
         "bank": bank,
