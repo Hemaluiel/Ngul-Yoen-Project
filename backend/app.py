@@ -5,6 +5,7 @@ from parser.bob_parser import parse_bob
 from parser.dk_parser import parse_dk
 from parser.bnb_parser import parse_bnb
 from parser.generic_parser import parse_generic
+from parser.universal_parser import parse_universal
 from utils.pdf_reader import extract_text
 from utils.categorizer import categorize
 
@@ -42,7 +43,7 @@ def upload_pdf():
     elif bank == "DK":
         data = parse_dk(file)
     else:
-        data = parse_generic(text)
+        data = parse_universal(file)
 
     # 🔥 STOP EARLY IF PARSER FAILS
     if not data or len(data) == 0:

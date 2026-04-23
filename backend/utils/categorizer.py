@@ -1,53 +1,32 @@
-import re
 from difflib import get_close_matches
 
-CATEGORY_RULES = {
-    "Food": ["restaurant", "cafe", "hotel", "food", "pizza", "burger"],
-    "Shopping": ["shop", "store", "mart", "purchase", "shopping"],
-    "Transport": ["fuel", "taxi", "bus", "uber", "petrol"],
-    "Bills": ["electricity", "water", "bill", "payment", "fee"],
-    "Transfer": ["transfer", "sent", "received", "account"],
-    "Entertainment": ["movie", "netflix", "game"],
+CATEGORY_MAP = {
+    "Food": ["restaurant", "cafe", "pizza", "food", "kfc", "burger"],
+    "Transport": ["taxi", "uber", "fuel", "petrol", "bus"],
+    "Bills": ["electricity", "water", "internet", "bill"],
+    "Shopping": ["shop", "store", "mall", "mart"],
+    "Transfer": ["transfer", "sent", "received"],
 }
-
-
-def smart_match(desc):
-    desc = desc.lower()
-
-    for category, words in CATEGORY_RULES.items():
-        matches = get_close_matches(desc, words, n=1, cutoff=0.6)
-        if matches:
-            return category
-
-    return None
 
 
 def categorize(transactions):
 
-    categorized = {}
+    result = {}
 
     for t in transactions:
 
-        desc = t.get("description", "").lower()
-        desc = re.sub(r'[^a-zA-Z ]', ' ', desc)
-        amount = t.get("amount", 0)
+        desc = t["description"].lower()
 
-        assigned = None
+        category = "Others"
 
-        # 1. KEYWORD MATCH
-        for category, keywords in CATEGORY_RULES.items():
-            if any(word in desc for word in keywords):
-                assigned = category
+        for cat, keywords in CATEGORY_MAP.items():
+
+            match = get_close_matches(desc, keywords, cutoff=0.6)
+
+            if match:
+                category = cat
                 break
 
-        # 2. FUZZY MATCH
-        if not assigned:
-            assigned = smart_match(desc)
+        result[category] = result.get(category, 0) + t["amount"]
 
-        # 3. DEFAULT
-        if not assigned:
-            assigned = "Others"
-
-        categorized[assigned] = categorized.get(assigned, 0) + amount
-
-    return categorized
+    return result
