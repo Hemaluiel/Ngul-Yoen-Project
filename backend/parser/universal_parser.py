@@ -1,90 +1,103 @@
 import pdfplumber
 import re
 
-from parser.ocr_parser import ocr_parse_pdf  # optional later
+def clean_text(x):
+    if not x:
+        return ""
+    x = re.sub(r"[^a-zA-Z ]", " ", str(x))
+    return re.sub(r"\s+", " ", x).strip()
 
-DATE_PATTERN = r"\d{2}/\d{2}/\d{4}"
-AMOUNT_PATTERN = r"\d{1,3}(?:,\d{3})*\.\d{2}"
 
-
-def clean_amount(x):
+def safe_float(x):
     try:
         return float(x.replace(",", ""))
     except:
-        return 0
-
-
-def extract_transactions_from_text(text):
-
-    transactions = []
-    lines = text.split("\n")
-
-    for line in lines:
-
-        if not re.search(DATE_PATTERN, line):
-            continue
-
-        amounts = re.findall(AMOUNT_PATTERN, line)
-
-        if len(amounts) < 2:
-            continue
-
-        debit = clean_amount(amounts[0])
-        credit = clean_amount(amounts[1])
-
-        amount = debit if debit > 0 else credit
-
-        desc = re.sub(AMOUNT_PATTERN, "", line)
-        desc = re.sub(DATE_PATTERN, "", desc).strip()
-
-        if amount == 0:
-            continue
-
-        transactions.append({
-            "date": line[:10],
-            "description": desc,
-            "amount": amount
-        })
-
-    return transactions
-
-
-def parse_with_pdfplumber(file):
-
-    data = []
-
-    with pdfplumber.open(file) as pdf:
-        for page in pdf.pages:
-
-            text = page.extract_text()
-
-            if text:
-                data.extend(extract_transactions_from_text(text))
-
-            # fallback table extraction
-            table = page.extract_table()
-            if table:
-                for row in table:
-                    if not row:
-                        continue
-
-    return data
+        return 0.0
 
 
 def parse_universal(file):
 
-    # 1 try pdf text parsing
-    data = parse_with_pdfplumber(file)
+    transactions = []
+    seen = set()
 
-    if len(data) > 0:
-        return data
+    with pdfplumber.open(file) as pdf:
 
-    # 2 fallback OCR (future)
-    try:
-        data = ocr_parse_pdf(file)
-        if len(data) > 0:
-            return data
-    except:
-        pass
+        for page in pdf.pages:
 
-    return []
+            table = page.extract_table()
+
+
+            # 1. TABLE PARSING - PRIORITY
+
+            if table:
+
+                for row in table[1:]:
+
+                    if not row or len(row) < 4:
+                        continue
+
+                    try:
+                        date = row[0]
+                        desc = clean_text(row[1])
+
+                        # try safe column guessing
+                        debit = safe_float(row[-2])
+                        credit = safe_float(row[-1])
+
+                        # ONLY DEBIT IS EXPENSE
+                        if debit <= 0:
+                            continue
+
+                        key = f"{date}-{debit}-{desc}"
+                        if key in seen:
+                            continue
+                        seen.add(key)
+
+                        transactions.append({
+                            "date": date,
+                            "description": desc,
+                            "amount": debit
+                        })
+
+                    except:
+                        continue
+
+
+            # 2. TEXT FALLBACK -ONLY IF NO TABLE
+
+            else:
+
+                text = page.extract_text()
+                if not text:
+                    continue
+
+                for line in text.split("\n"):
+
+                    if not re.match(r"\d{2}/\d{2}/\d{4}", line):
+                        continue
+
+                    amounts = re.findall(r"\d{1,3}(?:,\d{3})*\.\d{2}", line)
+
+                    if len(amounts) < 1:
+                        continue
+
+                    debit = safe_float(amounts[0])
+
+                    if debit <= 0:
+                        continue
+
+                    desc = clean_text(line)
+
+                    key = f"{line[:10]}-{debit}-{desc}"
+                    if key in seen:
+                        continue
+                    seen.add(key)
+
+                    transactions.append({
+                        "date": line[:10],
+                        "description": desc,
+                        "amount": debit
+                    })
+
+    print("TOTAL PARSED:", len(transactions))
+    return transactions
