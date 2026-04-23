@@ -1,6 +1,6 @@
 import pdfplumber
 
-def parse_bnb(pdf_file):
+def parse_dk(pdf_file):
     data = []
 
     with pdfplumber.open(pdf_file) as pdf:
@@ -10,19 +10,16 @@ def parse_bnb(pdf_file):
             if not table:
                 continue
 
-            # Try to detect header row
+            # Detect headers dynamically
             headers = [str(h).lower() if h else "" for h in table[0]]
 
-            # Find column indexes dynamically
             try:
                 date_idx = next(i for i, h in enumerate(headers) if "date" in h)
-                desc_idx = next(i for i, h in enumerate(headers) if "description" in h)
-                debit_idx = next(i for i, h in enumerate(headers) if "debit" in h)
+                desc_idx = next(i for i, h in enumerate(headers) if "description" in h or "details" in h)
+                debit_idx = next(i for i, h in enumerate(headers) if "debit" in h or "withdrawal" in h)
             except StopIteration:
-                # If headers not found, skip this page
-                continue
+                continue  # skip page if structure not recognized
 
-            # Loop through rows
             for row in table:
                 # Skip empty or header rows
                 if not row or "date" in str(row).lower():

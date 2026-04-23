@@ -3,9 +3,9 @@ def detect_bank(text):
 
     if "bank of bhutan" in text:
         return "BOB"
-    elif "bhutan national bank" in text:
+    elif "bhutan national bank" in text or "bnb" in text:
         return "BNB"
-    elif "t-bank" in text or "tbank" in text:
-        return "TBANK"
+    elif "druk bank" in text or "dk bank" in text:
+        return "DK"
     else:
         return "UNKNOWN"

@@ -10,18 +10,36 @@ def parse_bob(pdf_file):
             if not table:
                 continue
 
-            for row in table[1:]:
-                try:
-                    date = row[0]
-                    description = row[1]
-                    debit = row[2]
-                    credit = row[3]
+            # Detect headers dynamically
+            headers = [str(h).lower() if h else "" for h in table[0]]
 
-                    if debit and float(debit) > 0:
+            try:
+                date_idx = next(i for i, h in enumerate(headers) if "date" in h)
+                desc_idx = next(i for i, h in enumerate(headers) if "description" in h or "details" in h)
+                debit_idx = next(i for i, h in enumerate(headers) if "debit" in h or "withdrawal" in h)
+            except StopIteration:
+                continue  # skip if structure not recognized
+
+            for row in table:
+                # Skip empty or header rows
+                if not row or "date" in str(row).lower():
+                    continue
+
+                try:
+                    date = row[date_idx]
+                    description = row[desc_idx]
+                    debit = row[debit_idx]
+
+                    if not debit or debit.strip() == "":
+                        continue
+
+                    amount = float(debit.replace(",", ""))
+
+                    if amount > 0:
                         data.append({
                             "date": date,
                             "description": description,
-                            "amount": float(debit),
+                            "amount": amount,
                             "type": "debit"
                         })
 
