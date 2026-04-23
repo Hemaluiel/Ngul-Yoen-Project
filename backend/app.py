@@ -1,10 +1,11 @@
 from flask import Flask, request, jsonify
-from parser.detect_bank import detect_bank
-from parser.bob_parser import parse_bob
-from parser.bnb_parser import parse_bnb
-from parser.generic_parser import parse_generic
-from utils.pdf_reader import extract_text
-from utils.categorizer import categorize
+from backend.parser.detect_bank import detect_bank
+from backend.parser.bob_parser import parse_bob
+from backend.parser.dk_parser import parse_dk
+from backend.parser.bnb_parser import parse_bnb
+from backend.parser.generic_parser import parse_generic
+from backend.utils.pdf_reader import extract_text
+from backend.utils.categorizer import categorize
 
 app = Flask(__name__)
 
@@ -26,6 +27,8 @@ def upload_pdf():
         data = parse_bob(file)
     elif bank == "BNB":
         data = parse_bnb(file)
+    elif bank == "DK":
+        data = parse_dk(file)
     else:
         data = parse_generic(text)
 
