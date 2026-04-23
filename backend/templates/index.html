@@ -187,7 +187,8 @@ function analyzePDF() {
     formData.append("file", file);
 
     // fetch("http://127.0.0.1:5000/analyze", {
-    fetch("https://epc-txkc.onrender.com/analyze", {  
+    // fetch("https://epc-txkc.onrender.com/analyze", { 
+    fetch("https://epc-txkc.onrender.com/analyze", { 
         method: "POST",
         body: formData
     })
