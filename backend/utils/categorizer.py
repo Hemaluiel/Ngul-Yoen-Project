@@ -1,41 +1,53 @@
-def categorize(data):
-    categories = {
-        "Food": ["restaurant", "cafe", "zomato", "drinks", "water", "juice", "food", "meal", "dining",
-                 "snack", "coffee", "tea", "fastfood", "dinner", "lunch", "breakfast", "momo", "maggie", "rice"],
+import re
+from difflib import get_close_matches
 
-        "Transport": ["taxi", "fuel", "bus", "train", "car", "taxifare", "travel", "transport"],
+CATEGORY_RULES = {
+    "Food": ["restaurant", "cafe", "hotel", "food", "pizza", "burger"],
+    "Shopping": ["shop", "store", "mart", "purchase", "shopping"],
+    "Transport": ["fuel", "taxi", "bus", "uber", "petrol"],
+    "Bills": ["electricity", "water", "bill", "payment", "fee"],
+    "Transfer": ["transfer", "sent", "received", "account"],
+    "Entertainment": ["movie", "netflix", "game"],
+}
 
-        "Shopping": ["store", "mall", "amazon", "grocery", "supermarket", "clothing", "electronics",
-                     "shopping", "groceries", "vegetables", "fruits", "shoes", "accessories", "shop", "shopp"],
 
-        "Bills and utilities": ["electricity", "waterbill", "internet", "recharge", "rent", "utilities",
-                                "ebill", "subscription", "999", "777", "gas", "bt recharge"],
+def smart_match(desc):
+    desc = desc.lower()
 
-        "Entertainment": ["movie", "netflix", "spotify", "concert", "entertainment", "game",
-                          "gaming", "theater", "music"],
+    for category, words in CATEGORY_RULES.items():
+        matches = get_close_matches(desc, words, n=1, cutoff=0.6)
+        if matches:
+            return category
 
-        "Health": ["pharmacy", "doctor", "hospital", "medicine", "health"],
+    return None
 
-        "Personal Care": ["fitness", "gym", "salon", "spa", "personalcare", "cream",
-                          "shampoo", "skincare", "haircut"],
 
-        "Others": []
-    }
+def categorize(transactions):
 
-    for tx in data:
-        desc = (tx.get("description") or "").lower()
-        assigned = False
+    categorized = {}
 
-        for category, keywords in categories.items():
-            for keyword in keywords:
-                if keyword in desc:
-                    tx["category"] = category
-                    assigned = True
-                    break
-            if assigned:
+    for t in transactions:
+
+        desc = t.get("description", "").lower()
+        desc = re.sub(r'[^a-zA-Z ]', ' ', desc)
+        amount = t.get("amount", 0)
+
+        assigned = None
+
+        # 1. KEYWORD MATCH
+        for category, keywords in CATEGORY_RULES.items():
+            if any(word in desc for word in keywords):
+                assigned = category
                 break
 
+        # 2. FUZZY MATCH
         if not assigned:
-            tx["category"] = "Others"
+            assigned = smart_match(desc)
 
-    return data
+        # 3. DEFAULT
+        if not assigned:
+            assigned = "Others"
+
+        categorized[assigned] = categorized.get(assigned, 0) + amount
+
+    return categorized
