@@ -236,7 +236,7 @@ function analyzePDF() {
             throw new Error("No transactions returned from backend");
         }
 
-        showDashboardFromTransactions(data.transactions);
+        showDashboard(data.transactions);
     })
     .catch(err => {
         console.error("ERROR:", err);
