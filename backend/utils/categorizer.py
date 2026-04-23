@@ -1,13 +1,18 @@
 from difflib import get_close_matches
 
 CATEGORY_MAP = {
-    "Food": ["restaurant", "cafe", "pizza", "food", "kfc", "burger"],
-    "Transport": ["taxi", "uber", "fuel", "petrol", "bus"],
-    "Bills": ["electricity", "water", "internet", "bill"],
-    "Shopping": ["shop", "store", "mall", "mart"],
-    "Transfer": ["transfer", "sent", "received"],
+    "Food": ["restaurant", "cafe", "zomato", "drinks", "water", "juice", "food", "meal", "dining", "snack", "coffee", "tea", "fastfood", "dinner", "lunch", "breakfast", "momo", "Maggie", "rice"],
+    "Transport": ["taxi", "fuel", "bus", "train", "car", "taxifare", "travel", "transport", "uber", "lyft", "cab", "metro", "subway"],
+    "Shopping": ["store", "mall", "amazon", "grocery", "supermarket", "clothing", "electronics", "shopping", "groceries", "vegetables", "fruits", "shoes", "accessories", "shop", "shopp"],
+    "Bills and utilities": ["electricity", "waterbill", "internet", "recharge", "rent", "utilities", "ebill", "subscription", "999", "777", "gas", "BT Recharge", "wifi", "utility"],
+    "Entertainment": ["movie", "netflix", "spotify", "concert", "entertainment", "game", "gaming", "theater", "music"],
+    "Health": ["pharmacy", "doctor", "hospital", "medicine", "health"],
+    "Transfer": ["transfer", "sent", "bank", "account", "payment", "pay", "withdrawal", "deposit"],
+    "Loans": ["loan", "borrow", "lending", "debt", "credit"],
+    "Education": ["school", "college", "university", "education", "course", "tuition", "books", "study", "training", "class", "workshop", "seminar", "onlinecourse", "webinar", "educationfee", "examfee", "library", "stationery", "pencil", "notebook", "backpack", "laptop", "software", "edtech"],
+    "Support andDonations": ["donation", "charity", "contribution", "fundraiser", "support", "help", "aid", "sponsorship", "SEMSO", "semso", "donate", "donated", "small contribution", "contribution", "volunteer", "volunteering"],
+    "Birthdays, Anniversaries, and Celebrations": ["birthday", "anniversary", "celebration", "party", "event", "gathering", "festivity", "special occasion", "milestone", "wedding", "baby shower", "graduation", "holiday", "festival", "ceremony", "birthday gift", "anniversary gift", "celebration gift", "party supplies", "event planning", "gathering expenses", "festivity costs", "special occasion expenses", "milestone celebration", "wedding expenses", "baby shower expenses", "graduation expenses", "holiday expenses", "festival expenses", "ceremony expenses", "gift", "gifts", "giftcard", "gift certificate", "gift shop", "gift wrapping", "gift exchange", "gift registry", "gift giving", "gift receiving", "gift ideas", "gift list", "gift box", "gift bag", "gift basket"],
 }
-
 
 def categorize(transactions):
 
