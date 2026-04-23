@@ -18,7 +18,7 @@ def parse_bob(file):
 
             for line in lines:
 
-                # must start with date
+                # detect transaction line
                 if not re.match(r"\d{2}/\d{2}/\d{4}", line):
                     continue
 
@@ -31,22 +31,19 @@ def parse_bob(file):
                     debit = float(amounts[0].replace(",", ""))
                     credit = float(amounts[1].replace(",", ""))
 
-                    # Fix: only take debit (expense)
+                    #  ONLY TAKE DEBIT
                     if debit <= 0:
                         continue
 
                     amount = debit
 
-                    # extract description FIRST
+                    # clean description
                     desc = re.sub(r"\d{1,3}(?:,\d{3})*\.\d{2}", "", line)
                     desc = re.sub(r"\d{2}/\d{2}/\d{4}", "", desc)
-                    desc = re.sub(r"[^a-zA-Z ]", " ", desc)
-                    desc = re.sub(r"\s+", " ", desc).strip()
+                    desc = re.sub(r'[^a-zA-Z ]', ' ', desc)
+                    desc = desc.strip().lower()
 
-                    if not desc:
-                        continue
-
-                    # remove duplicates safely
+                    # remove duplicates
                     key = f"{line[:10]}-{amount}-{desc}"
                     if key in seen:
                         continue

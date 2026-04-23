@@ -45,8 +45,12 @@ def parse_universal(file):
                         credit = safe_float(row[-1])
 
                         # ONLY DEBIT IS EXPENSE
-                        if debit <= 0:
-                            continue
+                        if debit > 0:
+                            amount = debit
+                        else:
+                            continue  
+                        # if debit <= 0:
+                        #     continue
 
                         key = f"{date}-{debit}-{desc}"
                         if key in seen:
@@ -83,8 +87,12 @@ def parse_universal(file):
 
                     debit = safe_float(amounts[0])
 
-                    if debit <= 0:
-                        continue
+                    # if debit <= 0:
+                    #     continue
+                    if debit > 0:
+                        amount = debit
+                    else:
+                        continue  
 
                     desc = clean_text(line)
 

@@ -1,7 +1,7 @@
 def detect_bank(text):
     text = text.lower()
 
-    if "bank of bhutan" in text:
+    if "bank of bhutan" in text or "BOB" in text:
         return "BOB"
     elif "bhutan national bank" in text or "bnb" in text:
         return "BNB"
