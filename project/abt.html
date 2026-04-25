@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | Ngul Yoen</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red: #c0392b;
+    --red-light: #fff0ef;
+    --red-mid: #f5c6c6;
+    --gold: #d4a820;
+    --dark: #1a1612;
+    --text: #2c2420;
+    --muted: #7a6e6a;
+    --border: rgba(0,0,0,0.09);
+    --surface: #ffffff;
+    --bg: #faf8f5;
+    --radius: 14px;
+    --radius-sm: 8px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* NAVBAR */
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 48px;
+    height: 64px;
+    background: rgba(250,248,245,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: -0.02em;
+    text-decoration: none;
+  }
+  .logo em { color: var(--red); font-style: normal; }
+
+  .nav-links { display: flex; gap: 4px; }
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 7px 14px;
+    border-radius: 20px;
+    transition: background 0.18s, color 0.18s;
+  }
+  .nav-links a:hover { background: var(--red-light); color: var(--red); }
+  .nav-links a.active { color: var(--red); background: var(--red-light); }
+
+  /*  HERO */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: 72px 48px 64px;
+    background: var(--dark);
+    color: white;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 50% 80% at 90% 40%, rgba(192,57,43,0.3) 0%, transparent 70%),
+      radial-gradient(ellipse 35% 50% at 5% 90%, rgba(212,168,32,0.15) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-inner { position: relative; max-width: 600px; }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+  .hero p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.6);
+    max-width: 480px;
+    line-height: 1.7;
+  }
+
+  /* PAGE ANCHOR NAV */
+  .anchor-nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 48px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+  }
+  .anchor-nav a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 14px 18px;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .anchor-nav a:hover { color: var(--red); border-bottom-color: var(--red-mid); }
+
+  /*  MAIN LAYOUT  */
+  .main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 56px 48px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  /*  SECTION CARD  */
+  .about-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .about-section:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.07); }
+
+  .section-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 28px 28px 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .section-title h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .section-title p {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .section-body {
+    padding: 24px 28px;
+  }
+  .section-body p {
+    font-size: 14px;
+    color: #4a4040;
+    line-height: 1.75;
+    margin-bottom: 14px;
+  }
+  .section-body p:last-child { margin-bottom: 0; }
+
+  /* highlight pill list */
+  .pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .pill {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    background: var(--bg);
+  }
+  .pill.red { background: var(--red-light); border-color: var(--red-mid); color: var(--red); }
+
+  /* profile card inside "About Me" */
+  .profile-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    margin-bottom: 18px;
+  }
+  .profile-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #e8755a, #c0392b);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+  }
+  .profile-info strong { display: block; font-size: 15px; font-weight: 500; margin-bottom: 2px; }
+  .profile-info span { font-size: 12px; color: var(--muted); }
+
+  /* stat row inside sections */
+  .mini-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 18px;
+  }
+  .mini-stat {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 14px;
+    text-align: center;
+  }
+  .mini-stat strong {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: var(--red);
+    font-weight: 700;
+  }
+  .mini-stat span { font-size: 11px; color: var(--muted); }
+
+  /* BACK TO TOP */
+  #back-top {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 40px;
+    height: 40px;
+    background: var(--dark);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s, background 0.2s;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  }
+  #back-top.visible { opacity: 1; pointer-events: all; }
+  #back-top:hover { background: var(--red); }
+
+  /*  FOOTER  */
+  footer {
+    text-align: center;
+    padding: 28px 48px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--muted);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    align-items: center;
+  }
+  footer strong { color: var(--text); font-weight: 500; }
+  footer a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 12px;
+    transition: color 0.15s;
+  }
+  footer a:hover { color: var(--red); }
+
+  /*  RESPONSIVE  */
+  @media (max-width: 640px) {
+    .navbar { padding: 0 20px; }
+    .hero { padding: 52px 20px 48px; }
+    .anchor-nav { padding: 0 8px; }
+    .main { padding: 36px 16px 60px; gap: 24px; }
+    .section-top { flex-direction: column; gap: 12px; }
+    .mini-stats { grid-template-columns: 1fr 1fr; }
+    .profile-card { flex-direction: column; text-align: center; }
+    footer { flex-direction: column; gap: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="index.html" class="logo">Ngul<em>~</em>Yoen</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="abt.html" class="active">About</a>
+    <a href="report.html">Report</a>
+    <a href="findings.html">Findings</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">About · Ngul Yoen</div>
+    <h1>The story behind the project</h1>
+    <p>Learn about the platform, the project, the person, and the organisation that made it happen.</p>
+  </div>
+</div>
+
+<!-- ANCHOR NAV -->
+<div class="anchor-nav">
+  <a href="#ngul">Ngul~Yoen</a>
+  <a href="#project">The Project</a>
+  <a href="#me">About Me</a>
+  <a href="#bds">Bhutan Data Scientists</a>
+</div>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- ABOUT NGUL YOEN -->
+  <div class="about-section" id="ngul">
+    <div class="section-top">
+      <div class="section-icon" style="background:#fff0ef">🇧🇹</div>
+      <div class="section-title">
+        <h2>About Ngul~Yoen</h2>
+        <p>The platform and its purpose</p>
+      </div>
+    </div>
+    <div class="section-body">
+      <p>Ngul Yoen is a web-based solution platform dedicated to surfacing insights about banking choices in Bhutan and act as the solution to customer banking chalenges. The name blends the Dzongkha word for money with scope — reflecting how financial decisions and insights shape everyday life in the kingdom.</p>
+      <p>The platform aims to bridge the gap between raw survey data and actionable understanding, giving both customers and institutions a clearer picture of what drives banking behaviour in Bhutan today.</p>
+      <div class="pill-row">
+        <span class="pill red">Customer Banking challenges</span>
+        <span class="pill red">Data visualisation</span>
+        <span class="pill">Banking insights</span>
+        <span class="pill">Bhutan · 2026</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT THE PROJECT -->
+  <div class="about-section" id="project">
+    <div class="section-top">
+      <div class="section-icon" style="background:#f0fff8">📊</div>
+      <div class="section-title">
+        <h2>About the project</h2>
+        <p>story, scope & objectives</p>
+      </div>
+    </div>
+    <div class="section-body">
+      <p>This project analyses what drives Bhutanese banking customers when choosing a bank. Four core factors were studied: <strong>trust</strong>, <strong>service quality</strong>, <strong>accessibility</strong>, and <strong>ease of use</strong> — each explored through a structured survey designed to capture genuine customer sentiment.</p>
+      <p>The project aims to highlight where banks can improve and to empower customers with better information for their own financial decisions through a platform that educate people on banking insights and solution to banking challenges. Findings are presented through charts, written analysis, and interactive tools.</p>
+      <div class="mini-stats">
+        <div class="mini-stat">
+          <strong>111</strong>
+          <span>Respondents</span>
+        </div>
+        <div class="mini-stat">
+          <strong>6</strong>
+          <span>Banks involved</span>
+        </div>
+        <div class="mini-stat">
+          <strong>4</strong>
+          <span>Key factors</span>
+        </div>
+      </div>
+      <div class="pill-row" style="margin-top:18px">
+        <span class="pill">Survey methodology</span>
+        <span class="pill">Quantitative analysis</span>
+        <span class="pill">Customer satisfaction</span>
+        <span class="pill">Financial inclusion</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT ME -->
+  <div class="about-section" id="me">
+    <div class="section-top">
+      <div class="section-icon" style="background:#f0f4ff">👤</div>
+      <div class="section-title">
+        <h2>About me</h2>
+        <p>BI Student and data practitioner intern</p>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="profile-card">
+        <div class="profile-avatar">HL</div>
+        <div class="profile-info">
+          <strong>Hema Luitel</strong>
+          <span>3rd-year student · Business Intelligence · Gedu College of Business Studies</span>
+        </div>
+      </div>
+      <p>I am Hema Luitel, a third-year student at Gedu College of Business Studies, pursuing a bachelors degree in Business Intelligence with a major in Financial Engineering. My academic work sits at the intersection of data analysis, business strategy, and technology — and this project has been a chance to put those skills to real-world use.</p>
+      <p>This work was completed during my six-month internship at Bhutan Data Scientists Pvt. Ltd. during the time from 22nd December 2025 to 15th June 2026, where I gained hands-on experience in survey design, data cleaning, drawing insights, and communicating findings to a wider audience.</p>
+      <p>My role in Bhutan DataScientists was the role of data practitioner - a professional who manage, analyze, and leaverage data to solve real world problems. </p>
+      <p>As a part of this project, I developed this website "Ngul Yoen" with the aim that it provide peoples with banking insights and help them choose a better banks for their banking needs.</p>
+      <div class="pill-row">
+        <span class="pill red">Business Intelligence</span>
+        <span class="pill">Six month </span>
+        <span class="pill">Gedu College of Business Studies</span>
+        <span class="pill">2026 intern cohort</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT BDS -->
+  <div class="about-section" id="bds">
+    <div class="section-top">
+      <div class="section-icon" style="background:#fffbee">🏢</div>
+      <div class="section-title">
+        <h2>Bhutan Data Scientists</h2>
+        <p>Host organisation & internship provider</p>
+      </div>
+    </div>
+    <div class="section-body">
+      <p>Bhutan Data Scientists Pvt. Ltd. is a data science company based in Thimphu offers local, survey and sensor services under the guidance and expert advice of pioneering data scientist Troy Sadkowsky.</p>
+      <p>The internship programme offered by BDS gave me a structured environment to work on an individual project  — from initial survey design through to a solution-based website development — with mentorship from experienced data professionals. This platform is a direct outcome of that programme.</p>
+      <div class="pill-row">
+        <span class="pill">Data science</span>
+        <span class="pill">Survey services</span>
+        <span class="pill">Thimphu, Bhutan</span>
+        <span class="pill">Pvt. Ltd.</span>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- BACK TO TOP -->
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<footer>
+  <span>© 2026 <strong>Ngul Yoen</strong> · Hema Luitel</span>
+  <a href="index.html">Home</a>
+  <a href="report.html">Report</a>
+  <a href="findings.html">Findings</a>
+  <a href="contact.html">Contact</a>
+</footer>
+
+<script>
+  // Back-to-top visibility
+  window.addEventListener('scroll', () => {
+    const btn = document.getElementById('back-top');
+    btn.classList.toggle('visible', window.scrollY > 300);
+  });
+
+  // Highlight anchor nav on scroll
+  const sections = document.querySelectorAll('.about-section');
+  const anchors  = document.querySelectorAll('.anchor-nav a');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        anchors.forEach(a => {
+          a.style.color = '';
+          a.style.borderBottomColor = '';
+        });
+        const id = '#' + e.target.id;
+        const active = document.querySelector(`.anchor-nav a[href="${id}"]`);
+        if (active) {
+          active.style.color = 'var(--red)';
+          active.style.borderBottomColor = 'var(--red)';
+        }
+      }
+    });
+  }, { threshold: 0.4 });
+  sections.forEach(s => io.observe(s));
+</script>
+
+</body>
+</html>
