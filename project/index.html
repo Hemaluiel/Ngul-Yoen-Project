@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ngul Yoen – Banking Insights in Bhutan</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red: #c0392b;
+    --red-light: #fff0ef;
+    --red-mid: #f5c6c6;
+    --gold: #d4a820;
+    --gold-light: #fffbf0;
+    --dark: #1a1612;
+    --text: #2c2420;
+    --muted: #7a6e6a;
+    --border: rgba(0,0,0,0.09);
+    --surface: #ffffff;
+    --bg: #faf8f5;
+    --radius: 14px;
+    --radius-sm: 8px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* NAVBAR  */
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 48px;
+    height: 64px;
+    background: rgba(250,248,245,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: -0.02em;
+  }
+
+  .logo em { color: var(--red); font-style: normal; }
+
+  .nav-links { display: flex; gap: 4px; }
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 7px 14px;
+    border-radius: 20px;
+    transition: background 0.18s, color 0.18s;
+  }
+  .nav-links a:hover { background: var(--red-light); color: var(--red); }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: 88px 48px 80px;
+    background: var(--dark);
+    color: white;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 80% 50%, rgba(192,57,43,0.35) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(212,168,32,0.18) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-inner { position: relative; max-width: 680px; }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(34px, 5vw, 52px);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 span { color: #e8755a; }
+
+  .hero p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.65);
+    max-width: 500px;
+    margin-bottom: 32px;
+    line-height: 1.7;
+  }
+
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .hero-tag {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.75);
+    background: rgba(255,255,255,0.06);
+  }
+
+  /* STATS */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .stat-item {
+    padding: 28px 32px;
+    border-right: 1px solid var(--border);
+    text-align: center;
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--red);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-label { font-size: 12px; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
+
+  /* SECTION */
+  .section { padding: 60px 48px; max-width: 1280px; margin: 0 auto; }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .section-head h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 500;
+  }
+  .section-head span {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  /* CARDS GRID */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.09);
+    border-color: rgba(192,57,43,0.25);
+  }
+
+  .card-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-bottom: 16px;
+    flex-shrink: 0;
+  }
+
+  .card h3 { font-size: 15px; font-weight: 500; margin-bottom: 6px; }
+  .card p  { font-size: 13px; color: var(--muted); line-height: 1.55; flex: 1; }
+  .card-link {
+    margin-top: 16px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--red);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* Interactive cards - a gradient bottom accent */
+  .card.interactive { border-bottom: 2px solid var(--red-mid); }
+  .card.interactive:hover { border-bottom-color: var(--red); }
+
+  /* DIVIDER */
+  .divider { height: 1px; background: var(--border); margin: 0 48px; }
+
+  /* OVERLAY */
+  .overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(26,22,18,0.55);
+    backdrop-filter: blur(4px);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .overlay.open { display: flex; }
+
+  .modal {
+    background: var(--surface);
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    width: 100%;
+    max-width: 440px;
+    overflow: hidden;
+    animation: modalIn 0.22s ease;
+  }
+
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.96) translateY(8px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .modal-header {
+    padding: 20px 24px 18px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .modal-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .close-btn {
+    width: 28px; height: 28px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--muted);
+    transition: background 0.15s;
+    line-height: 1;
+  }
+  .close-btn:hover { background: var(--red-light); color: var(--red); }
+
+  .modal-body { padding: 24px; }
+
+  /* progress bar */
+  .prog-wrap { background: var(--bg); border-radius: 4px; height: 3px; margin-bottom: 20px; }
+  .prog-fill  { height: 3px; background: var(--red); border-radius: 4px; transition: width 0.3s ease; }
+
+  /* quiz */
+  .q-meta { font-size: 11px; color: var(--muted); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
+  .q-text  { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 500; margin-bottom: 18px; line-height: 1.45; }
+
+  .options { display: flex; flex-direction: column; gap: 8px; }
+  .opt-btn {
+    text-align: left;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 11px 16px;
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s, color 0.15s;
+    color: var(--text);
+  }
+  .opt-btn:hover { border-color: var(--red-mid); background: var(--red-light); }
+  .opt-btn.selected { border-color: var(--red); background: var(--red-light); color: var(--red); font-weight: 500; }
+
+  /* result */
+  .result-wrap { text-align: center; padding: 8px 0 4px; }
+  .result-emoji { font-size: 40px; margin-bottom: 12px; }
+  .result-title { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+  .result-desc  { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 16px; }
+  .result-badge {
+    display: inline-block;
+    padding: 6px 18px;
+    background: var(--red-light);
+    color: var(--red);
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    border: 1px solid var(--red-mid);
+  }
+
+  /* story */
+  .story-scene { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold); font-weight: 500; margin-bottom: 6px; }
+  .story-text  { font-size: 15px; line-height: 1.72; color: var(--text); margin-bottom: 20px; min-height: 80px; }
+  .story-choices { display: flex; flex-direction: column; gap: 8px; }
+  .choice-btn {
+    text-align: left;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    color: var(--text);
+  }
+  .choice-btn:hover { border-color: var(--border); background: var(--surface); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+
+  .modal-footer {
+    padding: 16px 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .btn-primary {
+    background: var(--red);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 10px 22px;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .btn-primary:hover { background: #a93226; }
+  .btn-ghost {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 10px 18px;
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    color: var(--muted);
+    transition: background 0.15s;
+  }
+  .btn-ghost:hover { background: var(--bg); }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 32px 48px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+  footer strong { color: var(--text); font-weight: 500; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .navbar { padding: 0 20px; }
+    .hero { padding: 60px 20px 56px; }
+    .stats-row { grid-template-columns: 1fr; }
+    .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
+    .section { padding: 40px 20px; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .divider { margin: 0 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">Ngul<em>~</em>Yoen</div>
+  <div class="nav-links">
+    <a href="About.html">About</a>
+    <a href="report.html">Report</a>
+    <a href="findings.html">Findings</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Bhutan 🇧🇹 · 2026 Insight</div>
+    <h1>Banking insights &amp;<br><span>Scope in Bhutan</span></h1>
+    <p>A solution focused website based on the insights from real banking customer challenges in Bhutan. </p>
+    <div class="hero-tags">
+      <span class="hero-tag">111 respondents</span>
+      <span class="hero-tag">6 banks included</span>
+      <span class="hero-tag">4 key factors</span>
+      <span class="hero-tag">Hema Luitel · BDS Intern · GCBS Student</span>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-row">
+  <div class="stat-item">
+    <span class="stat-num" id="count1">0</span>
+    <div class="stat-label">Respondents</div>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num" id="count2">0</span>
+    <div class="stat-label">Banks included</div>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num" id="count3">0</span>
+    <div class="stat-label">Key factors</div>
+  </div>
+</div>
+
+<!-- EXPLORE -->
+<section class="section">
+  <div class="section-head">
+    <h2>Explore the insights</h2>
+    <span>Reports, findings & more</span>
+  </div>
+  <div class="cards-grid">
+
+    <a href="about.html" class="card">
+      <div class="card-icon" style="background:#fff0ef">📘</div>
+      <h3>About the project</h3>
+      <p>The reason behind the proejct, website and context, and the goals of this banking insight.</p>
+      <span class="card-link">Read more →</span>
+    </a>
+
+    <a href="about.html" class="card">
+      <div class="card-icon" style="background:#f0f4ff">👤</div>
+      <h3>About me</h3>
+      <p>Hema Luitel – data practitioner intern.</p>
+      <span class="card-link">Learn more →</span>
+    </a>
+
+    <a href="report.html" class="card">
+      <div class="card-icon" style="background:#f0fff8">📊</div>
+      <h3>Report</h3>
+      <p>Full insights drawn from 111 survey respondents across Bhutan.</p>
+      <span class="card-link">View report →</span>
+    </a>
+
+    <a href="findings.html" class="card">
+      <div class="card-icon" style="background:#fffbee">📈</div>
+      <h3>Findings</h3>
+      <p>Customer banking knowlwdge, satisfaction scores, patterns, and behavioural trends.</p>
+      <span class="card-link">See findings →</span>
+    </a>
+
+    <a href="solutions.html" class="card">
+      <div class="card-icon" style="background:#f5f0ff">💡</div>
+      <h3>Solutions</h3>
+      <p>Interactive recommendations based on the findings.</p>
+      <span class="card-link">Explore →</span>
+    </a>
+
+    <a href="prototype.html" class="card">
+      <div class="card-icon" style="background:#eef8ff">🚀</div>
+      <h3>Prototype</h3>
+      <p>An early-stage banking innovation concept to explore.</p>
+      <span class="card-link">Open →</span>
+    </a>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- INTERACTIVE -->
+<section class="section">
+  <div class="section-head">
+    <h2>Try it yourself</h2>
+    <span>Interactive experiences</span>
+  </div>
+  <div class="cards-grid">
+
+    <div class="card interactive" onclick="openQuiz()" style="cursor:pointer">
+      <div class="card-icon" style="background:#fff0ef">🎮</div>
+      <h3>Bank finder quiz</h3>
+      <p>Answer 4 questions about your banking needs and get a personalised bank recommendation.</p>
+      <span class="card-link">Start quiz →</span>
+    </div>
+
+    <div class="card interactive" onclick="openStory()" style="cursor:pointer">
+      <div class="card-icon" style="background:#f5fff5">📖</div>
+      <h3>Bankong insight quiz</h3>
+      <p>Take banking "Do You Know" qiuz and check your knowledge and awareness.</p>
+      <span class="card-link">Start quiz →</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- QUIZ MODAL -->
+<div class="overlay" id="quizOverlay">
+  <div class="modal">
+    <div class="modal-header">
+      <h2>Bank finder quiz</h2>
+      <button class="close-btn" onclick="closeQuiz()">✕</button>
+    </div>
+    <div class="modal-body" id="quiz-body">
+      <div class="prog-wrap"><div class="prog-fill" id="prog-bar" style="width:0%"></div></div>
+      <div class="q-meta" id="q-label">Question 1 of 4</div>
+      <div class="q-text" id="q-text"></div>
+      <div class="options" id="options"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-ghost" onclick="closeQuiz()">Cancel</button>
+      <button class="btn-primary" id="next-btn" onclick="nextQ()" style="display:none">Next →</button>
+    </div>
+  </div>
+</div>
+
+<!-- STORY MODAL -->
+<div class="overlay" id="storyOverlay">
+  <div class="modal">
+    <div class="modal-header">
+      <h2>"Do You Know" qiuz</h2>
+      <button class="close-btn" onclick="closeStory()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="prog-wrap"><div class="prog-fill" id="story-prog" style="width:0%"></div></div>
+      <div class="story-scene" id="story-scene">Scene 1</div>
+      <div class="story-text" id="story-text"></div>
+      <div class="story-choices" id="story-choices"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-ghost" onclick="closeQuiz()">Exit</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  &copy; 2026 <strong>Ngul Yoen</strong> &nbsp;·&nbsp; Banking Insights in Bhutan &nbsp;·&nbsp; Hema Luitel
+</footer>
+
+<script>
+// COUNTER ANIMATION
+function animCount(id, target, duration) {
+  const el = document.getElementById(id);
+  let start = null;
+  function step(ts) {
+    if (!start) start = ts;
+    const p = Math.min((ts - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.round(ease * target);
+    if (p < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+// Trigger on scroll into view
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      animCount('count1', 111, 1400);
+      animCount('count2', 6, 900);
+      animCount('count3', 4, 700);
+      observer.disconnect();
+    }
+  });
+}, { threshold: 0.3 });
+observer.observe(document.querySelector('.stats-row'));
+
+// QUIZ
+const quizQs = [
+  { q: 'What matters most to you in a bank?',
+    opts: ['Low fees and minimal charges', 'Mobile & digital access', 'Reliable branch network', 'Loan and credit options'] },
+  { q: 'How often do you visit a branch in person?',
+    opts: ['Rarely – I prefer apps', 'Once a month', 'Once a week', 'I rely mostly on branches'] },
+  { q: 'Which best describes you?',
+    opts: ['Student or young professional', 'Small business owner', 'Government employee', 'Farmer or rural resident'] },
+  { q: 'What is your top financial goal this year?',
+    opts: ['Save for the future', 'Expand my business', 'Repay an existing loan', 'Access government schemes'] }
+];
+
+const results = [
+  { icon: '📱', title: 'Digital-first bank',
+    desc: 'You value convenience and speed. Mobile banking, low fees, and 24/7 access matter most.',
+    bank: 'Bhutan Development Bank (digital services)' },
+  { icon: '🏦', title: 'Service-focused bank',
+    desc: 'You prefer in-person service and a trusted relationship with your branch.',
+    bank: 'Bank of Bhutan' },
+  { icon: '🤝', title: 'Community bank',
+    desc: 'You value local support and accessible credit tailored to everyday needs.',
+    bank: 'Bhutan National Bank' },
+  { icon: '📋', title: 'Institutional bank',
+    desc: 'Your needs are structured — payroll, government schemes, or long-term savings plans.',
+    bank: 'Royal Insurance Corporation of Bhutan' }
+];
+
+let qIdx = 0, answers = [];
+
+function openQuiz() {
+  qIdx = 0; answers = [];
+  document.getElementById('quizOverlay').classList.add('open');
+  renderQ();
+}
+
+function renderQ() {
+  const q = quizQs[qIdx];
+  document.getElementById('q-label').textContent = `Question ${qIdx + 1} of ${quizQs.length}`;
+  document.getElementById('q-text').textContent = q.q;
+  document.getElementById('prog-bar').style.width = `${(qIdx / quizQs.length) * 100}%`;
+  document.getElementById('next-btn').style.display = 'none';
+
+  const opts = document.getElementById('options');
+  opts.innerHTML = '';
+  q.opts.forEach((o, i) => {
+    const b = document.createElement('button');
+    b.className = 'opt-btn';
+    b.textContent = o;
+    b.onclick = () => {
+      opts.querySelectorAll('.opt-btn').forEach(x => x.classList.remove('selected'));
+      b.classList.add('selected');
+      answers[qIdx] = i;
+      const nb = document.getElementById('next-btn');
+      nb.style.display = 'block';
+      nb.textContent = qIdx === quizQs.length - 1 ? 'See result →' : 'Next →';
+    };
+    opts.appendChild(b);
+  });
+}
+
+function nextQ() {
+  if (answers[qIdx] === undefined) return;
+  qIdx++;
+  if (qIdx < quizQs.length) {
+    renderQ();
+  } else {
+    showResult();
+  }
+}
+
+function showResult() {
+  const score = Math.round(answers.reduce((a, b) => a + b, 0) / answers.length);
+  const r = results[Math.min(score, results.length - 1)];
+  document.getElementById('prog-bar').style.width = '100%';
+  document.getElementById('quiz-body').innerHTML = `
+    <div class="result-wrap">
+      <div class="result-emoji">${r.icon}</div>
+      <div class="result-title">${r.title}</div>
+      <div class="result-desc">${r.desc}</div>
+      <div class="result-badge">Suggested: ${r.bank}</div>
+    </div>`;
+  const nb = document.getElementById('next-btn');
+  nb.style.display = 'block';
+  nb.textContent = 'Retake quiz';
+  nb.onclick = openQuiz;
+}
+
+function closeQuiz() {
+  document.getElementById('quizOverlay').classList.remove('open');
+}
+
+//  DO YOU KNOW QUIZ
+// const storyNodes = {
+//   start: {
+//     scene: 'Scene 1 of 3',
+//     prog: 10,
+//     text: 'Karma has just started his first job in Thimphu and needs to open a bank account. Two options come to mind.',
+//     choices: [
+//       { label: '🏦  Walk to the nearest Bank of Bhutan branch', next: 'bob' },
+//       { label: '📱  Download a banking app first', next: 'app' }
+//     ]
+//   },
+//   bob: {
+//     scene: 'Scene 2 of 3',
+//     prog: 55,
+//     text: 'At the Bank of Bhutan branch the queue is long but the staff are helpful. Karma learns about a zero-fee salary account.',
+//     choices: [
+//       { label: '✅  Open the salary account now', next: 'endA' },
+//       { label: '💬  Ask about mobile banking options', next: 'endB' }
+//     ]
+//   },
+//   app: {
+//     scene: 'Scene 2 of 3',
+//     prog: 55,
+//     text: 'Karma downloads the Bhutan National Bank app. Registration requires documents he doesn\'t have with him right now.',
+//     choices: [
+//       { label: '📁  Gather documents and return tomorrow', next: 'endC' },
+//       { label: '🚶  Visit a branch instead', next: 'bob' }
+//     ]
+//   },
+//   endA: {
+//     scene: 'Ending A · Scene 3 of 3',
+//     prog: 100,
+//     text: 'Karma opens his salary account. His first paycheck arrives within a week. The app could be better — but the service is rock solid.',
+//     choices: []
+//   },
+//   endB: {
+//     scene: 'Ending B · Scene 3 of 3',
+//     prog: 100,
+//     text: 'The teller demos BoBMobile — transfers, bill payments, balance checks. Karma opens the account on the spot and links the app immediately.',
+//     choices: []
+//   },
+//   endC: {
+//     scene: 'Ending C · Scene 3 of 3',
+//     prog: 100,
+//     text: 'Karma returns with his documents and completes registration online. His account is active in 24 hours — fully digital, zero branch visits.',
+//     choices: []
+//   }
+// };
+
+// let curNode = 'start';
+
+// function openStory() {
+//   curNode = 'start';
+//   document.getElementById('storyOverlay').classList.add('open');
+//   renderStory();
+// }
+
+// function renderStory() {
+//   const n = storyNodes[curNode];
+//   document.getElementById('story-scene').textContent = n.scene;
+//   document.getElementById('story-prog').style.width = n.prog + '%';
+//   document.getElementById('story-text').textContent = n.text;
+
+//   const ch = document.getElementById('story-choices');
+//   ch.innerHTML = '';
+
+//   if (n.choices.length === 0) {
+//     const b = document.createElement('button');
+//     b.className = 'btn-primary';
+//     b.textContent = '↩ Start over';
+//     b.onclick = () => { curNode = 'start'; renderStory(); };
+//     ch.appendChild(b);
+//   } else {
+//     n.choices.forEach(c => {
+//       const b = document.createElement('button');
+//       b.className = 'choice-btn';
+//       b.textContent = c.label;
+//       b.onclick = () => { curNode = c.next; renderStory(); };
+//       ch.appendChild(b);
+//     });
+//   }
+// }
+
+// function closeQuiz() {
+//   document.getElementById('quizOverlay').classList.remove('open');
+// }
+
+// Close modals on overlay click
+document.getElementById('quizOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeQuiz();
+});
+document.getElementById('quizOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeQuiz();
+});
+
+// Close on Escape key
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeQuiz(); closeQuiz(); }
+});
+</script>
+</body>
+</html>
