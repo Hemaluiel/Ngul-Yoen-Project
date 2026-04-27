@@ -651,12 +651,57 @@
       </div>
     </div>
 
-    
+    <!-- T BANK -->
+    <div class="bank-card" data-type="private">
+      <div class="bank-card-head">
+        <div class="bank-logo" style="background:#1e8449">T</div>
+        <div class="bank-meta">
+          <div class="bank-name">T Bank</div>
+          <div class="bank-est">Est. 2010s · Digital-first bank</div>
+        </div>
+        <div class="bank-type-pill">Private</div>
+      </div>
+      <div class="bank-stats">
+        <div class="bank-stat"><strong>Limited</strong><span>Branches</span></div>
+        <div class="bank-stat"><strong>4th </strong><span>Commercial Bank</span></div>
+        <div class="bank-stat"><strong>TPay</strong><span>Digital app</span></div>
+      </div>
+      <div class="bank-sections">
+        <div class="acc-item">
+          <button class="acc-trigger" onclick="toggleAcc(this)">
+            <span class="acc-trigger-left"><span class="acc-icon">🏛️</span><a href="https://tbank.bt/about-us/" target="_blank">Overview</a></span>
+            <span class="acc-arrow">▼</span>
+          </button>
+          <div class="acc-body">
+            <ul class="acc-list">
+              <li>Private commercial bank with a digital-first model</li>
+              <li>Limited physical branches; growing ATM network</li>
+              <li>Services: TPay, T Wallet, remittance, deposits, Loans</li>
+              <li>Targeting younger, tech-savvy customers</li>
+            </ul>
+          </div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-trigger" onclick="toggleAcc(this)">
+            <span class="acc-trigger-left"><span class="acc-icon">📱</span> Digital banking</span>
+            <span class="acc-arrow">▼</span>
+          </button>
+          <div class="acc-body">
+            <ul class="acc-list">
+              <li>TPay – mobile payment and wallet platform</li>
+              <li>T Wallet for peer-to-peer transfers</li>
+              <li>Online account opening and management</li>
+              <li>Remittance and cross-border transfers</li>
+              <li>T Wsllet for youths (10 year and above)</li>
+              <li><a href="https://tbank.bt/digital-banking/t-wallet/" target="_blank">Learn more about T wallet →</a></li>
+              <li><a href="https://tbank.bt/digital-banking/t-pay/" target="_blank">Explore more about TPay Features →</a></li>
+              <li><a href="https://onlineservices.tbank.bt/" target="_blank">Create account online →</a></li>
+              <li><a href="https://netbanking.tbank.bt/?page=login-form-main" target="_blank">Avail Internet Banking online →</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
-
-   
-
-
   </div><!-- end bank-grid -->
 
 </main>
@@ -672,7 +717,7 @@
 </footer>
 
 <script>
-// ── ACCORDION ──
+// ACCORDION
 function toggleAcc(btn) {
   const item = btn.closest('.acc-item');
   const isOpen = item.classList.contains('open');
@@ -681,7 +726,7 @@ function toggleAcc(btn) {
   if (!isOpen) item.classList.add('open');
 }
 
-// ── FILTER ──
+// FILTER
 function filterCards(type, btn) {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('on'));
   btn.classList.add('on');
@@ -694,7 +739,7 @@ function filterCards(type, btn) {
   });
 }
 
-// ── BACK TO TOP ──
+// BACK TO TOP 
 window.addEventListener('scroll', () => {
   document.getElementById('back-top').classList.toggle('visible', window.scrollY > 300);
 });
