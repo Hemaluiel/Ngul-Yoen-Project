@@ -233,7 +233,7 @@
     gap: 4px;
   }
 
-  /* Interactive cards - a gradient bottom accent */
+  /* Interactive cards to get a subtle gradient bottom accent */
   .card.interactive { border-bottom: 2px solid var(--red-mid); }
   .card.interactive:hover { border-bottom-color: var(--red); }
 
@@ -523,7 +523,7 @@
     <div class="card interactive" onclick="openQuiz()" style="cursor:pointer">
       <div class="card-icon" style="background:#fff0ef">🎮</div>
       <h3>Bank finder quiz</h3>
-      <p>Answer 4 questions about your banking needs and get a personalised bank recommendation.</p>
+      <p>Answer 5 questions about your banking needs and get a personalised bank recommendation.</p>
       <span class="card-link">Start quiz →</span>
     </div>
 
@@ -608,31 +608,55 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.3 });
 observer.observe(document.querySelector('.stats-row'));
 
-// QUIZ
+// BANK FINDER QUIZ
 const quizQs = [
-  { q: 'What matters most to you in a bank?',
-    opts: ['Low fees and minimal charges', 'Mobile & digital access', 'Reliable branch network', 'Loan and credit options'] },
-  { q: 'How often do you visit a branch in person?',
-    opts: ['Rarely – I prefer apps', 'Once a month', 'Once a week', 'I rely mostly on branches'] },
+  { q: 'How important is having a wide branch and ATM network to you?',
+    opts: ['Very important — I visit branches often', 'Somewhat — I occasionally need a branch', 'Not important — I bank digitally', 'I live in a rural area so coverage matters a lot'] },
+  { q: 'Which digital service matters most to you?',
+    opts: ['A reliable mobile wallet & payments app', 'Full internet banking portal', 'USSD offline banking (no internet needed)', 'Digital gold or investment features'] },
+  { q: 'What best describes your banking need?',
+    opts: ['Everyday savings and salary account', 'Agriculture or rural development loan', 'Business or SME financing', 'Micro or nano loans for small needs'] },
   { q: 'Which best describes you?',
-    opts: ['Student or young professional', 'Small business owner', 'Government employee', 'Farmer or rural resident'] },
-  { q: 'What is your top financial goal this year?',
-    opts: ['Save for the future', 'Expand my business', 'Repay an existing loan', 'Access government schemes'] }
+    opts: ['Student or young professional', 'Farmer or rural resident', 'Small business owner', 'Government or salaried employee'] },
+  { q: 'How do you prefer to open an account?',
+    opts: ['Walk into a branch', 'Fully online — no branch visit', 'Either works for me', 'Through an agent in my area'] }
 ];
 
-const results = [
-  { icon: '📱', title: 'Digital-first bank',
-    desc: 'You value convenience and speed. Mobile banking, low fees, and 24/7 access matter most.',
-    bank: 'Bhutan Development Bank (digital services)' },
-  { icon: '🏦', title: 'Service-focused bank',
-    desc: 'You prefer in-person service and a trusted relationship with your branch.',
-    bank: 'Bank of Bhutan' },
-  { icon: '🤝', title: 'Community bank',
-    desc: 'You value local support and accessible credit tailored to everyday needs.',
-    bank: 'Bhutan National Bank' },
-  { icon: '📋', title: 'Institutional bank',
-    desc: 'Your needs are structured — payroll, government schemes, or long-term savings plans.',
-    bank: 'Royal Insurance Corporation of Bhutan' }
+// Scoring: each answer maps to a bank index
+// BoB=0, DK=1, BNB=2, BDBL=3, DrukPNB=4, TBank=5
+const quizScoreMap = [
+  [0, 2, 1, 3],  // Q1
+  [2, 0, 0, 1],  // Q2
+  [0, 3, 4, 1],  // Q3
+  [5, 3, 4, 0],  // Q4
+  [0, 1, 2, 3],  // Q5
+];
+
+const bankResults = [
+  { icon: '🏦', name: 'Bank of Bhutan (BoB)',
+    type: 'Widest branch network · State-owned',
+    desc: 'With 47+ branches and 110 ATMs nationwide, BoB suits you best. You value in-person service, reliable coverage, and a trusted name. Features include mBOB, BoBNET, salary accounts, and online loan applications.',
+    color: '#0d2b45' },
+  { icon: '📱', name: 'Digital Kidu (DK) Bank',
+    type: 'Fully digital · No branch needed',
+    desc: 'DK Bank is your match — 100% app-based with daily interest accrual, DK Pay, micro loans, government Kidu disbursements, and even TER digital gold trading. Perfect for digital-first users.',
+    color: '#0a7c5c' },
+  { icon: '🏧', name: 'Bhutan National Bank (BNB)',
+    type: 'Strong digital + branch balance',
+    desc: 'BNB balances strong digital features (mPay, MyPay, online account opening) with a solid 30+ branch network and RuPay international debit card. Great for users who want the best of both worlds.',
+    color: '#1a5276' },
+  { icon: '🌾', name: 'Bhutan Development Bank (BDBL)',
+    type: 'Rural & agriculture focused',
+    desc: 'BDBL is built for rural Bhutan — wide dzongkhag coverage, agriculture and livestock loans, women and youth schemes, and ePay mobile banking. Ideal if you live outside urban centres.',
+    color: '#6e2f8a' },
+  { icon: '🤝', name: 'Druk PNB Bank',
+    type: 'FDI joint venture · Business banking',
+    desc: 'The only FDI bank in Bhutan, Druk PNB offers strong trade finance, forex services, NRI remittance, and business loans — ideal if you have cross-border financial needs.',
+    color: '#b7770d' },
+  { icon: '⚡', name: 'T Bank',
+    type: 'Digital-first · Youth-friendly',
+    desc: 'T Bank is Bhutan\'s 4th commercial bank with a digital-first approach. TPay, T Wallet (available from age 10), online account opening, and internet banking make it great for tech-savvy younger users.',
+    color: '#1e8449' },
 ];
 
 let qIdx = 0, answers = [];
@@ -649,7 +673,6 @@ function renderQ() {
   document.getElementById('q-text').textContent = q.q;
   document.getElementById('prog-bar').style.width = `${(qIdx / quizQs.length) * 100}%`;
   document.getElementById('next-btn').style.display = 'none';
-
   const opts = document.getElementById('options');
   opts.innerHTML = '';
   q.opts.forEach((o, i) => {
@@ -662,7 +685,7 @@ function renderQ() {
       answers[qIdx] = i;
       const nb = document.getElementById('next-btn');
       nb.style.display = 'block';
-      nb.textContent = qIdx === quizQs.length - 1 ? 'See result →' : 'Next →';
+      nb.textContent = qIdx === quizQs.length - 1 ? 'See my bank →' : 'Next →';
     };
     opts.appendChild(b);
   });
@@ -671,23 +694,23 @@ function renderQ() {
 function nextQ() {
   if (answers[qIdx] === undefined) return;
   qIdx++;
-  if (qIdx < quizQs.length) {
-    renderQ();
-  } else {
-    showResult();
-  }
+  if (qIdx < quizQs.length) { renderQ(); } else { showQuizResult(); }
 }
 
-function showResult() {
-  const score = Math.round(answers.reduce((a, b) => a + b, 0) / answers.length);
-  const r = results[Math.min(score, results.length - 1)];
+function showQuizResult() {
+  // tally bank scores
+  const tally = [0,0,0,0,0,0];
+  answers.forEach((ans, qi) => { tally[quizScoreMap[qi][ans]]++; });
+  const best = tally.indexOf(Math.max(...tally));
+  const r = bankResults[best];
   document.getElementById('prog-bar').style.width = '100%';
   document.getElementById('quiz-body').innerHTML = `
     <div class="result-wrap">
       <div class="result-emoji">${r.icon}</div>
-      <div class="result-title">${r.title}</div>
+      <div class="result-title">${r.name}</div>
+      <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.07em;color:var(--muted);margin-bottom:10px">${r.type}</div>
       <div class="result-desc">${r.desc}</div>
-      <div class="result-badge">Suggested: ${r.bank}</div>
+      <div class="result-badge" style="background:${r.color}15;border-color:${r.color}40;color:${r.color}">Best match for your profile</div>
     </div>`;
   const nb = document.getElementById('next-btn');
   nb.style.display = 'block';
@@ -695,96 +718,8 @@ function showResult() {
   nb.onclick = openQuiz;
 }
 
-function closeQuiz() {
-  document.getElementById('quizOverlay').classList.remove('open');
-}
+function closeQuiz() { document.getElementById('quizOverlay').classList.remove('open'); }
 
-//  DO YOU KNOW QUIZ
-// const storyNodes = {
-//   start: {
-//     scene: 'Scene 1 of 3',
-//     prog: 10,
-//     text: 'Karma has just started his first job in Thimphu and needs to open a bank account. Two options come to mind.',
-//     choices: [
-//       { label: '🏦  Walk to the nearest Bank of Bhutan branch', next: 'bob' },
-//       { label: '📱  Download a banking app first', next: 'app' }
-//     ]
-//   },
-//   bob: {
-//     scene: 'Scene 2 of 3',
-//     prog: 55,
-//     text: 'At the Bank of Bhutan branch the queue is long but the staff are helpful. Karma learns about a zero-fee salary account.',
-//     choices: [
-//       { label: '✅  Open the salary account now', next: 'endA' },
-//       { label: '💬  Ask about mobile banking options', next: 'endB' }
-//     ]
-//   },
-//   app: {
-//     scene: 'Scene 2 of 3',
-//     prog: 55,
-//     text: 'Karma downloads the Bhutan National Bank app. Registration requires documents he doesn\'t have with him right now.',
-//     choices: [
-//       { label: '📁  Gather documents and return tomorrow', next: 'endC' },
-//       { label: '🚶  Visit a branch instead', next: 'bob' }
-//     ]
-//   },
-//   endA: {
-//     scene: 'Ending A · Scene 3 of 3',
-//     prog: 100,
-//     text: 'Karma opens his salary account. His first paycheck arrives within a week. The app could be better — but the service is rock solid.',
-//     choices: []
-//   },
-//   endB: {
-//     scene: 'Ending B · Scene 3 of 3',
-//     prog: 100,
-//     text: 'The teller demos BoBMobile — transfers, bill payments, balance checks. Karma opens the account on the spot and links the app immediately.',
-//     choices: []
-//   },
-//   endC: {
-//     scene: 'Ending C · Scene 3 of 3',
-//     prog: 100,
-//     text: 'Karma returns with his documents and completes registration online. His account is active in 24 hours — fully digital, zero branch visits.',
-//     choices: []
-//   }
-// };
-
-// let curNode = 'start';
-
-// function openStory() {
-//   curNode = 'start';
-//   document.getElementById('storyOverlay').classList.add('open');
-//   renderStory();
-// }
-
-// function renderStory() {
-//   const n = storyNodes[curNode];
-//   document.getElementById('story-scene').textContent = n.scene;
-//   document.getElementById('story-prog').style.width = n.prog + '%';
-//   document.getElementById('story-text').textContent = n.text;
-
-//   const ch = document.getElementById('story-choices');
-//   ch.innerHTML = '';
-
-//   if (n.choices.length === 0) {
-//     const b = document.createElement('button');
-//     b.className = 'btn-primary';
-//     b.textContent = '↩ Start over';
-//     b.onclick = () => { curNode = 'start'; renderStory(); };
-//     ch.appendChild(b);
-//   } else {
-//     n.choices.forEach(c => {
-//       const b = document.createElement('button');
-//       b.className = 'choice-btn';
-//       b.textContent = c.label;
-//       b.onclick = () => { curNode = c.next; renderStory(); };
-//       ch.appendChild(b);
-//     });
-//   }
-// }
-
-// function closeQuiz() {
-//   document.getElementById('quizOverlay').classList.remove('open');
-// }
 
 // Close modals on overlay click
 document.getElementById('quizOverlay').addEventListener('click', function(e) {
