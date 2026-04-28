@@ -328,6 +328,90 @@
       </div>
 
     </div><!-- /panel-report -->
+    
+     <!-- TAB: KEY FINDINGS  -->
+    <div class="tab-panel" id="panel-findings">
+
+      <div class="rs" id="findings-summary">
+        <div class="rs-head">
+          <div class="rs-icon" style="background:#fff0ef">📌</div>
+          <div><h2>Key findings</h2><p>8 headline insights from 111 respondents · Bhutan 2026</p></div>
+        </div>
+        <div class="rs-body">
+          <p>Kuzuzangpo la! The survey captured responses from customers across Bhutan's major banks. Here are the most important patterns that emerged from the data.</p>
+          <div class="findings-list">
+            <div class="finding-item">
+              <div class="finding-num">1</div>
+              <div class="finding-text"><strong>103 of 111 respondents have bank accounts</strong> — but a small group remains unbanked due to lack of awareness, insufficient income, or age limitations.</div>
+            </div>
+            <div class="finding-item">
+              <div class="finding-num">2</div>
+              <div class="finding-text"><strong>Bank of Bhutan (BoB) dominates customer choice</strong> with approximately 84% of respondents selecting it as their primary bank.</div>
+            </div>
+            <div class="finding-item">
+              <div class="finding-num">3</div>
+              <div class="finding-text">The four key factors influencing bank choice are <strong>trust, service quality, accessibility, and ease of use</strong> — in that order of stated importance.</div>
+            </div>
+            <div class="finding-item">
+              <div class="finding-num">4</div>
+              <div class="finding-text"><strong>Over 80% of customers trust their bank</strong> — but security concerns around digital transactions remain a notable anxiety for many users.</div>
+            </div>
+            <div class="finding-item">
+              <div class="finding-num">5</div>
+              <div class="finding-text">Service quality is generally positive, but <strong>7–10% of users reported dissatisfaction</strong> — mainly around long wait times and insufficient staff support for digital queries.</div>
+            </div>
+            <div class="finding-item">
+              <div class="finding-num">6</div>
+              <div class="finding-text">Accessibility varies sharply by location: <strong>rural users face limited ATM and branch access</strong>, while urban users experience branch congestion and long queues.</div>
+            </div>
+            <div class="finding-item">
+              <div class="finding-num">7</div>
+              <div class="finding-text">Digital banking ease of use is rated positively overall, but <strong>network reliability issues</strong> reduce the experience significantly in rural and semi-urban areas.</div>
+            </div>
+            <div class="finding-item">
+              <div class="finding-num">8</div>
+              <div class="finding-text"><strong>Many customers are uncertain or open to switching banks</strong> — a clear competitive opportunity for institutions that invest in customer experience improvements.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rs" id="factors">
+        <div class="rs-head">
+          <div class="rs-icon" style="background:#f0f4ff">🔍</div>
+          <div><h2>Four key factors in depth</h2><p>How each dimension scored across survey respondents</p></div>
+        </div>
+        <div class="rs-body">
+          <div class="factor-grid">
+            <div class="factor-card">
+              <div class="factor-top"><div class="factor-icon" style="background:#fff0ef">🔒</div><h4>Trust</h4></div>
+              <p>Over 80% expressed confidence in their bank. Security concerns around digital transactions are the main trust barrier remaining.</p>
+              <div class="score-row"><div class="score-bar-wrap"><div class="score-bar" style="width:82%"></div></div><span class="score-val">4.1/5</span></div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-top"><div class="factor-icon" style="background:#f0f4ff">⭐</div><h4>Service quality</h4></div>
+              <p>Most are satisfied with in-branch service. A vocal minority cite long waits and limited digital support from staff.</p>
+              <div class="score-row"><div class="score-bar-wrap"><div class="score-bar" style="width:74%"></div></div><span class="score-val">3.7/5</span></div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-top"><div class="factor-icon" style="background:#f0fff8">📍</div><h4>Accessibility</h4></div>
+              <p>Urban branches are congested; rural areas have limited ATMs and infrequent hours. Biggest regional disparity in the data.</p>
+              <div class="score-row"><div class="score-bar-wrap"><div class="score-bar" style="width:68%"></div></div><span class="score-val">3.4/5</span></div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-top"><div class="factor-icon" style="background:#fffbee">📱</div><h4>Ease of use</h4></div>
+              <p>Digital platforms are well-rated in urban areas. Network reliability issues reduce scores in rural and semi-urban areas.</p>
+              <div class="score-row"><div class="score-bar-wrap"><div class="score-bar" style="width:76%"></div></div><span class="score-val">3.8/5</span></div>
+            </div>
+          </div>
+          <div class="sub-block">
+            <h3>Future insight</h3>
+            <p style="font-size:13px;color:#4a4040;line-height:1.75">A significant share of respondents are undecided about switching banks — signalling a competitive window for institutions willing to invest in the customer experience. The next 2–3 years will be decisive for which banks capture the loyalty of Bhutan's digitally active youth.</p>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /panel-findings -->
 
   </div><!-- /content -->
 </div><!-- /page-wrap -->
@@ -344,24 +428,24 @@
 
 <script>
 
-// function switchTab(name, btn) {
-//   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-//   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-//   btn.classList.add('active');
-//   document.getElementById('panel-' + name).classList.add('active');
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('panel-' + name).classList.add('active');
 
-//   const sidebar = document.getElementById('sidebar-toc');
-//   const pageWrap = document.querySelector('.page-wrap');
+  const sidebar = document.getElementById('sidebar-toc');
+  const pageWrap = document.querySelector('.page-wrap');
 
-//   if (name === 'report') {
-//     sidebar.style.display = '';
-//     pageWrap.classList.remove('no-sidebar'); // restore grid
-//   } else {
-//     sidebar.style.display = 'none';
-//     pageWrap.classList.add('no-sidebar'); // full width
-//   }
-//   window.scrollTo({ top: 0, behavior: 'smooth' });
-// }
+  if (name === 'report') {
+    sidebar.style.display = '';
+    pageWrap.classList.remove('no-sidebar'); // restore grid
+  } else {
+    sidebar.style.display = 'none';
+    pageWrap.classList.add('no-sidebar'); // full width
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
 // COUNTERS
 
