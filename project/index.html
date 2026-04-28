@@ -827,7 +827,7 @@ function showDykScore() {
   document.getElementById('dyk-prog').style.width = '100%';
   const pct = Math.round((dykScore / dykQs.length) * 100);
   let emoji, msg;
-  if (pct >= 80) { emoji = '🏆'; msg = 'Banking expert! '; }
+  if (pct >= 80) { emoji = '🏆'; msg = 'Banking expert! You clearly know Bhutan\'s financial sector well.'; }
   else if (pct >= 50) { emoji = '📚'; msg = 'Good knowledge! Visit our Banking Insights page to learn more.'; }
   else { emoji = '🌱'; msg = 'Room to grow! Explore the Banking Insights page to boost your knowledge.'; }
   document.getElementById('dyk-body').innerHTML = `
