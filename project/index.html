@@ -527,11 +527,11 @@
       <span class="card-link">Start quiz →</span>
     </div>
 
-    <div class="card interactive" onclick="openStory()" style="cursor:pointer">
-      <div class="card-icon" style="background:#f5fff5">📖</div>
-      <h3>Bankong insight quiz</h3>
-      <p>Take banking "Do You Know" qiuz and check your knowledge and awareness.</p>
-      <span class="card-link">Start quiz →</span>
+    <div class="card interactive" onclick="openDyk()" style="cursor:pointer">
+      <div class="card-icon" style="background:#f5fff5">🧠</div>
+      <h3>Do You Know?</h3>
+      <p>Test your knowledge of Bhutan's 6 commercial banks — services, history, and digital facts.</p>
+      <span class="card-link">Take quiz →</span>
     </div>
 
   </div>
@@ -557,21 +557,24 @@
   </div>
 </div>
 
-<!-- STORY MODAL -->
-<div class="overlay" id="storyOverlay">
+
+<!-- DO YOU KNOW MODAL -->
+<div class="overlay" id="dykOverlay">
   <div class="modal">
     <div class="modal-header">
-      <h2>"Do You Know" qiuz</h2>
-      <button class="close-btn" onclick="closeStory()">✕</button>
+      <h2>🧠 Do You Know?</h2>
+      <button class="close-btn" onclick="closeDyk()">✕</button>
     </div>
-    <div class="modal-body">
-      <div class="prog-wrap"><div class="prog-fill" id="story-prog" style="width:0%"></div></div>
-      <div class="story-scene" id="story-scene">Scene 1</div>
-      <div class="story-text" id="story-text"></div>
-      <div class="story-choices" id="story-choices"></div>
+    <div class="modal-body" id="dyk-body">
+      <div class="prog-wrap"><div class="prog-fill" id="dyk-prog" style="width:0%"></div></div>
+      <div class="q-meta" id="dyk-label">Question 1 of 10</div>
+      <div class="q-text" id="dyk-text"></div>
+      <div class="options" id="dyk-options"></div>
+      <div id="dyk-feedback" style="display:none;margin-top:14px;padding:12px 14px;border-radius:8px;font-size:13px;line-height:1.55"></div>
     </div>
     <div class="modal-footer">
-      <button class="btn-ghost" onclick="closeQuiz()">Exit</button>
+      <button class="btn-ghost" onclick="closeDyk()">Exit</button>
+      <button class="btn-primary" id="dyk-next" onclick="nextDyk()" style="display:none">Next →</button>
     </div>
   </div>
 </div>
@@ -720,19 +723,139 @@ function showQuizResult() {
 
 function closeQuiz() { document.getElementById('quizOverlay').classList.remove('open'); }
 
+// DO YOU KNOW QUIZ 
+const dykQs = [
+  { q: 'Which is the oldest bank in Bhutan?',
+    opts: ['Bhutan National Bank', 'Bank of Bhutan', 'Druk PNB', 'T Bank'],
+    ans: 1,
+    fact: '✅ Bank of Bhutan was established in 1968, making it the oldest and largest bank in Bhutan.' },
+  { q: 'What USSD code can you dial to use mBOB without internet?',
+    opts: ['*111#', '*168#', '*262#', '*999#'],
+    ans: 2,
+    fact: '✅ Dialling *262# lets you access mBOB offline — useful in areas with no internet.' },
+  { q: 'Which bank is the only FDI (Foreign Direct Investment) bank in Bhutan?',
+    opts: ['T Bank', 'Bhutan National Bank', 'BDBL', 'Druk PNB Bank'],
+    ans: 3,
+    fact: '✅ Druk PNB is a joint venture with Punjab National Bank of India — Bhutan\'s only FDI bank.' },
+  { q: 'What is TER, offered by Digital Kidu Bank?',
+    opts: ['A type of savings account', 'A sovereign-backed digital token redeemable for gold', 'An internet banking portal', 'A rural loan scheme'],
+    ans: 1,
+    fact: '✅ TER is a sovereign-backed digital token offered by DK Bank that can be redeemed into real gold.' },
+  { q: 'Which bank focuses primarily on rural development and agriculture financing?',
+    opts: ['Bank of Bhutan', 'T Bank', 'Bhutan Development Bank (BDBL)', 'Bhutan National Bank'],
+    ans: 2,
+    fact: '✅ BDBL (est. 1988) is dedicated to rural development, agriculture, SME, and cottage industry financing.' },
+  { q: 'Which bank offers a "Piggy Bank Account" for children?',
+    opts: ['Bank of Bhutan', 'Digital Kidu', 'Bhutan National Bank', 'T Bank'],
+    ans: 2,
+    fact: '✅ BNB offers a Piggy Bank Account designed to encourage savings habits in children.' },
+  { q: 'T Bank\'s T Wallet is available to users from what minimum age?',
+    opts: ['18 years', '16 years', '12 years', '10 years'],
+    ans: 3,
+    fact: '✅ T Wallet is available to youth from 10 years and above, making banking accessible early.' },
+  { q: 'Which bank is fully digital with no physical branches?',
+    opts: ['T Bank', 'Digital Kidu (DK) Bank', 'Druk PNB', 'BDBL'],
+    ans: 1,
+    fact: '✅ DK Bank operates entirely via app and web — no branch visits required for any service.' },
+  { q: 'What international debit card does Bhutan National Bank issue?',
+    opts: ['Visa', 'Mastercard', 'RuPay', 'UnionPay'],
+    ans: 2,
+    fact: '✅ BNB issues RuPay international debit cards, usable in India and other countries.' },
+  { q: 'Which Bank of Bhutan service is designed specifically for youth under 18?',
+    opts: ['BoBNET', 'GoBOB', 'mBOB', 'BoBConnect'],
+    ans: 1,
+    fact: '✅ GoBOB is BoB\'s youth-focused digital banking account for customers under 18.' },
+];
+
+let dykIdx = 0, dykScore = 0, dykAnswered = false;
+
+function openDyk() {
+  dykIdx = 0; dykScore = 0; dykAnswered = false;
+  document.getElementById('dykOverlay').classList.add('open');
+  renderDyk();
+}
+
+function renderDyk() {
+  dykAnswered = false;
+  const q = dykQs[dykIdx];
+  document.getElementById('dyk-label').textContent = `Question ${dykIdx + 1} of ${dykQs.length}`;
+  document.getElementById('dyk-text').textContent = q.q;
+  document.getElementById('dyk-prog').style.width = `${(dykIdx / dykQs.length) * 100}%`;
+  document.getElementById('dyk-next').style.display = 'none';
+  document.getElementById('dyk-feedback').style.display = 'none';
+
+  const opts = document.getElementById('dyk-options');
+  opts.innerHTML = '';
+  q.opts.forEach((o, i) => {
+    const b = document.createElement('button');
+    b.className = 'opt-btn';
+    b.textContent = o;
+    b.onclick = () => {
+      if (dykAnswered) return;
+      dykAnswered = true;
+      opts.querySelectorAll('.opt-btn').forEach((x, xi) => {
+        x.disabled = true;
+        if (xi === q.ans) x.style.cssText += ';border-color:#1e8449;background:#f0fff4;color:#1e8449';
+        else if (xi === i && i !== q.ans) x.style.cssText += ';border-color:#c0392b;background:#fff0ef;color:#c0392b';
+      });
+      const correct = i === q.ans;
+      if (correct) dykScore++;
+      const fb = document.getElementById('dyk-feedback');
+      fb.style.display = 'block';
+      fb.style.background = correct ? '#f0fff4' : '#fff0ef';
+      fb.style.border = `1px solid ${correct ? '#b2f0d0' : '#f5c6c6'}`;
+      fb.style.color = correct ? '#1a7a4a' : '#c0392b';
+      fb.innerHTML = (correct ? '🎉 Correct! ' : '❌ Not quite. ') + q.fact;
+      const nb = document.getElementById('dyk-next');
+      nb.style.display = 'block';
+      nb.textContent = dykIdx === dykQs.length - 1 ? 'See my score →' : 'Next →';
+    };
+    opts.appendChild(b);
+  });
+}
+
+function nextDyk() {
+  dykIdx++;
+  if (dykIdx < dykQs.length) {
+    renderDyk();
+  } else {
+    showDykScore();
+  }
+}
+
+function showDykScore() {
+  document.getElementById('dyk-prog').style.width = '100%';
+  const pct = Math.round((dykScore / dykQs.length) * 100);
+  let emoji, msg;
+  if (pct >= 80) { emoji = '🏆'; msg = 'Banking expert! '; }
+  else if (pct >= 50) { emoji = '📚'; msg = 'Good knowledge! Visit our Banking Insights page to learn more.'; }
+  else { emoji = '🌱'; msg = 'Room to grow! Explore the Banking Insights page to boost your knowledge.'; }
+  document.getElementById('dyk-body').innerHTML = `
+    <div class="result-wrap">
+      <div class="result-emoji">${emoji}</div>
+      <div class="result-title">${dykScore} / ${dykQs.length} correct</div>
+      <div class="result-desc">${msg}</div>
+      <div class="result-badge">${pct}% score</div>
+    </div>`;
+  const nb = document.getElementById('dyk-next');
+  nb.style.display = 'block';
+  nb.textContent = 'Try again';
+  nb.onclick = openDyk;
+}
+
+function closeDyk() { document.getElementById('dykOverlay').classList.remove('open'); }
 
 // Close modals on overlay click
 document.getElementById('quizOverlay').addEventListener('click', function(e) {
   if (e.target === this) closeQuiz();
 });
-document.getElementById('quizOverlay').addEventListener('click', function(e) {
-  if (e.target === this) closeQuiz();
+document.getElementById('dykOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeDyk();
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeQuiz(); closeDyk(); }
 });
 
-// Close on Escape key
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { closeQuiz(); closeQuiz(); }
-});
 </script>
 </body>
 </html>
