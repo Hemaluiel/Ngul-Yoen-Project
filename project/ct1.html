@@ -307,7 +307,11 @@
 
 <script>
 
-// SELECTED PURPOSE
+const EMAILJS_PUBLIC_KEY  = 'lV12njoxBX47mJIu5';
+const EMAILJS_SERVICE_ID  = 'service_mf5ec4b';
+
+emailjs.init(EMAILJS_PUBLIC_KEY);
+
 let selectedPurpose = '';
 
 function selectChip(value, btn) {
@@ -318,36 +322,24 @@ function selectChip(value, btn) {
 }
 
 function pickPurpose(value, btn) {
-  // highlight left-column chip
   document.querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
   btn.classList.add('selected');
-  // also select matching form chip
   document.querySelectorAll('.form-chip').forEach(c => {
-    if (c.textContent.includes(value.split(' ')[0]) || c.onclick.toString().includes(value)) {
+    if (c.getAttribute('onclick').includes(`'${value}'`)) {
       c.classList.add('sel');
     } else {
       c.classList.remove('sel');
     }
   });
-  // find exact match
-  document.querySelectorAll('.form-chip').forEach(c => {
-    if (c.getAttribute('onclick').includes(`'${value}'`)) {
-      c.classList.add('sel');
-    }
-  });
   selectedPurpose = value;
   document.getElementById('purpose').value = value;
-  // scroll to form on mobile
   document.querySelector('.form-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// CHAR COUNT
 function updateCount() {
-  const len = document.getElementById('message').value.length;
-  document.getElementById('char-count').textContent = len;
+  document.getElementById('char-count').textContent = document.getElementById('message').value.length;
 }
 
-//  VALIDATION HIGHLIGHT
 function highlight(id) {
   const el = document.getElementById(id);
   el.style.borderColor = 'var(--red)';
@@ -366,7 +358,6 @@ function showAlert(type, msg) {
   }
 }
 
-// SUBMIT
 async function handleSubmit() {
   const fname   = document.getElementById('fname').value.trim();
   const lname   = document.getElementById('lname').value.trim();
@@ -374,22 +365,16 @@ async function handleSubmit() {
   const phone   = document.getElementById('phone').value.trim();
   const message = document.getElementById('message').value.trim();
 
-  // hide old alerts
   document.getElementById('alert-success').classList.remove('show');
   document.getElementById('alert-error').classList.remove('show');
 
-  // validate
   let valid = true;
-  if (!fname)   { highlight('fname');   valid = false; }
+  if (!fname)  { highlight('fname');   valid = false; }
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { highlight('email'); valid = false; }
-  if (!selectedPurpose) {
-    showAlert('error', 'Please select a purpose for your message.');
-    valid = false;
-  }
+  if (!selectedPurpose) { showAlert('error', 'Please select a purpose for your message.'); valid = false; }
   if (!message) { highlight('message'); valid = false; }
   if (!valid) return;
 
-  // loading state
   const btn = document.getElementById('submit-btn');
   btn.disabled = true;
   document.getElementById('btn-text').textContent = 'Sending…';
@@ -404,7 +389,29 @@ async function handleSubmit() {
     to_email:   'hemaluitel2@gmail.com'
   };
 
+  try {
+    // Send notification to me
+    await emailjs.send(EMAILJS_SERVICE_ID, 'contact_notification', templateParams);
+
+    // Send auto-reply to hte user
+    await emailjs.send(EMAILJS_SERVICE_ID, 'contact_autoreply', templateParams);
+
+    showAlert('success');
+    ['fname','lname','email','phone','message'].forEach(id => document.getElementById(id).value = '');
+    document.querySelectorAll('.form-chip, .chip').forEach(c => c.classList.remove('sel','selected'));
+    selectedPurpose = '';
+    document.getElementById('char-count').textContent = '0';
+
+  } catch (err) {
+    console.error('EmailJS error:', err);
+    showAlert('error', 'Failed to send. Please email hemaluitel2@gmail.com directly.');
+  } finally {
+    btn.disabled = false;
+    document.getElementById('btn-text').textContent = 'Send message';
+    document.getElementById('spinner').style.display = 'none';
+  }
 }
+
 </script>
 
 </body>
