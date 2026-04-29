@@ -33,7 +33,7 @@
   html { scroll-behavior: smooth; }
   body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; }
 
-  /* ── NAVBAR ── */
+  /* NAVBAR*/
   .navbar { position: sticky; top: 0; z-index: 50; display: flex; justify-content: space-between; align-items: center; padding: 0 48px; height: 64px; background: rgba(250,248,245,0.88); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
   .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--dark); letter-spacing: -0.02em; text-decoration: none; }
   .logo em { color: var(--red); font-style: normal; }
@@ -42,7 +42,7 @@
   .nav-links a:hover { background: var(--red-light); color: var(--red); }
   .nav-links a.active { color: var(--red); background: var(--red-light); }
 
-  /* ── HERO ── */
+  /* HERO */
   .hero { position: relative; overflow: hidden; padding: 72px 48px 64px; background: var(--fs-dark); color: white; }
   .hero::before {
     content: ''; position: absolute; inset: 0;
@@ -70,15 +70,15 @@
   .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
   .hero-tag { font-size: 12px; padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.05); }
 
-  /* ── ANCHOR NAV ── */
+  /* ANCHOR NAV */
   .anchor-nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 48px; display: flex; overflow-x: auto; }
   .anchor-nav a { font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; padding: 14px 18px; border-bottom: 2px solid transparent; white-space: nowrap; transition: color 0.15s, border-color 0.15s; }
   .anchor-nav a:hover { color: var(--fs-accent); border-bottom-color: rgba(45,106,45,0.3); }
 
-  /* ── MAIN ── */
+  /* MAIN */
   .main { max-width: 980px; margin: 0 auto; padding: 56px 48px 80px; display: flex; flex-direction: column; gap: 48px; }
 
-  /* ── SECTION CARD ── */
+  /* SECTION CARD */
   .sc { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 90px; transition: box-shadow 0.2s; }
   .sc:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.06); }
   .sc-head { display: flex; align-items: flex-start; gap: 14px; padding: 22px 28px 18px; border-bottom: 1px solid var(--border); }
@@ -87,7 +87,7 @@
   .sc-head p { font-size: 13px; color: var(--muted); }
   .sc-body { padding: 28px; }
 
-  /* ── PREVIEW SCREENSHOT ── */
+  /* PREVIEW SCREENSHOT */
   .preview-wrap { border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
   .preview-toolbar { padding: 10px 16px; background: var(--bg); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
   .preview-dots { display: flex; gap: 5px; }
@@ -99,7 +99,7 @@
   .preview-note { margin-top: 12px; font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
   .preview-note a { color: var(--fs-accent); }
 
-  /* ── ABOUT GRID ── */
+  /* ABOUT GRID */
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   .about-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 18px; }
   .about-card-top { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
@@ -107,7 +107,7 @@
   .about-card h3 { font-size: 14px; font-weight: 500; }
   .about-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
 
-  /* ── HOW IT WORKS ── */
+  /* HOW IT WORKS */
   .steps { display: flex; flex-direction: column; gap: 0; }
   .step { display: flex; gap: 20px; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid var(--border); }
   .step:last-child { border-bottom: none; padding-bottom: 0; }
@@ -117,31 +117,7 @@
   .step-content p { font-size: 13px; color: var(--muted); line-height: 1.65; }
   .step-tag { display: inline-block; margin-top: 8px; font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px; background: var(--fs-light); color: var(--fs-accent); border: 1px solid rgba(45,106,45,0.2); }
 
-  /* ── OUTPUT CARDS ── */
-  .output-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
-  .output-stat { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px; text-align: center; }
-  .output-stat strong { display: block; font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--fs-accent); line-height: 1; margin-bottom: 4px; }
-  .output-stat span { font-size: 11px; color: var(--muted); }
-
-  /* output feature list */
-  .output-features { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .of { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 15px 16px; display: flex; gap: 10px; align-items: flex-start; }
-  .of-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
-  .of-text strong { display: block; font-size: 13px; font-weight: 500; margin-bottom: 3px; }
-  .of-text span { font-size: 12px; color: var(--muted); line-height: 1.55; }
-
-  /* ── AI INSIGHT BLOCK ── */
-  .ai-block { background: var(--fs-green); border-radius: var(--radius-sm); padding: 20px 22px; display: flex; gap: 14px; align-items: flex-start; margin-top: 4px; }
-  .ai-block-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
-  .ai-block-text strong { display: block; font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; color: var(--fs-gold); margin-bottom: 6px; }
-  .ai-block-text p { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.7; margin: 0; }
-
-  /* ── PILL LIST ── */
-  .pill-list { display: flex; flex-direction: column; gap: 7px; }
-  .pill-item { display: flex; align-items: flex-start; gap: 9px; font-size: 13px; color: var(--text); line-height: 1.5; }
-  .pill-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--fs-accent); flex-shrink: 0; margin-top: 6px; }
-
-  /* ── CTA BANNER ── */
+  /* CTA BANNER */
   .cta-banner { background: var(--fs-dark); border-radius: var(--radius); padding: 32px 36px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
   .cta-text strong { display: block; font-family: 'Playfair Display', serif; font-size: 20px; color: white; margin-bottom: 6px; }
   .cta-text p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; max-width: 420px; }
@@ -151,18 +127,18 @@
   .cta-btn-ghost { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.75); text-decoration: none; border-radius: var(--radius-sm); padding: 12px 18px; font-size: 13px; font-weight: 500; border: 1px solid rgba(255,255,255,0.12); transition: background 0.15s; }
   .cta-btn-ghost:hover { background: rgba(255,255,255,0.12); }
 
-  /* ── BACK TO TOP ── */
+  /* BACK TO TOP */
   #back-top { position: fixed; bottom: 24px; right: 24px; width: 40px; height: 40px; background: var(--fs-dark); color: white; border: none; border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.2s, background 0.2s; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
   #back-top.visible { opacity: 1; pointer-events: all; }
   #back-top:hover { background: var(--fs-accent); }
 
-  /* ── FOOTER ── */
+  /* FOOTER */
   footer { text-align: center; padding: 28px 48px; border-top: 1px solid var(--border); font-size: 12px; color: var(--muted); display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; align-items: center; }
   footer strong { color: var(--text); font-weight: 500; }
   footer a { color: var(--muted); text-decoration: none; font-size: 12px; transition: color 0.15s; }
   footer a:hover { color: var(--red); }
 
-  /* ── RESPONSIVE ── */
+  /* RESPONSIVE */
   @media (max-width: 700px) {
     .navbar { padding: 0 20px; }
     .hero { padding: 52px 20px 48px; }
@@ -184,12 +160,12 @@
   <a href="index.html" class="logo">Ngul<em>~</em>Yoen</a>
   <div class="nav-links">
     <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="report.html">Report & Findings</a>
+    <a href="abt.html">About</a>
+    <a href="rpfd.html">Report & Findings</a>
     <a href="banking1.html">Banking Insights</a>
     <a href="prototype.html">mBOB Prototype</a>
     <a href="finsight.html" class="active">FinSight</a>
-    <a href="contact.html">Contact</a>
+    <a href="ct1.html">Contact</a>
   </div>
 </nav>
 
@@ -221,8 +197,6 @@
   <a href="#preview">Preview</a>
   <a href="#about">About FinSight</a>
   <a href="#how-it-works">How it works</a>
-  <a href="#outputs">What you get</a>
-  <a href="#ai">AI insight</a>
 </div>
 
 <!-- MAIN -->
@@ -248,10 +222,10 @@
           <div class="preview-url">newfornow-production.up.railway.app</div>
           <a href="https://newfornow-production.up.railway.app/" target="_blank" class="preview-open">Open app ↗</a>
         </div>
-        <img src="1777443362178_Screenshot_2026-04-24_210527.png" alt="FinSight Bank Statement Analyzer — showing total debits BTN 5,510, total credits BTN 4,752.67, 16 spending categories found, biggest category Transfers, AI insight panel, spending breakdown donut chart, and top 5 transactions." class="preview-img">
+        <img src="Screenshot_2026-04-24_210527.png" alt="FinSight Bank Statement Analyzer — showing total debits BTN 5,510, total credits BTN 4,752.67, 16 spending categories found, biggest category Transfers, AI insight panel, spending breakdown donut chart, and top 5 transactions." class="preview-img">
       </div>
       <div class="preview-note">
-        💡 Screenshot shows a real BoB e-statement analysis from Feb 2026. <a href="https://newfornow-production.up.railway.app/" target="_blank">Try it with your own statement →</a>
+        💡 Screenshot shows a real DK Bank e-statement analysis from Feb 2026. <a href="https://newfornow-production.up.railway.app/" target="_blank">Try it with your own statement →</a>
       </div>
     </div>
   </div>
@@ -273,9 +247,9 @@
         <div class="about-card">
           <div class="about-card-top">
             <div class="about-icon" style="background:#e8f5e8">🎓</div>
-            <h3>Built for students</h3>
+            <h3>Built for Digital Bhutan</h3>
           </div>
-          <p>Designed with GCBS students in mind — track SEMSO contributions, food expenses, and personal spending without complicated spreadsheets.</p>
+          <p>Designed with Bhutanese youth in mind — track contributions, food expenses, and personal spending without complicated spreadsheets.</p>
         </div>
         <div class="about-card">
           <div class="about-card-top">
@@ -296,7 +270,7 @@
             <div class="about-icon" style="background:#fff0ef">🇧🇹</div>
             <h3>Bhutan-first design</h3>
           </div>
-          <p>Supports BTN (Ngultrum) currency, local bank formats (BoB, DK Bank, BNB), and common Bhutanese merchant categories.</p>
+          <p>Supports BTN (Ngultrum) currency and local bank formats (BoB, DK Bank, BNB, etc).</p>
         </div>
       </div>
     </div>
@@ -336,113 +310,11 @@
           <div class="step-num">3</div>
           <div class="step-content">
             <h3>Get your full financial snapshot</h3>
-            <p>Your results appear immediately — total debits and credits, number of spending categories found, biggest spending category, top 5 transactions by amount, a spending breakdown donut chart, and a plain-English AI insight summarising your month's financial behaviour.</p>
+            <p>Your results appear immediately — total debits and credits, number of spending categories found, biggest spending category, top 5 transactions by amount, a spending breakdown donut chart and bar chart, and a plain-English AI insight summarising your month's financial behaviour.</p>
             <span class="step-tag">📊 Dashboard · Charts · AI insight · Top transactions</span>
           </div>
         </div>
 
-      </div>
-    </div>
-  </div>
-
-  <!-- WHAT YOU GET -->
-  <div class="sc" id="outputs">
-    <div class="sc-head">
-      <div class="sc-icon" style="background:#f5f0ff">📊</div>
-      <div>
-        <h2>What you get</h2>
-        <p>Everything FinSight produces from your uploaded statement</p>
-      </div>
-    </div>
-    <div class="sc-body" style="display:flex;flex-direction:column;gap:20px">
-
-      <!-- example stats from screenshot -->
-      <div>
-        <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.07em;color:var(--muted);margin-bottom:10px">Example output — Feb 2026 BoB e-statement</div>
-        <div class="output-grid">
-          <div class="output-stat"><strong>BTN 5,510</strong><span>Total debits</span></div>
-          <div class="output-stat"><strong>BTN 4,752</strong><span>Total credits</span></div>
-          <div class="output-stat"><strong>16</strong><span>Categories found</span></div>
-          <div class="output-stat"><strong>88.1%</strong><span>Biggest category share</span></div>
-        </div>
-      </div>
-
-      <div class="output-features">
-        <div class="of">
-          <div class="of-icon">🏷️</div>
-          <div class="of-text">
-            <strong>Auto expense categorization</strong>
-            <span>Every debit is mapped to a named category — Shopping, Transfers, Food, Utilities, Transport, and more — automatically by AI.</span>
-          </div>
-        </div>
-        <div class="of">
-          <div class="of-icon">🥇</div>
-          <div class="of-text">
-            <strong>Top 5 transactions</strong>
-            <span>Ranked list of your five highest-value transactions, with merchant name, category, and date — so nothing slips past you.</span>
-          </div>
-        </div>
-        <div class="of">
-          <div class="of-icon">🍩</div>
-          <div class="of-text">
-            <strong>Spending breakdown chart</strong>
-            <span>A colour-coded donut chart showing the percentage share of each spending category across your whole statement period.</span>
-          </div>
-        </div>
-        <div class="of">
-          <div class="of-icon">💰</div>
-          <div class="of-text">
-            <strong>Total debits & credits</strong>
-            <span>At-a-glance summary of total money out (debits) and total money in (credits) for the full statement period — in BTN.</span>
-          </div>
-        </div>
-        <div class="of">
-          <div class="of-icon">📂</div>
-          <div class="of-text">
-            <strong>Category count</strong>
-            <span>Total number of distinct spending types found across your statement — tells you how diversified or concentrated your spending is.</span>
-          </div>
-        </div>
-        <div class="of">
-          <div class="of-icon">🏆</div>
-          <div class="of-text">
-            <strong>Biggest category highlight</strong>
-            <span>Instantly see which category consumed the most of your spending — with total amount and percentage share shown clearly.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- AI INSIGHT -->
-  <div class="sc" id="ai">
-    <div class="sc-head">
-      <div class="sc-icon" style="background:#e8f5e8">🤖</div>
-      <div>
-        <h2>AI insight — plain English analysis</h2>
-        <p>Not just numbers — a narrative explanation of your spending behaviour</p>
-      </div>
-    </div>
-    <div class="sc-body" style="display:flex;flex-direction:column;gap:18px">
-      <p style="font-size:14px;color:#4a4040;line-height:1.8">Beyond charts and totals, FinSight uses AI to write a short, plain-English summary of your statement. It explains the patterns it found — your biggest spending areas, notable transactions, and overall financial behaviour for the period — in a way that's easy to understand without being a finance expert.</p>
-
-      <div class="ai-block">
-        <div class="ai-block-icon">💡</div>
-        <div class="ai-block-text">
-          <strong>AI Insight — example from Feb 2026</strong>
-          <p>"The majority of the expenses are transfer related, with a significant amount of 4,000 transferred on FEB 19. There are also some shopping and utility expenses, with a total of 2,100 spent on shopping. The credit balance carried forward is 1,242.67."</p>
-        </div>
-      </div>
-
-      <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:18px">
-        <div style="font-size:13px;font-weight:500;margin-bottom:10px">The AI insight helps you:</div>
-        <div class="pill-list">
-          <div class="pill-item"><div class="pill-dot"></div>Understand your spending story without reading every line of a statement</div>
-          <div class="pill-item"><div class="pill-dot"></div>Spot unusual or large transactions that need attention</div>
-          <div class="pill-item"><div class="pill-dot"></div>Identify which categories dominate your expenses month to month</div>
-          <div class="pill-item"><div class="pill-dot"></div>See your credit balance carried forward clearly stated in plain language</div>
-          <div class="pill-item"><div class="pill-dot"></div>Make faster, more confident decisions about your finances</div>
-        </div>
       </div>
     </div>
   </div>
@@ -466,11 +338,11 @@
 <footer>
   <span>© 2026 <strong>Ngul Yoen</strong> · Hema Luitel</span>
   <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="report.html">Report & Findings</a>
+  <a href="abt.html">About</a>
+  <a href="rpfd.html">Report & Findings</a>
   <a href="banking1.html">Banking Insights</a>
   <a href="prototype.html">mBOB Prototype</a>
-  <a href="contact.html">Contact</a>
+  <a href="ct1.html">Contact</a>
 </footer>
 
 <script>
