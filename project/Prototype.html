@@ -125,6 +125,13 @@
   .dev-note-text { font-size: 13px; color: #4a4040; line-height: 1.65; }
   .dev-note-text strong { color: var(--text); }
 
+  /* CTA BANNER */
+  .cta-banner { background: var(--bob); border-radius: var(--radius); padding: 32px 36px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .cta-banner-text strong { display: block; font-family: 'Playfair Display', serif; font-size: 20px; color: white; margin-bottom: 6px; }
+  .cta-banner-text p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.6; max-width: 420px; }
+  .cta-btn { background: var(--red); color: white; text-decoration: none; border-radius: var(--radius-sm); padding: 12px 24px; font-size: 13px; font-weight: 500; white-space: nowrap; transition: background 0.15s; }
+  .cta-btn:hover { background: #a93226; }
+
   /* BACK TO TOP */
   #back-top { position: fixed; bottom: 24px; right: 24px; width: 40px; height: 40px; background: var(--bob); color: white; border: none; border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.2s, background 0.2s; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
   #back-top.visible { opacity: 1; pointer-events: all; }
@@ -518,7 +525,14 @@
     </div>
   </div>
 
-
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <div class="cta-banner-text">
+      <strong>Try the live prototype</strong>
+      <p>Explore the full mBOB feature flow — transfer, mini statement, pockets, and expense dashboard — all in one interactive demo built on Vercel.</p>
+    </div>
+    <a href="https://prottoo.vercel.app/" target="_blank" class="cta-btn">Open prototype →</a>
+  </div>
 
 </main>
 
