@@ -90,6 +90,27 @@
   .feature-list li { font-size: 12px; color: #4a4040; display: flex; gap: 7px; align-items: flex-start; }
   .feature-list li::before { content: ''; display: block; width: 5px; height: 5px; border-radius: 50%; background: var(--bob); flex-shrink: 0; margin-top: 5px; }
 
+  /* STORY */
+  .story-body { font-size: 14px; color: #3a3030; line-height: 1.85; }
+  .story-body p { margin-bottom: 16px; }
+  .story-body p:last-child { margin-bottom: 0; }
+
+  /* characters strip */
+  .characters { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 28px; }
+  .char-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px 16px; display: flex; align-items: center; gap: 10px; }
+  .char-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; color: white; flex-shrink: 0; }
+  .char-info strong { display: block; font-size: 13px; font-weight: 500; }
+  .char-info span { font-size: 11px; color: var(--muted); }
+
+  /* dialogue style */
+  .dialogue { background: var(--bob-light); border-left: 3px solid var(--bob); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 12px 16px; margin: 14px 0; font-style: italic; font-size: 13px; color: #2c2420; line-height: 1.65; }
+  .dialogue strong { color: var(--bob); font-style: normal; font-size: 12px; display: block; margin-bottom: 4px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  /* feature highlight box */
+  .story-feature { background: var(--red-light); border: 1px solid var(--red-mid); border-radius: var(--radius-sm); padding: 14px 16px; margin: 16px 0; }
+  .story-feature-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; color: var(--red); margin-bottom: 6px; }
+  .story-feature p { font-size: 13px; color: #4a4040; margin: 0; line-height: 1.6; }
+
   /* BACK TO TOP */
   #back-top { position: fixed; bottom: 24px; right: 24px; width: 40px; height: 40px; background: var(--bob); color: white; border: none; border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.2s, background 0.2s; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
   #back-top.visible { opacity: 1; pointer-events: all; }
@@ -252,6 +273,156 @@
           </ul>
         </div>
 
+      </div>
+    </div>
+  </div>
+
+  <!-- THE STORY -->
+  <div class="section-card" id="story">
+    <div class="section-head">
+      <div class="section-icon" style="background:#fff8ee">📖</div>
+      <div>
+        <h2>The story behind the prototype</h2>
+        <p>mBOB Budgeting and Expense Tracking Features · A story from GCBS canteen</p>
+      </div>
+    </div>
+    <div class="section-body">
+
+      <!-- Characters -->
+      <div class="characters">
+        <div class="char-card">
+          <div class="char-avatar" style="background:#0d2b45">T</div>
+          <div class="char-info"><strong>Tashi</strong><span>Class Representative, GCBS</span></div>
+        </div>
+        <div class="char-card">
+          <div class="char-avatar" style="background:#c0392b">S</div>
+          <div class="char-info"><strong>Sonam</strong><span>Student, GCBS</span></div>
+        </div>
+        <div class="char-card">
+          <div class="char-avatar" style="background:#0a7c5c">P</div>
+          <div class="char-info"><strong>Pema</strong><span>Student, GCBS · Ideas person</span></div>
+        </div>
+      </div>
+
+      <div class="story-body">
+        <p>Tashi, Sonam, and Pema sat on chairs around a small round table in the busy Tobgay canteen of Gedu College of Business Studies (GCBS). It was their usual tea break spot — warm <em>suja</em> in hand, plates of momos on the table, and the soft hum of students chatting after class.</p>
+
+        <p>The three of them had just come out of their financial management lecture. The topic had been <em>budgeting and personal financial control</em>, and now, unknowingly, they were about to test those ideas in real life.</p>
+
+        <p>Tashi, who also worked as a Class Representative, was staring at his phone with a slightly stressed expression.</p>
+
+        <div class="dialogue">
+          <strong>Tashi</strong>
+          "I collected SEMSO contributions from five of my self-funded mates yesterday. Now I just want to confirm one payment… but mBOB only shows the last 10 transactions. The one I need isn't even old — it's just from yesterday. Now I have to request a statement and wait for the email."
+        </div>
+
+        <div class="dialogue">
+          <strong>Sonam</strong>
+          "Same problem. It's like the app has the data but not in a way that helps us <em>quickly</em>."
+        </div>
+
+        <p>Just then, Pema joined them, pulling a chair closer.</p>
+
+        <div class="dialogue">
+          <strong>Pema</strong>
+          "You both look like you're fighting with your bank."
+        </div>
+
+        <div class="dialogue">
+          <strong>Tashi</strong>
+          "We kind of are."
+        </div>
+
+        <p>Pema smiled and leaned forward.</p>
+
+        <div class="dialogue">
+          <strong>Pema</strong>
+          "You know… what if mBOB actually worked like how we studied in class today? Let's start with expenses. Imagine when you make a payment, the app <em>automatically suggests a category</em>."
+        </div>
+
+        <div class="story-feature">
+          <div class="story-feature-label">💡 Feature idea: Smart Categorization</div>
+          <p>If you transfer money to a friend for food, the app could show options like <strong>'Food & Drinks'</strong>, <strong>'Fund Collection (SEMSO)'</strong>, or <strong>'Personal Transfer'</strong> based on the transaction pattern — one tap to select instead of typing everything.</p>
+        </div>
+
+        <div class="dialogue">
+          <strong>Tashi</strong>
+          "That would save time."
+        </div>
+
+        <div class="dialogue">
+          <strong>Pema</strong>
+          "And not just that. There should also be an option to <em>create your own category</em> — like 'SEMSO Collection,' 'Group Study Expenses,' or anything personal. Over time, the app learns your habits and suggests the most likely category automatically."
+        </div>
+
+        <div class="dialogue">
+          <strong>Sonam</strong>
+          "That would actually help us understand where our money goes. Right now, it's just numbers — no meaning behind them."
+        </div>
+
+        <div class="dialogue">
+          <strong>Tashi</strong>
+          "But what about saving? Everything is mixed in one account. It's hard to separate money mentally."
+        </div>
+
+        <div class="dialogue">
+          <strong>Pema</strong>
+          "That's where <strong>goal-based pockets</strong> come in. Imagine within your main account, you can create custom mini-accounts — SEMSO/Fund Collection, Food & Drinks, Travel, Personal Savings — and keep them <em>only as long as you need</em>."
+        </div>
+
+        <div class="story-feature">
+          <div class="story-feature-label">💡 Feature idea: Goal-Based Pockets</div>
+          <p>Create a SEMSO pocket just for this semester, then remove it later. When you make a payment, the app asks: <strong>"Which pocket do you want to use?"</strong> — like choosing which wallet to pay from.</p>
+        </div>
+
+        <div class="dialogue">
+          <strong>Sonam</strong>
+          "Imagine opening the app and seeing dashboard charts showing how much you spent on food, travel, or SEMSO."
+        </div>
+
+        <div class="dialogue">
+          <strong>Tashi</strong>
+          "That would actually make us aware of our habits. Not just checking balance, but understanding behaviour."
+        </div>
+
+        <div class="dialogue">
+          <strong>Pema</strong>
+          "Right now, mBOB gives us data… but it doesn't guide us."
+        </div>
+
+        <div class="dialogue">
+          <strong>Tashi</strong>
+          "And please — improve the mini statement. Why only 10 transactions? I just want to see yesterday's transactions properly, especially when I'm handling money for others."
+        </div>
+
+        <div class="dialogue">
+          <strong>Sonam</strong>
+          "They should let us filter by date — today, yesterday, or even increase it to 50 or 100 transactions. Sometimes we just need quick access, not a full report sent later."
+        </div>
+
+        <p>They paused, finishing their tea and momo. Around them, students continued their conversations, unaware that a simple tea break had turned into a powerful discussion on the future of mobile banking.</p>
+
+        <div class="dialogue">
+          <strong>Pema</strong>
+          "If these features were added, mBOB wouldn't just be a banking app… it would become a <em>smart financial companion</em>, especially for <strong>students</strong> like us."
+        </div>
+
+        <div class="dialogue">
+          <strong>Sonam</strong>
+          "We learned budgeting in class… but if mBOB evolves like this, we can actually <em>practice it in real life</em>."
+        </div>
+
+        <div class="dialogue">
+          <strong>Tashi</strong>
+          "And that's when banking becomes more than just transactions."
+        </div>
+
+        <div class="dialogue">
+          <strong>Pema</strong>
+          "It becomes understanding, control… and smarter living."
+        </div>
+
+        <p>And with that, they walked out of the GCBS canteen — carrying not just ideas, but a vision of what modern banking could truly become in this digital era.</p>
       </div>
     </div>
   </div>
