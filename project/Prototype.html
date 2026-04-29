@@ -119,6 +119,12 @@
   .wish-text strong { display: block; font-size: 13px; font-weight: 500; margin-bottom: 3px; }
   .wish-text p { font-size: 12px; color: var(--muted); line-height: 1.55; margin: 0; }
 
+  /* dev notes */
+  .dev-note { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px 18px; display: flex; gap: 12px; align-items: flex-start; }
+  .dev-note-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .dev-note-text { font-size: 13px; color: #4a4040; line-height: 1.65; }
+  .dev-note-text strong { color: var(--text); }
+
   /* BACK TO TOP */
   #back-top { position: fixed; bottom: 24px; right: 24px; width: 40px; height: 40px; background: var(--bob); color: white; border: none; border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.2s, background 0.2s; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
   #back-top.visible { opacity: 1; pointer-events: all; }
@@ -478,6 +484,39 @@
     </div>
   </div>
 
+  <!-- DEV NOTES -->
+  <div class="section-card" id="devnotes">
+    <div class="section-head">
+      <div class="section-icon" style="background:#f5f0ff">🛠️</div>
+      <div>
+        <h2>Prototype development notes</h2>
+        <p>What was built and how it works</p>
+      </div>
+    </div>
+    <div class="section-body" style="display:flex;flex-direction:column;gap:14px">
+
+      <div class="dev-note">
+        <div class="dev-note-icon">🔄</div>
+        <div class="dev-note-text"><strong>Transfer with Smart Categorization</strong> — Inside the transfer flow, there is an option to add a description or purpose of payment, plus a selector for choosing an auto-suggested expense category at the point of transaction.</div>
+      </div>
+
+      <div class="dev-note">
+        <div class="dev-note-icon">📋</div>
+        <div class="dev-note-text"><strong>Enhanced Mini Statement</strong> — Rebuilt with options for viewing today's transactions, the last 50 transactions, or filtering by a specific custom date. Removes the need to request an email statement for recent activity.</div>
+      </div>
+
+      <div class="dev-note">
+        <div class="dev-note-icon">👛</div>
+        <div class="dev-note-text"><strong>Goal-Based Pockets</strong> — Shows existing pockets and includes a clearly labelled option for users to create new pockets based on personal needs. Each pocket is self-contained and removable.</div>
+      </div>
+
+      <div class="dev-note">
+        <div class="dev-note-icon">📊</div>
+        <div class="dev-note-text"><strong>Expense Tracking Dashboard</strong> — A visual dashboard showing spending broken down by category, giving users an at-a-glance view of where their money is going across different time periods.</div>
+      </div>
+
+    </div>
+  </div>
 
 
 
