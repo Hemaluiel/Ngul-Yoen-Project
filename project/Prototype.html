@@ -111,6 +111,14 @@
   .story-feature-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; color: var(--red); margin-bottom: 6px; }
   .story-feature p { font-size: 13px; color: #4a4040; margin: 0; line-height: 1.6; }
 
+  /* wish list */
+  .wish-list { display: flex; flex-direction: column; gap: 14px; margin-top: 8px; }
+  .wish-item { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 16px; display: flex; gap: 12px; align-items: flex-start; transition: border-color 0.15s; }
+  .wish-item:hover { border-color: var(--red-mid); }
+  .wish-num { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--red); flex-shrink: 0; line-height: 1; padding-top: 1px; min-width: 22px; }
+  .wish-text strong { display: block; font-size: 13px; font-weight: 500; margin-bottom: 3px; }
+  .wish-text p { font-size: 12px; color: var(--muted); line-height: 1.55; margin: 0; }
+
   /* BACK TO TOP */
   #back-top { position: fixed; bottom: 24px; right: 24px; width: 40px; height: 40px; background: var(--bob); color: white; border: none; border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.2s, background 0.2s; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
   #back-top.visible { opacity: 1; pointer-events: all; }
@@ -423,6 +431,49 @@
         </div>
 
         <p>And with that, they walked out of the GCBS canteen — carrying not just ideas, but a vision of what modern banking could truly become in this digital era.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURE WISHLIST -->
+  <div class="section-card" id="wishlist">
+    <div class="section-head">
+      <div class="section-icon" style="background:#f0fff8">✅</div>
+      <div>
+        <h2>What they truly wish to see in mBOB</h2>
+        <p>Summarised before heading back to class</p>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="wish-list">
+        <div class="wish-item">
+          <div class="wish-num">1</div>
+          <div class="wish-text">
+            <strong>Automatic Transaction Categorization (Smart + Customizable)</strong>
+            <p>App suggests likely categories (Food & Drinks, Fund Collection, Transport) based on transaction patterns. One-tap selection, option to create custom categories like SEMSO or group expenses. Helps users understand and track spending behaviour easily.</p>
+          </div>
+        </div>
+        <div class="wish-item">
+          <div class="wish-num">2</div>
+          <div class="wish-text">
+            <strong>Goal-Based Savings (Custom Money Pockets)</strong>
+            <p>Create temporary or long-term pockets (SEMSO, food, travel, savings) within one account. Choose which pocket to pay from during transactions. Track savings and spending separately per goal. Add/remove pockets anytime.</p>
+          </div>
+        </div>
+        <div class="wish-item">
+          <div class="wish-num">3</div>
+          <div class="wish-text">
+            <strong>Spending Insights Dashboard</strong>
+            <p>Visual charts and percentage breakdowns of expenses. Daily, weekly, and monthly reports for better financial awareness and habit understanding.</p>
+          </div>
+        </div>
+        <div class="wish-item">
+          <div class="wish-num">4</div>
+          <div class="wish-text">
+            <strong>Enhanced Mini Statement Feature</strong>
+            <p>Increase transaction visibility from 10 to 50 or 100. Filter by specific dates (today, yesterday, custom). Instantly view specific transactions without waiting for email statements.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
