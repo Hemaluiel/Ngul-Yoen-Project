@@ -6,6 +6,8 @@
 <title>Contact | Ngul Yoen</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -60,14 +62,14 @@
   .contact-item-text span { font-size: 13px; color: var(--text); }
 
   /* purpose chips */
-  .purpose-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  /* .purpose-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
   .purpose-card-head { padding: 16px 20px 12px; border-bottom: 1px solid var(--border); }
   .purpose-card-head h3 { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 500; margin-bottom: 2px; }
   .purpose-card-head p { font-size: 12px; color: var(--muted); }
   .purpose-chips { padding: 14px 20px; display: flex; flex-wrap: wrap; gap: 8px; }
   .chip { font-size: 12px; font-weight: 500; padding: 5px 12px; border-radius: 20px; border: 1px solid var(--border); background: var(--bg); color: var(--muted); cursor: pointer; transition: all 0.15s; font-family: 'DM Sans', sans-serif; }
   .chip:hover { border-color: var(--red-mid); color: var(--red); background: var(--red-light); }
-  .chip.selected { border-color: var(--red); color: var(--red); background: var(--red-light); }
+  .chip.selected { border-color: var(--red); color: var(--red); background: var(--red-light); } */
 
   /* map */
   .map-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
@@ -176,7 +178,7 @@
       <div class="contact-items">
         <div class="contact-item">
           <div class="contact-item-icon">📧</div>
-          <div class="contact-item-text"><strong>Email</strong><span>hemaluitel2@gmail.com</span></div>
+          <div class="contact-item-text"><strong>Email</strong><span>hemaluitel5@gmail.com</span></div>
         </div>
         <div class="contact-item">
           <div class="contact-item-icon">📞</div>
@@ -194,7 +196,7 @@
     </div>
 
     <!-- Purpose quick-pick -->
-    <div class="purpose-card">
+    <!-- <div class="purpose-card">
       <div class="purpose-card-head">
         <h3>What brings you here?</h3>
         <p>Pick a topic — it pre-fills the form</p>
@@ -207,7 +209,7 @@
         <button class="chip" onclick="pickPurpose('Feedback on prototype', this)">🏦 Prototype feedback</button>
         <button class="chip" onclick="pickPurpose('Other', this)">✉️ Other</button>
       </div>
-    </div>
+    </div> -->
 
     <!-- Map -->
     <div class="map-card">
@@ -307,111 +309,133 @@
 
 <script>
 
-const EMAILJS_PUBLIC_KEY  = 'lV12njoxBX47mJIu5';
-const EMAILJS_SERVICE_ID  = 'service_mf5ec4b';
+document.addEventListener('DOMContentLoaded', function () {
 
-emailjs.init(EMAILJS_PUBLIC_KEY);
+  //EMAILJS INIT 
+  emailjs.init('f49nkV21mfm4epoil');
 
-let selectedPurpose = '';
+  const EMAILJS_SERVICE_ID = 'service_mf5ec4b';
 
-function selectChip(value, btn) {
-  document.querySelectorAll('.form-chip').forEach(c => c.classList.remove('sel'));
-  btn.classList.add('sel');
-  selectedPurpose = value;
-  document.getElementById('purpose').value = value;
-}
+  // STATE 
+  let selectedPurpose = '';
 
-function pickPurpose(value, btn) {
-  document.querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
-  btn.classList.add('selected');
-  document.querySelectorAll('.form-chip').forEach(c => {
-    if (c.getAttribute('onclick').includes(`'${value}'`)) {
-      c.classList.add('sel');
+  // CHIP SELECTION -form
+  function selectChip(value, btn) {
+    document.querySelectorAll('.form-chip').forEach(c => c.classList.remove('sel'));
+    btn.classList.add('sel');
+    selectedPurpose = value;
+    document.getElementById('purpose').value = value;
+  }
+
+  // CHIP SELECTION - left sidebar
+  function pickPurpose(value, btn) {
+    document.querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+    btn.classList.add('selected');
+    document.querySelectorAll('.form-chip').forEach(c => {
+      if (c.getAttribute('onclick').includes(`'${value}'`)) {
+        c.classList.add('sel');
+      } else {
+        c.classList.remove('sel');
+      }
+    });
+    selectedPurpose = value;
+    document.getElementById('purpose').value = value;
+    document.querySelector('.form-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // CHAR COUNT
+  function updateCount() {
+    document.getElementById('char-count').textContent =
+      document.getElementById('message').value.length;
+  }
+
+  // FIELD HIGHLIGHT 
+  function highlight(id) {
+    const el = document.getElementById(id);
+    el.style.borderColor = 'var(--red)';
+    el.style.boxShadow = '0 0 0 3px rgba(192,57,43,0.12)';
+    setTimeout(() => { el.style.borderColor = ''; el.style.boxShadow = ''; }, 2500);
+  }
+
+  // ALERT 
+  function showAlert(type, msg) {
+    document.getElementById('alert-success').classList.remove('show');
+    document.getElementById('alert-error').classList.remove('show');
+    if (type === 'success') {
+      document.getElementById('alert-success').classList.add('show');
     } else {
-      c.classList.remove('sel');
+      document.getElementById('error-text').textContent =
+        msg || 'Something went wrong. Please try again.';
+      document.getElementById('alert-error').classList.add('show');
     }
-  });
-  selectedPurpose = value;
-  document.getElementById('purpose').value = value;
-  document.querySelector('.form-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-function updateCount() {
-  document.getElementById('char-count').textContent = document.getElementById('message').value.length;
-}
-
-function highlight(id) {
-  const el = document.getElementById(id);
-  el.style.borderColor = 'var(--red)';
-  el.style.boxShadow = '0 0 0 3px rgba(192,57,43,0.12)';
-  setTimeout(() => { el.style.borderColor = ''; el.style.boxShadow = ''; }, 2500);
-}
-
-function showAlert(type, msg) {
-  document.getElementById('alert-success').classList.remove('show');
-  document.getElementById('alert-error').classList.remove('show');
-  if (type === 'success') {
-    document.getElementById('alert-success').classList.add('show');
-  } else {
-    document.getElementById('error-text').textContent = msg || 'Something went wrong. Please try again.';
-    document.getElementById('alert-error').classList.add('show');
   }
-}
 
-async function handleSubmit() {
-  const fname   = document.getElementById('fname').value.trim();
-  const lname   = document.getElementById('lname').value.trim();
-  const email   = document.getElementById('email').value.trim();
-  const phone   = document.getElementById('phone').value.trim();
-  const message = document.getElementById('message').value.trim();
+  // SUBMIT
+  async function handleSubmit() {
+    const fname   = document.getElementById('fname').value.trim();
+    const lname   = document.getElementById('lname').value.trim();
+    const email   = document.getElementById('email').value.trim();
+    const phone   = document.getElementById('phone').value.trim();
+    const message = document.getElementById('message').value.trim();
 
-  document.getElementById('alert-success').classList.remove('show');
-  document.getElementById('alert-error').classList.remove('show');
+    document.getElementById('alert-success').classList.remove('show');
+    document.getElementById('alert-error').classList.remove('show');
 
-  let valid = true;
-  if (!fname)  { highlight('fname');   valid = false; }
-  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { highlight('email'); valid = false; }
-  if (!selectedPurpose) { showAlert('error', 'Please select a purpose for your message.'); valid = false; }
-  if (!message) { highlight('message'); valid = false; }
-  if (!valid) return;
+    let valid = true;
+    if (!fname)  { highlight('fname');   valid = false; }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      highlight('email'); valid = false;
+    }
+    if (!selectedPurpose) {
+      showAlert('error', 'Please select a purpose for your message.');
+      valid = false;
+    }
+    if (!message) { highlight('message'); valid = false; }
+    if (!valid) return;
 
-  const btn = document.getElementById('submit-btn');
-  btn.disabled = true;
-  document.getElementById('btn-text').textContent = 'Sending…';
-  document.getElementById('spinner').style.display = 'block';
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    document.getElementById('btn-text').textContent = 'Sending…';
+    document.getElementById('spinner').style.display = 'block';
 
-  const templateParams = {
-    from_name:  fname + (lname ? ' ' + lname : ''),
-    from_email: email,
-    phone:      phone || 'Not provided',
-    purpose:    selectedPurpose,
-    message:    message,
-    to_email:   'hemaluitel2@gmail.com'
-  };
+    const templateParams = {
+      from_name:  fname + (lname ? ' ' + lname : ''),
+      from_email: email,
+      phone:      phone || 'Not provided',
+      purpose:    selectedPurpose,
+      message:    message,
+      to_email:   'hemaluitel5@gmail.com'
+    };
 
-  try {
-    // Send notification to me
-    await emailjs.send(EMAILJS_SERVICE_ID, 'contact_notification', templateParams);
+    try {
+      await emailjs.send(EMAILJS_SERVICE_ID, 'contact_notification', templateParams);
+      await emailjs.send(EMAILJS_SERVICE_ID, 'contact_autoreply',    templateParams);
 
-    // Send auto-reply to hte user
-    await emailjs.send(EMAILJS_SERVICE_ID, 'contact_autoreply', templateParams);
+      showAlert('success');
+      ['fname','lname','email','phone','message']
+        .forEach(id => document.getElementById(id).value = '');
+      document.querySelectorAll('.form-chip, .chip')
+        .forEach(c => c.classList.remove('sel','selected'));
+      selectedPurpose = '';
+      document.getElementById('char-count').textContent = '0';
 
-    showAlert('success');
-    ['fname','lname','email','phone','message'].forEach(id => document.getElementById(id).value = '');
-    document.querySelectorAll('.form-chip, .chip').forEach(c => c.classList.remove('sel','selected'));
-    selectedPurpose = '';
-    document.getElementById('char-count').textContent = '0';
-
-  } catch (err) {
-    console.error('EmailJS error:', err);
-    showAlert('error', 'Failed to send. Please email hemaluitel2@gmail.com directly.');
-  } finally {
-    btn.disabled = false;
-    document.getElementById('btn-text').textContent = 'Send message';
-    document.getElementById('spinner').style.display = 'none';
+    } catch (err) {
+      console.error('EmailJS error:', err);
+      showAlert('error', 'Failed to send. Please email hemaluitel5@gmail.com directly.');
+    } finally {
+      btn.disabled = false;
+      document.getElementById('btn-text').textContent = 'Send message';
+      document.getElementById('spinner').style.display = 'none';
+    }
   }
-}
 
+  // EXPOSE to onclick attributes in HTML 
+  window.selectChip   = selectChip;
+  window.pickPurpose  = pickPurpose;
+  window.updateCount  = updateCount;
+  window.handleSubmit = handleSubmit;
+
+}); // end DOMContentLoaded
 </script>
 
 </body>
