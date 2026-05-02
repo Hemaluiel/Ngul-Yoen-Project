@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ngul Yoen – Banking Insights in Bhutan</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -27,10 +27,11 @@
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* font-family: 'DM Sans', sans-serif; */
     background: var(--bg);
     color: var(--text);
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.6;
   }
 
@@ -61,7 +62,7 @@
 
   .nav-links { display: flex; gap: 4px; }
   .nav-links a {
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 500;
     color: var(--muted);
     text-decoration: none;
@@ -75,7 +76,7 @@
   .hero {
     position: relative;
     overflow: hidden;
-    padding: 88px 48px 80px;
+    padding: 30px 48px 40px;
     background: var(--dark);
     color: white;
   }
@@ -90,17 +91,17 @@
     pointer-events: none;
   }
 
-  .hero-inner { position: relative; max-width: 680px; }
+  .hero-inner { position: relative; max-width: 900px; }
   .hero-eyebrow {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 500;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--gold);
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
   .hero-eyebrow::before {
     content: '';
@@ -140,53 +141,37 @@
     background: rgba(255,255,255,0.06);
   }
 
-  /* STATS */
-  .stats-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .stat-item {
-    padding: 28px 32px;
-    border-right: 1px solid var(--border);
-    text-align: center;
-  }
-  .stat-item:last-child { border-right: none; }
-  .stat-num {
-    display: block;
-    font-family: 'Playfair Display', serif;
-    font-size: 40px;
-    font-weight: 700;
-    color: var(--red);
-    line-height: 1;
-    margin-bottom: 6px;
-  }
-  .stat-label { font-size: 12px; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
-
   /* SECTION */
-  .section { padding: 60px 48px; max-width: 1280px; margin: 0 auto; }
+  .section { 
+    padding: 68px 48px; 
+    max-width: 1280px; 
+    margin: 0 auto; 
+  }
   .section-head {
     display: flex;
     align-items: baseline;
     gap: 12px;
+    margin-top: 80px;
     margin-bottom: 28px;
   }
   .section-head h1 {
     font-family: 'Playfair Display', serif;
     font-size: 32px;
     font-weight: 500;
+    margin-left: 20px;
   }
   .section-head h2 {
     font-family: 'Playfair Display', serif;
     font-size: 22px;
-    font-weight: 500;
+    font-weight: 600;
+    margin-left: 20px;
   }
   .section-head span {
-    font-size: 16px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 14px;
     color: var(--muted);
-    font-weight: 400;
+    font-weight: 500;
   }
 
   /* BACK */
@@ -195,10 +180,10 @@
     grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
     gap: 16px;
   }
-  .back{background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 24px;
+  .back {
+    background-color: #efd9d9;
+    border-radius: 20px;
+    padding: 52px;
     cursor: pointer;
     text-decoration: none;
     color: inherit;
@@ -206,39 +191,122 @@
     flex-direction: column;
     transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
   }
-    .back:hover {
+  .back:hover {
     transform: translateY(-3px);
     box-shadow: 0 12px 32px rgba(0,0,0,0.09);
     border-color: rgba(192,57,43,0.25);
   }
-    .back-icon {
+
+  .back h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--dark);
+    line-height: 1.2;
+  }
+
+  /* STORY STYLES inside the back card */
+  .story-subhead {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  .story-divider {
+    width: 40px;
+    height: 2px;
+    background: var(--red);
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+
+  .story-body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    font-weight: 480;
+    line-height: 1.85;
+    margin-bottom: 14px;
+  }
+  .story-milestones {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 20px 0;
+  }
+
+  .story-milestone {
+    background-color: #c6b1b1;
+    border-radius: 4px;
+    padding: 12px;
+  }
+
+  .story-milestone-label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+
+  .story-milestone-text {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.4;
+  }
+
+  .story-sig {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+  }
+
+  .story-avatar {
     width: 40px;
     height: 40px;
-    border-radius: 10px;
+    border-radius: 50%;
+    background: var(--red-light);
+    border: 1px solid var(--red-mid);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
-    margin-bottom: 16px;
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--red);
     flex-shrink: 0;
   }
-  .back h3 { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 24px; font-weight: 500; margin-bottom: 6px; }
-  .back p  { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-size: 16px; line-height: 1.55; flex: 1; }
-  
 
+  .story-sig-name {
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--dark);
+    margin-bottom: 2px;
+  }
+
+  .story-sig-role {
+    font-size: 13px;
+    color: var(--muted);
+  }
 
   /* CARDS GRID */
   .cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
   }
 
   .card {
-    background: var(--surface);
+    /* background: var(--surface); */
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 24px;
+    background-color: #efd9d9;
+    padding: 32px;
     cursor: pointer;
     text-decoration: none;
     color: inherit;
@@ -260,15 +328,15 @@
     align-items: center;
     justify-content: center;
     font-size: 18px;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
     flex-shrink: 0;
   }
 
-  .card h3 { font-size: 15px; font-weight: 500; margin-bottom: 6px; }
-  .card p  { font-size: 13px; color: var(--muted); line-height: 1.55; flex: 1; }
+  .card h3 { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 16px; font-weight: 500; margin-bottom: 6px; }
+  .card p  { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 14px; line-height: 1.55; flex: 1; }
   .card-link {
-    margin-top: 16px;
-    font-size: 13px;
+    margin-top: 10px;
+    font-size: 14px;
     font-weight: 500;
     color: var(--red);
     display: inline-flex;
@@ -345,8 +413,8 @@
   .prog-fill  { height: 3px; background: var(--red); border-radius: 4px; transition: width 0.3s ease; }
 
   /* quiz */
-  .q-meta { font-size: 11px; color: var(--muted); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
-  .q-text  { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 500; margin-bottom: 18px; line-height: 1.45; }
+  .q-meta { font-size: 12px; color: var(--muted); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
+  .q-text  { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 500; margin-bottom: 18px; line-height: 1.45; }
 
   .options { display: flex; flex-direction: column; gap: 8px; }
   .opt-btn {
@@ -355,8 +423,8 @@
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
     padding: 11px 16px;
-    font-size: 13px;
-    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     cursor: pointer;
     transition: border-color 0.15s, background 0.15s, color 0.15s;
     color: var(--text);
@@ -365,10 +433,10 @@
   .opt-btn.selected { border-color: var(--red); background: var(--red-light); color: var(--red); font-weight: 500; }
 
   /* result */
-  .result-wrap { text-align: center; padding: 8px 0 4px; }
-  .result-emoji { font-size: 40px; margin-bottom: 12px; }
-  .result-title { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; margin-bottom: 8px; }
-  .result-desc  { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 16px; }
+  .result-wrap { text-align: center; padding: 2px 0 4px; }
+  .result-emoji { font-size: 40px; margin-top:2px; margin-bottom: 2px; }
+  .result-title { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+  .result-desc  { font-size: 14px; line-height: 1.65; margin-bottom: 16px; }   
   .result-badge {
     display: inline-block;
     padding: 6px 18px;
@@ -412,7 +480,7 @@
     border: none;
     border-radius: var(--radius-sm);
     padding: 10px 22px;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 500;
     font-family: 'DM Sans', sans-serif;
     cursor: pointer;
@@ -424,7 +492,7 @@
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
     padding: 10px 18px;
-    font-size: 13px;
+    font-size: 14px;
     font-family: 'DM Sans', sans-serif;
     cursor: pointer;
     color: var(--muted);
@@ -434,10 +502,11 @@
 
   /* FOOTER */
   footer {
+    background-color: #f5e4e4;
     text-align: center;
     padding: 32px 48px;
     border-top: 1px solid var(--border);
-    font-size: 12px;
+    font-size: 16px;
     color: var(--muted);
     margin-top: 8px;
   }
@@ -447,11 +516,10 @@
   @media (max-width: 640px) {
     .navbar { padding: 0 20px; }
     .hero { padding: 60px 20px 56px; }
-    .stats-row { grid-template-columns: 1fr; }
-    .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
     .section { padding: 40px 20px; }
     .cards-grid { grid-template-columns: 1fr; }
-    .divider { margin: 0 20px; }
+    .back-grid { grid-template-columns: 1fr; }
+    .story-milestones { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -485,42 +553,85 @@
   </div>
 </section>
 
-<!-- STATS
-<div class="stats-row">
-  <div class="stat-item">
-    <span class="stat-num" id="count1">0</span>
-    <div class="stat-label">Respondents</div>
-  </div>
-  <div class="stat-item">
-    <span class="stat-num" id="count2">0</span>
-    <div class="stat-label">Banks included</div>
-  </div>
-  <div class="stat-item">
-    <span class="stat-num" id="count3">0</span>
-    <div class="stat-label">Key factors</div>
-  </div>
-</div> -->
-
-<section class="section">
+<!-- <section class="section"> -->
+<section class="section" style="background: linear-gradient(rgba(250,248,245,0.93), rgba(250,248,245,0.93)), url('https://img.pikbest.com/png-images/20240825/dragon-illustration-vector-art-hand-drawn-on-white-background_10746961.png!f305cw') center/cover no-repeat; max-width: 100%; padding: 68px 250px;">
   <div class="section-head">
     <h1>Kuzu Zangpo!</h1>
     <span>Explore the story behind the project before moving on</span>
   </div>
   <div class="back-grid">
-    <a href="abt.html" class="back">
-      <div class="back-icon" style="background:#fff0ef">📘</div>
-      <h3>Story Behind the project</h3>
-      <p>Hello, I am Hema Luitel, before going through this website, know why I created this website, my personal story behind it. When I was initially enrolled into college, I had to manage my fund by myself. whenever my parents give me some pocket money, I used to finish spending them within a week, sometimes withing one to two days. this practices went for months, after osme months got scolding form my parents as well, I was very curious where my money goes to, when i think about I dont think i spend huge bout the money in my bank account finishes fast like laptop battery. When i checked my bank mini statement, I was able to view last 10 transactions only from that i could not make a clue of where my money goes to. then i decided to download the bank statement, but again, the format and the amount of data contained in the statement made me lost, that time I really wished if bank(Bank of Bhutan) could provide more budgeting features in its mobile banking. Relating this to my project, initially when I was asked to choose a project to work I suddenly remwmber my struggle with fund management during my initial days in college, I was wondering how other students and poeple around me manages their fund. Which bank how many bank account do they have? Are thay satisfied with their banking needs?  Are they also facing challenges with their bank? If so what could be it? What could be the solution to them? Will I be Able to help them find solution to their bank related challenges?.</p>
-      <!-- <span class="-link">Read more →</span> -->
+    <a class="back">
+      <h3>Where did all my money go?</h3>
+      <p class="story-subhead">A college student's frustration that became a mission.</p>
+      <div class="story-divider"></div>
+      <p class="story-body">
+       Hello, I’m Hema Luitel      
+      </p>
+      <p class="story-body">
+       Before you explore this website, I want to share the story behind why I created it—because this platform was not just built as a project, but as a solution to a real problem I personally faced.
+      </p>
+      <p class="story-body">
+        When I first started college, I struggled to manage my money. No matter how careful I thought I was, my balance would disappear quickly—and I had no clear idea where it was going. Bank mini statements showed too little, and full statements were too complex to understand.
+      </p>
+      <p class="story-body">
+        At that moment, I wished my bank provided better tools—something that could help me understand my spending patterns, manage my budget, and make smarter financial decisions.
+      </p>
+      <p class="story-body">
+        That experience stayed with me<br>
+        Later, when I was asked to choose a project, I immediately remembered this struggle. It made me curious—not just about my own situation, but about others as well:<br>
+        → How do other students manage their money?<br>
+        → What factors influence people’s choice of banks?<br>
+        → Are they satisfied with their banking services?<br>
+        → Do they face similar challenges?<br>
+        → And most importantly—can these problems be solved?<br>
+        These questions became the foundation of my project.
+      </p>
+      <p class="story-body">
+        I began exploring real customer experiences, analyzing customer banking choices and factors affecting them, and identifying common challenges people face with thier banking services. Through this journey, I realized that many people struggle with the silimar issues—lack of clarity, poor financial and banking knowledge, and limited banking tools to make informed decisions
+      </p>
+      <p class="story-body">
+        That’s when I decided to build this platform.
+      </p>
+      <p class="story-body">
+       This website is designed to act as a personal financial assistant—helping users:<br>
+
+        → Stay updated with banking information<br>
+        → Compare different banks and choose what suits their needs<br>
+        → Analyze their bank statements to understand spending patterns<br>
+        → Make better financial decisions with clarity and confidence<br>
+      </p>
+      <p class="story-body">
+        What started as my personal problem has now become a solution I hope can help many others.
+      </p>
+      <div class="story-milestones">
+        <div class="story-milestone">
+          <div class="story-milestone-label">The problem</div>
+          <div class="story-milestone-text">No visibility into personal spending habits</div>
+        </div>
+        <div class="story-milestone">
+          <div class="story-milestone-label">The question</div>
+          <div class="story-milestone-text">How do others manage their banking needs?</div>
+        </div>
+        <div class="story-milestone">
+          <div class="story-milestone-label">The mission</div>
+          <div class="story-milestone-text">Build a tool that actually helps people</div>
+        </div>
+      </div>
+      <div class="story-sig">
+        <div class="story-avatar">HL</div>
+        <div>
+          <div class="story-sig-name">Hema Luitel</div>
+          <div class="story-sig-role">Creator &amp; Developer · GCBS Student · BDS Intern</div>
+        </div>
+      </div>
+
     </a>
   </div>
-</section>    
 
-<!-- EXPLORE REPORT AND FINSINGS -->
-<section class="section">
+  <!-- EXPLORE REPORT AND FINDINGS -->
   <div class="section-head">
     <h2>Explore the insights</h2>
-    <span>Reports, findings & more</span>
+    <span>Reports, findings and more</span>
   </div>
   <div class="cards-grid">
 
@@ -546,13 +657,8 @@
     </a>
 
   </div>
-</section>
 
-<div class="divider"></div>
-
-
-<!-- EXPLORE SOLUTIONS-->
-<section class="section">
+  <!-- EXPLORE SOLUTIONS-->
   <div class="section-head">
     <h2>Explore the solutions</h2>
     <span>Be financially expert</span>
@@ -568,7 +674,7 @@
 
     <a href="finsight.html" class="card">
       <div class="card-icon" style="background:#fffbee">📈</div>
-      <h3>FinSinghts</h3>
+      <h3>FinSights</h3>
       <p>Upload your bank statement and get automatic categorisation of every debit expense</p>
       <span class="card-link">Do it →</span>
     </a>
@@ -577,16 +683,12 @@
       <div class="card-icon" style="background:#fffbee">🚀</div>
       <h3>mBOB Prototype</h3>
       <p>Explore story-based prototype proposing four smart financial features for mBOB</p>
-      <span class="card-link"> View prototype →</span>
+      <span class="card-link">View prototype →</span>
     </a>
 
   </div>
-</section>
 
-<div class="divider"></div>
-
-<!-- INTERACTIVE -->
-<section class="section">
+  <!-- INTERACTIVE -->
   <div class="section-head">
     <h2>Try it yourself</h2>
     <span>Interactive experiences</span>
@@ -658,31 +760,34 @@
 
 <script>
 // COUNTER ANIMATION
-function animCount(id, target, duration) {
-  const el = document.getElementById(id);
-  let start = null;
-  function step(ts) {
-    if (!start) start = ts;
-    const p = Math.min((ts - start) / duration, 1);
-    const ease = 1 - Math.pow(1 - p, 3);
-    el.textContent = Math.round(ease * target);
-    if (p < 1) requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
-}
+// function animCount(id, target, duration) {
+//   const el = document.getElementById(id);
+//   let start = null;
+//   function step(ts) {
+//     if (!start) start = ts;
+//     const p = Math.min((ts - start) / duration, 1);
+//     const ease = 1 - Math.pow(1 - p, 3);
+//     el.textContent = Math.round(ease * target);
+//     if (p < 1) requestAnimationFrame(step);
+//   }
+//   requestAnimationFrame(step);
+// }
 
 // Trigger on scroll into view
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      animCount('count1', 111, 1400);
-      animCount('count2', 6, 900);
-      animCount('count3', 4, 700);
-      observer.disconnect();
-    }
-  });
-}, { threshold: 0.3 });
-observer.observe(document.querySelector('.stats-row'));
+// const statsRow = document.querySelector('.stats-row');
+// if (statsRow) {
+//   const observer = new IntersectionObserver((entries) => {
+//     entries.forEach(e => {
+//       if (e.isIntersecting) {
+//         animCount('count1', 111, 1400);
+//         animCount('count2', 6, 900);
+//         animCount('count3', 4, 700);
+//         observer.disconnect();
+//       }
+//     });
+//   }, { threshold: 0.3 });
+//   observer.observe(statsRow);
+// }
 
 // BANK FINDER QUIZ
 const quizQs = [
@@ -774,7 +879,6 @@ function nextQ() {
 }
 
 function showQuizResult() {
-  // tally bank scores
   const tally = [0,0,0,0,0,0];
   answers.forEach((ans, qi) => { tally[quizScoreMap[qi][ans]]++; });
   const best = tally.indexOf(Math.max(...tally));
@@ -796,7 +900,7 @@ function showQuizResult() {
 
 function closeQuiz() { document.getElementById('quizOverlay').classList.remove('open'); }
 
-// DO YOU KNOW QUIZ 
+// DO YOU KNOW QUIZ
 const dykQs = [
   { q: 'Which is the oldest bank in Bhutan?',
     opts: ['Bhutan National Bank', 'Bank of Bhutan', 'Druk PNB', 'T Bank'],
@@ -918,7 +1022,6 @@ function showDykScore() {
 
 function closeDyk() { document.getElementById('dykOverlay').classList.remove('open'); }
 
-// Close modals on overlay click
 document.getElementById('quizOverlay').addEventListener('click', function(e) {
   if (e.target === this) closeQuiz();
 });
@@ -928,7 +1031,6 @@ document.getElementById('dykOverlay').addEventListener('click', function(e) {
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') { closeQuiz(); closeDyk(); }
 });
-
 </script>
 </body>
 </html>
