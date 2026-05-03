@@ -56,7 +56,7 @@
   .hero-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--fs-gold); }
 
   .hero-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-  .hero-brand-logo { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 700; line-height: 1.15; }
+  .hero-brand-logo { font-family: 'Playfair Display', serif; font-size: clamp(32px, 5vw, 52px); font-weight: 700; line-height: 1.15; }
   .hero-brand-logo .fin { color: rgb(254, 253, 253); }
   .hero-brand-logo .sight { color: var(--fs-gold); }
   .hero-brand-sub { font-size: 13px; color: rgb(239, 222, 222); border-left: 1px solid rgba(255,255,255,0.15); padding-left: 12px; line-height: 1.4; }
@@ -67,8 +67,8 @@
   .hero-cta:hover { background: #246224; transform: translateY(-1px); }
   .hero-cta-ghost { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.8); text-decoration: none; padding: 13px 20px; border-radius: var(--radius-sm); font-size: 13px; font-weight: 500; border: 1px solid rgba(255,255,255,0.12); transition: background 0.15s; }
   .hero-cta-ghost:hover { background: rgba(255,255,255,0.12); }
-  .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
-  .hero-tag { font-size: 14px; padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.12); color: rgb(243, 232, 232); background: rgba(255,255,255,0.05); }
+  /* .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+  .hero-tag { font-size: 14px; padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.12); color: rgb(243, 232, 232); background: rgba(255,255,255,0.05); } */
 
   /* ANCHOR NAV */
   .anchor-nav { background-color: #f5e4e4; border-bottom: 1px solid var(--border); padding: 0 48px; display: flex; overflow-x: auto; }
@@ -182,13 +182,13 @@
       <a href="https://newfornow-production.up.railway.app/" target="_blank" class="hero-cta">Try FinSight now →</a>
       <a href="#how-it-works" class="hero-cta-ghost">See how it works ↓</a>
     </div>
-    <div class="hero-tags">
+    <!-- <div class="hero-tags">
       <span class="hero-tag">🤖 AI-powered categorization</span>
       <span class="hero-tag">📄 PDF statement upload</span>
       <span class="hero-tag">📊 Spending breakdown</span>
       <span class="hero-tag">🏦 Bhutan banking compatible</span>
       <span class="hero-tag">⚡ Instant results</span>
-    </div>
+    </div> -->
   </div>
 </div>
 
