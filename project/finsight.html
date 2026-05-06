@@ -28,17 +28,18 @@
     --fs-accent: #2d6a2d;
     --fs-gold: #c9a227;
     --fs-light: #f0f5f0;
+    --sidebar-w: 220px;
   }
 
   html { scroll-behavior: smooth; }
   body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; }
 
   /* NAVBAR*/
-  .navbar { position: sticky; top: 0; z-index: 50; display: flex; justify-content: space-between; align-items: center; padding: 0 48px; height: 64px; background: rgba(250,248,245,0.88); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  .navbar { position: sticky; top: 0; z-index: 50; display: flex; justify-content: space-between; align-items: center; padding: 0 48px; height: 64px;     background: rgba(250,248,245,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
   .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--dark); letter-spacing: -0.02em; text-decoration: none; }
   .logo em { color: var(--red); font-style: normal; }
   .nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
-  .nav-links a { font-size: 16px; font-weight: 500; color: var(--muted); text-decoration: none; padding: 7px 14px; border-radius: 20px; transition: background 0.18s, color 0.18s; }
+  .nav-links a { font-size: 14px; font-weight: 500; color: var(--muted); text-decoration: none; padding: 7px 12px; border-radius: 20px; transition: background 0.18s, color 0.18s; white-space: nowrap; }
   .nav-links a:hover { background: var(--red-light); color: var(--red); }
   .nav-links a.active { color: var(--red); background: var(--red-light); }
 
@@ -76,8 +77,12 @@
   .anchor-nav a:hover { color: var(--fs-accent); border-bottom-color: rgba(45,106,45,0.3); }
 
   /* MAIN */
-  .main { max-width: 980px; margin: 0 auto; padding: 56px 48px 80px; display: flex; flex-direction: column; gap: 48px; }
-
+  .main { width: 100%; max-width: 100%; margin: 0 auto; padding: 52px 200px; display: flex; flex-direction: column; gap: 32px;
+    background:
+      linear-gradient(rgba(250,248,245,0.93), rgba(250,248,245,0.93)),
+      url('https://img.pikbest.com/png-images/20240825/dragon-illustration-vector-art-hand-drawn-on-white-background_10746961.png!f305cw')
+      center/cover no-repeat;
+  }
   /* SECTION CARD */
   .sc { background-color: #efd9d9; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 90px; transition: box-shadow 0.2s; }
   .sc:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.06); }

@@ -23,17 +23,18 @@
     --radius-sm: 8px;
     --bob: #0d2b45;
     --bob-light: #e8f0f7;
+    --sidebar-w: 220px;
   }
 
   html { scroll-behavior: smooth; }
   body { font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; }
 
   /* NAVBAR */
-  .navbar { position: sticky; top: 0; z-index: 50; display: flex; justify-content: space-between; align-items: center; padding: 0 48px; height: 64px; background: rgba(250,248,245,0.88); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  .navbar { position: sticky; top: 0; z-index: 50; display: flex; justify-content: space-between; align-items: center; padding: 0 48px; height: 64px; background: rgba(250,248,245,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
   .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--dark); letter-spacing: -0.02em; text-decoration: none; }
   .logo em { color: var(--red); font-style: normal; }
   .nav-links { display: flex; gap: 4px; }
-  .nav-links a { font-size: 16px; font-weight: 500; color: var(--muted); text-decoration: none; padding: 7px 14px; border-radius: 20px; transition: background 0.18s, color 0.18s; }
+  .nav-links a { font-size: 14px; font-weight: 500; color: var(--muted); text-decoration: none; padding: 7px 12px; border-radius: 20px; transition: background 0.18s, color 0.18s; white-space: nowrap; }
   .nav-links a:hover { background: var(--red-light); color: var(--red); }
   .nav-links a.active { color: var(--red); background: var(--red-light); }
 
@@ -43,7 +44,7 @@
   .hero-inner { position: relative; max-width: 1500px; }
   .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
   .hero-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
-  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(32px, 5vw, 48px); font-weight: 700; line-height: 1.12; letter-spacing: -0.02em; margin-bottom: 14px; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 5vw, 52px); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 14px; }
   .hero h1 span { color: #e8755a; }
   .hero p { font-size: 16px; color: whitesmoke; line-height: 1.7; max-width: 1000px; margin-bottom: 20px; }
   .hero-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--red); color: white; text-decoration: none; padding: 13px 24px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; transition: background 0.15s, transform 0.15s; }
@@ -52,13 +53,23 @@
   .hero-tag { font-size: 12px; padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.06); } */
 
   /* ANCHOR NAV */
-  .anchor-nav { background: #f5e4e4; border-bottom: 1px solid var(--border); padding: 0 48px; display: flex; overflow-x: auto; }
-  .anchor-nav a { font-size: 14px; font-weight: 500; color: var(--muted); text-decoration: none; padding: 14px 18px; border-bottom: 2px solid transparent; white-space: nowrap; transition: color 0.15s, border-color 0.15s; }
+  /* ── ANCHOR NAV ── */
+  .anchor-nav {
+    background: var(--red-light); border-bottom: 1px solid var(--border);
+    padding: 0 48px; display: flex; overflow-x: auto;
+    position: sticky; top: 64px; z-index: 40;
+  }
+  .anchor-nav a { font-family: 'Segoe UI', sans-serif; font-size: 15px; font-weight: 500; color: var(--muted); text-decoration: none; padding: 14px 18px; border-bottom: 2px solid transparent; white-space: nowrap; transition: color 0.15s, border-color 0.15s; }
   .anchor-nav a:hover { color: var(--red); border-bottom-color: var(--red-mid); }
+  .anchor-nav a.active-anchor { color: var(--red); border-bottom-color: var(--red); }
 
   /* MAIN */
-  .main { max-width: 960px; margin: 0 auto; padding: 56px 48px 80px; display: flex; flex-direction: column; gap: 48px; }
-
+  .main { width: 100%; max-width: 100%; margin: 0 auto; padding: 52px 200px; display: flex; flex-direction: column; gap: 32px;
+    background:
+      linear-gradient(rgba(250,248,245,0.93), rgba(250,248,245,0.93)),
+      url('https://img.pikbest.com/png-images/20240825/dragon-illustration-vector-art-hand-drawn-on-white-background_10746961.png!f305cw')
+      center/cover no-repeat;
+  }
   /* SECTION CARD */
   .section-card { background-color: #efd9d9; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 90px; }
   .section-head { display: flex; align-items: flex-start; gap: 14px; padding: 22px 28px 18px; border-bottom: 1px solid var(--border); }
