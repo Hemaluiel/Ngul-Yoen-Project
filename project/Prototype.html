@@ -7,23 +7,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --red: #c0392b;
-    --red-light: #fff0ef;
+    --red: #c0392b; 
+    --red-light: #fff0ef; 
     --red-mid: #f5c6c6;
-    --gold: #d4a820;
-    --dark: #1a1612;
-    --text: #2c2420;
+    --gold: #d4a820; 
+    --dark: #1a1612; 
+    --text: #2c2420; 
     --muted: #7a6e6a;
-    --border: rgba(0,0,0,0.09);
-    --surface: #ffffff;
+    --border: rgba(0,0,0,0.09); 
+    --surface: #ffffff; 
     --bg: #faf8f5;
-    --radius: 14px;
-    --radius-sm: 8px;
-    --bob: #0d2b45;
+    --radius: 14px; 
+    --radius-sm: 8px; 
+    --bob: #0d2b45; 
     --bob-light: #e8f0f7;
-    --sidebar-w: 220px;
   }
 
   html { scroll-behavior: smooth; }
@@ -38,44 +36,61 @@
   .nav-links a:hover { background: var(--red-light); color: var(--red); }
   .nav-links a.active { color: var(--red); background: var(--red-light); }
 
+  /* HAMBURGER */
+  .ham-btn { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; flex-shrink: 0; }
+  .ham-btn span { display: block; width: 20px; height: 2px; background: var(--dark); border-radius: 2px; }
+
+  /* MOBILE DROPDOWN */
+   .mobile-nav {
+    display: none;
+    flex-direction: column;
+    position: fixed;   
+    top: 54px;            
+    right: 16px;         
+    width: 220px;        
+    background: rgba(207, 194, 194, 0.85);;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(129, 115, 115, 0.1);
+    padding: 8px;
+    z-index: 100;
+  }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a { font-size: 14px; font-weight: 500; color: black; text-decoration: none; padding: 6px 10px; border-radius: 8px; transition: background 0.15s, color 0.15s; gap: 0px;}
+  .mobile-nav a:hover { background: var(--red-light); color: var(--red); }
+  .mob-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); padding: 8px 10px 4px; }
+
   /* HERO */
-  .hero { position: relative; overflow: hidden; padding: 30px 48px 40px; background: var(--bob); color: white; }
-  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 80% 30%, rgb(1, 4, 7) 0%, transparent 65%), radial-gradient(ellipse 40% 60% at 5% 80%, rgb(0, 0, 5) 0%, transparent 60%); pointer-events: none; }
-  .hero-inner { position: relative; max-width: 1500px; }
-  .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .hero { position: relative; overflow: hidden; padding: 26px 48px 38px; background: var(--bob); color: white; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 80% 30%, rgb(1,4,7) 0%, transparent 65%), radial-gradient(ellipse 40% 60% at 5% 80%, rgb(0,0,5) 0%, transparent 60%); pointer-events: none; }
+  .hero-inner { position: relative; max-width: 860px; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
   .hero-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
-  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 5vw, 52px); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 14px; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(26px, 5vw, 44px); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 10px; }
   .hero h1 span { color: #e8755a; }
-  .hero p { font-size: 16px; color: whitesmoke; line-height: 1.7; max-width: 1000px; margin-bottom: 20px; }
-  .hero-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--red); color: white; text-decoration: none; padding: 13px 24px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; transition: background 0.15s, transform 0.15s; }
+  .hero p { font-size: 14px; color: whitesmoke; line-height: 1.7; margin-bottom: 12px; max-width: 1500px; font-style: italic; }
+  .hero-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--red); color: white; text-decoration: none; padding: 6px 22px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; transition: background 0.15s, transform 0.15s; }
   .hero-cta:hover { background: #a93226; transform: translateY(-1px); }
-  /* .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
-  .hero-tag { font-size: 12px; padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.06); } */
 
   /* ANCHOR NAV */
-  /* ── ANCHOR NAV ── */
-  .anchor-nav {
-    background: var(--red-light); border-bottom: 1px solid var(--border);
-    padding: 0 48px; display: flex; overflow-x: auto;
-    position: sticky; top: 64px; z-index: 40;
-  }
-  .anchor-nav a { font-family: 'Segoe UI', sans-serif; font-size: 15px; font-weight: 500; color: var(--muted); text-decoration: none; padding: 14px 18px; border-bottom: 2px solid transparent; white-space: nowrap; transition: color 0.15s, border-color 0.15s; }
+  .anchor-nav { background: var(--red-light); border-bottom: 1px solid var(--border); padding: 0 48px; display: flex; overflow-x: auto; position: sticky; top: 64px; z-index: 40; }
+  .anchor-nav a { font-family: 'Segoe UI', sans-serif; font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; padding: 14px 18px; border-bottom: 2px solid transparent; white-space: nowrap; transition: color 0.15s, border-color 0.15s; }
   .anchor-nav a:hover { color: var(--red); border-bottom-color: var(--red-mid); }
-  .anchor-nav a.active-anchor { color: var(--red); border-bottom-color: var(--red); }
 
-  /* MAIN */
-  .main { width: 100%; max-width: 100%; margin: 0 auto; padding: 52px 200px; display: flex; flex-direction: column; gap: 32px;
-    background:
-      linear-gradient(rgba(250,248,245,0.93), rgba(250,248,245,0.93)),
-      url('https://img.pikbest.com/png-images/20240825/dragon-illustration-vector-art-hand-drawn-on-white-background_10746961.png!f305cw')
-      center/cover no-repeat;
+  /* MAIN — padding in CSS only */
+  .main {
+    width: 100%; max-width: 100%; padding: 52px 160px;
+    display: flex; flex-direction: column; gap: 32px;
+    background: linear-gradient(rgba(250,248,245,0.93), rgba(250,248,245,0.93)),
+      url('https://img.pikbest.com/png-images/20240825/dragon-illustration-vector-art-hand-drawn-on-white-background_10746961.png!f305cw') center/cover no-repeat;
   }
+
   /* SECTION CARD */
-  .section-card { background-color: #efd9d9; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 90px; }
+  .section-card { background-color: #efd9d9; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 110px; }
   .section-head { display: flex; align-items: flex-start; gap: 14px; padding: 22px 28px 18px; border-bottom: 1px solid var(--border); }
   .section-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
   .section-head h2 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 500; margin-bottom: 3px; }
-  .section-head p { font-size: 14px; font-style: italic; color: var(--muted); }
+  .section-head p { font-size: 13px; font-style: italic; color: var(--muted); }
   .section-body { padding: 28px; }
 
   /* PROTOTYPE EMBED */
@@ -83,64 +98,59 @@
   .proto-toolbar { padding: 10px 16px; background: var(--bg); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
   .proto-dots { display: flex; gap: 5px; }
   .proto-dot { width: 10px; height: 10px; border-radius: 50%; }
-  .proto-url { flex: 1; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 4px 10px; font-size: 14px; color: var(--muted); }
-  .proto-open-btn { font-size: 12px; font-weight: 500; color: var(--bob); text-decoration: none; padding: 4px 12px; border: 1px solid var(--border); border-radius: 4px; background: var(--surface); white-space: nowrap; transition: background 0.15s; }
+  .proto-url { flex: 1; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 4px 10px; font-size: 13px; color: var(--muted); }
+  .proto-open-btn { font-size: 12px; font-weight: 500; color: var(--bob); text-decoration: none; padding: 4px 12px; border: 1px solid var(--border); border-radius: 4px; background: var(--surface); white-space: nowrap; }
   .proto-open-btn:hover { background: var(--bob-light); }
-  .proto-frame-wrap iframe { width: 100%; height: 640px; border: none; display: block; }
-  .proto-note { margin-top: 12px; font-size: 14px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+  .proto-frame-wrap iframe { width: 100%; height: 600px; border: none; display: block; }
+  .proto-note { margin-top: 12px; font-size: 13px; color: var(--muted); }
+  .proto-note a { color: var(--bob); }
 
   /* FEATURE GRID */
   .feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 4px; }
-  .feature-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 18px; transition: border-color 0.15s, box-shadow 0.15s; }
+  .feature-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 18px; }
   .feature-card:hover { border-color: rgba(13,43,69,0.2); box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
   .feature-card-top { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
   .feature-icon { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
-  .feature-card h3 { font-size: 16px; font-weight: 600; }
-  .feature-card p { font-size: 14px; font-style: italic; line-height: 1.6; }
+  .feature-card h3 { font-size: 15px; font-weight: 600; }
+  .feature-card p { font-size: 13px; font-style: italic; line-height: 1.6; }
   .feature-list { list-style: none; margin-top: 8px; display: flex; flex-direction: column; gap: 5px; }
-  .feature-list li { font-size: 14px;  display: flex; gap: 7px; align-items: flex-start; font-style: italic; }
-  .feature-list li::before { content: ''; display: block; width: 5px; height: 5px; border-radius: 50%; background: var(--bob); flex-shrink: 0; margin-top: 10px; }
+  .feature-list li { font-size: 13px; display: flex; gap: 7px; align-items: flex-start; font-style: italic; }
+  .feature-list li::before { content: ''; display: block; width: 5px; height: 5px; border-radius: 50%; background: var(--bob); flex-shrink: 0; margin-top: 7px; }
 
   /* STORY */
-  .story-body { font-size: 16px; color: #3a3030; line-height: 1.85; font-style: italic;}
+  .story-body { font-size: 15px; color: #3a3030; line-height: 1.85; font-style: italic; }
   .story-body p { margin-bottom: 16px; }
   .story-body p:last-child { margin-bottom: 0; }
+  .characters { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
+  .char-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 14px; display: flex; align-items: center; gap: 10px; }
+  .char-avatar { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 700; color: white; flex-shrink: 0; }
+  .char-info strong { display: block; font-size: 14px; font-weight: 500; }
+  .char-info span { font-size: 12px; color: var(--muted); }
+  .dialogue { background: var(--bob-light); border-left: 3px solid var(--bob); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 12px 16px; margin: 12px 0; font-style: italic; font-size: 14px; color: #2c2420; line-height: 1.65; }
+  .dialogue strong { color: var(--bob); font-style: normal; font-size: 12px; display: block; margin-bottom: 4px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
+  .story-feature { background: var(--red-light); border: 1px solid var(--red-mid); border-radius: var(--radius-sm); padding: 14px 16px; margin: 14px 0; }
+  .story-feature-label { font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; color: var(--red); margin-bottom: 6px; font-style: normal; }
+  .story-feature p { font-size: 14px; color: black; margin: 0; line-height: 1.6; }
 
-  /* characters strip */
-  .characters { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 28px; }
-  .char-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px 16px; display: flex; align-items: center; gap: 10px; }
-  .char-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; color: white; flex-shrink: 0; }
-  .char-info strong { display: block; font-size: 16px; font-weight: 500; }
-  .char-info span { font-size: 14px; color: var(--muted); }
-
-  /* dialogue style */
-  .dialogue { background: var(--bob-light); border-left: 3px solid var(--bob); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 12px 16px; margin: 14px 0; font-style: italic; font-size: 16px; color: #2c2420; line-height: 1.65; }
-  .dialogue strong { color: var(--bob); font-style: normal; font-size: 13px; display: block; margin-bottom: 4px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
-
-  /* feature highlight box */
-  .story-feature { background: var(--red-light); border: 1px solid var(--red-mid); border-radius: var(--radius-sm); padding: 14px 16px; margin: 16px 0; }
-  .story-feature-label { font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; color: var(--red); margin-bottom: 6px; font-style: normal;}
-  .story-feature p { font-size: 16px; color: black; margin: 0; line-height: 1.6; }
-
-  /* wish list */
-  .wish-list { display: flex; flex-direction: column; gap: 14px; margin-top: 8px; }
-  .wish-item { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 16px; display: flex; gap: 12px; align-items: flex-start; transition: border-color 0.15s; }
+  /* WISH LIST */
+  .wish-list { display: flex; flex-direction: column; gap: 12px; }
+  .wish-item { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 16px; display: flex; gap: 12px; align-items: flex-start; }
   .wish-item:hover { border-color: var(--red-mid); }
   .wish-num { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--red); flex-shrink: 0; line-height: 1; padding-top: 1px; min-width: 22px; }
-  .wish-text strong { display: block; font-size: 16px; font-weight: 500; margin-bottom: 3px; }
-  .wish-text p { font-size: 16px; color: rgba(0, 0, 0, 0.84); line-height: 1.55; margin: 0; font-style: italic; }
+  .wish-text strong { display: block; font-size: 14px; font-weight: 500; margin-bottom: 3px; }
+  .wish-text p { font-size: 13px; color: var(--muted); line-height: 1.55; margin: 0; font-style: italic; }
 
-  /* dev notes */
-  .dev-note { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px 18px; display: flex; gap: 12px; align-items: flex-start; }
+  /* DEV NOTES */
+  .dev-note { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 15px 16px; display: flex; gap: 12px; align-items: flex-start; }
   .dev-note-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
-  .dev-note-text { font-size: 16px; color: #4a4040; line-height: 1.65; font-style: italic; }
+  .dev-note-text { font-size: 14px; color: #4a4040; line-height: 1.65; font-style: italic; }
   .dev-note-text strong { color: var(--text); font-style: normal; }
 
   /* CTA BANNER */
-  .cta-banner { background: var(--bob); border-radius: var(--radius); padding: 32px 36px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-  .cta-banner-text strong { display: block; font-family: 'Playfair Display', serif; font-size: 20px; color: white; margin-bottom: 6px; }
-  .cta-banner-text p { font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.6; max-width: 800px; font-style: italic; }
-  .cta-btn { background: var(--red); color: white; text-decoration: none; border-radius: var(--radius-sm); padding: 12px 24px; font-size: 13px; font-weight: 500; white-space: nowrap; transition: background 0.15s; }
+  .cta-banner { background: var(--bob); border-radius: var(--radius); padding: 28px 32px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+  .cta-banner-text strong { display: block; font-family: 'Playfair Display', serif; font-size: 18px; color: white; margin-bottom: 6px; }
+  .cta-banner-text p { font-size: 13px; font-style: italic; color: rgba(255,255,255,0.55); line-height: 1.6; }
+  .cta-btn { background: var(--red); color: white; text-decoration: none; border-radius: var(--radius-sm); padding: 12px 22px; font-size: 13px; font-weight: 500; white-space: nowrap; transition: background 0.15s; }
   .cta-btn:hover { background: #a93226; }
 
   /* BACK TO TOP */
@@ -149,21 +159,41 @@
   #back-top:hover { background: var(--red); }
 
   /* FOOTER */
-  footer { background-color: #f5e4e4; text-align: center; padding: 32px 48px; border-top: 1px solid var(--border); font-size: 16px; align-items: center; }
+  footer { background-color: #f5e4e4; text-align: center; padding: 28px 48px; border-top: 1px solid var(--border); font-size: 13px; }
   footer strong { color: var(--text); font-weight: 500; }
-  /* footer a { color: var(--muted); text-decoration: none; font-size: 12px; transition: color 0.15s; }
-  footer a:hover { color: var(--red); } */
 
   /* RESPONSIVE */
-  @media (max-width: 680px) {
-    .navbar { padding: 0 20px; }
-    .hero { padding: 52px 20px 48px; }
-    .anchor-nav { padding: 0 8px; }
-    .main { padding: 32px 16px 60px; gap: 28px; }
-    .section-body { padding: 20px; }
+  @media (max-width: 1400px) { .main { padding: 48px 80px; } }
+  @media (max-width: 1024px) {
+    .navbar { padding: 0 24px; }
+    .nav-links a { font-size: 12px; padding: 6px 9px; }
+    .hero { padding: 24px 32px 36px; }
+    .anchor-nav { padding: 0 16px; }
+    .main { padding: 40px 40px; }
+    footer { padding: 24px 32px; }
+  }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .ham-btn { display: flex; }
+    .navbar { padding: 0 16px; height: 54px; }
+    .mobile-nav { top: 54px; }
+    .anchor-nav { top: 54px; padding: 0 4px; }
+    .anchor-nav a { font-size: 12px; padding: 11px 10px; }
+    .hero { padding: 20px 20px 32px; }
+    .hero h1 { font-size: 24px; }
+    .hero p { font-size: 13px; }
+    /* KEY FIX */
+    .main { padding: 24px 16px 48px; gap: 20px; }
+    .section-body { padding: 18px 16px; }
     .feature-grid { grid-template-columns: 1fr; }
+    .proto-frame-wrap iframe { height: 420px; }
     .cta-banner { flex-direction: column; }
-    footer { flex-direction: column; gap: 10px; }
+    footer { padding: 20px 16px; font-size: 13px; }
+  }
+  @media (max-width: 380px) {
+    .hero h1 { font-size: 20px; }
+    .main { padding: 16px 12px 40px; }
+    .proto-frame-wrap iframe { height: 340px; }
   }
 </style>
 </head>
@@ -177,11 +207,26 @@
     <a href="abt.html">About</a>
     <a href="rpfd.html">Report & Findings</a>
     <a href="banking1.html">Banking Insights</a>
-    <a href="prototype.html" class="active">mBOB Prototype</a>
+    <a href="Prototype.html" class="active">mBOB Prototype</a>
     <a href="finsight.html">FinSight</a>
     <a href="ct1.html">Contact Us</a>
   </div>
+  <button class="ham-btn" onclick="toggleMobileNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE DROPDOWN -->
+<div class="mobile-nav" id="mobile-nav">
+  <div class="mob-label">Navigate</div>
+  <a href="index.html" onclick="closeMobileNav()">🏠 Home</a>
+  <a href="abt.html" onclick="closeMobileNav()">📘 About Us</a>
+  <a href="rpfd.html" onclick="closeMobileNav()">📊 Report & Findings</a>
+  <a href="banking1.html" onclick="closeMobileNav()">🏦 Banking Insights</a>
+  <a href="Prototype.html" onclick="closeMobileNav()">🚀 mBOB Prototype</a>
+  <a href="finsight.html" onclick="closeMobileNav()">🤖 FinSight</a>
+  <a href="ct1.html" onclick="closeMobileNav()">✉️ Contact Us</a>
+</div>
 
 <!-- HERO -->
 <div class="hero">
@@ -190,12 +235,6 @@
     <h1>mBOB <span>Feature Upgrade</span><br>Prototype</h1>
     <p>A student-driven concept prototype proposing four smart financial features for the mBOB mobile banking app — born from a story: Conversation at a college canteen in Gedu.</p>
     <a href="https://prottoo.vercel.app/" target="_blank" class="hero-cta">Open live prototype →</a>
-    <!-- <div class="hero-tags">
-      <span class="hero-tag">Budgeting & Expense Tracking</span>
-      <span class="hero-tag">Smart Categorization</span>
-      <span class="hero-tag">Goal-Based Pockets</span>
-      <span class="hero-tag">Enhanced Mini Statement</span>
-    </div> -->
   </div>
 </div>
 
@@ -209,16 +248,13 @@
 </div>
 
 <!-- MAIN -->
-<main class="main" style="background: linear-gradient(rgba(250,248,245,0.93), rgba(250,248,245,0.93)), url('https://img.pikbest.com/png-images/20240825/dragon-illustration-vector-art-hand-drawn-on-white-background_10746961.png!f305cw') center/cover no-repeat; max-width: 100%; padding: 68px 250px;">
+<main class="main">
 
   <!-- PROTOTYPE EMBED -->
   <div class="section-card" id="prototype">
     <div class="section-head">
       <div class="section-icon" style="background:#e8f0f7">🚀</div>
-      <div>
-        <h2>Live prototype</h2>
-        <p>Interactive mBOB feature flow — explore all four proposed features</p>
-      </div>
+      <div><h2>Live prototype</h2><p>Interactive mBOB feature flow — explore all four proposed features</p></div>
     </div>
     <div class="section-body">
       <div class="proto-frame-wrap">
@@ -233,9 +269,7 @@
         </div>
         <iframe src="https://prottoo.vercel.app/" title="mBOB Feature Flow Prototype" allowfullscreen></iframe>
       </div>
-      <div class="proto-note">
-        💡 If the prototype doesn't load in the frame, <a href="https://prottoo.vercel.app/" target="_blank" style="color:var(--bob)">open it directly here →</a>
-      </div>
+      <div class="proto-note">💡 If the prototype doesn't load, <a href="https://prottoo.vercel.app/" target="_blank">open it directly here →</a></div>
     </div>
   </div>
 
@@ -243,19 +277,12 @@
   <div class="section-card" id="features">
     <div class="section-head">
       <div class="section-icon" style="background:#fff0ef">✨</div>
-      <div>
-        <h2>Four proposed features</h2>
-        <p>What customers want mBOB to become — a smart financial companion</p>
-      </div>
+      <div><h2>Four proposed features</h2><p>What customers want mBOB to become — a smart financial companion</p></div>
     </div>
     <div class="section-body">
       <div class="feature-grid">
-
         <div class="feature-card">
-          <div class="feature-card-top">
-            <div class="feature-icon" style="background:#e8f0f7">🏷️</div>
-            <h3>Smart Expense Categorization</h3>
-          </div>
+          <div class="feature-card-top"><div class="feature-icon" style="background:#e8f0f7">🏷️</div><h3>Smart Expense Categorization</h3></div>
           <p>Automatically suggests spending categories based on transaction patterns.</p>
           <ul class="feature-list">
             <li>Auto-suggests: Food & Drinks, Donations and Contributions, Transport, Personal Transfer</li>
@@ -263,12 +290,8 @@
             <li>Select source of debit</li>
           </ul>
         </div>
-
         <div class="feature-card">
-          <div class="feature-card-top">
-            <div class="feature-icon" style="background:#f0fff8">👛</div>
-            <h3>Goal-Based Savings Pockets</h3>
-          </div>
+          <div class="feature-card-top"><div class="feature-icon" style="background:#f0fff8">👛</div><h3>Goal-Based Savings Pockets</h3></div>
           <p>Create named mini-accounts within your main account for different goals.</p>
           <ul class="feature-list">
             <li>Custom pockets: SEMSO, Food, Travel, Personal Savings</li>
@@ -277,12 +300,8 @@
             <li>Track savings and spending separately per goal</li>
           </ul>
         </div>
-
         <div class="feature-card">
-          <div class="feature-card-top">
-            <div class="feature-icon" style="background:#fffbee">📊</div>
-            <h3>Spending Insights Dashboard</h3>
-          </div>
+          <div class="feature-card-top"><div class="feature-icon" style="background:#fffbee">📊</div><h3>Spending Insights Dashboard</h3></div>
           <p>Visual charts and breakdowns turning raw data into financial awareness.</p>
           <ul class="feature-list">
             <li>Pie chart of expenses by category</li>
@@ -291,12 +310,8 @@
             <li>Helps users understand behaviour, not just balances</li>
           </ul>
         </div>
-
         <div class="feature-card">
-          <div class="feature-card-top">
-            <div class="feature-icon" style="background:#f5f0ff">📋</div>
-            <h3>Enhanced Mini Statement</h3>
-          </div>
+          <div class="feature-card-top"><div class="feature-icon" style="background:#f5f0ff">📋</div><h3>Enhanced Mini Statement</h3></div>
           <p>Upgrade from 10 visible transactions to a powerful on-demand view.</p>
           <ul class="feature-list">
             <li>View last 50 or 100 transactions (up from 10)</li>
@@ -305,7 +320,6 @@
             <li>Description/purpose field on every transaction</li>
           </ul>
         </div>
-
       </div>
     </div>
   </div>
@@ -314,147 +328,47 @@
   <div class="section-card" id="story">
     <div class="section-head">
       <div class="section-icon" style="background:#fff8ee">📖</div>
-      <div>
-        <h2>The story behind the prototype</h2>
-        <p>mBOB Budgeting and Expense Tracking Features · A story from GCBS canteen</p>
-      </div>
+      <div><h2>The story behind the prototype</h2><p>mBOB Budgeting and Expense Tracking Features · A story from GCBS canteen</p></div>
     </div>
     <div class="section-body">
-
-      <!-- Characters -->
       <div class="characters">
-        <div class="char-card">
-          <div class="char-avatar" style="background:#0d2b45">T</div>
-          <div class="char-info"><strong>Tashi</strong><span>Class Representative, GCBS</span></div>
-        </div>
-        <div class="char-card">
-          <div class="char-avatar" style="background:#c0392b">S</div>
-          <div class="char-info"><strong>Sonam</strong><span>Student, GCBS</span></div>
-        </div>
-        <div class="char-card">
-          <div class="char-avatar" style="background:#0a7c5c">P</div>
-          <div class="char-info"><strong>Pema</strong><span>Student, GCBS · Ideas person</span></div>
-        </div>
+        <div class="char-card"><div class="char-avatar" style="background:#0d2b45">T</div><div class="char-info"><strong>Tashi</strong><span>Class Representative, GCBS</span></div></div>
+        <div class="char-card"><div class="char-avatar" style="background:#c0392b">S</div><div class="char-info"><strong>Sonam</strong><span>Student, GCBS</span></div></div>
+        <div class="char-card"><div class="char-avatar" style="background:#0a7c5c">P</div><div class="char-info"><strong>Pema</strong><span>Student, GCBS · Ideas person</span></div></div>
       </div>
-
       <div class="story-body">
         <p>Tashi, Sonam, and Pema sat on chairs around a small round table in the busy Tobgay canteen of Gedu College of Business Studies (GCBS). It was their usual tea break spot — warm <em>suja</em> in hand, plates of momos on the table, and the soft hum of students chatting after class.</p>
-
         <p>The three of them had just come out of their financial management lecture. The topic had been <em>budgeting and personal financial control</em>, and now, unknowingly, they were about to test those ideas in real life.</p>
-
         <p>Tashi, who also worked as a Class Representative, was staring at his phone with a slightly stressed expression.</p>
-
-        <div class="dialogue">
-          <strong>Tashi</strong>
-          "I collected SEMSO contributions from five of my self-funded mates yesterday. Now I just want to confirm one payment… but mBOB only shows the last 10 transactions. The one I need isn't even old — it's just from yesterday. Now I have to request a statement and wait for the email."
-        </div>
-
-        <div class="dialogue">
-          <strong>Sonam</strong>
-          "Same problem. It's like the app has the data but not in a way that helps us <em>quickly</em>."
-        </div>
-
+        <div class="dialogue"><strong>Tashi</strong>"I collected SEMSO contributions from five of my self-funded mates yesterday. Now I just want to confirm one payment… but mBOB only shows the last 10 transactions. The one I need isn't even old — it's just from yesterday. Now I have to request a statement and wait for the email."</div>
+        <div class="dialogue"><strong>Sonam</strong>"Same problem. It's like the app has the data but not in a way that helps us <em>quickly</em>."</div>
         <p>Just then, Pema joined them, pulling a chair closer.</p>
-
-        <div class="dialogue">
-          <strong>Pema</strong>
-          "You both look like you're fighting with your bank."
-        </div>
-
-        <div class="dialogue">
-          <strong>Tashi</strong>
-          "We kind of are."
-        </div>
-
+        <div class="dialogue"><strong>Pema</strong>"You both look like you're fighting with your bank."</div>
+        <div class="dialogue"><strong>Tashi</strong>"We kind of are."</div>
         <p>Pema smiled and leaned forward.</p>
-
-        <div class="dialogue">
-          <strong>Pema</strong>
-          "You know… what if mBOB actually worked like how we studied in class today? Let's start with expenses. Imagine when you make a payment, the app <em>automatically suggests a category</em>."
-        </div>
-
+        <div class="dialogue"><strong>Pema</strong>"You know… what if mBOB actually worked like how we studied in class today? Let's start with expenses. Imagine when you make a payment, the app <em>automatically suggests a category</em>."</div>
         <div class="story-feature">
           <div class="story-feature-label">💡 Feature idea: Smart Categorization</div>
           <p>If you transfer money to a friend for food, the app could show options like 'Food & Drinks', 'Fund Collection (SEMSO)', or 'Personal Transfer' based on the transaction pattern — one tap to select instead of typing everything.</p>
         </div>
-
-        <div class="dialogue">
-          <strong>Tashi</strong>
-          "That would save time."
-        </div>
-
-        <div class="dialogue">
-          <strong>Pema</strong>
-          "And not just that. There should also be an option to <em>create your own category</em> — like 'SEMSO Collection,' 'Group Study Expenses,' or anything personal. Over time, the app learns your habits and suggests the most likely category automatically."
-        </div>
-
-        <div class="dialogue">
-          <strong>Sonam</strong>
-          "That would actually help us understand where our money goes. Right now, it's just numbers — no meaning behind them."
-        </div>
-
-        <div class="dialogue">
-          <strong>Tashi</strong>
-          "But what about saving? Everything is mixed in one account. It's hard to separate money mentally."
-        </div>
-
-        <div class="dialogue">
-          <strong>Pema</strong>
-          "That's where <strong>goal-based pockets</strong> come in. Imagine within your main account, you can create custom mini-accounts — SEMSO/Fund Collection, Food & Drinks, Travel, Personal Savings — and keep them <em>only as long as you need</em>."
-        </div>
-
+        <div class="dialogue"><strong>Tashi</strong>"That would save time."</div>
+        <div class="dialogue"><strong>Pema</strong>"And not just that. There should also be an option to <em>create your own category</em> — like 'SEMSO Collection,' 'Group Study Expenses,' or anything personal."</div>
+        <div class="dialogue"><strong>Sonam</strong>"That would actually help us understand where our money goes. Right now, it's just numbers — no meaning behind them."</div>
+        <div class="dialogue"><strong>Tashi</strong>"But what about saving? Everything is mixed in one account. It's hard to separate money mentally."</div>
+        <div class="dialogue"><strong>Pema</strong>"That's where <strong>goal-based pockets</strong> come in. Imagine within your main account, you can create custom mini-accounts — SEMSO/Fund Collection, Food & Drinks, Travel, Personal Savings — and keep them <em>only as long as you need</em>."</div>
         <div class="story-feature">
           <div class="story-feature-label">💡 Feature idea: Goal-Based Pockets</div>
           <p>Create a SEMSO pocket just for this semester, then remove it later. When you make a payment, the app asks: "Which pocket do you want to use?" — like choosing which wallet to pay from.</p>
         </div>
-
-        <div class="dialogue">
-          <strong>Sonam</strong>
-          "Imagine opening the app and seeing dashboard charts showing how much you spent on food, travel, or SEMSO."
-        </div>
-
-        <div class="dialogue">
-          <strong>Tashi</strong>
-          "That would actually make us aware of our habits. Not just checking balance, but understanding behaviour."
-        </div>
-
-        <div class="dialogue">
-          <strong>Pema</strong>
-          "Right now, mBOB gives us data… but it doesn't guide us."
-        </div>
-
-        <div class="dialogue">
-          <strong>Tashi</strong>
-          "And please — improve the mini statement. Why only 10 transactions? I just want to see yesterday's transactions properly, especially when I'm handling money for others."
-        </div>
-
-        <div class="dialogue">
-          <strong>Sonam</strong>
-          "They should let us filter by date — today, yesterday, or even increase it to 50 or 100 transactions. Sometimes we just need quick access, not a full report sent later."
-        </div>
-
+        <div class="dialogue"><strong>Sonam</strong>"Imagine opening the app and seeing dashboard charts showing how much you spent on food, travel, or SEMSO."</div>
+        <div class="dialogue"><strong>Tashi</strong>"That would actually make us aware of our habits. Not just checking balance, but understanding behaviour."</div>
+        <div class="dialogue"><strong>Tashi</strong>"And please — improve the mini statement. Why only 10 transactions? I just want to see yesterday's transactions properly, especially when I'm handling money for others."</div>
+        <div class="dialogue"><strong>Sonam</strong>"They should let us filter by date — today, yesterday, or even increase it to 50 or 100 transactions."</div>
         <p>They paused, finishing their tea and momo. Around them, students continued their conversations, unaware that a simple tea break had turned into a powerful discussion on the future of mobile banking.</p>
-
-        <div class="dialogue">
-          <strong>Pema</strong>
-          "If these features were added, mBOB wouldn't just be a banking app… it would become a <em>smart financial companion</em>, especially for <strong>students</strong> like us."
-        </div>
-
-        <div class="dialogue">
-          <strong>Sonam</strong>
-          "We learned budgeting in class… but if mBOB evolves like this, we can actually <em>practice it in real life</em>."
-        </div>
-
-        <div class="dialogue">
-          <strong>Tashi</strong>
-          "And that's when banking becomes more than just transactions."
-        </div>
-
-        <div class="dialogue">
-          <strong>Pema</strong>
-          "It becomes understanding, control… and smarter living."
-        </div>
-
+        <div class="dialogue"><strong>Pema</strong>"If these features were added, mBOB wouldn't just be a banking app… it would become a <em>smart financial companion</em>, especially for <strong>students</strong> like us."</div>
+        <div class="dialogue"><strong>Sonam</strong>"We learned budgeting in class… but if mBOB evolves like this, we can actually <em>practice it in real life</em>."</div>
+        <div class="dialogue"><strong>Tashi</strong>"And that's when banking becomes more than just transactions."</div>
+        <div class="dialogue"><strong>Pema</strong>"It becomes understanding, control… and smarter living."</div>
         <p>And with that, they walked out of the GCBS canteen — carrying not just ideas, but a vision of what modern banking could truly become in this digital era.</p>
       </div>
     </div>
@@ -464,41 +378,14 @@
   <div class="section-card" id="wishlist">
     <div class="section-head">
       <div class="section-icon" style="background:#f0fff8">✅</div>
-      <div>
-        <h2>What they truly wish to see in mBOB</h2>
-        <p>Summarised before heading back to class</p>
-      </div>
+      <div><h2>What they truly wish to see in mBOB</h2><p>Summarised before heading back to class</p></div>
     </div>
     <div class="section-body">
       <div class="wish-list">
-        <div class="wish-item">
-          <div class="wish-num">1</div>
-          <div class="wish-text">
-            <strong>Automatic Transaction Categorization (Smart + Customizable)</strong>
-            <p>App suggests likely categories (Food & Drinks, Fund Collection, Transport) based on transaction patterns. One-tap selection, option to create custom categories like SEMSO or group expenses. Helps users understand and track spending behaviour easily.</p>
-          </div>
-        </div>
-        <div class="wish-item">
-          <div class="wish-num">2</div>
-          <div class="wish-text">
-            <strong>Goal-Based Savings (Custom Money Pockets)</strong>
-            <p>Create temporary or long-term pockets (SEMSO, food, travel, savings) within one account. Choose which pocket to pay from during transactions. Track savings and spending separately per goal. Add/remove pockets anytime.</p>
-          </div>
-        </div>
-        <div class="wish-item">
-          <div class="wish-num">3</div>
-          <div class="wish-text">
-            <strong>Spending Insights Dashboard</strong>
-            <p>Visual charts and percentage breakdowns of expenses. Daily, weekly, and monthly reports for better financial awareness and habit understanding.</p>
-          </div>
-        </div>
-        <div class="wish-item">
-          <div class="wish-num">4</div>
-          <div class="wish-text">
-            <strong>Enhanced Mini Statement Feature</strong>
-            <p>Increase transaction visibility from 10 to 50 or 100. Filter by specific dates (today, yesterday, custom). Instantly view specific transactions without waiting for email statements.</p>
-          </div>
-        </div>
+        <div class="wish-item"><div class="wish-num">1</div><div class="wish-text"><strong>Automatic Transaction Categorization (Smart + Customizable)</strong><p>App suggests likely categories based on transaction patterns. One-tap selection, option to create custom categories like SEMSO or group expenses. Helps users understand and track spending behaviour easily.</p></div></div>
+        <div class="wish-item"><div class="wish-num">2</div><div class="wish-text"><strong>Goal-Based Savings (Custom Money Pockets)</strong><p>Create temporary or long-term pockets (SEMSO, food, travel, savings) within one account. Choose which pocket to pay from during transactions. Track savings and spending separately per goal.</p></div></div>
+        <div class="wish-item"><div class="wish-num">3</div><div class="wish-text"><strong>Spending Insights Dashboard</strong><p>Visual charts and percentage breakdowns of expenses. Daily, weekly, and monthly reports for better financial awareness and habit understanding.</p></div></div>
+        <div class="wish-item"><div class="wish-num">4</div><div class="wish-text"><strong>Enhanced Mini Statement Feature</strong><p>Increase transaction visibility from 10 to 50 or 100. Filter by specific dates (today, yesterday, custom). Instantly view specific transactions without waiting for email statements.</p></div></div>
       </div>
     </div>
   </div>
@@ -507,33 +394,13 @@
   <div class="section-card" id="devnotes">
     <div class="section-head">
       <div class="section-icon" style="background:#f5f0ff">🛠️</div>
-      <div>
-        <h2>Prototype development notes</h2>
-        <p>What was built and how it works</p>
-      </div>
+      <div><h2>Prototype development notes</h2><p>What was built and how it works</p></div>
     </div>
-    <div class="section-body" style="display:flex;flex-direction:column;gap:14px">
-
-      <div class="dev-note">
-        <div class="dev-note-icon">🔄</div>
-        <div class="dev-note-text"><strong>Transfer with Smart Categorization</strong> — Inside the transfer flow, there is an option to add a description or purpose of payment, plus a selector for choosing an auto-suggested expense category at the point of transaction.</div>
-      </div>
-
-      <div class="dev-note">
-        <div class="dev-note-icon">📋</div>
-        <div class="dev-note-text"><strong>Enhanced Mini Statement</strong> — Rebuilt with options for viewing today's transactions, the last 50 transactions, or filtering by a specific custom date. Removes the need to request an email statement for recent activity.</div>
-      </div>
-
-      <div class="dev-note">
-        <div class="dev-note-icon">👛</div>
-        <div class="dev-note-text"><strong>Goal-Based Pockets</strong> — Shows existing pockets and includes a clearly labelled option for users to create new pockets based on personal needs. Each pocket is self-contained and removable.</div>
-      </div>
-
-      <div class="dev-note">
-        <div class="dev-note-icon">📊</div>
-        <div class="dev-note-text"><strong>Expense Tracking Dashboard</strong> — A visual dashboard showing spending broken down by category, giving users an at-a-glance view of where their money is going across different time periods.</div>
-      </div>
-
+    <div class="section-body" style="display:flex;flex-direction:column;gap:12px">
+      <div class="dev-note"><div class="dev-note-icon">🔄</div><div class="dev-note-text"><strong>Transfer with Smart Categorization</strong> — Inside the transfer flow, there is an option to add a description or purpose of payment, plus a selector for choosing an auto-suggested expense category at the point of transaction.</div></div>
+      <div class="dev-note"><div class="dev-note-icon">📋</div><div class="dev-note-text"><strong>Enhanced Mini Statement</strong> — Rebuilt with options for viewing today's transactions, the last 50 transactions, or filtering by a specific custom date. Removes the need to request an email statement for recent activity.</div></div>
+      <div class="dev-note"><div class="dev-note-icon">👛</div><div class="dev-note-text"><strong>Goal-Based Pockets</strong> — Shows existing pockets and includes a clearly labelled option for users to create new pockets based on personal needs. Each pocket is self-contained and removable.</div></div>
+      <div class="dev-note"><div class="dev-note-icon">📊</div><div class="dev-note-text"><strong>Expense Tracking Dashboard</strong> — A visual dashboard showing spending broken down by category, giving users an at-a-glance view of where their money is going across different time periods.</div></div>
     </div>
   </div>
 
@@ -551,20 +418,20 @@
 <button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <footer>
-  <span>© 2026 <strong>Ngul Yoen</strong> · Hema Luitel · All rights</span>
-  <!-- <a href="index.html">Home</a>
-  <a href="abt.html">About</a>
-  <a href="rpfd.html">Report & Findings</a>
-  <a href="banking1.html">Banking Insights</a>
-  <a href="finsight.html">FinSight</a>
-  <a href="ct1.html">Contact Us</a> -->
+  <span>© 2026 <strong>Ngul Yoen</strong> · Hema Luitel · All rights reserved</span>
 </footer>
 
 <script>
+function toggleMobileNav() { document.getElementById('mobile-nav').classList.toggle('open'); }
+function closeMobileNav() { document.getElementById('mobile-nav').classList.remove('open'); }
+document.addEventListener('click', function(e) {
+  const nav = document.getElementById('mobile-nav');
+  const btn = document.querySelector('.ham-btn');
+  if (nav && btn && !nav.contains(e.target) && !btn.contains(e.target)) nav.classList.remove('open');
+});
 window.addEventListener('scroll', () => {
   document.getElementById('back-top').classList.toggle('visible', window.scrollY > 300);
 });
 </script>
-
 </body>
 </html>

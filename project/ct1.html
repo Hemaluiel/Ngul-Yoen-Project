@@ -233,16 +233,6 @@
     </div>
     <div class="form-body">
 
-      <!-- alerts -->
-      <div class="alert alert-success" id="alert-success">
-        <span class="alert-icon">✅</span>
-        Message sent! We'll reply within 1–2 business days. Tashi Delek! 🙏
-      </div>
-      <div class="alert alert-error" id="alert-error">
-        <span class="alert-icon">⚠️</span>
-        <span id="error-text">Something went wrong. Please try again or email us directly.</span>
-      </div>
-
       <!-- Name row -->
       <div class="field-row">
         <div class="field">
@@ -288,6 +278,16 @@
         <div class="char-hint"><span id="char-count">0</span> / 1000 characters</div>
       </div>
 
+      <!-- alerts -->
+      <div class="alert alert-success" id="alert-success">
+        <span class="alert-icon">✅</span>
+        Message sent! We'll reply within 1–2 business days. Tashi Delek! 🙏
+      </div>
+      <div class="alert alert-error" id="alert-error">
+        <span class="alert-icon">⚠️</span>
+        <span id="error-text">Something went wrong. Please try again or email us directly.</span>
+      </div>
+
       <!-- Submit -->
       <div class="submit-row">
         <button class="submit-btn" id="submit-btn" onclick="handleSubmit()">
@@ -317,15 +317,14 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  //EMAILJS INIT 
+  // EMAILJS INIT
   emailjs.init('f49nkV21mfm4epoil');
-
   const EMAILJS_SERVICE_ID = 'service_mf5ec4b';
 
-  // STATE 
+  // STATE
   let selectedPurpose = '';
 
-  // CHIP SELECTION -form
+  // CHIP SELECTION - form
   function selectChip(value, btn) {
     document.querySelectorAll('.form-chip').forEach(c => c.classList.remove('sel'));
     btn.classList.add('sel');
@@ -355,7 +354,7 @@ document.addEventListener('DOMContentLoaded', function () {
       document.getElementById('message').value.length;
   }
 
-  // FIELD HIGHLIGHT 
+  // FIELD HIGHLIGHT
   function highlight(id) {
     const el = document.getElementById(id);
     el.style.borderColor = 'var(--red)';
@@ -363,7 +362,7 @@ document.addEventListener('DOMContentLoaded', function () {
     setTimeout(() => { el.style.borderColor = ''; el.style.boxShadow = ''; }, 2500);
   }
 
-  // ALERT 
+  // ALERT
   function showAlert(type, msg) {
     document.getElementById('alert-success').classList.remove('show');
     document.getElementById('alert-error').classList.remove('show');
@@ -388,7 +387,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('alert-error').classList.remove('show');
 
     let valid = true;
-    if (!fname)  { highlight('fname');   valid = false; }
+    if (!fname)  { highlight('fname'); valid = false; }
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       highlight('email'); valid = false;
     }
@@ -414,8 +413,8 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     try {
-      await emailjs.send(EMAILJS_SERVICE_ID, 'contact_notification', templateParams);
-      await emailjs.send(EMAILJS_SERVICE_ID, 'contact_autoreply',    templateParams);
+      await emailjs.send(EMAILJS_SERVICE_ID, 'template_8n9vvxb', templateParams);
+      await emailjs.send(EMAILJS_SERVICE_ID, 'template_6ktwkzm',    templateParams);
 
       showAlert('success');
       ['fname','lname','email','phone','message']
@@ -423,6 +422,7 @@ document.addEventListener('DOMContentLoaded', function () {
       document.querySelectorAll('.form-chip, .chip')
         .forEach(c => c.classList.remove('sel','selected'));
       selectedPurpose = '';
+      document.getElementById('purpose').value = '';
       document.getElementById('char-count').textContent = '0';
 
     } catch (err) {
@@ -435,7 +435,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // EXPOSE to onclick attributes in HTML 
+  // EXPOSE to onclick attributes in HTML
   window.selectChip   = selectChip;
   window.pickPurpose  = pickPurpose;
   window.updateCount  = updateCount;
