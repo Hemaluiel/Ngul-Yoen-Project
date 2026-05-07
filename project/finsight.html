@@ -34,8 +34,14 @@
   html { scroll-behavior: smooth; }
   body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; }
 
-  /* NAVBAR*/
-  .navbar { position: sticky; top: 0; z-index: 50; display: flex; justify-content: space-between; align-items: center; padding: 0 48px; height: 64px;     background: rgba(250,248,245,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  /* NAVBAR */
+  .navbar {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 48px; height: 64px;
+    background: rgba(250,248,245,0.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
   .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--dark); letter-spacing: -0.02em; text-decoration: none; }
   .logo em { color: var(--red); font-style: normal; }
   .nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
@@ -43,8 +49,37 @@
   .nav-links a:hover { background: var(--red-light); color: var(--red); }
   .nav-links a.active { color: var(--red); background: var(--red-light); }
 
+  /* HAMBURGER */
+  .ham-btn {
+    display: none;
+    flex-direction: column; gap: 5px;
+    background: none; border: none; cursor: pointer; padding: 8px;
+    flex-shrink: 0;
+  }
+  .ham-btn span { display: block; width: 20px; height: 2px; background: var(--dark); border-radius: 2px; }
+
+  /* MOBILE DROPDOWN */
+  .mobile-nav {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 54px;
+    right: 16px;
+    width: 220px;
+    background: rgba(207, 194, 194, 0.85);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(129, 115, 115, 0.1);
+    padding: 8px;
+    z-index: 100;
+  }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a { font-size: 14px; font-weight: 500; color: black; text-decoration: none; padding: 6px 10px; border-radius: 8px; transition: background 0.15s, color 0.15s; gap: 0px; }
+  .mobile-nav a:hover { background: var(--red-light); color: var(--red); }
+  .mob-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); padding: 8px 10px 4px; }
+
   /* HERO */
-  .hero { position: relative; overflow: hidden; padding: 30px 48px 40px; background: var(--fs-dark); color: white; }
+  .hero { position: relative; overflow: hidden; padding: 26px 48px 38px; background: var(--fs-dark); color: white; }
   .hero::before {
     content: ''; position: absolute; inset: 0;
     background:
@@ -53,27 +88,25 @@
     pointer-events: none;
   }
   .hero-inner { position: relative; max-width: 1000px; }
-  .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fs-gold); margin-bottom: 10px; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fs-gold); margin-bottom: 10px; }
   .hero-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--fs-gold); }
 
   .hero-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-  .hero-brand-logo { font-family: 'Playfair Display', serif; font-size: clamp(32px, 5vw, 52px); font-weight: 700; line-height: 1.15; }
+  .hero-brand-logo { font-family: 'Playfair Display', serif; font-size: clamp(28px, 5vw, 44px); font-weight: 700; line-height: 1.10; }
   .hero-brand-logo .fin { color: rgb(254, 253, 253); }
   .hero-brand-logo .sight { color: var(--fs-gold); }
   .hero-brand-sub { font-size: 13px; color: rgb(239, 222, 222); border-left: 1px solid rgba(255,255,255,0.15); padding-left: 12px; line-height: 1.4; }
 
-  .hero p { font-size: 16px; color: whitesmoke; line-height: 1.7; max-width: 900px; margin-bottom: 20px; }
+  .hero p { font-size: 14px; color: whitesmoke; line-height: 1.7; max-width: 1500px; margin-bottom: 20px; font-style: italic; }
   .hero-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-  .hero-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--fs-accent); color: white; text-decoration: none; padding: 13px 24px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; transition: background 0.15s, transform 0.15s; border: 1px solid rgba(255,255,255,0.1); }
+  .hero-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--fs-accent); color: white; text-decoration: none; padding: 6px 24px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; transition: background 0.15s, transform 0.15s; border: 1px solid rgba(255,255,255,0.1); }
   .hero-cta:hover { background: #246224; transform: translateY(-1px); }
-  .hero-cta-ghost { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.8); text-decoration: none; padding: 13px 20px; border-radius: var(--radius-sm); font-size: 13px; font-weight: 500; border: 1px solid rgba(255,255,255,0.12); transition: background 0.15s; }
+  .hero-cta-ghost { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.8); text-decoration: none; padding: 6px 20px; border-radius: var(--radius-sm); font-size: 13px; font-weight: 500; border: 1px solid rgba(255,255,255,0.12); transition: background 0.15s; }
   .hero-cta-ghost:hover { background: rgba(255,255,255,0.12); }
-  /* .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
-  .hero-tag { font-size: 14px; padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.12); color: rgb(243, 232, 232); background: rgba(255,255,255,0.05); } */
 
   /* ANCHOR NAV */
-  .anchor-nav { background-color: #f5e4e4; border-bottom: 1px solid var(--border); padding: 0 48px; display: flex; overflow-x: auto; }
-  .anchor-nav a { font-size: 14px; font-weight: 500; color: var(--muted); text-decoration: none; padding: 14px 18px; border-bottom: 2px solid transparent; white-space: nowrap; transition: color 0.15s, border-color 0.15s; }
+  .anchor-nav { background-color: #f5e4e4; border-bottom: 1px solid var(--border); padding: 0 48px; display: flex; overflow-x: auto; position: sticky; top: 64px; z-index: 40; }
+  .anchor-nav a { font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; padding: 14px 18px; border-bottom: 2px solid transparent; white-space: nowrap; transition: color 0.15s, border-color 0.15s; }
   .anchor-nav a:hover { color: var(--fs-accent); border-bottom-color: rgba(45,106,45,0.3); }
 
   /* MAIN */
@@ -83,6 +116,7 @@
       url('https://img.pikbest.com/png-images/20240825/dragon-illustration-vector-art-hand-drawn-on-white-background_10746961.png!f305cw')
       center/cover no-repeat;
   }
+
   /* SECTION CARD */
   .sc { background-color: #efd9d9; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 90px; transition: box-shadow 0.2s; }
   .sc:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.06); }
@@ -101,7 +135,7 @@
   .preview-open { font-size: 12px; font-weight: 500; color: var(--fs-accent); text-decoration: none; padding: 4px 12px; border: 1px solid var(--border); border-radius: 4px; background: var(--surface); white-space: nowrap; transition: background 0.15s; }
   .preview-open:hover { background: var(--fs-light); }
   .preview-img { width: 100%; display: block; }
-  .preview-note { margin-top: 12px; font-size: 14px; color:#1a3a1a; display: flex; align-items: center; gap: 6px; }
+  .preview-note { margin-top: 12px; font-size: 12px; color:#1a3a1a; display: flex; align-items: center; gap: 6px; font-style: italic; }
   .preview-note a { color: var(--fs-accent); }
 
   /* ABOUT GRID */
@@ -140,21 +174,61 @@
   /* FOOTER */
   footer { background-color: #f5e4e4; text-align: center; padding: 32px 48px; border-top: 1px solid var(--border); font-size: 16px; }
   footer strong { color: var(--text); font-weight: 500; }
-  /* footer a { color: var(--muted); text-decoration: none; font-size: 12px; transition: color 0.15s; }
-  footer a:hover { color: var(--red); } */
 
   /* RESPONSIVE */
-  @media (max-width: 700px) {
-    .navbar { padding: 0 20px; }
-    .hero { padding: 52px 20px 48px; }
-    .anchor-nav { padding: 0 8px; }
-    .main { padding: 32px 16px 60px; gap: 28px; }
-    .sc-body { padding: 18px; }
+
+  /* LARGE TABLET */
+  @media (max-width: 1200px) {
+    .main { padding: 48px 80px; }
+  }
+
+  /* TABLET */
+  @media (max-width: 1024px) {
+    .navbar { padding: 0 24px; }
+    .nav-links a { font-size: 12px; padding: 6px 10px; }
+    .hero { padding: 24px 32px 40px; }
+    .main { padding: 40px 40px; }
+    .anchor-nav { padding: 0 16px; }
+    footer { padding: 24px 32px; }
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    /* show hamburger, hide desktop nav */
+    .nav-links { display: none; }
+    .ham-btn { display: flex; }
+
+    .navbar { padding: 0 16px; height: 54px; }
+    .mobile-nav { top: 54px; }
+    .anchor-nav { top: 54px; padding: 0 8px; }
+    .anchor-nav a { font-size: 13px; padding: 11px 10px; }
+
+    .hero { padding: 20px 20px 36px; }
+    .hero-brand-logo { font-size: 32px; }
+    .hero p { font-size: 14px; }
+
+    .main { padding: 24px 16px 48px; gap: 16px; }
+
+    .sc-head { padding: 14px 16px; gap: 10px; }
+    .sc-head h2 { font-size: 17px; }
+    .sc-body { padding: 14px 16px; }
+
     .about-grid { grid-template-columns: 1fr; }
-    .output-grid { grid-template-columns: 1fr 1fr; }
-    .output-features { grid-template-columns: 1fr; }
-    .cta-banner { flex-direction: column; }
-    footer { flex-direction: column; gap: 10px; }
+
+    .preview-toolbar { flex-wrap: wrap; gap: 8px; }
+    .preview-url { min-width: 0; font-size: 12px; }
+
+    .cta-banner { flex-direction: column; padding: 24px 20px; }
+
+    footer { padding: 20px 16px; font-size: 13px; }
+  }
+
+  /* VERY SMALL */
+  @media (max-width: 380px) {
+    .hero-brand-logo { font-size: 26px; }
+    .sc-head h2 { font-size: 15px; }
+    .sc-body { padding: 12px 12px; }
+    .main { padding: 16px 12px 40px; }
   }
 </style>
 </head>
@@ -172,7 +246,23 @@
     <a href="finsight.html" class="active">FinSight</a>
     <a href="ct1.html">Contact Us</a>
   </div>
+  <!-- HAMBURGER -->
+  <button class="ham-btn" onclick="toggleMobileNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE DROPDOWN NAV -->
+<div class="mobile-nav" id="mobile-nav">
+  <div class="mob-label">Navigate</div>
+  <a href="index.html" onclick="closeMobileNav()">🏠 Home</a>
+  <a href="abt.html" onclick="closeMobileNav()">📘 About</a>
+  <a href="rpfd.html" onclick="closeMobileNav()">📊 Report & Findings</a>
+  <a href="banking1.html" onclick="closeMobileNav()">🏦 Banking Insights</a>
+  <a href="Prototype.html" onclick="closeMobileNav()">🚀 mBOB Prototype</a>
+  <a href="finsight.html" onclick="closeMobileNav()">🤖 FinSight</a>
+  <a href="ct1.html" onclick="closeMobileNav()">✉️ Contact Us</a>
+</div>
 
 <!-- HERO -->
 <div class="hero">
@@ -187,13 +277,6 @@
       <a href="https://newfornow-production.up.railway.app/" target="_blank" class="hero-cta">Try FinSight now →</a>
       <a href="#how-it-works" class="hero-cta-ghost">See how it works ↓</a>
     </div>
-    <!-- <div class="hero-tags">
-      <span class="hero-tag">🤖 AI-powered categorization</span>
-      <span class="hero-tag">📄 PDF statement upload</span>
-      <span class="hero-tag">📊 Spending breakdown</span>
-      <span class="hero-tag">🏦 Bhutan banking compatible</span>
-      <span class="hero-tag">⚡ Instant results</span>
-    </div> -->
   </div>
 </div>
 
@@ -205,8 +288,7 @@
 </div>
 
 <!-- MAIN -->
-<main class="main" style="background: linear-gradient(rgba(250,248,245,0.93), rgba(250,248,245,0.93)), url('https://img.pikbest.com/png-images/20240825/dragon-illustration-vector-art-hand-drawn-on-white-background_10746961.png!f305cw') center/cover no-repeat; max-width: 100%; padding: 68px 250px;">
-
+<main class="main">
 
   <!-- PREVIEW SCREENSHOT -->
   <div class="sc" id="preview">
@@ -246,8 +328,8 @@
       </div>
     </div>
     <div class="sc-body" style="display:flex;flex-direction:column;gap:20px">
-      <p style="font-size:16px;font-style:italic;color:black;line-height:1.8">FinSight is an AI-powered bank statement analyzer designed to take the manual work out of understanding your finances. Instead of scrolling through dozens of transactions and guessing where your money went, you simply upload your bank statement PDF and let FinSight do the work.</p>
-      <p style="font-size:16px;font-style:italic;color:black;line-height:1.8">Built with Bhutanese banking in mind — and tested on real BoB and DK Bank e-statements — FinSight recognises local transaction formats, merchant names, and payment patterns. The AI engine then maps every debit to a meaningful expense category automatically.</p>
+      <p style="font-size:15px;font-style:italic;color:black;line-height:1.7">FinSight is an AI-powered bank statement analyzer designed to take the manual work out of understanding your finances. Instead of scrolling through dozens of transactions and guessing where your money went, you simply upload your bank statement PDF and let FinSight do the work.</p>
+      <p style="font-size:15px;font-style:italic;color:black;line-height:1.7">Built with Bhutanese banking in mind — and tested on real BoB and DK Bank e-statements — FinSight recognises local transaction formats, merchant names, and payment patterns. The AI engine then maps every debit to a meaningful expense category automatically.</p>
 
       <div class="about-grid">
         <div class="about-card">
@@ -333,7 +415,7 @@
     </div>
     <div class="cta-actions">
       <a href="https://newfornow-production.up.railway.app/" target="_blank" class="cta-btn">Open FinSight →</a>
-      <a href="prototype.html" class="cta-btn-ghost">See mBOB prototype</a>
+      <a href="Prototype.html" class="cta-btn-ghost">See mBOB prototype</a>
     </div>
   </div>
 
@@ -343,18 +425,26 @@
 
 <footer>
   <span>© 2026 <strong>Ngul Yoen</strong> · Hema Luitel · All rights reserved</span>
-  <!-- <a href="index.html">Home</a>
-  <a href="abt.html">About</a>
-  <a href="rpfd.html">Report & Findings</a>
-  <a href="banking1.html">Banking Insights</a>
-  <a href="prototype.html">mBOB Prototype</a>
-  <a href="ct1.html">Contact</a> -->
 </footer>
 
 <script>
-window.addEventListener('scroll', () => {
-  document.getElementById('back-top').classList.toggle('visible', window.scrollY > 300);
-});
+  function toggleMobileNav() {
+    document.getElementById('mobile-nav').classList.toggle('open');
+  }
+  function closeMobileNav() {
+    document.getElementById('mobile-nav').classList.remove('open');
+  }
+  document.addEventListener('click', function(e) {
+    const nav = document.getElementById('mobile-nav');
+    const btn = document.querySelector('.ham-btn');
+    if (nav && btn && !nav.contains(e.target) && !btn.contains(e.target)) {
+      nav.classList.remove('open');
+    }
+  });
+
+  window.addEventListener('scroll', () => {
+    document.getElementById('back-top').classList.toggle('visible', window.scrollY > 300);
+  });
 </script>
 
 </body>

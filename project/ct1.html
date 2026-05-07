@@ -30,13 +30,48 @@
   body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
 
   /* NAVBAR */
-  .navbar { position: sticky; top: 0; z-index: 50; display: flex; justify-content: space-between; align-items: center; padding: 0 48px; height: 64px;     background: rgba(250,248,245,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  .navbar {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 48px; height: 64px;
+    background: rgba(250,248,245,0.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
   .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--dark); letter-spacing: -0.02em; text-decoration: none; }
   .logo em { color: var(--red); font-style: normal; }
-  .nav-links { display: flex; gap: 4px; }
+  .nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
   .nav-links a { font-size: 14px; font-weight: 500; color: var(--muted); text-decoration: none; padding: 7px 12px; border-radius: 20px; transition: background 0.18s, color 0.18s; white-space: nowrap; }
   .nav-links a:hover { background: var(--red-light); color: var(--red); }
   .nav-links a.active { color: var(--red); background: var(--red-light); }
+
+  /* HAMBURGER */
+  .ham-btn {
+    display: none;
+    flex-direction: column; gap: 5px;
+    background: none; border: none; cursor: pointer; padding: 8px;
+    flex-shrink: 0;
+  }
+  .ham-btn span { display: block; width: 20px; height: 2px; background: var(--dark); border-radius: 2px; }
+
+  /* MOBILE DROPDOWN */
+  .mobile-nav {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 54px;
+    right: 16px;
+    width: 220px;
+    background: rgba(207, 194, 194, 0.85);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(129, 115, 115, 0.1);
+    padding: 8px;
+    z-index: 100;
+  }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a { font-size: 14px; font-weight: 500; color: black; text-decoration: none; padding: 6px 10px; border-radius: 8px; transition: background 0.15s, color 0.15s; }
+  .mobile-nav a:hover { background: var(--red-light); color: var(--red); }
+  .mob-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); padding: 8px 10px 4px; }
 
   /* HERO */
   .hero { position: relative; overflow: hidden; padding: 30px 48px 40px; background: var(--dark); color: white; }
@@ -48,13 +83,16 @@
   .hero p { font-size: 16px; color: whitesmoke; line-height: 1.7; }
 
   /* MAIN */
-  main { flex: 1; max-width: 900px; margin: 0 auto; padding: 56px 48px 80px; width: 100%; display: grid; grid-template-columns: 1fr 1.6fr; gap: 24px; align-items: start; }
-  main { width: 100%; max-width: 100%; margin: 0 auto; padding: 52px 200px; display: flex; flex-direction: column; gap: 32px;
+  main {
+    flex: 1; width: 100%; max-width: 100%; margin: 0 auto;
+    padding: 52px 200px;
+    display: grid; grid-template-columns: 1fr 1.6fr; gap: 24px; align-items: start;
     background:
       linear-gradient(rgba(250,248,245,0.93), rgba(250,248,245,0.93)),
       url('https://img.pikbest.com/png-images/20240825/dragon-illustration-vector-art-hand-drawn-on-white-background_10746961.png!f305cw')
       center/cover no-repeat;
   }
+
   /* INFO COLUMN */
   .info-col { display: flex; flex-direction: column; gap: 16px; }
   .info-card { background-color: #efd9d9; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
@@ -66,21 +104,11 @@
   .contact-item-text strong { display: block; font-size: 13px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }
   .contact-item-text span { font-size: 15px; color: var(--text); }
 
-  /* purpose chips */
-  /* .purpose-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
-  .purpose-card-head { padding: 16px 20px 12px; border-bottom: 1px solid var(--border); }
-  .purpose-card-head h3 { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 500; margin-bottom: 2px; }
-  .purpose-card-head p { font-size: 12px; color: var(--muted); }
-  .purpose-chips { padding: 14px 20px; display: flex; flex-wrap: wrap; gap: 8px; }
-  .chip { font-size: 12px; font-weight: 500; padding: 5px 12px; border-radius: 20px; border: 1px solid var(--border); background: var(--bg); color: var(--muted); cursor: pointer; transition: all 0.15s; font-family: 'DM Sans', sans-serif; }
-  .chip:hover { border-color: var(--red-mid); color: var(--red); background: var(--red-light); }
-  .chip.selected { border-color: var(--red); color: var(--red); background: var(--red-light); } */
-
   /* map */
   .map-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
   .map-placeholder { height: 110px; background: linear-gradient(135deg, #e8e0d8 0%, #d8d0c8 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; color: var(--muted); font-size: 15px; border-bottom: 1px solid var(--border); }
   .map-placeholder span { font-size: 22px; }
-  .map-label { background-color: #efd9d9; padding: 10px 16px; font-size: 16px; color: var(--muted); font-weight: 500;}
+  .map-label { background-color: #efd9d9; padding: 10px 16px; font-size: 16px; color: var(--muted); font-weight: 500; }
   .map-label strong { color: var(--text); font-weight: 600; }
 
   /* FORM COLUMN */
@@ -102,7 +130,7 @@
   .field textarea { min-height: 120px; }
   .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
-  /* purpose in form */
+  /* purpose chips in form */
   .form-chips { display: flex; flex-wrap: wrap; gap: 7px; }
   .form-chip { font-size: 15px; font-weight: 400; padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border); background: var(--bg); cursor: pointer; transition: all 0.15s; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
   .form-chip:hover { border-color: var(--red-mid); color: var(--red); background: var(--red-light); }
@@ -133,16 +161,48 @@
   /* FOOTER */
   footer { background-color: #f5e4e4; text-align: center; padding: 32px 48px; border-top: 1px solid var(--border); font-size: 16px; display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; align-items: center; }
   footer strong { color: var(--text); font-weight: 500; }
-  /* footer a { color: var(--muted); text-decoration: none; font-size: 12px; transition: color 0.15s; }
-  footer a:hover { color: var(--red); } */
 
   /* RESPONSIVE */
-  @media (max-width: 700px) {
-    .navbar { padding: 0 20px; }
-    .hero { padding: 52px 20px 48px; }
-    main { grid-template-columns: 1fr; padding: 36px 16px 60px; gap: 16px; }
+
+  /* LARGE TABLET */
+  @media (max-width: 1200px) {
+    main { padding: 48px 80px; }
+  }
+
+  /* TABLET */
+  @media (max-width: 1024px) {
+    .navbar { padding: 0 24px; }
+    .nav-links a { font-size: 12px; padding: 6px 10px; }
+    .hero { padding: 24px 32px 40px; }
+    main { padding: 40px 40px; }
+    footer { padding: 24px 32px; }
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    /* show hamburger, hide desktop nav */
+    .nav-links { display: none; }
+    .ham-btn { display: flex; }
+
+    .navbar { padding: 0 16px; height: 54px; }
+    .mobile-nav { top: 54px; }
+
+    .hero { padding: 20px 20px 36px; }
+    .hero h1 { font-size: 26px; }
+    .hero p { font-size: 14px; }
+
+    main { grid-template-columns: 1fr; padding: 24px 16px 48px; gap: 16px; }
     .field-row { grid-template-columns: 1fr; }
-    footer { flex-direction: column; gap: 10px; }
+    .form-body { padding: 16px; }
+    .form-head { padding: 16px; }
+
+    footer { flex-direction: column; gap: 10px; padding: 20px 16px; font-size: 13px; }
+  }
+
+  /* VERY SMALL */
+  @media (max-width: 380px) {
+    .hero h1 { font-size: 22px; }
+    main { padding: 16px 12px 40px; }
   }
 </style>
 </head>
@@ -160,7 +220,23 @@
     <a href="finsight.html">FinSight</a>
     <a href="ct1.html" class="active">Contact Us</a>
   </div>
+  <!-- HAMBURGER -->
+  <button class="ham-btn" onclick="toggleMobileNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE DROPDOWN NAV -->
+<div class="mobile-nav" id="mobile-nav">
+  <div class="mob-label">Navigate</div>
+  <a href="index.html" onclick="closeMobileNav()">🏠 Home</a>
+  <a href="abt.html" onclick="closeMobileNav()">📘 About</a>
+  <a href="rpfd.html" onclick="closeMobileNav()">📊 Report & Findings</a>
+  <a href="banking1.html" onclick="closeMobileNav()">🏦 Banking Insights</a>
+  <a href="Prototype.html" onclick="closeMobileNav()">🚀 mBOB Prototype</a>
+  <a href="finsight.html" onclick="closeMobileNav()">🤖 FinSight</a>
+  <a href="ct1.html" onclick="closeMobileNav()">✉️ Contact Us</a>
+</div>
 
 <!-- HERO -->
 <div class="hero">
@@ -172,8 +248,7 @@
 </div>
 
 <!-- MAIN -->
-<main style="background: linear-gradient(rgba(250,248,245,0.93), rgba(250,248,245,0.93)), url('https://img.pikbest.com/png-images/20240825/dragon-illustration-vector-art-hand-drawn-on-white-background_10746961.png!f305cw') center/cover no-repeat; max-width: 100%; padding: 68px 250px;">
-
+<main>
 
   <!-- LEFT COLUMN -->
   <div class="info-col">
@@ -200,22 +275,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Purpose quick-pick -->
-    <!-- <div class="purpose-card">
-      <div class="purpose-card-head">
-        <h3>What brings you here?</h3>
-        <p>Pick a topic — it pre-fills the form</p>
-      </div>
-      <div class="purpose-chips">
-        <button class="chip" onclick="pickPurpose('General inquiry', this)">💬 General inquiry</button>
-        <button class="chip" onclick="pickPurpose('Research collaboration', this)">🤝 Collaboration</button>
-        <button class="chip" onclick="pickPurpose('Expense categorizer', this)">📊 Expense categorizer</button>
-        <button class="chip" onclick="pickPurpose('Feedback on findings', this)">📌 Findings feedback</button>
-        <button class="chip" onclick="pickPurpose('Feedback on prototype', this)">🏦 Prototype feedback</button>
-        <button class="chip" onclick="pickPurpose('Other', this)">✉️ Other</button>
-      </div>
-    </div> -->
 
     <!-- Map -->
     <div class="map-card">
@@ -305,15 +364,24 @@
 
 <footer>
   <span>© 2026 <strong>Ngul Yoen</strong> · Hema Luitel · All rights reserved</span>
-  <!-- <a href="index.html">Home</a>
-  <a href="abt.html">About</a>
-  <a href="rpfd.html">Report & Findings</a>
-  <a href="banking1.html">Banking Insights</a>
-  <a href="Prototype.html">mBOB Prototype</a>
-  <a href="finsight.html">FinSight</a> -->
 </footer>
 
 <script>
+
+  // MOBILE NAV
+  function toggleMobileNav() {
+    document.getElementById('mobile-nav').classList.toggle('open');
+  }
+  function closeMobileNav() {
+    document.getElementById('mobile-nav').classList.remove('open');
+  }
+  document.addEventListener('click', function(e) {
+    const nav = document.getElementById('mobile-nav');
+    const btn = document.querySelector('.ham-btn');
+    if (nav && btn && !nav.contains(e.target) && !btn.contains(e.target)) {
+      nav.classList.remove('open');
+    }
+  });
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -414,7 +482,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     try {
       await emailjs.send(EMAILJS_SERVICE_ID, 'template_8n9vvxb', templateParams);
-      await emailjs.send(EMAILJS_SERVICE_ID, 'template_6ktwkzm',    templateParams);
+      await emailjs.send(EMAILJS_SERVICE_ID, 'template_6ktwkzm', templateParams);
 
       showAlert('success');
       ['fname','lname','email','phone','message']
