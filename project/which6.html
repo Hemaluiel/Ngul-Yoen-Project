@@ -13,7 +13,6 @@
     --red-light: #fff0ef;
     --red-mid: #f5c6c6;
     --gold: #d4a820;
-    --gold-bright: #f0c040;
     --dark: #1a1612;
     --text: #2c2420;
     --muted: #7a6e6a;
@@ -23,64 +22,32 @@
     --radius: 14px;
     --radius-sm: 8px;
 
-    /* FinSight brand */
+    /* FinSight brand colours */
     --fs-dark: #0f1a0f;
     --fs-green: #1a3a1a;
     --fs-accent: #2d6a2d;
     --fs-gold: #c9a227;
     --fs-light: #f0f5f0;
-
-    /* Card theme */
-    --card-bg: #1a1f3c;
-    --card-bg-hover: #1e2445;
-    --card-border: rgba(212,168,32,0.25);
-    --card-border-hover: rgba(192,148,14,0.55);
-    --card-heading: #d4a820;
-    --card-text: #e8e4f0;
-    --card-muted: #a09ab8;
+    --sidebar-w: 220px;
   }
 
   html { scroll-behavior: smooth; }
-  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: var(--text); font-size: 15px; line-height: 1.6; }
-
-  /* DARK BACKGROUND */
-  .page-bg {
-    position: relative;
-    min-height: 100vh;
-  }
-  .page-bg::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url('https://www.shutterstock.com/image-photo/bank-building-600nw-574713295.jpg');
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-    z-index: -2;
-  }
-  .page-bg::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: rgba(8, 10, 28, 0.72);
-    z-index: -1;
-  }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; }
 
   /* NAVBAR */
   .navbar {
     position: sticky; top: 0; z-index: 50;
     display: flex; justify-content: space-between; align-items: center;
     padding: 0 48px; height: 64px;
-    background: rgba(26,31,60,0.97);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(212,168,32,0.15);
+    background: rgba(250,248,245,0.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
   }
-  .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #d4a820; letter-spacing: -0.02em; text-decoration: none; }
+  .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--dark); letter-spacing: -0.02em; text-decoration: none; }
   .logo em { color: var(--red); font-style: normal; }
   .nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
-  .nav-links a { font-size: 14px; font-weight: 500; color: #e8e4f0; text-decoration: none; padding: 7px 12px; border-radius: 20px; transition: background 0.18s, color 0.18s; white-space: nowrap; }
-  .nav-links a:hover { background: var(--card-bg-hover); color: var(--card-muted); }
-  .nav-links a.active { color: var(--gold-bright); background: rgba(212,168,32,0.15); }
+  .nav-links a { font-size: 14px; font-weight: 500; color: var(--muted); text-decoration: none; padding: 7px 12px; border-radius: 20px; transition: background 0.18s, color 0.18s; white-space: nowrap; }
+  .nav-links a:hover { background: var(--red-light); color: var(--red); }
+  .nav-links a.active { color: var(--red); background: var(--red-light); }
 
   /* HAMBURGER */
   .ham-btn {
@@ -89,37 +56,48 @@
     background: none; border: none; cursor: pointer; padding: 8px;
     flex-shrink: 0;
   }
-  .ham-btn span { display: block; width: 20px; height: 2px; background: var(--gold-bright); border-radius: 2px; }
+  .ham-btn span { display: block; width: 20px; height: 2px; background: var(--dark); border-radius: 2px; }
 
   /* MOBILE DROPDOWN */
   .mobile-nav {
-    display: none; flex-direction: column;
+    display: none;
+    flex-direction: column;
     position: fixed;
-    top: 54px; right: 16px; width: 220px;
-    background: rgba(26,31,60,0.97);
-    border: 1px solid rgba(212,168,32,0.2);
+    top: 54px;
+    right: 16px;
+    width: 220px;
+    background: rgba(207, 194, 194, 0.85);
+    border: 1px solid var(--border);
     border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-    padding: 8px; z-index: 100;
+    box-shadow: 0 8px 20px rgba(129, 115, 115, 0.1);
+    padding: 8px;
+    z-index: 100;
   }
   .mobile-nav.open { display: flex; }
-  .mobile-nav a { font-size: 14px; font-weight: 500; color: #e8e4f0; text-decoration: none; padding: 6px 10px; border-radius: 8px; transition: background 0.15s, color 0.15s; }
-  .mobile-nav a:hover { background: var(--card-bg-hover); color: var(--gold-bright); }
-  .mob-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--card-muted); padding: 8px 10px 4px; }
+  .mobile-nav a { font-size: 14px; font-weight: 500; color: black; text-decoration: none; padding: 6px 10px; border-radius: 8px; transition: background 0.15s, color 0.15s; gap: 0px; }
+  .mobile-nav a:hover { background: var(--red-light); color: var(--red); }
+  .mob-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); padding: 8px 10px 4px; }
 
   /* HERO */
-  .hero { position: relative; overflow: hidden; padding: 26px 48px 38px; color: white; }
+  .hero { position: relative; overflow: hidden; padding: 26px 48px 38px; background: var(--fs-dark); color: white; }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 80% 30%, rgba(45,106,45,0.5) 0%, transparent 65%),
+      radial-gradient(ellipse 40% 60% at 5% 80%, rgba(201,162,39,0.2) 0%, transparent 60%);
+    pointer-events: none;
+  }
   .hero-inner { position: relative; max-width: 1000px; }
-  .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 10px; font-weight: 500; letter-spacing: 0.6em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
-  .hero-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fs-gold); margin-bottom: 10px; }
+  .hero-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--fs-gold); }
 
   .hero-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-  .hero-brand-logo { font-family: 'Playfair Display', serif; font-size: clamp(28px, 5vw, 44px); font-weight: 700; line-height: 1.10; letter-spacing: 0.05em;}
-  .hero-brand-logo .fin { color: #ffffff; }
-  .hero-brand-logo .sight { color: var(--gold); }
-  .hero-brand-sub { font-size: 13px; color: var(--card-muted); border-left: 1px solid rgba(255,255,255,0.15); padding-left: 12px; line-height: 1.4; }
+  .hero-brand-logo { font-family: 'Playfair Display', serif; font-size: clamp(28px, 5vw, 44px); font-weight: 700; line-height: 1.10; }
+  .hero-brand-logo .fin { color: rgb(254, 253, 253); }
+  .hero-brand-logo .sight { color: var(--fs-gold); }
+  .hero-brand-sub { font-size: 13px; color: rgb(239, 222, 222); border-left: 1px solid rgba(255,255,255,0.15); padding-left: 12px; line-height: 1.4; }
 
-  .hero p { font-size: 14px; color: whitesmoke; line-height: 1.7; max-width: 680px; margin-bottom: 20px; font-style: italic; }
+  .hero p { font-size: 14px; color: whitesmoke; line-height: 1.7; max-width: 1500px; margin-bottom: 20px; font-style: italic; }
   .hero-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
   .hero-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--fs-accent); color: white; text-decoration: none; padding: 6px 24px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; transition: background 0.15s, transform 0.15s; border: 1px solid rgba(255,255,255,0.1); }
   .hero-cta:hover { background: #246224; transform: translateY(-1px); }
@@ -127,102 +105,84 @@
   .hero-cta-ghost:hover { background: rgba(255,255,255,0.12); }
 
   /* ANCHOR NAV */
-  .anchor-nav {
-    background: rgba(26,31,60,0.90);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(212,168,32,0.15);
-    padding: 0 48px; display: flex; overflow-x: auto;
-    position: sticky; top: 64px; z-index: 40;
-  }
-  .anchor-nav a { font-size: 13px; font-weight: 500; color: var(--card-muted); text-decoration: none; padding: 14px 18px; border-bottom: 2px solid transparent; white-space: nowrap; transition: color 0.15s, border-color 0.15s; }
-  .anchor-nav a:hover { color: var(--gold-bright); border-bottom-color: rgba(212,168,32,0.4); }
+  .anchor-nav { background-color: #f5e4e4; border-bottom: 1px solid var(--border); padding: 0 48px; display: flex; overflow-x: auto; position: sticky; top: 64px; z-index: 40; }
+  .anchor-nav a { font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; padding: 14px 18px; border-bottom: 2px solid transparent; white-space: nowrap; transition: color 0.15s, border-color 0.15s; }
+  .anchor-nav a:hover { color: var(--fs-accent); border-bottom-color: rgba(45,106,45,0.3); }
 
   /* MAIN */
-  .main { width: 100%; max-width: 100%; margin: 0 auto; padding: 52px 200px; display: flex; flex-direction: column; gap: 32px; }
+  .main { width: 100%; max-width: 100%; margin: 0 auto; padding: 52px 200px; display: flex; flex-direction: column; gap: 32px;
+    background:
+      linear-gradient(rgba(250,248,245,0.93), rgba(250,248,245,0.93)),
+      url('https://img.pikbest.com/png-images/20240825/dragon-illustration-vector-art-hand-drawn-on-white-background_10746961.png!f305cw')
+      center/cover no-repeat;
+  }
 
   /* SECTION CARD */
-  .sc {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    scroll-margin-top: 90px;
-    transition: box-shadow 0.2s, border-color 0.2s;
-    backdrop-filter: blur(8px);
-  }
-  .sc:hover {
-    box-shadow: 0 12px 40px rgba(0,0,0,0.45), 0 0 0 1px rgba(212,168,32,0.3);
-    border-color: var(--card-border-hover);
-  }
-  .sc-head { display: flex; align-items: flex-start; gap: 14px; padding: 22px 28px 18px; border-bottom: 1px solid rgba(212,168,32,0.15); }
-  .sc-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; background: rgba(212,168,32,0.12); border: 1px solid rgba(212,168,32,0.2); }
-  .sc-head h2 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 500; margin-bottom: 3px; color: var(--card-heading); }
-  .sc-head p { font-size: 14px; color: var(--card-muted); font-style: italic; }
+  .sc { background-color: #efd9d9; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 90px; transition: box-shadow 0.2s; }
+  .sc:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.06); }
+  .sc-head { display: flex; align-items: flex-start; gap: 14px; padding: 22px 28px 18px; border-bottom: 1px solid var(--border); }
+  .sc-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .sc-head h2 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 500; margin-bottom: 3px; }
+  .sc-head p { font-size: 14px; color:#0f1a0f; font-style: italic; }
   .sc-body { padding: 28px; }
 
-  /* PREVIEW */
-  .preview-wrap { border: 1px solid rgba(212,168,32,0.2); border-radius: var(--radius-sm); overflow: hidden; }
-  .preview-toolbar { padding: 10px 16px; background: rgba(26,31,60,0.9); border-bottom: 1px solid rgba(212,168,32,0.15); display: flex; align-items: center; gap: 10px; }
+  /* PREVIEW SCREENSHOT */
+  .preview-wrap { border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
+  .preview-toolbar { padding: 10px 16px; background: var(--bg); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
   .preview-dots { display: flex; gap: 5px; }
   .preview-dot { width: 10px; height: 10px; border-radius: 50%; }
-  .preview-url { flex: 1; background: rgba(255,255,255,0.06); border: 1px solid rgba(212,168,32,0.15); border-radius: 4px; padding: 4px 10px; font-size: 14px; color: var(--card-muted); font-family: monospace; }
-  .preview-open { font-size: 12px; font-weight: 500; color: var(--gold-bright); text-decoration: none; padding: 4px 12px; border: 1px solid rgba(212,168,32,0.3); border-radius: 4px; background: rgba(212,168,32,0.1); white-space: nowrap; transition: background 0.15s; }
-  .preview-open:hover { background: rgba(212,168,32,0.2); }
+  .preview-url { flex: 1; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 4px 10px; font-size: 14px; color: var(--muted); font-family: monospace; }
+  .preview-open { font-size: 12px; font-weight: 500; color: var(--fs-accent); text-decoration: none; padding: 4px 12px; border: 1px solid var(--border); border-radius: 4px; background: var(--surface); white-space: nowrap; transition: background 0.15s; }
+  .preview-open:hover { background: var(--fs-light); }
   .preview-img { width: 100%; display: block; }
-  .preview-note { margin-top: 12px; font-size: 12px; color: var(--card-muted); display: flex; align-items: center; gap: 6px; font-style: italic; }
-  .preview-note a { color: var(--gold); }
-  .preview-note a:hover { color: var(--gold-bright); }
+  .preview-note { margin-top: 12px; font-size: 12px; color:#1a3a1a; display: flex; align-items: center; gap: 6px; font-style: italic; }
+  .preview-note a { color: var(--fs-accent); }
 
   /* ABOUT GRID */
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .about-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(212,168,32,0.15); border-radius: var(--radius-sm); padding: 18px; transition: border-color 0.15s; }
-  .about-card:hover { border-color: rgba(212,168,32,0.4); }
+  .about-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 18px; }
   .about-card-top { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-  .about-icon { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; background: rgba(212,168,32,0.12); }
-  .about-card h3 { font-size: 15px; font-weight: 600; color: var(--card-heading); }
-  .about-card p { font-size: 14px; font-style: italic; line-height: 1.6; color: var(--card-text); }
+  .about-icon { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+  .about-card h3 { font-size: 15px; font-weight: 600; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+  .about-card p { font-size: 14px; font-style: italic; line-height: 1.6; }
 
   /* HOW IT WORKS */
   .steps { display: flex; flex-direction: column; gap: 0; }
-  .step { display: flex; gap: 20px; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid rgba(212,168,32,0.12); }
+  .step { display: flex; gap: 20px; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid var(--border); }
   .step:last-child { border-bottom: none; padding-bottom: 0; }
   .step:first-child { padding-top: 0; }
-  .step-num { width: 36px; height: 36px; border-radius: 50%; background: rgba(212,168,32,0.15); border: 1px solid rgba(212,168,32,0.4); color: var(--gold-bright); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
-  .step-content h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; color: var(--card-heading); }
-  .step-content p { font-size: 15px; font-style: italic; line-height: 1.65; color: var(--card-text); }
-  .step-tag { display: inline-block; margin-top: 8px; font-size: 13px; font-weight: 500; padding: 3px 10px; border-radius: 20px; background: rgba(45,106,45,0.2); color: #7dd87d; border: 1px solid rgba(45,106,45,0.3); }
+  .step-num { width: 36px; height: 36px; border-radius: 50%; background: var(--fs-dark); color: white; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+  .step-content h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .step-content p { font-size: 15px; font-style: italic; line-height: 1.65; }
+  .step-tag { display: inline-block; margin-top: 8px; font-size: 13px; font-weight: 500; padding: 3px 10px; border-radius: 20px; background: var(--red-light); color: var(--fs-accent); border: 1px solid rgba(45,106,45,0.2); }
 
   /* CTA BANNER */
-  .cta-banner { background: rgba(15,26,15,0.85); border: 1px solid rgba(212,168,32,0.3); border-radius: var(--radius); padding: 32px 36px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; backdrop-filter: blur(8px); }
-  .cta-text strong { display: block; font-family: 'Playfair Display', serif; font-size: 20px; color: var(--gold-bright); margin-bottom: 6px; }
-  .cta-text p { font-size: 14px; font-style: italic; color: var(--card-muted); line-height: 1.6; max-width: 620px; }
+  .cta-banner { background: var(--fs-dark); border-radius: var(--radius); padding: 32px 36px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .cta-text strong { display: block; font-family: 'Playfair Display', serif; font-size: 20px; color: white; margin-bottom: 6px; }
+  .cta-text p { font-size: 14px; font-style: italic; color: rgb(222, 207, 207); line-height: 1.6; max-width: 820px; }
   .cta-actions { display: flex; gap: 10px; flex-wrap: wrap; }
   .cta-btn { background: var(--fs-accent); color: white; text-decoration: none; border-radius: var(--radius-sm); padding: 12px 22px; font-size: 13px; font-weight: 500; white-space: nowrap; transition: background 0.15s; }
   .cta-btn:hover { background: #246224; }
   .cta-btn-ghost { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.75); text-decoration: none; border-radius: var(--radius-sm); padding: 12px 18px; font-size: 13px; font-weight: 500; border: 1px solid rgba(255,255,255,0.12); transition: background 0.15s; }
   .cta-btn-ghost:hover { background: rgba(255,255,255,0.12); }
 
-  /* ABOUT BODY TEXT */
-  .about-intro { font-size: 15px; font-style: italic; color: var(--card-text); line-height: 1.7; }
-
   /* BACK TO TOP */
-  #back-top { position: fixed; bottom: 24px; right: 24px; width: 40px; height: 40px; background: var(--card-bg); color: var(--gold-bright); border: 1px solid rgba(212,168,32,0.3); border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.2s, background 0.2s; box-shadow: 0 4px 16px rgba(0,0,0,0.4); }
+  #back-top { position: fixed; bottom: 24px; right: 24px; width: 40px; height: 40px; background: var(--fs-dark); color: white; border: none; border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.2s, background 0.2s; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
   #back-top.visible { opacity: 1; pointer-events: all; }
-  #back-top:hover { background: rgba(212,168,32,0.2); }
+  #back-top:hover { background: var(--fs-accent); }
 
   /* FOOTER */
-  footer {
-    background: rgba(26,31,60,0.97);
-    text-align: center;
-    padding: 28px 48px;
-    border-top: 1px solid rgba(212,168,32,0.2);
-    font-size: 13px;
-    color: var(--card-muted);
-  }
-  footer strong { color: var(--gold-bright); font-weight: 500; }
+  footer { background-color: #f5e4e4; text-align: center; padding: 32px 48px; border-top: 1px solid var(--border); font-size: 16px; }
+  footer strong { color: var(--text); font-weight: 500; }
 
   /* RESPONSIVE */
-  @media (max-width: 1200px) { .main { padding: 48px 80px; } }
+
+  /* LARGE TABLET */
+  @media (max-width: 1200px) {
+    .main { padding: 48px 80px; }
+  }
+
+  /* TABLET */
   @media (max-width: 1024px) {
     .navbar { padding: 0 24px; }
     .nav-links a { font-size: 12px; padding: 6px 10px; }
@@ -231,26 +191,39 @@
     .anchor-nav { padding: 0 16px; }
     footer { padding: 24px 32px; }
   }
+
+  /* MOBILE */
   @media (max-width: 768px) {
+    /* show hamburger, hide desktop nav */
     .nav-links { display: none; }
     .ham-btn { display: flex; }
+
     .navbar { padding: 0 16px; height: 54px; }
     .mobile-nav { top: 54px; }
     .anchor-nav { top: 54px; padding: 0 8px; }
     .anchor-nav a { font-size: 13px; padding: 11px 10px; }
+
     .hero { padding: 20px 20px 36px; }
     .hero-brand-logo { font-size: 32px; }
     .hero p { font-size: 14px; }
+
     .main { padding: 24px 16px 48px; gap: 16px; }
+
     .sc-head { padding: 14px 16px; gap: 10px; }
     .sc-head h2 { font-size: 17px; }
     .sc-body { padding: 14px 16px; }
+
     .about-grid { grid-template-columns: 1fr; }
+
     .preview-toolbar { flex-wrap: wrap; gap: 8px; }
     .preview-url { min-width: 0; font-size: 12px; }
+
     .cta-banner { flex-direction: column; padding: 24px 20px; }
+
     footer { padding: 20px 16px; font-size: 13px; }
   }
+
+  /* VERY SMALL */
   @media (max-width: 380px) {
     .hero-brand-logo { font-size: 26px; }
     .sc-head h2 { font-size: 15px; }
@@ -260,8 +233,6 @@
 </style>
 </head>
 <body>
-
-<div class="page-bg">
 
 <!-- NAVBAR -->
 <nav class="navbar">
@@ -275,6 +246,7 @@
     <a href="finsight.html" class="active">FinSight</a>
     <a href="ct1.html">Contact Us</a>
   </div>
+  <!-- HAMBURGER -->
   <button class="ham-btn" onclick="toggleMobileNav()" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -300,7 +272,7 @@
       <div class="hero-brand-logo"><span class="fin">Fin</span><span class="sight">Sight</span></div>
       <div class="hero-brand-sub">Bank Statement<br>Analyzer</div>
     </div>
-    <p>Upload your bank statement and let AI automatically categorise every debit expense, surface your top transactions, and give you a clear financial snapshot in seconds, not hours.</p>
+    <p>Upload your bank statement and let AI automatically categorise every debit expense, surface your top transactions, and give you a clear financial snapshot — in seconds, not hours.</p>
     <div class="hero-actions">
       <a href="https://newfornow-production.up.railway.app/" target="_blank" class="hero-cta">Try FinSight now →</a>
       <a href="#how-it-works" class="hero-cta-ghost">See how it works ↓</a>
@@ -321,10 +293,10 @@
   <!-- PREVIEW SCREENSHOT -->
   <div class="sc" id="preview">
     <div class="sc-head">
-      <div class="sc-icon">🖥️</div>
+      <div class="sc-icon" style="background:#e8f5e8">🖥️</div>
       <div>
         <h2>Live application preview</h2>
-        <p>A real analysis of a Bhutanese bank statement: Feb 2026</p>
+        <p>A real analysis of a Bhutanese bank statement — Feb 2026</p>
       </div>
     </div>
     <div class="sc-body">
@@ -349,41 +321,41 @@
   <!-- ABOUT -->
   <div class="sc" id="about">
     <div class="sc-head">
-      <div class="sc-icon">💡</div>
+      <div class="sc-icon" style="background:#f0fff4">💡</div>
       <div>
         <h2>About FinSight</h2>
         <p>What it is, who it's for, and why it was built</p>
       </div>
     </div>
     <div class="sc-body" style="display:flex;flex-direction:column;gap:20px">
-      <p class="about-intro">FinSight is an AI-powered bank statement analyzer designed to take the manual work out of understanding your finances. Instead of scrolling through dozens of transactions and guessing where your money went, you simply upload your bank statement PDF and let FinSight do the work.</p>
-      <p class="about-intro">Built with Bhutanese banking in mind and tested on real BoB and DK Bank e-statements: It recognises local transaction formats, merchant names, and payment patterns. The AI engine then maps every debit to a meaningful expense category automatically.</p>
+      <p style="font-size:15px;font-style:italic;color:black;line-height:1.7">FinSight is an AI-powered bank statement analyzer designed to take the manual work out of understanding your finances. Instead of scrolling through dozens of transactions and guessing where your money went, you simply upload your bank statement PDF and let FinSight do the work.</p>
+      <p style="font-size:15px;font-style:italic;color:black;line-height:1.7">Built with Bhutanese banking in mind — and tested on real BoB and DK Bank e-statements — FinSight recognises local transaction formats, merchant names, and payment patterns. The AI engine then maps every debit to a meaningful expense category automatically.</p>
 
       <div class="about-grid">
         <div class="about-card">
           <div class="about-card-top">
-            <div class="about-icon">🎓</div>
+            <div class="about-icon" style="background:#e8f5e8">🎓</div>
             <h3>Built for Digital Bhutan</h3>
           </div>
-          <p>Designed with Bhutanese youth in mind: track contributions, food expenses, and personal spending without complicated spreadsheets.</p>
+          <p>Designed with Bhutanese youth in mind — track contributions, food expenses, and personal spending without complicated spreadsheets.</p>
         </div>
         <div class="about-card">
           <div class="about-card-top">
-            <div class="about-icon">🏢</div>
+            <div class="about-icon" style="background:#fff8ee">🏢</div>
             <h3>Useful for everyone</h3>
           </div>
-          <p>Anyone with a Bhutanese bank account can upload their bank statement and get a clear financial picture instantly.</p>
+          <p>Anyone with a Bhutanese bank account can upload their monthly e-statement and get a clear financial picture instantly.</p>
         </div>
         <div class="about-card">
           <div class="about-card-top">
-            <div class="about-icon">🔒</div>
+            <div class="about-icon" style="background:#f0f4ff">🔒</div>
             <h3>Session-based privacy</h3>
           </div>
-          <p>Your statement is processed for the current session only. No data is stored permanently –  your financial details stay yours.</p>
+          <p>Your statement is processed for the current session only. No data is stored permanently — your financial details stay yours.</p>
         </div>
         <div class="about-card">
           <div class="about-card-top">
-            <div class="about-icon">🇧🇹</div>
+            <div class="about-icon" style="background:#fff0ef">🇧🇹</div>
             <h3>Bhutan-first design</h3>
           </div>
           <p>Supports BTN (Ngultrum) currency and local bank formats (BoB, DK Bank, BNB, etc).</p>
@@ -395,7 +367,7 @@
   <!-- HOW IT WORKS -->
   <div class="sc" id="how-it-works">
     <div class="sc-head">
-      <div class="sc-icon">⚙️</div>
+      <div class="sc-icon" style="background:#fff8ee">⚙️</div>
       <div>
         <h2>How it works</h2>
         <p>Three simple steps from upload to insight</p>
@@ -408,7 +380,7 @@
           <div class="step-num">1</div>
           <div class="step-content">
             <h3>Upload your bank statement</h3>
-            <p>Download your e-statement PDF from your bank's internet banking portal (BoB, BNB, BDBL, DK Bank, T Bank, or Druk PNB all work). Then drag and drop, or click to upload directly into FinSight. No account creation required.</p>
+            <p>Download your e-statement PDF from your bank's internet banking portal (BoB, BNB, BDBL, DK Bank, T Bank, or Druk PNB all work). Then drag and drop — or click to upload — directly into FinSight. No account creation required.</p>
             <span class="step-tag">📄 PDF upload · No sign-up needed</span>
           </div>
         </div>
@@ -417,7 +389,7 @@
           <div class="step-num">2</div>
           <div class="step-content">
             <h3>AI reads and categorises every transaction</h3>
-            <p>The moment your statement uploads, FinSight's AI engine parses every transaction line: debits, credits, dates, merchant names – and automatically assigns each debit to an expense category. Categories include Shopping, Transfers, Food & Drinks, Utilities, Transport, Education, and more. The AI learns from transaction descriptions and patterns to make categorisation accurate even for unusual entries.</p>
+            <p>The moment your statement uploads, FinSight's AI engine parses every transaction line — debits, credits, dates, merchant names — and automatically assigns each debit to an expense category. Categories include Shopping, Transfers, Food & Drinks, Utilities, Transport, Education, and more. The AI learns from transaction descriptions and patterns to make categorisation accurate even for unusual entries.</p>
             <span class="step-tag">🤖 AI-powered · Instant categorization · 16+ category types</span>
           </div>
         </div>
@@ -426,7 +398,7 @@
           <div class="step-num">3</div>
           <div class="step-content">
             <h3>Get your full financial snapshot</h3>
-            <p>Your results appear immediately: total debits and credits, number of spending categories found, biggest spending category, top 5 transactions by amount, a spending breakdown donut chart and bar chart, and a plain-English AI insight summarising your month's financial behaviour.</p>
+            <p>Your results appear immediately — total debits and credits, number of spending categories found, biggest spending category, top 5 transactions by amount, a spending breakdown donut chart and bar chart, and a plain-English AI insight summarising your month's financial behaviour.</p>
             <span class="step-tag">📊 Dashboard · Charts · AI insight · Top transactions</span>
           </div>
         </div>
@@ -444,7 +416,6 @@
     <div class="cta-actions">
       <a href="https://newfornow-production.up.railway.app/" target="_blank" class="cta-btn">Open FinSight →</a>
       <a href="Prototype.html" class="cta-btn-ghost">See mBOB prototype</a>
-      <a href="ct1.html" class="cta-btn-ghost">NEXT</a>
     </div>
   </div>
 
@@ -455,8 +426,6 @@
 <footer>
   <span>© 2026 <strong>Ngul Yoen</strong> · Hema Luitel · All rights reserved</span>
 </footer>
-
-</div><!-- /page-bg -->
 
 <script>
   function toggleMobileNav() {

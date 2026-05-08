@@ -14,7 +14,6 @@
     --red-light: #fff0ef;
     --red-mid: #f5c6c6;
     --gold: #d4a820;
-    --gold-bright: #f0c040;
     --dark: #1a1612;
     --text: #2c2420;
     --muted: #7a6e6a;
@@ -23,58 +22,25 @@
     --bg: #faf8f5;
     --radius: 14px;
     --radius-sm: 8px;
-
-    /* Card theme */
-    --card-bg: #1a1f3c;
-    --card-bg-hover: #1e2445;
-    --card-border: rgba(212,168,32,0.25);
-    --card-border-hover: rgba(192,148,14,0.55);
-    --card-heading: #d4a820;
-    --card-text: #e8e4f0;
-    --card-muted: #a09ab8;
   }
 
   html { scroll-behavior: smooth; }
-  body { font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: var(--text); font-size: 15px; line-height: 1.6; }
-
-  /* DARK BACKGROUND */
-  .page-bg {
-    position: relative;
-    min-height: 100vh;
-  }
-  .page-bg::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url('https://www.shutterstock.com/image-photo/bank-building-600nw-574713295.jpg');
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-    z-index: -2;
-  }
-  .page-bg::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: rgba(8, 10, 28, 0.72);
-    z-index: -1;
-  }
+  body { font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; }
 
   /* NAVBAR */
   .navbar {
     position: sticky; top: 0; z-index: 50;
     display: flex; justify-content: space-between; align-items: center;
     padding: 0 48px; height: 64px;
-    background: rgba(26,31,60,0.97);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(212,168,32,0.15);
+    background: rgba(250,248,245,0.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
   }
-  .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #d4a820; letter-spacing: -0.02em; text-decoration: none; }
+  .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--dark); letter-spacing: -0.02em; text-decoration: none; }
   .logo em { color: var(--red); font-style: normal; }
   .nav-links { display: flex; gap: 4px; }
-  .nav-links a { font-size: 14px; font-weight: 500; color: #e8e4f0; text-decoration: none; padding: 7px 12px; border-radius: 20px; transition: background 0.18s, color 0.18s; white-space: nowrap; }
-  .nav-links a:hover { background: var(--card-bg-hover); color: var(--card-muted); }
-  .nav-links a.active { color: var(--gold-bright); background: rgba(212,168,32,0.15); }
+  .nav-links a { font-size: 14px; font-weight: 500; color: var(--muted); text-decoration: none; padding: 7px 12px; border-radius: 20px; transition: background 0.18s, color 0.18s; white-space: nowrap; }
+  .nav-links a:hover { background: var(--red-light); color: var(--red); }
+  .nav-links a.active { color: var(--red); background: var(--red-light); }
 
   /* HAMBURGER */
   .ham-btn {
@@ -83,57 +49,69 @@
     background: none; border: none; cursor: pointer; padding: 8px;
     flex-shrink: 0;
   }
-  .ham-btn span { display: block; width: 20px; height: 2px; background: var(--gold-bright); border-radius: 2px; }
+  .ham-btn span { display: block; width: 20px; height: 2px; background: var(--dark); border-radius: 2px; }
 
   /* MOBILE DROPDOWN */
-  .mobile-nav {
-    display: none; flex-direction: column;
-    position: fixed;
-    top: 54px; right: 16px; width: 220px;
-    background: rgba(26,31,60,0.97);
-    border: 1px solid rgba(212,168,32,0.2);
+    .mobile-nav {
+    display: none;
+    flex-direction: column;
+    position: fixed;   
+    top: 54px;            
+    right: 16px;         
+    width: 220px;        
+    background: rgba(207, 194, 194, 0.85);;
+    border: 1px solid var(--border);
     border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-    padding: 8px; z-index: 100;
+    box-shadow: 0 8px 20px rgba(129, 115, 115, 0.1);
+    padding: 8px;
+    z-index: 100;
   }
   .mobile-nav.open { display: flex; }
-  .mobile-nav a { font-size: 14px; font-weight: 500; color: #e8e4f0; text-decoration: none; padding: 6px 10px; border-radius: 8px; transition: background 0.15s, color 0.15s; }
-  .mobile-nav a:hover { background: var(--card-bg-hover); color: var(--gold-bright); }
-  .mob-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--card-muted); padding: 8px 10px 4px; }
+  .mobile-nav a { font-size: 14px; font-weight: 500; color: black; text-decoration: none; padding: 6px 10px; border-radius: 8px; transition: background 0.15s, color 0.15s; gap: 0px;}
+  .mobile-nav a:hover { background: var(--red-light); color: var(--red); }
+  .mob-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); padding: 8px 10px 4px; }
 
   /* HERO */
-  .hero { position: relative; overflow: hidden; padding: 26px 48px 38px; color: white; }
+  .hero { position: relative; overflow: hidden; padding: 26px 48px 38px; background: var(--dark); color: white; }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 55% 80% at 85% 40%, rgba(192,57,43,0.32) 0%, transparent 70%),
+                radial-gradient(ellipse 35% 55% at 5% 85%, rgba(212,168,32,0.16) 0%, transparent 60%);
+    pointer-events: none;
+  }
   .hero-inner { position: relative; max-width: 800px; }
-  .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 500; letter-spacing: 1em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
   .hero-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
-  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(26px, 5vw, 44px); font-weight: 700; line-height: 1.15; letter-spacing: 0.05em; margin-bottom: 14px; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(26px, 5vw, 44px); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 14px; }
   .hero h1 span { color: #e8755a; }
   .hero p { font-size: 14px; color: whitesmoke; line-height: 1.7; font-style: italic; }
 
   /* TAB BAR */
   .tab-bar {
-    background: rgba(26,31,60,0.90);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(212,168,32,0.15);
+    background: var(--red-light); border-bottom: 1px solid var(--border);
     padding: 0 48px; display: flex; overflow-x: auto;
     position: sticky; top: 64px; z-index: 40;
   }
-  .tab-btn { font-size: 13px; font-weight: 500; color: var(--card-muted); background: none; border: none; border-bottom: 2px solid transparent; padding: 14px 16px; cursor: pointer; white-space: nowrap; font-family:'Segoe UI', sans-serif; transition: color 0.15s, border-color 0.15s; }
-  .tab-btn:hover { color: var(--gold-bright); border-bottom-color: rgba(212,168,32,0.4); }
-  .tab-btn.active { color: var(--gold-bright); border-bottom-color: var(--gold); }
+  .tab-btn { font-size: 13px; font-weight: 500; color: var(--muted); background: none; border: none; border-bottom: 2px solid transparent; padding: 14px 16px; cursor: pointer; white-space: nowrap; font-family:'Segoe UI', sans-serif; transition: color 0.15s, border-color 0.15s; }
+  .tab-btn:hover { color: var(--red); border-bottom-color: var(--red-mid); }
+  .tab-btn.active { color: var(--red); border-bottom-color: var(--red); }
 
   /* PAGE WRAP */
-  .page-wrap {
-    display: grid; grid-template-columns: 190px 1fr; width: 100%; max-width: 100%; margin: 0 auto; padding: 48px 48px 80px; align-items: start;
+  .page-wrap { 
+    display: grid; grid-template-columns: 190px 1fr; width: 100%; max-width: 100%; margin: 0 auto; padding: 48px 48px 80px; align-items: start; 
+    background:
+      linear-gradient(rgba(250,248,245,0.93), rgba(250,248,245,0.93)),
+      url('https://img.pikbest.com/png-images/20240825/dragon-illustration-vector-art-hand-drawn-on-white-background_10746961.png!f305cw')
+      center/cover no-repeat;
   }
   .page-wrap.no-sidebar { grid-template-columns: 1fr; }
 
   /* SIDEBAR TOC */
-  .toc { position: sticky; top: 120px; padding-right: 28px; border-right: 1px solid rgba(212,168,32,0.15); }
-  .toc-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; color: var(--card-muted); }
-  .toc a { display: block; font-size: 13px; color: var(--card-muted); text-decoration: none; padding: 6px 0 6px 12px; margin-left: -12px; border-left: 2px solid transparent; transition: color 0.15s, border-color 0.15s; line-height: 1.4; }
-  .toc a:hover { color: var(--gold-bright); border-left-color: rgba(212,168,32,0.4); }
-  .toc a.active { color: var(--gold-bright); border-left-color: var(--gold); font-weight: 500; }
+  .toc { position: sticky; top: 120px; padding-right: 28px; border-right: 1px solid var(--border); }
+  .toc-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+  .toc a { display: block; font-size: 13px; color: rgba(0, 0, 0, 0.92); text-decoration: none; padding: 6px 0 6px 12px; margin-left: -12px; border-left: 2px solid transparent; transition: color 0.15s, border-color 0.15s; line-height: 1.4; }
+  .toc a:hover { color: var(--red); border-left-color: var(--red-mid); }
+  .toc a.active { color: var(--red); border-left-color: var(--red); font-weight: 500; }
   .toc-group { margin-bottom: 10px; }
 
   /* CONTENT */
@@ -143,125 +121,121 @@
 
   /* STAT STRIP */
   .stat-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; scroll-margin-top: 120px; }
-  .stat-box { background: rgba(155,120,7,0.5); border: 1px solid rgba(212,168,32,0.3); border-radius: var(--radius-sm); padding: 16px; text-align: center; backdrop-filter: blur(6px); }
-  .stat-box strong { display: block; font-family: 'Playfair Display', serif; font-size: 26px; color: var(--gold-bright); font-weight: 700; }
-  .stat-box span { font-size: 12px; color: var(--card-text); }
+  .stat-box { background-color: #9c7907; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px; text-align: center; }
+  .stat-box strong { display: block; font-family: 'Playfair Display', serif; font-size: 26px; color: whitesmoke; font-weight: 700; }
+  .stat-box span { font-size: 12px; color: rgba(0, 0, 0, 0.9); }
 
   /* SECTION CARD */
-  .rs { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 120px; transition: box-shadow 0.2s, border-color 0.2s; backdrop-filter: blur(8px); }
-  .rs:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.45), 0 0 0 1px rgba(212,168,32,0.3); border-color: var(--card-border-hover); }
-  .rs-head { display: flex; align-items: flex-start; gap: 14px; padding: 22px 26px 18px; border-bottom: 1px solid rgba(212,168,32,0.15); }
-  .rs-icon { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; margin-top: 2px; background: rgba(212,168,32,0.12); border: 1px solid rgba(212,168,32,0.2); }
-  .rs-head h2 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 600; margin-bottom: 2px; color: var(--card-heading); border-bottom: 1px solid rgba(212,168,32,0.3); padding-bottom: 4px; }
-  .rs-head p { font-size: 12px; color: var(--card-muted); font-style: italic; }
+  .rs { background-color: rgb(40, 5, 75); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 120px; transition: box-shadow 0.2s; }
+  .rs:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.06); }
+  .rs-head { display: flex; align-items: flex-start; gap: 14px; padding: 22px 26px 18px; border-bottom: 1px solid var(--border); }
+  .rs-icon { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; margin-top: 2px; }
+  .rs-head h2 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 600; margin-bottom: 2px; color: var(--gold);border-bottom: 1px solid goldenrod }
+  .rs-head p { font-size: 12px; color: whitesmoke; font-style: italic;}
   .rs-body { padding: 22px 26px; display: flex; flex-direction: column; gap: 18px; }
-  .rs-body p { font-size: 14px; color: var(--card-text); line-height: 1.78; font-style: italic; }
-  .rs-body h3 { font-size: 13px; font-weight: 500; color: var(--card-heading); margin-bottom: 4px; }
+  .rs-body p { font-size: 14px; color: whitesmoke; line-height: 1.78; font-style: italic;}
+  .rs-body h3 { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
 
-  .sub-block { background: rgba(255,255,255,0.04); border: 1px solid rgba(212,168,32,0.15); border-radius: var(--radius-sm); padding: 15px 18px; }
-  .sub-block h3 { margin-bottom: 8px; color: var(--card-heading); }
+  .sub-block { background:rgba(239, 217, 217, 0.281); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 15px 18px; }
+  .sub-block h3 { margin-bottom: 8px; color: whitesmoke;}
 
   .pill-list { display: flex; flex-direction: column; gap: 7px; margin-top: 4px; }
-  .pill-item { display: flex; align-items: flex-start; gap: 9px; font-size: 14px; color: var(--card-text); line-height: 1.5; font-style: italic; }
-  .pill-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 6px; }
+  .pill-item { display: flex; align-items: flex-start; gap: 9px; font-size: 14px; color: whitesmoke; line-height: 1.5; font-style: italic;}
+  .pill-dot { width: 6px; height: 6px; border-radius: 50%; background: wheat; flex-shrink: 0; margin-top: 6px; }
 
   .findings-list { display: flex; flex-direction: column; gap: 10px; }
-  .finding-item { display: flex; gap: 14px; align-items: flex-start; background: rgba(255,255,255,0.04); border: 1px solid rgba(212,168,32,0.15); border-radius: var(--radius-sm); padding: 14px 16px; transition: border-color 0.15s; }
-  .finding-item:hover { border-color: rgba(212,168,32,0.5); }
+  .finding-item { display: flex; gap: 14px; align-items: flex-start; background:rgba(239, 217, 217, 0.281); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 16px; transition: border-color 0.15s; }
+  .finding-item:hover { border-color: purple; }
   .finding-num { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--gold); flex-shrink: 0; line-height: 1; padding-top: 2px; min-width: 24px; }
-  .finding-text { font-size: 14px; color: var(--card-text); line-height: 1.65; font-style: italic; }
-  .finding-text strong { color: var(--gold-bright); font-weight: 500; }
+  .finding-text { font-size: 14px; color: whitesmoke; line-height: 1.65; font-style: italic;}
+  .finding-text strong { color: whitesmoke; font-weight: 500; }
 
   .factor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .factor-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(212,168,32,0.15); border-radius: var(--radius-sm); padding: 15px; }
+  .factor-card { background:rgba(239, 217, 217, 0.281); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 15px; }
   .factor-top { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-  .factor-icon { width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; background: rgba(212,168,32,0.12); }
-  .factor-card h4 { font-size: 14px; font-weight: 500; color: var(--card-heading); }
-  .factor-card p { font-size: 14px; color: var(--card-text); line-height: 1.55; }
+  .factor-icon { width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+  .factor-card h4 { font-size: 14px; font-weight: 500;  color: whitesmoke;}
+  .factor-card p { font-size: 14px; color: whitesmoke; line-height: 1.55; }
   .score-row { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
-  .score-bar-wrap { flex: 1; height: 5px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; }
-  .score-bar { height: 5px; background: var(--gold); border-radius: 3px; }
-  .score-val { font-size: 13px; font-weight: 500; color: var(--gold); min-width: 30px; }
+  .score-bar-wrap { flex: 1; height: 5px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .score-bar { height: 5px; background: goldenrod; border-radius: 3px; }
+  .score-val { font-size: 13px; font-weight: 500; color: goldenrod; min-width: 30px; }
 
-  .chart-wrap { background: rgba(255,255,255,0.04); border: 1px solid rgba(212,168,32,0.15); border-radius: var(--radius-sm); padding: 18px; }
-  .chart-title { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; color: var(--card-muted); margin-bottom: 14px; }
+  .chart-wrap { background:rgba(239, 217, 217, 0.281); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 18px; }
+  .chart-title { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; color: whitesmoke; margin-bottom: 14px; }
   .chart-wrap canvas { max-height: 230px; }
 
-  .tableau-wrap { background: rgba(255,255,255,0.04); border: 1px solid rgba(212,168,32,0.15); border-radius: var(--radius-sm); overflow: hidden; }
+  .tableau-wrap { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
   .tableau-wrap iframe { width: 100%; height: 520px; border: none; display: block; }
-  .tableau-label { padding: 12px 18px; font-size: 12px; color: var(--card-muted); border-top: 1px solid rgba(212,168,32,0.15); }
+  .tableau-label { padding: 12px 18px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); }
 
-  .tb-banner { border-radius: var(--radius); padding: 26px 30px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
-  .tb-btn { background: var(--card-bg); color: var(--gold-bright);     border: 1px solid var(--card-border); border-radius: var(--radius-sm); padding: 20px 30px; font-size: 13px; font-weight: 500; cursor: pointer; text-decoration: none; white-space: nowrap; transition: background 0.15s; letter-spacing: 0.05em;}
-  .tb-btn:hover { background: var(--card-bg-hover); border-color: var(--card-border-hover); box-shadow: 0 10px 36px rgba(0,0,0,0.959), 0 0 0 1px rgb(163,127,20); transform: translateY(-3px); }
+  .pdf-banner { background: var(--dark); border-radius: var(--radius); padding: 26px 30px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+  .pdf-banner-text strong { display: block; font-family: 'Playfair Display', serif; font-size: 17px; color: white; margin-bottom: 4px; }
+  .pdf-banner-text span { font-size: 13px; color: whitesmoke; font-style: italic; }
+  .pdf-btn { background: var(--red); color: white; border: none; border-radius: var(--radius-sm); padding: 11px 22px; font-size: 13px; font-weight: 500; cursor: pointer; text-decoration: none; white-space: nowrap; transition: background 0.15s; }
+  .pdf-btn:hover { background: #a93226; }
 
-  .goto-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 16px; margin-left: 80px; margin-top: 8px; }
-  .goto {
-    border: 1px solid var(--card-border);
-    border-radius: var(--radius);
-    background: var(--card-bg);
-    padding: 18px;
-    cursor: pointer; text-decoration: none; color: inherit;
-    display: flex; flex-direction: column;
-    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-    backdrop-filter: blur(8px);
-  }
-  .goto:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 36px rgba(0,0,0,0.959), 0 0 0 1px rgb(163,127,20);
-    border-color: var(--card-border-hover);
-    background: var(--card-bg-hover);
-  }
-  .goto-link { font-size: 14px; font-weight: 500; color: var(--gold); display: inline-flex; align-items: center; gap: 4px; letter-spacing: 0.5em; }
-
-
-  #back-top { position: fixed; bottom: 24px; right: 24px; width: 40px; height: 40px; background: var(--card-bg); color: var(--gold-bright); border: 1px solid rgba(212,168,32,0.3); border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.2s, background 0.2s; box-shadow: 0 4px 16px rgba(0,0,0,0.4); }
+  #back-top { position: fixed; bottom: 24px; right: 24px; width: 40px; height: 40px; background: var(--dark); color: white; border: none; border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.2s, background 0.2s; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
   #back-top.visible { opacity: 1; pointer-events: all; }
-  #back-top:hover { background: rgba(212,168,32,0.2); }
+  #back-top:hover { background: var(--red); }
 
-  footer {
-    background: rgba(26,31,60,0.97);
-    text-align: center;
-    padding: 28px 48px;
-    border-top: 1px solid rgba(212,168,32,0.2);
-    font-size: 13px;
-    color: var(--card-muted);
-  }
-  footer strong { color: var(--gold-bright); font-weight: 500; }
+  footer { background-color: #f5e4e4; text-align: center; padding: 28px 48px; border-top: 1px solid var(--border); font-size: 13px; color: var(--muted); }
+  footer strong { color: var(--text); font-weight: 500; }
+  /* footer a { color: var(--muted); text-decoration: none; font-size: 12px; transition: color 0.15s; }
+  footer a:hover { color: var(--red); } */
 
   /* RESPONSIVE */
+
+  /* TABLET */
   @media (max-width: 1024px) {
     .navbar { padding: 0 24px; }
     .nav-links a { font-size: 12px; padding: 6px 9px; }
     .tab-bar { padding: 0 16px; }
     .page-wrap { padding: 36px 24px 60px; }
   }
+
+  /* MOBILE */
   @media (max-width: 768px) {
+    /* show hamburger, hide desktop links */
     .nav-links { display: none; }
     .ham-btn { display: flex; }
+
     .navbar { padding: 0 16px; height: 54px; }
     .mobile-nav { top: 54px; }
+
+    /* tab bar drops below mobile nav */
     .tab-bar { top: 54px; padding: 0 4px; }
     .tab-btn { font-size: 12px; padding: 12px 10px; }
+
     .hero { padding: 20px 20px 32px; }
     .hero h1 { font-size: 24px; }
     .hero p { font-size: 13px; }
+
+    /* sidebar hidden, content full width */
     .page-wrap { grid-template-columns: 1fr; padding: 24px 16px 48px; }
     .toc { display: none; }
     .content { padding-left: 0; }
+
     .stat-strip { grid-template-columns: 1fr 1fr; gap: 8px; }
     .stat-box { padding: 12px 8px; }
     .stat-box strong { font-size: 22px; }
+
     .rs-head { padding: 14px 16px; gap: 10px; }
     .rs-head h2 { font-size: 16px; }
     .rs-body { padding: 14px 16px; gap: 14px; }
     .rs-body p { font-size: 13px; }
+
     .factor-grid { grid-template-columns: 1fr; }
     .finding-num { font-size: 15px; }
+
     .pdf-banner { flex-direction: column; align-items: flex-start; padding: 20px; }
+
     .tableau-wrap iframe { height: 360px; }
-    footer { padding: 20px 16px; }
+
+    footer { padding: 20px 16px; flex-direction: column; gap: 8px; }
   }
+
+  /* VERY SMALL */
   @media (max-width: 380px) {
     .hero h1 { font-size: 20px; }
     .stat-strip { grid-template-columns: 1fr 1fr; }
@@ -271,8 +245,6 @@
 </style>
 </head>
 <body>
-
-<div class="page-bg">
 
 <!-- NAVBAR -->
 <nav class="navbar">
@@ -308,7 +280,7 @@
   <div class="hero-inner">
     <div class="hero-eyebrow">Report & Findings · 2026</div>
     <h1>Customer banking choices<br><span>in Bhutan</span></h1>
-    <p>Full study report, key findings, data visualisations, and the interactive Tableau dashboard – all in one place.</p>
+    <p>Full study report, key findings, data visualisations, and the interactive Tableau dashboard — all in one place.</p>
   </div>
 </div>
 
@@ -332,7 +304,7 @@
       <a href="#methodology">Methodology</a>
       <a href="#solutions">Solutions</a>
       <a href="#conclusion">Conclusion</a>
-      <!-- <a href="#fullreport">Full PDF</a> -->
+      <a href="#fullreport">Full PDF</a>
     </div>
   </aside>
 
@@ -349,12 +321,12 @@
       </div>
 
       <div class="rs" id="intro">
-        <div class="rs-head"><div class="rs-icon">📘</div><div><h2>Introduction</h2><p>Context and background of the study</p></div></div>
+        <div class="rs-head"><div class="rs-icon" style="background:#fff0ef">📘</div><div><h2>Introduction</h2><p>Context and background of the study</p></div></div>
         <div class="rs-body">
-          <p>Banking services are central to Bhutan's growing digital economy. With the rapid adoption of mobile and internet banking, customer expectations are evolving, and the gap between what banks offer and what customers actually need has become measurable.</p>
+          <p>Banking services are central to Bhutan's growing digital economy. With the rapid adoption of mobile and internet banking, customer expectations are evolving — and the gap between what banks offer and what customers actually need has become measurable.</p>
           <div class="sub-block">
             <h3>Problem statement</h3>
-            <p style="font-size:13px;color:var(--card-text);line-height:1.75">Customers experience meaningful differences across Bhutan's banks in four dimensions: <strong style="color:var(--gold-bright)">trust</strong>, <strong style="color:var(--gold-bright)">service quality</strong>, <strong style="color:var(--gold-bright)">accessibility</strong>, and <strong style="color:var(--gold-bright)">ease of use</strong>. This study quantifies those differences and maps what drives customer choice.</p>
+            <p style="font-size:13px;color:whitesmoke;line-height:1.75">Customers experience meaningful differences across Bhutan's banks in four dimensions: <strong>trust</strong>, <strong>service quality</strong>, <strong>accessibility</strong>, and <strong>ease of use</strong>. This study quantifies those differences and maps what drives customer choice.</p>
           </div>
           <div class="sub-block">
             <h3>Research questions</h3>
@@ -368,7 +340,7 @@
       </div>
 
       <div class="rs" id="methodology">
-        <div class="rs-head"><div class="rs-icon">🔬</div><div><h2>Methodology</h2><p>How the data was collected and analysed</p></div></div>
+        <div class="rs-head"><div class="rs-icon" style="background:#f0f4ff">🔬</div><div><h2>Methodology</h2><p>How the data was collected and analysed</p></div></div>
         <div class="rs-body">
           <div class="sub-block">
             <div class="pill-list">
@@ -382,14 +354,14 @@
       </div>
 
       <div class="rs" id="solutions">
-        <div class="rs-head"><div class="rs-icon">💡</div><div><h2>Discussion & solutions</h2><p>Recommendations based on study findings</p></div></div>
+        <div class="rs-head"><div class="rs-icon" style="background:#fff8ee">💡</div><div><h2>Discussion & solutions</h2><p>Recommendations based on study findings</p></div></div>
         <div class="rs-body">
           <div class="sub-block">
-            <h3>This platform – Ngul Yoen</h3>
+            <h3>This platform — Ngul Yoen</h3>
             <div class="pill-list">
               <div class="pill-item"><div class="pill-dot"></div>Help customers compare all major banks in Bhutan side by side</div>
-              <div class="pill-item"><div class="pill-dot"></div>Bank statement analyser help customers identify their expense pattern from hugh transaction entries</div>
-              <div class="pill-item"><div class="pill-dot"></div>Provide interactive tools – bank finder quiz and knowledge tests</div>
+              <div class="pill-item"><div class="pill-dot"></div>Explain services, fees, and digital offerings in plain language</div>
+              <div class="pill-item"><div class="pill-dot"></div>Provide interactive tools — bank finder quiz and knowledge tests</div>
             </div>
           </div>
           <div class="sub-block">
@@ -404,8 +376,8 @@
           <div class="sub-block">
             <h3>Sector-wide recommendations</h3>
             <div class="pill-list">
-              <div class="pill-item"><div class="pill-dot"></div>Improve financial literacy and banking awareness in rural areas</div>
-              <div class="pill-item"><div class="pill-dot"></div>Streamline digital onboarding – reduce document barriers for new accounts, loan processing, and foriegn transfer</div>
+              <div class="pill-item"><div class="pill-dot"></div>Improve financial literacy and banking awareness in rural dzongkhags</div>
+              <div class="pill-item"><div class="pill-dot"></div>Streamline digital onboarding — reduce document barriers for new accounts</div>
               <div class="pill-item"><div class="pill-dot"></div>Invest in network infrastructure for stable mobile and USSD banking</div>
             </div>
           </div>
@@ -413,63 +385,71 @@
       </div>
 
       <div class="rs" id="conclusion">
-        <div class="rs-head"><div class="rs-icon">✅</div><div><h2>Conclusion</h2><p>Summary of key takeaways</p></div></div>
+        <div class="rs-head"><div class="rs-icon" style="background:#f0fff8">✅</div><div><h2>Conclusion</h2><p>Summary of key takeaways</p></div></div>
         <div class="rs-body">
-          <p>Trust, service quality, accessibility, and ease of use are the four pillars that most strongly shape customer banking choices in Bhutan. Of these, <strong style="color:var(--gold-bright)">ease of use</strong> – particularly around digital and mobile banking, presents the greatest opportunity for improvement.</p>
-          <p>Ngul Yoen exists to bridge the information gap – helping customers make informed financial choices, and giving banks a clearer picture of what their customers actually value.</p>
+          <p>Trust, service quality, accessibility, and ease of use are the four pillars that most strongly shape customer banking choices in Bhutan. Of these, <strong>ease of use</strong> — particularly around digital and mobile banking — presents the greatest opportunity for improvement.</p>
+          <p>Ngul Yoen exists to bridge the information gap — helping customers make informed choices, and giving banks a clearer picture of what their customers actually value.</p>
         </div>
       </div>
 
-    </div><!-- /panel-report -->
+      <div class="pdf-banner" id="fullreport">
+        <div class="pdf-banner-text">
+          <strong>Full research report</strong>
+          <span>Download the complete PDF — methodology, raw data tables, and extended analysis.</span>
+        </div>
+        <a href="Project report writing111111.pdf" target="_blank" class="pdf-btn">Open full report →</a>
+      </div>
 
-    <!-- TAB: KEY FINDINGS -->
+    </div><!-- /panel-report -->
+    
+     <!-- TAB: KEY FINDINGS  -->
     <div class="tab-panel" id="panel-findings">
 
       <div class="rs" id="findings-summary">
-        <div class="rs-head"><div class="rs-icon">📌</div><div><h2>Key findings</h2><p>8 headline insights from 111 respondents · Bhutan 2026</p></div></div>
+        <div class="rs-head"><div class="rs-icon" style="background:#fff0ef">📌</div><div><h2>Key findings</h2><p>8 headline insights from 111 respondents · Bhutan 2026</p></div></div>
         <div class="rs-body">
-          <p>Kuzuzangpo la! <br>The survey captured responses from customers across Bhutan's major banks. Here are the most important patterns that emerged from the data.</p>
+          <p>Kuzuzangpo la! The survey captured responses from customers across Bhutan's major banks. Here are the most important patterns that emerged from the data.</p>
           <div class="findings-list">
-            <div class="finding-item"><div class="finding-num">1</div><div class="finding-text"><strong>103 of 111 respondents have bank accounts</strong> – but a small group remains unbanked due to lack of awareness, insufficient income, or age limitations.</div></div>
+            <div class="finding-item"><div class="finding-num">1</div><div class="finding-text"><strong>103 of 111 respondents have bank accounts</strong> — but a small group remains unbanked due to lack of awareness, insufficient income, or age limitations.</div></div>
             <div class="finding-item"><div class="finding-num">2</div><div class="finding-text"><strong>Bank of Bhutan (BoB) dominates customer choice</strong> with approximately 84% of respondents selecting it as their primary bank.</div></div>
-            <div class="finding-item"><div class="finding-num">3</div><div class="finding-text">The four key factors are <strong>trust, service quality, accessibility, and ease of use</strong>.</div></div>
-            <div class="finding-item"><div class="finding-num">4</div><div class="finding-text"><strong>Over 80% of customers trust their bank</strong> – but security concerns around digital transactions remain a notable anxiety.</div></div>
+            <div class="finding-item"><div class="finding-num">3</div><div class="finding-text">The four key factors are <strong>trust, service quality, accessibility, and ease of use</strong> — in that order of stated importance.</div></div>
+            <div class="finding-item"><div class="finding-num">4</div><div class="finding-text"><strong>Over 80% of customers trust their bank</strong> — but security concerns around digital transactions remain a notable anxiety.</div></div>
             <div class="finding-item"><div class="finding-num">5</div><div class="finding-text">Service quality is generally positive, but <strong>7–10% of users reported dissatisfaction</strong> around wait times and digital support.</div></div>
             <div class="finding-item"><div class="finding-num">6</div><div class="finding-text"><strong>Rural users face limited ATM and branch access</strong>, while urban users experience congestion and long queues.</div></div>
             <div class="finding-item"><div class="finding-num">7</div><div class="finding-text">Digital banking is well-rated overall, but <strong>network reliability issues</strong> reduce the experience in rural areas significantly.</div></div>
-            <div class="finding-item"><div class="finding-num">8</div><div class="finding-text"><strong>Many customers are open to switching banks</strong> – a clear opportunity for institutions that invest in customer experience.</div></div>
+            <div class="finding-item"><div class="finding-num">8</div><div class="finding-text"><strong>Many customers are open to switching banks</strong> — a clear opportunity for institutions that invest in customer experience.</div></div>
           </div>
         </div>
       </div>
 
       <div class="rs" id="factors">
-        <div class="rs-head"><div class="rs-icon">🔍</div><div><h2>Four key factors in depth</h2><p>How each dimension scored across survey respondents</p></div></div>
+        <div class="rs-head"><div class="rs-icon" style="background:#f0f4ff">🔍</div><div><h2>Four key factors in depth</h2><p>How each dimension scored across survey respondents</p></div></div>
         <div class="rs-body">
           <div class="factor-grid">
             <div class="factor-card">
-              <div class="factor-top"><div class="factor-icon">🔒</div><h4>Trust</h4></div>
-              <p>Over 80% expressed confidence in their bank. Security concerns around digital transactions are the key concern remaining.</p>
+              <div class="factor-top"><div class="factor-icon" style="background:#fff0ef">🔒</div><h4>Trust</h4></div>
+              <p>Over 80% expressed confidence in their bank. Security concerns around digital transactions are the main barrier remaining.</p>
               <div class="score-row"><div class="score-bar-wrap"><div class="score-bar" style="width:82%"></div></div><span class="score-val">4.1/5</span></div>
             </div>
             <div class="factor-card">
-              <div class="factor-top"><div class="factor-icon">⭐</div><h4>Service quality</h4></div>
-              <p>Most customers are satisfied with in-branch service; complaints focus on long waits and limited digitalisation of services.</p>
+              <div class="factor-top"><div class="factor-icon" style="background:#f0f4ff">⭐</div><h4>Service quality</h4></div>
+              <p>Most are satisfied with in-branch service. A vocal minority cite long waits and limited digital staff support.</p>
               <div class="score-row"><div class="score-bar-wrap"><div class="score-bar" style="width:74%"></div></div><span class="score-val">3.7/5</span></div>
             </div>
             <div class="factor-card">
-              <div class="factor-top"><div class="factor-icon">📍</div><h4>Accessibility</h4></div>
-              <p>Urban branches and ATMs are congested; rural areas have limited ATMs and infrequent hours. Biggest regional disparity.</p>
+              <div class="factor-top"><div class="factor-icon" style="background:#f0fff8">📍</div><h4>Accessibility</h4></div>
+              <p>Urban branches are congested; rural areas have limited ATMs and infrequent hours. Biggest regional disparity.</p>
               <div class="score-row"><div class="score-bar-wrap"><div class="score-bar" style="width:68%"></div></div><span class="score-val">3.4/5</span></div>
             </div>
             <div class="factor-card">
-              <div class="factor-top"><div class="factor-icon">📱</div><h4>Ease of use</h4></div>
-              <p>Usability of services are fairly rated. Network reliability, limited branches, and agencies reduced scores in some areas.</p>
+              <div class="factor-top"><div class="factor-icon" style="background:#fffbee">📱</div><h4>Ease of use</h4></div>
+              <p>Digital platforms are well-rated in urban areas. Network reliability reduces scores in rural areas.</p>
               <div class="score-row"><div class="score-bar-wrap"><div class="score-bar" style="width:76%"></div></div><span class="score-val">3.8/5</span></div>
             </div>
           </div>
           <div class="sub-block">
             <h3>Future insight</h3>
-            <p style="font-size:13px;color:var(--card-text);line-height:1.75">A significant share of respondents are undecided about switching banks – the next 2–3 years will be decisive for which banks capture the loyalty of Bhutan's digitally active youth.</p>
+            <p style="font-size:13px;color:whitesmoke;line-height:1.75">A significant share of respondents are undecided about switching banks — the next 2–3 years will be decisive for which banks capture the loyalty of Bhutan's digitally active youth.</p>
           </div>
         </div>
       </div>
@@ -479,7 +459,7 @@
     <!-- TAB: CHARTS -->
     <div class="tab-panel" id="panel-charts">
       <div class="rs" id="charts">
-        <div class="rs-head"><div class="rs-icon">📈</div><div><h2>Data visualisation</h2><p>Survey data illustrated with Chart.js</p></div></div>
+        <div class="rs-head"><div class="rs-icon" style="background:#f5f0ff">📈</div><div><h2>Data visualisation</h2><p>Survey data illustrated with Chart.js</p></div></div>
         <div class="rs-body">
           <div class="chart-wrap">
             <div class="chart-title">Bank preference among respondents (%)</div>
@@ -500,7 +480,7 @@
     <!-- TAB: DASHBOARD -->
     <div class="tab-panel" id="panel-dashboard">
       <div class="rs" id="dashboard">
-        <div class="rs-head"><div class="rs-icon">🖥️</div><div><h2>Interactive Tableau dashboard</h2><p>Explore the full dataset interactively</p></div></div>
+        <div class="rs-head"><div class="rs-icon" style="background:#eef8ff">🖥️</div><div><h2>Interactive Tableau dashboard</h2><p>Explore the full dataset interactively</p></div></div>
         <div class="rs-body">
           <p>The dashboard presents detailed insights on customer banking choices in Bhutan across all 111 respondents. Use the filters to explore by bank, region, and factor.</p>
           <div class="tableau-wrap">
@@ -509,13 +489,12 @@
           </div>
         </div>
       </div>
-      <div class="tb-banner">
-        <a href="https://public.tableau.com/views/Book1_2_17748664369600/Story1?:showVizHome=no&:embed=y" target="_blank" class="tb-btn">View Full Storyboard in Tableau →</a>
-      </div>
-      <div class="goto-grid">
-        <a href="banking1.html" class="goto">
-        <span class="goto-link">NEXT →</span>
-        </a>
+      <div class="pdf-banner">
+        <div class="pdf-banner-text">
+          <strong>Full research report</strong>
+          <span>Complete PDF with methodology, raw data tables, and extended analysis.</span>
+        </div>
+        <a href="Project report writing111111.pdf" target="_blank" class="pdf-btn">Open full report →</a>
       </div>
     </div><!-- /panel-dashboard -->
 
@@ -526,13 +505,17 @@
 
 <footer>
   <span>© 2026 <strong>Ngul Yoen</strong> · Hema Luitel · All rights reserved</span>
+  <!-- <a href="index.html">Home</a>
+  <a href="abt.html">About</a>
+  <a href="banking1.html">Banking Insights</a>
+  <a href="Prototype.html">mBOB Prototype</a>
+  <a href="finsight.html">FinSight</a>
+  <a href="ct1.html">Contact Us</a> -->
 </footer>
-
-</div><!-- /page-bg -->
 
 <script>
 
-// MOBILE NAV
+// MOBILE NAV 
 function toggleMobileNav() {
   document.getElementById('mobile-nav').classList.toggle('open');
 }
@@ -547,7 +530,7 @@ document.addEventListener('click', function(e) {
   }
 });
 
-// TABS
+// TABS 
 function switchTab(name, btn) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
@@ -565,7 +548,7 @@ function switchTab(name, btn) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// COUNTERS
+// COUNTERS 
 function animCount(id, target, dur, suffix) {
   const el = document.getElementById(id);
   if (!el) return;
@@ -588,9 +571,9 @@ new IntersectionObserver((entries) => {
   }
 }, { threshold: 0.3 }).observe(document.querySelector('.stat-strip'));
 
-// CHARTS
+// CHARTS 
 Chart.defaults.font.family = "'Segoe UI', sans-serif";
-Chart.defaults.color = '#e8e4f0';
+Chart.defaults.color = 'whitesmoke';
 
 new Chart(document.getElementById('bankChart'), {
   type: 'bar',
@@ -601,7 +584,7 @@ new Chart(document.getElementById('bankChart'), {
       borderColor: '#c1981c', borderWidth: 1, borderRadius: 6 }]
   },
   options: { responsive: true, plugins: { legend: { display: false } },
-    scales: { y: { beginAtZero: true, max: 100, grid: { color: 'rgba(212,168,32,0.15)' }, ticks: { callback: v => v+'%', color: '#e8e4f0' } }, x: { grid: { display: false }, ticks: { color: '#e8e4f0' } } } }
+    scales: { y: { beginAtZero: true, max: 100, grid: { color: '#c1981c' }, ticks: { callback: v => v+'%' } }, x: { grid: { display: false } } } }
 });
 
 new Chart(document.getElementById('switchChart'), {
@@ -609,10 +592,10 @@ new Chart(document.getElementById('switchChart'), {
   data: {
     labels: ['Very unlikely','Unlikely','Unsure','Likely','Very likely'],
     datasets: [{ data: [6.80,22.33,31.07,29.13,10.69],
-      backgroundColor: ['rgba(16,146,2,0.6)','rgba(53,181,39,0.95)','rgba(99,173,3,0.95)','rgba(126,220,4,0.95)','rgba(184,252,95,0.95)'],
+      backgroundColor: ['rgba(16, 146, 2, 0.6)','rgba(53, 181, 39, 0.952)','rgba(99, 173, 3, 0.952)','rgba(126, 220, 4, 0.952)','rgba(184, 252, 95, 0.952)'],
       borderWidth: 0, hoverOffset: 6 }]
   },
-  options: { responsive: true, cutout: '62%', plugins: { legend: { position:'right', labels: { padding:16, font:{size:11}, color:'#e8e4f0' } } } }
+  options: { responsive: true, cutout: '62%', plugins: { legend: { position:'right', labels: { padding:16, font:{size:11} } } } }
 });
 
 new Chart(document.getElementById('accountChart'), {
@@ -620,18 +603,18 @@ new Chart(document.getElementById('accountChart'), {
   data: {
     labels: ['Have a bank account','Do not have an account'],
     datasets: [{ data: [103,8],
-      backgroundColor: ['rgba(249,28,3,0.8)','rgba(254,202,43,0.6)'],
+      backgroundColor: ['rgba(249, 28, 3, 0.8)','rgba(254, 202, 43, 0.6)'],
       borderWidth: 0, hoverOffset: 6 }]
   },
-  options: { responsive: true, plugins: { legend: { position:'right', labels: { padding:16, font:{size:11}, color:'#e8e4f0' } } } }
+  options: { responsive: true, plugins: { legend: { position:'right', labels: { padding:16, font:{size:11} } } } }
 });
 
-// BACK TO TOP
+// BACK TO TOP 
 window.addEventListener('scroll', () => {
   document.getElementById('back-top').classList.toggle('visible', window.scrollY > 300);
 });
 
-// TOC ACTIVE
+// TOC ACTIVE 
 const tocLinks = document.querySelectorAll('.toc a');
 document.querySelectorAll('.rs, .stat-strip').forEach(el => {
   if (!el.id) return;

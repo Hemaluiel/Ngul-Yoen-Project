@@ -13,6 +13,7 @@
     --red-light: #fff0ef;
     --red-mid: #f5c6c6;
     --gold: #d4a820;
+    --gold-bright: #f0c040;
     --dark: #1a1612;
     --text: #2c2420;
     --muted: #7a6e6a;
@@ -21,8 +22,21 @@
     --bg: #faf8f5;
     --radius: 14px;
     --radius-sm: 8px;
-    --card-bg: #efd9d9;
-    --milestone-bg: #dbcece;
+
+    /* Card theme */
+    --card-bg: #1a1f3c;
+    --card-bg-hover: #1e2445;
+    --card-border: rgba(212,168,32,0.25);
+    --card-border-hover: rgba(192, 148, 14, 0.55);
+    --card-heading: #d4a820;
+    --card-text: #e8e4f0;
+    --card-muted: #a09ab8;
+    --card-divider: rgba(212,168,32,0.3);
+    --card-link: #d4a820;
+
+    --milestone-bg: #242950;
+    --milestone-label: #a09ab8;
+    --milestone-text: #e8e4f0;
   }
 
   html { scroll-behavior: smooth; }
@@ -31,87 +45,109 @@
     background: var(--bg);
     color: var(--text);
     font-size: 15px;
-    line-height: 1.6; 
+    line-height: 1.6;
   }
 
-  /* NAVBAR — shown on all sizes, collapses links on mobile*/
+  /* NAVBAR */
   .navbar {
     position: sticky; top: 0; z-index: 50;
     display: flex; justify-content: space-between; align-items: center;
     padding: 0 48px; height: 64px;
-    background: rgba(250,248,245,0.92);
+    background: rgba(26,31,60,0.97);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
   }
   .logo {
     font-family: 'Playfair Display', serif;
     font-size: 22px; font-weight: 700;
-    color: var(--dark); letter-spacing: -0.02em;
+    color: #d4a820;
+    letter-spacing: -0.02em;
     text-decoration: none; flex-shrink: 0;
   }
   .logo em { color: var(--red); font-style: normal; }
 
-  /* Desktop nav links */
   .nav-links { display: flex; gap: 4px; align-items: center; }
-  .nav-links a { font-size: 14px; font-weight: 500; color: var(--muted); text-decoration: none; padding: 7px 12px; border-radius: 20px; transition: background 0.18s, color 0.18s; white-space: nowrap; }
+  .nav-links a { 
+    font-size: 14px; font-weight: 500; 
+    color: #e8e4f0;
+    text-decoration: none; padding: 7px 12px; border-radius: 20px; transition: background 0.18s, color 0.18s; white-space: nowrap; 
+  }
+  .nav-links a:hover { background: var(--card-bg-hover); color: var(--card-muted); }
 
-  .nav-links a:hover { background: var(--red-light); color: var(--red); }
-
-  /* Hamburger — hidden on desktop */
+  /* mob-nav */
   .ham-btn {
     display: none;
     flex-direction: column; gap: 5px;
     background: none; border: none; cursor: pointer; padding: 8px;
   }
-  .ham-btn span { display: block; width: 20px; height: 2px; background: var(--dark); border-radius: 2px; transition: all 0.2s; }
+  .ham-btn span { display: block; width: 20px; height: 2px; background: var(--gold-bright); border-radius: 2px; transition: all 0.2s; }
 
-  /* Mobile dropdown nav */
-    .mobile-nav {
-    display: none;
-    flex-direction: column;
-    position: fixed;   
-    top: 54px;            
-    right: 16px;         
-    width: 220px;        
-    background: rgba(207, 194, 194, 0.85);;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(129, 115, 115, 0.1);
-    padding: 8px;
-    z-index: 100;
+  .mobile-nav {
+    display: none; flex-direction: column;
+    position: fixed; top: 54px; right: 16px; width: 220px;
+    background: rgba(207,194,194,0.85);
+    border: 1px solid var(--border); border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(129,115,115,0.1);
+    padding: 8px; z-index: 100;
   }
   .mobile-nav.open { display: flex; }
-  .mobile-nav a { font-size: 14px; font-weight: 500; color: black; text-decoration: none; padding: 6px 10px; border-radius: 8px; transition: background 0.15s, color 0.15s; gap: 0px;}
-  .mobile-nav a:hover { background: var(--red-light); color: var(--red); }
+  .mobile-nav a { font-size: 14px; font-weight: 500; color: black; text-decoration: none; padding: 6px 10px; border-radius: 8px; transition: background 0.15s, color 0.15s; }
+  .mobile-nav a:hover { background: var(--card-bg-hover); color: var(--card-muted); }
   .mobile-nav .mob-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); padding: 8px 10px 4px; }
 
-  /* HERO*/
+
+  /* BACKGROUND SECTION - img */
+  .bg-section {
+    position: relative;
+    max-width: 100%;
+    padding: 52px 48px;
+  }
+  /* background image */
+  .bg-section::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url('https://www.shutterstock.com/image-photo/bank-building-600nw-574713295.jpg');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    z-index: -2;
+  }
+  /* Dark overlay for readability */
+  .bg-section::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(8, 10, 28, 0.72);
+    z-index: -1;
+  }
+
+
+  
+  /* HERO */
   .hero {
     position: relative; overflow: hidden;
     padding: 26px 48px 38px;
-    background: var(--dark); color: white;
+    color: white;
   }
   .hero::before {
     content: ''; position: absolute; inset: 0;
-    background:
-      radial-gradient(ellipse 60% 80% at 80% 50%, rgba(192,57,43,0.35) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(212,168,32,0.18) 0%, transparent 60%);
     pointer-events: none;
   }
   .hero-inner { position: relative; max-width: 800px; }
   .hero-eyebrow {
     display: inline-flex; align-items: center; gap: 8px;
-    font-size: 12px; font-weight: 500; letter-spacing: 0.1em;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.8em;
     text-transform: uppercase; color: var(--gold); margin-bottom: 10px;
   }
   .hero-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
   .hero h1 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(28px, 5vw, 44px); font-weight: 700;
-    line-height: 1.10; letter-spacing: -0.02em; margin-bottom: 8px;
+    line-height: 1.10; letter-spacing: 0.05em; margin-bottom: 8px;
   }
   .hero h1 span { color: #e8755a; }
-  .hero p { font-size: 14px; color: whitesmoke; max-width: 1500px; margin-bottom: 10px; line-height: 1.7; font-style:italic;}
+  .hero p { font-size: 14px; color: whitesmoke; max-width: 1500px; margin-bottom: 10px; line-height: 1.7; font-style: italic; }
   .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; }
   .hero-tag {
     font-size: 12px; font-weight: 500; padding: 3px 12px; border-radius: 20px;
@@ -119,7 +155,8 @@
     background: rgba(255,255,255,0.06);
   }
 
-  /* MAIN */
+
+  /* SECTION HEADINGS */
   .section {
     padding: 52px 48px;
     max-width: 1280px;
@@ -133,153 +170,182 @@
   .section-head h1 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(24px, 3vw, 32px); font-weight: 600;
+    color: goldenrod;
+    text-decoration: #97740b;
+    text-shadow: 0 2px 12px rgba(19, 15, 1, 0.5);
+    letter-spacing: 0.04em;
   }
   .section-head h2 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(18px, 2.5vw, 22px); font-weight: 600;
+    color: var(--gold-bright);
+    text-shadow: 0 2px 12px rgba(0,0,0,0.5);
   }
   .section-head span {
     font-family: 'Playfair Display', serif; font-style: italic;
-    font-size: 14px; color: var(--muted); font-weight: 400;
+    font-size: 14px; color: rgba(255,255,255,0.6); font-weight: 400;
   }
 
   /* STORY CARD */
-  .back-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-left: 20px;}
+  .back-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-left: 20px; }
   .back {
-    background-color: var(--card-bg);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     border-radius: 20px; padding: 40px;
     text-decoration: none; color: inherit; display: flex; flex-direction: column;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    backdrop-filter: blur(8px);
   }
-  .back:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.09); }
+  .back:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.45), 0 0 0 1px rgba(212,168,32,0.3);
+    border-color: var(--card-border-hover);
+  }
   .back h3 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(20px, 3vw, 24px); font-weight: 700;
-    margin-bottom: 4px; color: var(--dark); line-height: 1.2;
+    margin-bottom: 4px; color: var(--card-heading); line-height: 1.2;
   }
-  .story-subhead { font-family: 'Playfair Display', serif; font-style: italic; font-size: 14px; color: var(--muted); margin-bottom: 18px; }
-  .story-divider { width: 40px; height: 2px; background: var(--red); border-radius: 2px; margin-bottom: 18px; }
-  .story-body { font-size: 15px; font-weight: 400; line-height: 1.85; margin-bottom: 12px; font-style: italic; }
+  .story-subhead { font-family: 'Playfair Display', serif; font-style: italic; font-size: 14px; color: var(--card-muted); margin-bottom: 18px; }
+  .story-divider { width: 90px; height: 1px; background: var(--gold); border-radius: 2px; margin-bottom: 18px; }
+  .story-body { font-size: 15px; font-weight: 400; line-height: 1.85; margin-bottom: 12px; font-style: italic; color: var(--card-text); }
   .story-milestones { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 18px 0; }
-  .story-milestone { background-color: var(--milestone-bg); border-radius: 6px; padding: 12px; }
-  .story-milestone-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
-  .story-milestone-text { font-size: 13px; color: var(--text); line-height: 1.4; }
-  .story-sig { display: flex; align-items: center; gap: 12px; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); }
-  .story-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--red-light); border: 1px solid var(--red-mid); display: flex; align-items: center; justify-content: center; font-weight: 500; font-size: 13px; color: var(--red); flex-shrink: 0; }
-  .story-sig-name { font-weight: 500; font-size: 14px; color: var(--dark); margin-bottom: 2px; }
-  .story-sig-role { font-size: 12px; color: var(--muted); }
+  .story-milestone { background: var(--milestone-bg); border-radius: 6px; padding: 12px; border: 1px solid rgba(212,168,32,0.15); }
+  .story-milestone-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+  .story-milestone-text { font-size: 13px; color: var(--card-text); line-height: 1.4; }
+  .story-sig { display: flex; align-items: center; gap: 12px; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--card-divider); }
+  .story-avatar { width: 38px; height: 38px; border-radius: 50%; background: rgba(212,168,32,0.15); border: 1px solid rgba(212,168,32,0.4); display: flex; align-items: center; justify-content: center; font-weight: 500; font-size: 13px; color: var(--gold-bright); flex-shrink: 0; }
+  .story-sig-name { font-weight: 500; font-size: 14px; color: var(--card-heading); margin-bottom: 2px; }
+  .story-sig-role { font-size: 12px; color: var(--card-muted); }
 
   /* CARDS GRID */
   .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-left: 30px; }
   .card {
-    border: 1px solid var(--border); border-radius: var(--radius);
-    background-color: var(--card-bg); padding: 28px;
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    background: var(--card-bg);
+    padding: 28px;
     cursor: pointer; text-decoration: none; color: inherit;
     display: flex; flex-direction: column;
     transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    backdrop-filter: blur(8px);
   }
-  .card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,0.08); border-color: rgba(192,57,43,0.25); }
-  .card-icon { width: 38px; height: 38px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 17px; margin-bottom: 10px; flex-shrink: 0; }
-  .card h3 { font-size: 15px; font-weight: 500; margin-bottom: 6px; }
-  .card p  { font-size: 13px; line-height: 1.55; flex: 1; font-style: italic; }
-  .card-link { margin-top: 12px; font-size: 13px; font-weight: 500; color: var(--red); display: inline-flex; align-items: center; gap: 4px; }
-  .card.interactive { border-bottom: 2px solid var(--red-mid); }
-  .card.interactive:hover { border-bottom-color: var(--red); }
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 36px rgba(0,0,0,0.4), 0 0 0 1px rgba(212,168,32,0.35);
+    border-color: var(--card-border-hover);
+    background: var(--card-bg-hover);
+  }
+  .card-icon { width: 38px; height: 38px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 17px; margin-bottom: 10px; flex-shrink: 0; background: rgba(212,168,32,0.12); border: 1px solid rgba(212,168,32,0.2); }
+  .card h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; color: var(--card-heading); }
+  .card p { font-size: 13px; line-height: 1.55; flex: 1; font-style: italic; color: var(--card-text); }
+  .card-link { margin-top: 12px; font-size: 13px; font-weight: 500; color: var(--gold-bright); display: inline-flex; align-items: center; gap: 4px; }
+  .card.interactive { border-bottom: 2px solid rgba(212,168,32,0.4); }
+  .card.interactive:hover { border-bottom-color: var(--gold); }
+
+
+
+  .goto-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 16px; margin-left: 80px; margin-top: 50px; }
+  .goto {
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    background: var(--card-bg);
+    padding: 18px;
+    cursor: pointer; text-decoration: none; color: inherit;
+    display: flex; flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    backdrop-filter: blur(8px);
+  }
+  .goto:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 36px rgba(0, 0, 0, 0.959), 0 0 0 1px rgb(163, 127, 20);
+    border-color: var(--card-border-hover);
+    background: var(--card-bg-hover);
+  }
+  .goto-link { margin-top: 12px; font-size: 14px; font-weight: 500; color: var(--card-link); display: inline-flex; align-items: center; gap: 4px; letter-spacing: 0.5em; }
+  .goto.interactive { border-bottom: 2px solid rgba(212,168,32,0.4); }
+  .goto.interactive:hover { border-bottom-color: var(--gold); }
 
   /* DIVIDER */
   .divider { height: 1px; background: var(--border); margin: 0 48px; }
 
   /* MODAL / OVERLAY */
-  .overlay { display: none; position: fixed; inset: 0; background: rgba(26,22,18,0.55); backdrop-filter: blur(4px); z-index: 200; align-items: center; justify-content: center; padding: 16px; }
+  .overlay { display: none; position: fixed; inset: 0; background: rgba(8,10,28,0.75); backdrop-filter: blur(4px); z-index: 200; align-items: center; justify-content: center; padding: 16px; }
   .overlay.open { display: flex; }
-  .modal { background: var(--surface); border-radius: 16px; border: 1px solid var(--border); width: 100%; max-width: 440px; overflow: hidden; animation: modalIn 0.22s ease; }
+  .modal { background: #1a1f3c; border: 1px solid rgba(212,168,32,0.3); border-radius: 16px; width: 100%; max-width: 440px; overflow: hidden; animation: modalIn 0.22s ease; }
   @keyframes modalIn { from { opacity:0; transform:scale(0.96) translateY(8px);} to { opacity:1; transform:scale(1) translateY(0);} }
-  .modal-header { padding: 18px 22px 16px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
-  .modal-header h2 { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 500; }
-  .close-btn { width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; background: var(--bg); border: 1px solid var(--border); border-radius: 50%; cursor: pointer; font-size: 14px; color: var(--muted); transition: background 0.15s; line-height: 1; }
-  .close-btn:hover { background: var(--red-light); color: var(--red); }
+  .modal-header { padding: 18px 22px 16px; border-bottom: 1px solid rgba(212,168,32,0.2); display: flex; justify-content: space-between; align-items: center; }
+  .modal-header h2 { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 500; color: var(--gold-bright); }
+  .close-btn { width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); border: 1px solid rgba(212,168,32,0.2); border-radius: 50%; cursor: pointer; font-size: 14px; color: var(--card-muted); transition: background 0.15s; line-height: 1; }
+  .close-btn:hover { background: rgba(212,168,32,0.15); color: var(--gold-bright); }
   .modal-body { padding: 22px; }
-  .prog-wrap { background: var(--bg); border-radius: 4px; height: 3px; margin-bottom: 18px; }
-  .prog-fill { height: 3px; background: var(--red); border-radius: 4px; transition: width 0.3s ease; }
-  .q-meta { font-size: 11px; color: var(--muted); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
-  .q-text { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 500; margin-bottom: 16px; line-height: 1.45; }
+  .prog-wrap { background: rgba(255,255,255,0.08); border-radius: 4px; height: 3px; margin-bottom: 18px; }
+  .prog-fill { height: 3px; background: var(--gold); border-radius: 4px; transition: width 0.3s ease; }
+  .q-meta { font-size: 11px; color: var(--card-muted); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
+  .q-text { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 500; margin-bottom: 16px; line-height: 1.45; color: var(--card-text); }
   .options { display: flex; flex-direction: column; gap: 7px; }
-  .opt-btn { text-align: left; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 14px; font-size: 14px; font-family: 'Segoe UI', sans-serif; cursor: pointer; transition: border-color 0.15s, background 0.15s, color 0.15s; color: var(--text); }
-  .opt-btn:hover { border-color: var(--red-mid); background: var(--red-light); }
-  .opt-btn.selected { border-color: var(--red); background: var(--red-light); color: var(--red); font-weight: 500; }
+  .opt-btn { text-align: left; background: rgba(255,255,255,0.04); border: 1px solid rgba(212,168,32,0.2); border-radius: var(--radius-sm); padding: 10px 14px; font-size: 14px; font-family: 'Segoe UI', sans-serif; cursor: pointer; transition: border-color 0.15s, background 0.15s, color 0.15s; color: var(--card-text); }
+  .opt-btn:hover { border-color: rgba(212,168,32,0.5); background: rgba(212,168,32,0.1); }
+  .opt-btn.selected { border-color: var(--gold); background: rgba(212,168,32,0.18); color: var(--gold-bright); font-weight: 500; }
   .result-wrap { text-align: center; padding: 6px 0; }
   .result-emoji { font-size: 36px; margin-bottom: 10px; }
-  .result-title { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; margin-bottom: 8px; }
-  .result-desc { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 14px; }
-  .result-badge { display: inline-block; padding: 6px 16px; background: var(--red-light); color: var(--red); border-radius: 20px; font-size: 12px; font-weight: 500; border: 1px solid var(--red-mid); }
-  .modal-footer { padding: 14px 22px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
-  .btn-primary { background: var(--red); color: white; border: none; border-radius: var(--radius-sm); padding: 10px 20px; font-size: 13px; font-weight: 500; font-family: 'Segoe UI', sans-serif; cursor: pointer; transition: background 0.15s; }
-  .btn-primary:hover { background: #a93226; }
-  .btn-ghost { background: none; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 16px; font-size: 13px; font-family: 'Segoe UI', sans-serif; cursor: pointer; color: var(--muted); transition: background 0.15s; }
-  .btn-ghost:hover { background: var(--bg); }
+  .result-title { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; margin-bottom: 8px; color: var(--gold-bright); }
+  .result-desc { font-size: 13px; color: var(--card-muted); line-height: 1.65; margin-bottom: 14px; }
+  .result-badge { display: inline-block; padding: 6px 16px; background: rgba(212,168,32,0.15); color: var(--gold-bright); border-radius: 20px; font-size: 12px; font-weight: 500; border: 1px solid rgba(212,168,32,0.4); }
+  .modal-footer { padding: 14px 22px; border-top: 1px solid rgba(212,168,32,0.15); display: flex; justify-content: space-between; align-items: center; }
+  .btn-primary { background: var(--gold); color: #1a1206; border: none; border-radius: var(--radius-sm); padding: 10px 20px; font-size: 13px; font-weight: 600; font-family: 'Segoe UI', sans-serif; cursor: pointer; transition: background 0.15s; }
+  .btn-primary:hover { background: var(--gold-bright); }
+  .btn-ghost { background: none; border: 1px solid rgba(212,168,32,0.25); border-radius: var(--radius-sm); padding: 10px 16px; font-size: 13px; font-family: 'Segoe UI', sans-serif; cursor: pointer; color: var(--card-muted); transition: background 0.15s; }
+  .btn-ghost:hover { background: rgba(255,255,255,0.05); }
 
   /* FOOTER */
   footer {
-    background-color: #f5e4e4;
+    background: rgba(26,31,60,0.97);
     text-align: center;
     padding: 28px 48px;
-    border-top: 1px solid var(--border);
-    font-size: 13px; 
-    /* display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; align-items: center; */
+    border-top: 1px solid rgba(212,168,32,0.2);
+    font-size: 13px;
+    color: var(--card-muted);
   }
-  footer strong { color: var(--text); font-weight: 500; }
-  /* footer a { color: var(--muted); text-decoration: none; font-size: 13px; transition: color 0.15s; }
-  footer a:hover { color: var(--red); } */
+  footer strong { color: var(--gold-bright); font-weight: 500; }
 
-  /* RESPONSIVE BREAKPOINTS */
-
-  /* TABLET: 641px – 1024px */
+  /* RESPONSIVE */
   @media (max-width: 1024px) {
     .navbar { padding: 0 24px; }
     .nav-links a { font-size: 12px; padding: 6px 10px; }
     .hero { padding: 48px 32px 40px; }
+    .bg-section { padding: 40px 32px; }
     .section { padding: 40px 32px; }
     .divider { margin: 0 32px; }
     footer { padding: 24px 32px; }
     .story-milestones { grid-template-columns: 1fr 1fr; }
   }
-
-  /* MOBILE: ≤ 640px */
   @media (max-width: 640px) {
-    /* swap desktop links for hamburger */
     .nav-links { display: none; }
     .ham-btn { display: flex; }
-
     .navbar { padding: 0 16px; height: 54px; }
-
     .hero { padding: 40px 20px 36px; }
     .hero h1 { font-size: 26px; }
     .hero p { font-size: 14px; }
     .hero-tag { font-size: 11px; padding: 4px 10px; }
-
+    .bg-section { padding: 32px 16px; }
     .section { padding: 32px 16px; }
-    .section-head { flex-direction: column; gap: 4px; margin-top: 36px; }
-
+    .section-head { flex-direction: column; gap: 4px; margin-top: 36px; margin-left: 0; }
     .back { padding: 24px 20px; border-radius: 14px; }
     .back h3 { font-size: 18px; }
     .story-body { font-size: 14px; }
     .story-milestones { grid-template-columns: 1fr; }
-
-    .cards-grid { grid-template-columns: 1fr; gap: 12px; }
+    .cards-grid { grid-template-columns: 1fr; gap: 12px; margin-left: 0; }
     .card { padding: 20px; }
-
+    .back-grid { margin-left: 0; }
     .divider { margin: 0 16px; }
     footer { padding: 20px 16px; flex-direction: column; gap: 8px; }
-
-    /* Modal fills more of the screen on mobile */
     .modal { max-width: 100%; border-radius: 14px; }
     .modal-body { padding: 18px; }
   }
-
-  /* VERY SMALL: ≤ 380px (small Android phones) */
   @media (max-width: 380px) {
     .hero h1 { font-size: 22px; }
-    .section { padding: 24px 12px; }
+    .bg-section { padding: 24px 12px; }
     .card { padding: 16px; }
     .back { padding: 18px 14px; }
   }
@@ -306,20 +372,20 @@
 <!-- MOBILE DROPDOWN NAV -->
 <div class="mobile-nav" id="mobile-nav">
   <div class="mob-label">Navigate</div>
-  <a href="abt.html" onclick="closeMobileNav()">📘 About</a>
-  <a href="rpfd.html" onclick="closeMobileNav()">📊 Report & Findings</a>
-  <a href="banking1.html" onclick="closeMobileNav()">🏦 Banking Insights</a>
-  <a href="Prototype.html" onclick="closeMobileNav()">🚀 mBOB Prototype</a>
-  <a href="finsight.html" onclick="closeMobileNav()">🤖 FinSight</a>
-  <a href="ct1.html" onclick="closeMobileNav()">✉️ Contact Us</a>
+  <a href="abt.html" onclick="closeMobileNav()">About</a>
+  <a href="rpfd.html" onclick="closeMobileNav()">Report & Findings</a>
+  <a href="banking1.html" onclick="closeMobileNav()">Banking Insights</a>
+  <a href="Prototype.html" onclick="closeMobileNav()">mBOB Prototype</a>
+  <a href="finsight.html" onclick="closeMobileNav()">FinSight</a>
+  <a href="ct1.html" onclick="closeMobileNav()">Contact Us</a>
 </div>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-eyebrow">Bhutan 🇧🇹 · 2026 Insight</div>
+    <div class="hero-eyebrow">Bhutan · 2026 Insight</div>
     <h1>Banking insights &amp;<br><span>Scope in Bhutan</span></h1>
-    <p>A solution focused website based on the insights from real banking customer challenges in Bhutan. </p>
+    <p>A solution focused website based on the insights from real banking customer challenges in Bhutan.</p>
     <div class="hero-tags">
       <span class="hero-tag">111 respondents</span>
       <span class="hero-tag">6 banks included</span>
@@ -329,134 +395,143 @@
   </div>
 </section>
 
-<!-- STORY + CARDS -->
-<section class="section" style="background: linear-gradient(rgba(250,248,245,0.95), rgba(250,248,245,0.95)), url('https://img.pikbest.com/png-images/20240825/dragon-illustration-vector-art-hand-drawn-on-white-background_10746961.png!f305cw') center/cover no-repeat; max-width:100%; padding: 52px 48px;">
+<!-- MAIN -->
+<section class="bg-section">
+  <div style="max-width:1280px; margin:0 auto;">
 
-  <div class="section-head" style="margin-top:0">
-    <h1>Kuzu Zangpo!</h1>
-    <span>The story behind this platform</span>
-  </div>
+    <div class="section-head" style="margin-top:0">
+      <h1>Kuzu Zangpo!</h1>
+      <span>The story behind this platform</span>
+    </div>
 
-  <div class="back-grid">
-    <div class="back">
-      <h3>Where did all my money go?</h3>
-      <p class="story-subhead">A college student's frustration that became a mission.</p>
-      <div class="story-divider"></div>
-      <p class="story-body">Hello, I'm Hema Luitel.</p>
-      <p class="story-body">Before you explore this website, I want to share the story behind why I created it — because this platform was not just built as a project, but as a solution to a real problem I personally faced.</p>
-      <p class="story-body">When I first started college, I struggled to manage my money. No matter how careful I thought I was, my balance would disappear quickly — and I had no clear idea where it was going. Bank mini statements showed too little, and full statements were too complex to understand.</p>
-      <p class="story-body">At that moment, I wished my bank provided better tools — something that could help me understand my spending patterns, manage my budget, and make smarter financial decisions.</p>
-      <p class="story-body">That experience stayed with me. Later, when I was asked to choose a project, I immediately remembered this struggle. It made me curious — not just about my own situation, but about others:<br><br>
-        → How do other students manage their money?<br>
-        → What factors influence people's choice of banks?<br>
-        → Are they satisfied with their banking services?<br>
-        → And most importantly — can these problems be solved?
-      </p>
-      <p class="story-body">I began exploring real customer experiences, analysing banking choices, and identifying common challenges. Through this journey, I realised that many people struggle with the same issues — lack of clarity, poor banking knowledge, and limited tools to make informed decisions.</p>
-      <p class="story-body">That's when I decided to build this platform.</p>
-      <p class="story-body">This website is designed to act as a personal financial assistant — helping users:<br><br>
-        → Stay updated with banking information<br>
-        → Compare banks and choose what suits their needs<br>
-        → Analyse their bank statements to understand spending<br>
-        → Make better financial decisions with confidence
-      </p>
-      <p class="story-body">What started as my personal problem has now become a solution I hope can help many others.</p>
-      <div class="story-milestones">
-        <div class="story-milestone">
-          <div class="story-milestone-label">The problem</div>
-          <div class="story-milestone-text">No visibility into personal spending habits</div>
+    <div class="back-grid">
+      <div class="back">
+        <h3>Where did all my money go?</h3>
+        <p class="story-subhead">A college student's frustration that became a mission.</p>
+        <div class="story-divider"></div>
+        <p class="story-body">Hello, I'm Hema Luitel.</p>
+        <p class="story-body">Before you explore this website, I want to share the story behind why I created it because this platform was not just built as a project, but as a solution to a real problem I personally faced.</p>
+        <p class="story-body">When I first started college, I struggled to manage my money. No matter how careful I thought I was, my balance would disappear quickly, and I had no clear idea where it was going. Bank mini statements showed too little, and full statements were too complex to understand.</p>
+        <p class="story-body">At that moment, I wished my bank provided better tools: Something that could help me understand my spending patterns, manage my budget, and make smarter financial decisions.</p>
+        <p class="story-body">That experience stayed with me. Later, when I was asked to choose a project, I immediately remembered this struggle. It made me curious, not just about my own situation, but about others:<br><br>
+          → How do other students manage their money?<br>
+          → What factors influence people's choice of banks?<br>
+          → Are they satisfied with their banking services?<br>
+          → And most importantly - can these problems be solved?
+        </p>
+        <p class="story-body">I began exploring real customer experiences, analysing banking choices, and identifying common challenges. Through this journey, I realised that many people struggle with similar issues: lack of clarity, poor banking knowledge, and limited tools to make informed decisions.</p>
+        <p class="story-body">That's when I decided to build this platform.</p>
+        <p class="story-body">This website is designed to act as a personal financial assistant helping users:<br>
+          → Stay updated with banking information<br>
+          → Compare banks and choose what suits their needs<br>
+          → Analyse their bank statements to understand spending<br>
+          → Make better financial decisions with confidence
+        </p>
+        <p class="story-body">What started as my personal problem has now become a solution I hope can help many others.</p>
+        <div class="story-milestones">
+          <div class="story-milestone">
+            <div class="story-milestone-label">The problem</div>
+            <div class="story-milestone-text">No visibility into personal spending habits</div>
+          </div>
+          <div class="story-milestone">
+            <div class="story-milestone-label">The question</div>
+            <div class="story-milestone-text">How do others manage their banking needs?</div>
+          </div>
+          <div class="story-milestone">
+            <div class="story-milestone-label">The mission</div>
+            <div class="story-milestone-text">Build a tool that actually helps people</div>
+          </div>
         </div>
-        <div class="story-milestone">
-          <div class="story-milestone-label">The question</div>
-          <div class="story-milestone-text">How do others manage their banking needs?</div>
-        </div>
-        <div class="story-milestone">
-          <div class="story-milestone-label">The mission</div>
-          <div class="story-milestone-text">Build a tool that actually helps people</div>
+        <div class="story-sig">
+          <div class="story-avatar">HL</div>
+          <div>
+            <div class="story-sig-name">Hema Luitel</div>
+            <div class="story-sig-role">Creator & Developer · GCBS Student · BDS Intern</div>
+          </div>
         </div>
       </div>
-      <div class="story-sig">
-        <div class="story-avatar">HL</div>
-        <div>
-          <div class="story-sig-name">Hema Luitel</div>
-          <div class="story-sig-role">Creator & Developer · GCBS Student · BDS Intern</div>
-        </div>
+    </div>
+
+    <!-- EXPLORE INSIGHTS -->
+    <div class="section-head">
+      <h2>Explore the insights</h2>
+      <span>Reports, findings and more</span>
+    </div>
+    <div class="cards-grid">
+      <a href="abt.html" class="card">
+        <div class="card-icon">📘</div>
+        <h3>About the project</h3>
+        <p>The reason behind the project, website context, and the goals of this banking insight.</p>
+        <span class="card-link">Read more →</span>
+      </a>
+      <a href="abt.html" class="card">
+        <div class="card-icon">👤</div>
+        <h3>About me</h3>
+        <p>Hema Luitel – data practitioner intern and creator of Ngul Yoen.</p>
+        <span class="card-link">Learn more →</span>
+      </a>
+      <a href="rpfd.html" class="card">
+        <div class="card-icon">📊</div>
+        <h3>Report & findings</h3>
+        <p>Full insights and findings drawn from 111 survey respondents across Bhutan.</p>
+        <span class="card-link">View report →</span>
+      </a>
+    </div>
+
+    <!-- EXPLORE SOLUTIONS -->
+    <div class="section-head">
+      <h2>Explore the solutions</h2>
+      <span>Be financially informed</span>
+    </div>
+    <div class="cards-grid">
+      <a href="banking1.html" class="card">
+        <div class="card-icon">🏦</div>
+        <h3>Banking Insights</h3>
+        <p>Key information, services, and digital offerings across Bhutan's banking sector.</p>
+        <span class="card-link">Explore banks →</span>
+      </a>
+      <a href="finsight.html" class="card">
+        <div class="card-icon">🤖</div>
+        <h3>FinSight</h3>
+        <p>Upload your bank statement and get AI-powered automatic expense categorisation.</p>
+        <span class="card-link">Try FinSight →</span>
+      </a>
+      <a href="Prototype.html" class="card">
+        <div class="card-icon">🚀</div>
+        <h3>mBOB Prototype</h3>
+        <p>Story-based prototype proposing four smart financial features for mBOB.</p>
+        <span class="card-link">View prototype →</span>
+      </a>
+    </div>
+
+    <!-- INTERACTIVE -->
+    <div class="section-head">
+      <h2>Try it yourself</h2>
+      <span>Interactive experiences</span>
+    </div>
+    <div class="cards-grid">
+      <div class="card interactive" onclick="openQuiz()" style="cursor:pointer">
+        <div class="card-icon">🎮</div>
+        <h3>Bank finder quiz</h3>
+        <p>Answer 5 questions about your banking needs and get a personalised bank recommendation.</p>
+        <span class="card-link">Start quiz →</span>
+      </div>
+      <div class="card interactive" onclick="openDyk()" style="cursor:pointer">
+        <div class="card-icon">🧠</div>
+        <h3>Do You Know?</h3>
+        <p>Test your knowledge of Bhutan's 6 commercial banks: services, history, and digital facts.</p>
+        <span class="card-link">Take quiz →</span>
       </div>
     </div>
-  </div>
 
-  <!-- EXPLORE INSIGHTS -->
-  <div class="section-head">
-    <h2>Explore the insights</h2>
-    <span>Reports, findings and more</span>
-  </div>
-  <div class="cards-grid">
-    <a href="abt.html" class="card">
-      <div class="card-icon" style="background:#fff0ef">📘</div>
-      <h3>About the project</h3>
-      <p>The reason behind the project, website context, and the goals of this banking insight.</p>
-      <span class="card-link">Read more →</span>
-    </a>
-    <a href="abt.html" class="card">
-      <div class="card-icon" style="background:#f0f4ff">👤</div>
-      <h3>About me</h3>
-      <p>Hema Luitel – data practitioner intern and creator of Ngul Yoen.</p>
-      <span class="card-link">Learn more →</span>
-    </a>
-    <a href="rpfd.html" class="card">
-      <div class="card-icon" style="background:#f0fff8">📊</div>
-      <h3>Report & findings</h3>
-      <p>Full insights and findings drawn from 111 survey respondents across Bhutan.</p>
-      <span class="card-link">View report →</span>
-    </a>
-  </div>
-
-  <!-- EXPLORE SOLUTIONS -->
-  <div class="section-head">
-    <h2>Explore the solutions</h2>
-    <span>Be financially informed</span>
-  </div>
-  <div class="cards-grid">
-    <a href="banking1.html" class="card">
-      <div class="card-icon" style="background:#e8f0f7">🏦</div>
-      <h3>Banking Insights</h3>
-      <p>Key information, services, and digital offerings across Bhutan's banking sector.</p>
-      <span class="card-link">Explore banks →</span>
-    </a>
-    <a href="finsight.html" class="card">
-      <div class="card-icon" style="background:#e8f5e8">🤖</div>
-      <h3>FinSight</h3>
-      <p>Upload your bank statement and get AI-powered automatic expense categorisation.</p>
-      <span class="card-link">Try FinSight →</span>
-    </a>
-    <a href="Prototype.html" class="card">
-      <div class="card-icon" style="background:#eef8ff">🚀</div>
-      <h3>mBOB Prototype</h3>
-      <p>Story-based prototype proposing four smart financial features for mBOB.</p>
-      <span class="card-link">View prototype →</span>
-    </a>
-  </div>
-
-  <!-- INTERACTIVE -->
-  <div class="section-head">
-    <h2>Try it yourself</h2>
-    <span>Interactive experiences</span>
-  </div>
-  <div class="cards-grid">
-    <div class="card interactive" onclick="openQuiz()" style="cursor:pointer">
-      <div class="card-icon" style="background:#fff0ef">🎮</div>
-      <h3>Bank finder quiz</h3>
-      <p>Answer 5 questions about your banking needs and get a personalised bank recommendation.</p>
-      <span class="card-link">Start quiz →</span>
+    <!-- Go to about -->
+    <div class="goto-grid">
+      <a href="abt.html" class="goto">
+        <span class="goto-link">NEXT →</span>
+      </a>
     </div>
-    <div class="card interactive" onclick="openDyk()" style="cursor:pointer">
-      <div class="card-icon" style="background:#f5fff5">🧠</div>
-      <h3>Do You Know?</h3>
-      <p>Test your knowledge of Bhutan's 6 commercial banks — services, history, and digital facts.</p>
-      <span class="card-link">Take quiz →</span>
-    </div>
-  </div>
 
+  </div><!-- /max-width wrapper -->
 </section>
 
 <!-- QUIZ MODAL -->
@@ -502,29 +577,16 @@
 
 <footer>
   <span>© 2026 <strong>Ngul Yoen</strong> · Hema Luitel · All rights reserved</span>
-  <!-- <a href="abt.html">About</a>
-  <a href="rpfd.html">Report</a>
-  <a href="banking1.html">Banking Insights</a>
-  <a href="Prototype.html">mBOB</a>
-  <a href="finsight.html">FinSight</a>
-  <a href="ct1.html">Contact</a> -->
 </footer>
 
 <script>
   // MOBILE NAV
-  function toggleMobileNav() {
-    document.getElementById('mobile-nav').classList.toggle('open');
-  }
-  function closeMobileNav() {
-    document.getElementById('mobile-nav').classList.remove('open');
-  }
-  // Close mobile nav when clicking outside
+  function toggleMobileNav() { document.getElementById('mobile-nav').classList.toggle('open'); }
+  function closeMobileNav() { document.getElementById('mobile-nav').classList.remove('open'); }
   document.addEventListener('click', function(e) {
     const nav = document.getElementById('mobile-nav');
     const btn = document.querySelector('.ham-btn');
-    if (!nav.contains(e.target) && !btn.contains(e.target)) {
-      nav.classList.remove('open');
-    }
+    if (!nav.contains(e.target) && !btn.contains(e.target)) nav.classList.remove('open');
   });
 
   // BANK FINDER QUIZ
@@ -537,12 +599,12 @@
   ];
   const quizScoreMap = [[0,2,1,3],[2,0,0,1],[0,3,4,1],[5,3,4,0],[0,1,2,3]];
   const bankResults = [
-    { icon:'🏦', name:'Bank of Bhutan (BoB)', type:'Widest branch network · State-owned', desc:'With 47+ branches and 110 ATMs nationwide, BoB suits you best. Features include mBOB, BoBNET, salary accounts, and online loan applications.', color:'#0d2b45' },
-    { icon:'📱', name:'Digital Kidu (DK) Bank', type:'Fully digital · No branch needed', desc:'DK Bank is your match — 100% app-based with daily interest accrual, DK Pay, micro loans, Kidu disbursements, and TER digital gold trading.', color:'#0a7c5c' },
-    { icon:'🏧', name:'Bhutan National Bank (BNB)', type:'Strong digital + branch balance', desc:'BNB balances strong digital features (mPay, online account opening) with a 30+ branch network and RuPay international debit card.', color:'#1a5276' },
-    { icon:'🌾', name:'Bhutan Development Bank (BDBL)', type:'Rural & agriculture focused', desc:'BDBL is built for rural Bhutan — agriculture and livestock loans, women and youth schemes, and ePay mobile banking.', color:'#6e2f8a' },
-    { icon:'🤝', name:'Druk PNB Bank', type:'FDI joint venture · Business banking', desc:"The only FDI bank in Bhutan, Druk PNB offers trade finance, forex services, NRI remittance, and business loans.", color:'#b7770d' },
-    { icon:'⚡', name:'T Bank', type:'Digital-first · Youth-friendly', desc:"T Bank's TPay, T Wallet (from age 10), online account opening, and internet banking are great for tech-savvy younger users.", color:'#1e8449' },
+    { icon:'🏦', name:'Bank of Bhutan (BoB)', type:'Widest branch network · State-owned', desc:'With 47+ branches and 110 ATMs nationwide, BoB suits you best. Features include mBOB, BoBNET, salary accounts, and online loan applications.', color:'#d4a820' },
+    { icon:'📱', name:'Digital Kidu (DK) Bank', type:'Fully digital · No branch needed', desc:'DK Bank is your match — 100% app-based with daily interest accrual, DK Pay, micro loans, Kidu disbursements, and TER digital gold trading.', color:'#d4a820' },
+    { icon:'🏧', name:'Bhutan National Bank (BNB)', type:'Strong digital + branch balance', desc:'BNB balances strong digital features (mPay, online account opening) with a 30+ branch network and RuPay international debit card.', color:'#d4a820' },
+    { icon:'🌾', name:'Bhutan Development Bank (BDBL)', type:'Rural & agriculture focused', desc:'BDBL is built for rural Bhutan — agriculture and livestock loans, women and youth schemes, and ePay mobile banking.', color:'#d4a820' },
+    { icon:'🤝', name:'Druk PNB Bank', type:'FDI joint venture · Business banking', desc:"The only FDI bank in Bhutan, Druk PNB offers trade finance, forex services, NRI remittance, and business loans.", color:'#d4a820' },
+    { icon:'⚡', name:'T Bank', type:'Digital-first · Youth-friendly', desc:"T Bank's TPay, T Wallet (from age 10), online account opening, and internet banking are great for tech-savvy younger users.", color:'#d4a820' },
   ];
   let qIdx=0,answers=[];
   function openQuiz(){qIdx=0;answers=[];document.getElementById('quizOverlay').classList.add('open');renderQ();}
@@ -564,12 +626,12 @@
     const tally=[0,0,0,0,0,0];answers.forEach((ans,qi)=>{tally[quizScoreMap[qi][ans]]++;});
     const best=tally.indexOf(Math.max(...tally));const r=bankResults[best];
     document.getElementById('prog-bar').style.width='100%';
-    document.getElementById('quiz-body').innerHTML=`<div class="result-wrap"><div class="result-emoji">${r.icon}</div><div class="result-title">${r.name}</div><div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.07em;color:var(--muted);margin-bottom:10px">${r.type}</div><div class="result-desc">${r.desc}</div><div class="result-badge" style="background:${r.color}15;border-color:${r.color}40;color:${r.color}">Best match for your profile</div></div>`;
+    document.getElementById('quiz-body').innerHTML=`<div class="result-wrap"><div class="result-emoji">${r.icon}</div><div class="result-title">${r.name}</div><div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.07em;color:var(--card-muted);margin-bottom:10px">${r.type}</div><div class="result-desc">${r.desc}</div><div class="result-badge">Best match for your profile</div></div>`;
     const nb=document.getElementById('next-btn');nb.style.display='block';nb.textContent='Retake quiz';nb.onclick=openQuiz;
   }
   function closeQuiz(){document.getElementById('quizOverlay').classList.remove('open');}
 
-  //  DO YOU KNOW QUIZ 
+  // DO YOU KNOW QUIZ
   const dykQs=[
     {q:'Which is the oldest bank in Bhutan?',opts:['Bhutan National Bank','Bank of Bhutan','Druk PNB','T Bank'],ans:1,fact:'✅ Bank of Bhutan was established in 1968, making it the oldest and largest bank in Bhutan.'},
     {q:'What USSD code can you dial to use mBOB without internet?',opts:['*111#','*168#','*262#','*999#'],ans:2,fact:'✅ Dialling *262# lets you access mBOB offline — useful in areas with no internet.'},
@@ -595,9 +657,13 @@
       const b=document.createElement('button');b.className='opt-btn';b.textContent=o;
       b.onclick=()=>{
         if(dykAnswered)return;dykAnswered=true;
-        opts.querySelectorAll('.opt-btn').forEach((x,xi)=>{x.disabled=true;if(xi===q.ans)x.style.cssText+=';border-color:#1e8449;background:#f0fff4;color:#1e8449';else if(xi===i&&i!==q.ans)x.style.cssText+=';border-color:#c0392b;background:#fff0ef;color:#c0392b';});
+        opts.querySelectorAll('.opt-btn').forEach((x,xi)=>{x.disabled=true;if(xi===q.ans)x.style.cssText+=';border-color:#d4a820;background:rgba(212,168,32,0.18);color:#f0c040';else if(xi===i&&i!==q.ans)x.style.cssText+=';border-color:#c0392b;background:rgba(192,57,43,0.15);color:#e8755a';});
         const correct=i===q.ans;if(correct)dykScore++;
-        const fb=document.getElementById('dyk-feedback');fb.style.display='block';fb.style.background=correct?'#f0fff4':'#fff0ef';fb.style.border=`1px solid ${correct?'#b2f0d0':'#f5c6c6'}`;fb.style.color=correct?'#1a7a4a':'#c0392b';fb.innerHTML=(correct?'🎉 Correct! ':'❌ Not quite. ')+q.fact;
+        const fb=document.getElementById('dyk-feedback');fb.style.display='block';
+        fb.style.background=correct?'rgba(212,168,32,0.1)':'rgba(192,57,43,0.1)';
+        fb.style.border=`1px solid ${correct?'rgba(212,168,32,0.4)':'rgba(192,57,43,0.4)'}`;
+        fb.style.color=correct?'#f0c040':'#e8755a';
+        fb.innerHTML=(correct?'🎉 Correct! ':'❌ Not quite. ')+q.fact;
         const nb=document.getElementById('dyk-next');nb.style.display='block';nb.textContent=dykIdx===dykQs.length-1?'See my score →':'Next →';
       };opts.appendChild(b);
     });

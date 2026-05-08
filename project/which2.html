@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | Ngul Yoen</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red: #c0392b;
+    --red-light: #fff0ef;
+    --red-mid: #f5c6c6;
+    --gold: #d4a820;
+    --dark: #1a1612;
+    --text: #2c2420;
+    --muted: #7a6e6a;
+    --border: rgba(0,0,0,0.09);
+    --surface: #ffffff;
+    --bg: #faf8f5;
+    --radius: 14px;
+    --radius-sm: 8px;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; }
+
+  /* NAVBAR */
+  .navbar {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 48px; height: 64px;
+    background: rgba(250,248,245,0.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--dark); letter-spacing: -0.02em; text-decoration: none; }
+  .logo em { color: var(--red); font-style: normal; }
+  .nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
+  .nav-links a { font-size: 14px; font-weight: 500; color: var(--muted); text-decoration: none; padding: 7px 12px; border-radius: 20px; transition: background 0.18s, color 0.18s; white-space: nowrap; }
+  .nav-links a:hover { background: var(--red-light); color: var(--red); }
+  .nav-links a.active { color: var(--red); background: var(--red-light); }
+
+  /* HAMBURGER */
+  .ham-btn {
+    display: none;
+    flex-direction: column; gap: 5px;
+    background: none; border: none; cursor: pointer; padding: 8px;
+    flex-shrink: 0;
+  }
+  .ham-btn span { display: block; width: 20px; height: 2px; background: var(--dark); border-radius: 2px; }
+
+  /* MOBILE DROPDOWN */
+  .mobile-nav {
+    display: none;
+    flex-direction: column;
+    position: fixed;   
+    top: 54px;            
+    right: 16px;         
+    width: 220px;        
+    background: rgba(207, 194, 194, 0.85);;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(129, 115, 115, 0.1);
+    padding: 8px;
+    z-index: 100;
+  }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a { font-size: 14px; font-weight: 500; color: black; text-decoration: none; padding: 6px 10px; border-radius: 8px; transition: background 0.15s, color 0.15s; gap: 0px;}
+  .mobile-nav a:hover { background: var(--red-light); color: var(--red); }
+  .mob-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); padding: 8px 10px 4px; }
+
+  /* HERO */
+  .hero {
+    position: relative; overflow: hidden;
+    padding: 26px 48px 38px;
+    background: var(--dark); color: white;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 50% 80% at 90% 40%, rgba(192,57,43,0.3) 0%, transparent 70%),
+      radial-gradient(ellipse 35% 50% at 5% 90%, rgba(212,168,32,0.15) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-inner { position: relative; max-width: 800px; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .hero-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 5vw, 44px); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 14px; }
+  .hero p { font-size: 14px; color: whitesmoke; max-width: 1500px; line-height: 1.7; font-style:italic; }
+
+  /* ANCHOR NAV */
+  .anchor-nav { background: var(--red-light); border-bottom: 1px solid var(--border); padding: 0 48px; display: flex; overflow-x: auto; position: sticky; top: 64px; z-index: 40; }
+  .anchor-nav a { font-family: 'Segoe UI', sans-serif; font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; padding: 14px 18px; border-bottom: 2px solid transparent; white-space: nowrap; transition: color 0.15s, border-color 0.15s; }
+  .anchor-nav a:hover { color: var(--red); border-bottom-color: var(--red-mid); }
+  .anchor-nav a.active-anchor { color: var(--red); border-bottom-color: var(--red); }
+
+  /* MAIN */
+  .main {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 52px 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    background:
+      linear-gradient(rgba(250,248,245,0.93), rgba(250,248,245,0.93)),
+      url('https://img.pikbest.com/png-images/20240825/dragon-illustration-vector-art-hand-drawn-on-white-background_10746961.png!f305cw')
+      center/cover no-repeat;
+  }
+
+  /* SECTION CARD */
+  .asc { background-color: #efd9d9; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 120px; transition: box-shadow 0.2s; }
+  .asc:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.07); }
+  .asc-head { display: flex; align-items: center; gap: 16px; padding: 22px 28px; border-bottom: 1px solid var(--border); }
+  .asc-icon { width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 19px; flex-shrink: 0; }
+  .asc-head h2 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; margin-bottom: 2px; }
+  .asc-head p { font-size: 14px; font-weight: 400; color: var(--muted); font-style: italic; }
+  .asc-body { padding: 24px 28px; display: flex; flex-direction: column; gap: 16px; }
+  .asc-body p { font-family: 'Segoe UI', sans-serif; font-size: 16px; font-weight: 400; color: #4a4040; line-height: 1.85; font-style: italic; }
+
+  /* PROFILE CARD */
+  .profile-card { display: flex; align-items: center; gap: 18px; background-color: #c6b1b1; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px 20px; }
+  .profile-avatar { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, #978bd8, #b4473b); display: flex; align-items: center; justify-content: center; font-size: 18px; color: rgb(77,1,1); font-family: 'Playfair Display', serif; font-weight: 700; flex-shrink: 0; }
+  .profile-info strong { display: block; font-size: 16px; font-weight: 700; margin-bottom: 2px; }
+  .profile-info span { font-size: 14px; }
+
+  /* PLATFORM GRID */
+  .platform-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .platform-item { background-color: #dbcece; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 13px 16px; display: flex; align-items: flex-start; gap: 10px; text-decoration: none; color: inherit; transition: border-color 0.15s; }
+  .platform-item:hover { border-color: var(--red-mid); }
+  .platform-item-icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
+  .platform-item strong { display: block; font-size: 15px; font-weight: 500; margin-bottom: 2px; }
+  .platform-item span { font-size: 13px; line-height: 1.45; }
+
+  /* TIMELINE */
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .tl-item { display: flex; gap: 16px; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .tl-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .tl-item:first-child { padding-top: 0; }
+  .tl-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--red); flex-shrink: 0; margin-top: 8px; }
+  .tl-content strong { display: block; font-size: 15px; font-weight: 600; margin-bottom: 2px; }
+  .tl-content span { font-size: 13px; font-weight: 400; font-style: italic; color: var(--muted); }
+
+  /* BACK TO TOP */
+  #back-top { position: fixed; bottom: 24px; right: 24px; width: 40px; height: 40px; background: var(--dark); color: white; border: none; border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.2s, background 0.2s; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+  #back-top.visible { opacity: 1; pointer-events: all; }
+  #back-top:hover { background: var(--red); }
+
+  /* FOOTER */
+  footer { background-color: #f5e4e4; text-align: center; padding: 28px 48px; border-top: 1px solid var(--border); font-size: 13px; }
+  footer strong { color: var(--text); font-weight: 500; }
+
+  /* RESPONSIVE */
+
+  /* LARGE TABLET */
+  @media (max-width: 1200px) {
+    .main { padding: 48px 80px; }
+  }
+
+  /* TABLET */
+  @media (max-width: 1024px) {
+    .navbar { padding: 0 24px; }
+    .nav-links a { font-size: 12px; padding: 6px 10px; }
+    .hero { padding: 24px 32px 48px; }
+    .main { padding: 40px 40px; }
+    .anchor-nav { padding: 0 16px; }
+    footer { padding: 24px 32px; }
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    /* show hamburger, hide desktop nav */
+    .nav-links { display: none; }
+    .ham-btn { display: flex; }
+
+    .navbar { padding: 0 16px; height: 54px; }
+    .mobile-nav { top: 54px; }
+    .anchor-nav { top: 54px; padding: 0 8px; }
+    .anchor-nav a { font-size: 13px; padding: 11px 10px; }
+
+    .hero { padding: 20px 20px 36px; }
+    .hero h1 { font-size: 26px; }
+    .hero p { font-size: 14px; }
+
+    .main { padding: 24px 16px 48px; gap: 16px; }
+
+    .asc-head { padding: 14px 16px; gap: 10px; }
+    .asc-head h2 { font-size: 17px; }
+    .asc-body { padding: 14px 16px; gap: 12px; }
+    .asc-body p { font-size: 14px; }
+
+    .platform-grid { grid-template-columns: 1fr; }
+    .platform-item { padding: 10px 12px; }
+    .platform-item-icon { font-size: 22px; }
+    .platform-item strong { font-size: 13px; }
+    .platform-item span { font-size: 12px; }
+
+    .profile-card { flex-direction: column; text-align: center; padding: 14px; }
+
+    .tl-content strong { font-size: 13px; }
+    .tl-content span { font-size: 12px; }
+
+    footer { padding: 20px 16px; flex-direction: column; gap: 8px; font-size: 13px; }
+  }
+
+  /* VERY SMALL */
+  @media (max-width: 380px) {
+    .hero h1 { font-size: 22px; }
+    .asc-head h2 { font-size: 15px; }
+    .asc-body { padding: 12px 12px; }
+    .main { padding: 16px 12px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="index.html" class="logo">Ngul<em>~</em>Yoen</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="abt.html" class="active">About</a>
+    <a href="rpfd.html">Report & Findings</a>
+    <a href="banking1.html">Banking Insights</a>
+    <a href="Prototype.html">mBOB Prototype</a>
+    <a href="finsight.html">FinSight</a>
+    <a href="ct1.html">Contact Us</a>
+  </div>
+  <!-- HAMBURGER — sits inside navbar, right side -->
+  <button class="ham-btn" onclick="toggleMobileNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE DROPDOWN NAV -->
+<div class="mobile-nav" id="mobile-nav">
+  <div class="mob-label">Navigate</div>
+  <a href="index.html" onclick="closeMobileNav()">🏠 Home</a>
+  <a href="abt.html" onclick="closeMobileNav()">📘 About</a>
+  <a href="rpfd.html" onclick="closeMobileNav()">📊 Report & Findings</a>
+  <a href="banking1.html" onclick="closeMobileNav()">🏦 Banking Insights</a>
+  <a href="Prototype.html" onclick="closeMobileNav()">🚀 mBOB Prototype</a>
+  <a href="finsight.html" onclick="closeMobileNav()">🤖 FinSight</a>
+  <a href="ct1.html" onclick="closeMobileNav()">✉️ Contact Us</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">About · Ngul Yoen</div>
+    <h1>About Us</h1>
+    <p>A student-built platform on banking in Bhutan — who made it, why it exists, and what it covers.</p>
+  </div>
+</div>
+
+<!-- ANCHOR NAV -->
+<div class="anchor-nav">
+  <a href="#project">The Project</a>
+  <a href="#me">About Me</a>
+  <a href="#bds">Bhutan Data Scientists</a>
+</div>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- THE PROJECT -->
+  <div class="asc" id="project">
+    <div class="asc-head">
+      <div class="asc-icon" style="background:#fff0ef">🇧🇹</div>
+      <div>
+        <h2>The project — Ngul Yoen</h2>
+        <p>What it is, why it was built, and what it covers</p>
+      </div>
+    </div>
+    <div class="asc-body">
+      <p><strong>Ngul Yoen</strong> — <em>ngul</em> (money) and <em>yoen</em> (scope) in Dzongkha — is a student project that analyses what drives banking choices in Bhutan. It studies four core factors — trust, service quality, accessibility, and ease of use — across 6 banks and 111 respondents, turning raw survey data into insights and tools that help customers make better financial decisions.</p>
+      <div>
+        <div style="margin-left:6px;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px">What's on this platform</div>
+        <div class="platform-grid">
+          <a class="platform-item">
+            <span class="platform-item-icon">📊</span>
+            <div><strong>Report & Findings</strong><span>Full study, 8 key findings, charts, and Tableau dashboard</span></div>
+          </a>
+          <a class="platform-item">
+            <span class="platform-item-icon">🏦</span>
+            <div><strong>Banking Insights</strong><span>Explore all 6 commercial banks — services, apps, loans</span></div>
+          </a>
+          <a class="platform-item">
+            <span class="platform-item-icon">🚀</span>
+            <div><strong>mBOB Prototype</strong><span>4 proposed smart features for the mBOB mobile app</span></div>
+          </a>
+          <a class="platform-item">
+            <span class="platform-item-icon">🤖</span>
+            <div><strong>FinSight Analyzer</strong><span>AI-powered bank statement expense categoriser</span></div>
+          </a>
+          <a class="platform-item">
+            <span class="platform-item-icon">🎮</span>
+            <div><strong>Bank Finder</strong><span>Five questions quiz that provide a personalised bank recommendation</span></div>
+          </a>
+          <a class="platform-item">
+            <span class="platform-item-icon">🧠</span>
+            <div><strong>Do You Know Quiz</strong><span>Quiz to help check knowledge on Bhutan's 6 commercial banks</span></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT ME -->
+  <div class="asc" id="me">
+    <div class="asc-head">
+      <div class="asc-icon" style="background:#f0f4ff">👤</div>
+      <div>
+        <h2>About me</h2>
+        <p>The person behind Ngul Yoen</p>
+      </div>
+    </div>
+    <div class="asc-body">
+      <div class="profile-card">
+        <div class="profile-avatar">HL</div>
+        <div class="profile-info">
+          <strong>Hema Luitel</strong>
+          <span>3rd-year · Business Intelligence (Financial Engineering) · Gedu College of Business Studies</span>
+        </div>
+      </div>
+      <p>During the time of this internship period (Dec 2025 - Jun 2026) I was in my third-year at GCBS, where I studied Bachelors degree in Business Intelligence with major in Financial Engineering — where data analysis, business strategy, and technology meet. This project was my chance to apply that blend to a real-world problem: understanding how and why Bhutanese banking customers choose their banks. This website is my possible solution to banking challenges faced by major Bhutanese banking customers.</p>
+      <div>
+        <div style="font-size:14px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px">Internship timeline</div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <strong>Dec 2025 — Joined Bhutan Data Scientists Pvt. Ltd.</strong>
+              <span>Role: Data Practitioner · managing, analysing, and leveraging data to solve real-world problems</span>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <strong>Jan – Mar 2026 — Survey design, data collection & analysis</strong>
+              <span>111 respondents · Google Forms · Google Sheets · Tableau</span>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <strong>Apr – Jun 2026 — Platform & prototype development</strong>
+              <span>Built Ngul Yoen, mBOB prototype, and FinSight analyzer</span>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <strong>Jun 2026 — Internship completion</strong>
+              <span>Six-month programme · Bhutan Data Scientists Pvt. Ltd., Olakha, Thimphu</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BDS -->
+  <div class="asc" id="bds">
+    <div class="asc-head">
+      <div class="asc-icon" style="background:#fffbee">🏢</div>
+      <div>
+        <h2>Bhutan Data Scientists</h2>
+        <p>Host organisation & internship provider</p>
+      </div>
+    </div>
+    <div class="asc-body">
+      <p><a href="https://datascientists.bt/" target="_blank">Bhutan Data Scientists Pvt. Ltd.</a> is a Thimphu-based data science company offering local survey, sensor, and analytics services — led by pioneering data scientist <a href="https://www.linkedin.com/in/troy-sadkowsky/" target="_blank">Troy Sadkowsky</a>. BDS provided the structured environment where this entire project — from survey design to this platform — was built and mentored.</p>
+    </div>
+  </div>
+
+</main>
+
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<footer>
+  <span>© 2026 <strong>Ngul Yoen</strong> · Hema Luitel · All rights reserved</span>
+</footer>
+
+<script>
+  function toggleMobileNav() {
+    document.getElementById('mobile-nav').classList.toggle('open');
+  }
+  function closeMobileNav() {
+    document.getElementById('mobile-nav').classList.remove('open');
+  }
+  document.addEventListener('click', function(e) {
+    const nav = document.getElementById('mobile-nav');
+    const btn = document.querySelector('.ham-btn');
+    if (nav && btn && !nav.contains(e.target) && !btn.contains(e.target)) {
+      nav.classList.remove('open');
+    }
+  });
+
+  window.addEventListener('scroll', () => {
+    document.getElementById('back-top').classList.toggle('visible', window.scrollY > 300);
+  });
+
+  const sections = document.querySelectorAll('.asc');
+  const anchors  = document.querySelectorAll('.anchor-nav a');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        anchors.forEach(a => a.classList.remove('active-anchor'));
+        const match = document.querySelector(`.anchor-nav a[href="#${e.target.id}"]`);
+        if (match) match.classList.add('active-anchor');
+      }
+    });
+  }, { threshold: 0.45 });
+  sections.forEach(s => io.observe(s));
+</script>
+
+</body>
+</html>
