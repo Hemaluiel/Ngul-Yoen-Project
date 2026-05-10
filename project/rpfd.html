@@ -194,7 +194,8 @@
   .tb-banner { border-radius: var(--radius); padding: 26px 30px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
   .tb-btn { background: var(--card-bg); color: var(--gold-bright);     border: 1px solid var(--card-border); border-radius: var(--radius-sm); padding: 20px 30px; font-size: 13px; font-weight: 500; cursor: pointer; text-decoration: none; white-space: nowrap; transition: background 0.15s; letter-spacing: 0.05em;}
   .tb-btn:hover { background: var(--card-bg-hover); border-color: var(--card-border-hover); box-shadow: 0 10px 36px rgba(0,0,0,0.959), 0 0 0 1px rgb(163,127,20); transform: translateY(-3px); }
-
+  
+  /* GOTO */
   .goto-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 16px; margin-left: 80px; margin-top: 8px; }
   .goto {
     border: 1px solid var(--card-border);
@@ -520,6 +521,12 @@
     </div><!-- /panel-dashboard -->
 
   </div><!-- /content -->
+
+  <div class="goto-grid">
+    <a href="banking1.html" class="goto">
+      <span class="goto-link">NEXT →</span>
+    </a>
+  </div>
 </div><!-- /page-wrap -->
 
 <button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
