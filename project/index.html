@@ -244,8 +244,8 @@
   .card.interactive:hover { border-bottom-color: var(--gold); }
 
 
-
-  .goto-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 16px; margin-left: 80px; margin-top: 50px; }
+  /* GOTO */
+  .goto-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 16px; margin-left: 80px; margin-top: 8px; }
   .goto {
     border: 1px solid var(--card-border);
     border-radius: var(--radius);
@@ -258,13 +258,11 @@
   }
   .goto:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 36px rgba(0, 0, 0, 0.959), 0 0 0 1px rgb(163, 127, 20);
+    box-shadow: 0 10px 36px rgba(0,0,0,0.959), 0 0 0 1px rgb(163,127,20);
     border-color: var(--card-border-hover);
     background: var(--card-bg-hover);
   }
-  .goto-link { margin-top: 12px; font-size: 14px; font-weight: 500; color: var(--card-link); display: inline-flex; align-items: center; gap: 4px; letter-spacing: 0.5em; }
-  .goto.interactive { border-bottom: 2px solid rgba(212,168,32,0.4); }
-  .goto.interactive:hover { border-bottom-color: var(--gold); }
+  .goto-link { font-size: 14px; font-weight: 500; color: var(--gold); display: inline-flex; align-items: center; gap: 4px; letter-spacing: 0.5em; }
 
   /* DIVIDER */
   .divider { height: 1px; background: var(--border); margin: 0 48px; }
@@ -525,13 +523,19 @@
     </div>
 
     <!-- Go to about -->
+    <!-- <div class="goto-grid">
+      <a href="abt.html" class="goto">
+        <span class="goto-link">NEXT →</span>
+      </a>
+    </div> -->
+
+  </div><!-- /max-width wrapper -->
+
     <div class="goto-grid">
       <a href="abt.html" class="goto">
         <span class="goto-link">NEXT →</span>
       </a>
     </div>
-
-  </div><!-- /max-width wrapper -->
 </section>
 
 <!-- QUIZ MODAL -->
