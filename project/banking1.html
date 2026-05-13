@@ -76,6 +76,32 @@
   .nav-links a:hover { background: var(--card-bg-hover); color: var(--card-muted); }
   .nav-links a.active { color: var(--gold-bright); background: rgba(212,168,32,0.15); }
 
+  /* BLINK ANIMATION */
+  @keyframes tabBlink {
+    0%, 100% {
+      background: rgba(212,168,32,0.18);
+      color: #f0c040;
+      box-shadow: 0 0 0 0 rgba(212,168,32,0);
+    }
+    50% {
+      background: rgba(212,168,32,0.38);
+      color: #fff;
+      box-shadow: 0 0 8px 2px rgba(212,168,32,0.35);
+    }
+  }
+  .nav-blink {
+    animation: tabBlink 1.1s ease-in-out infinite;
+    border: 1px solid rgba(212,168,32,0.5) !important;
+    color: #f0c040 !important;
+  }
+  .nav-blink:hover {
+    animation: none;
+    background: var(--card-bg-hover) !important;
+    color: var(--card-muted) !important;
+    border-color: rgba(212,168,32,0.3) !important;
+    box-shadow: none !important;
+  }
+
   /* HAMBURGER */
   .ham-btn {
     display: none;
@@ -100,6 +126,17 @@
   .mobile-nav a { font-size: 14px; font-weight: 500; color: #e8e4f0; text-decoration: none; padding: 6px 10px; border-radius: 8px; transition: background 0.15s, color 0.15s; }
   .mobile-nav a:hover { background: var(--card-bg-hover); color: var(--gold-bright); }
   .mob-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--card-muted); padding: 8px 10px 4px; }
+
+  /* Mobile blink */
+  .mobile-nav .nav-blink {
+    color: #b8860b !important;
+    font-weight: 600 !important;
+    animation: mobileBlink 1.1s ease-in-out infinite;
+  }
+  @keyframes mobileBlink {
+    0%, 100% { background: rgba(212,168,32,0.15); }
+    50% { background: rgba(212,168,32,0.32); }
+  }
 
   /* HERO */
   .hero { position: relative; overflow: hidden; padding: 28px 48px 38px; color: white; }
@@ -293,8 +330,8 @@
     <a href="abt.html">About</a>
     <a href="rpfd.html">Report & Findings</a>
     <a href="banking1.html" class="active">Banking Insights</a>
-    <a href="Prototype.html">mBOB Prototype</a>
-    <a href="finsight.html">FinSight</a>
+    <a href="Prototype.html" class="nav-blink">mBOB Prototype</a>
+    <a href="finsight.html" class="nav-blink">FinSight</a>
     <a href="ct1.html">Contact Us</a>
   </div>
   <button class="ham-btn" onclick="toggleMobileNav()" aria-label="Menu">
@@ -309,8 +346,8 @@
   <a href="abt.html" onclick="closeMobileNav()">About</a>
   <a href="rpfd.html" onclick="closeMobileNav()">Report & Findings</a>
   <a href="banking1.html" onclick="closeMobileNav()">Banking Insights</a>
-  <a href="Prototype.html" onclick="closeMobileNav()">mBOB Prototype</a>
-  <a href="finsight.html" onclick="closeMobileNav()">FinSight</a>
+  <a href="Prototype.html" class="nav-blink" onclick="closeMobileNav()">mBOB Prototype</a>
+  <a href="finsight.html" class="nav-blink" onclick="closeMobileNav()">FinSight</a>
   <a href="ct1.html" onclick="closeMobileNav()">Contact Us</a>
 </div>
 
@@ -754,6 +791,13 @@ function filterCards(type, btn) {
     card.style.display = (type === 'all' || card.dataset.type === type) ? '' : 'none';
   });
 }
+
+// Stop blink on click (optional UX improvement)
+document.querySelectorAll('.nav-blink').forEach(link => {
+  link.addEventListener('click', () => {
+    link.classList.remove('nav-blink');
+  });
+});
 
 window.addEventListener('scroll', () => {
   document.getElementById('back-top').classList.toggle('visible', window.scrollY > 300);

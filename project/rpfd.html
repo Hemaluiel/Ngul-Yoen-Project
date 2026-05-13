@@ -76,6 +76,32 @@
   .nav-links a:hover { background: var(--card-bg-hover); color: var(--card-muted); }
   .nav-links a.active { color: var(--gold-bright); background: rgba(212,168,32,0.15); }
 
+  /* BLINK ANIMATION */
+  @keyframes tabBlink {
+    0%, 100% {
+      background: rgba(212,168,32,0.18);
+      color: #f0c040;
+      box-shadow: 0 0 0 0 rgba(212,168,32,0);
+    }
+    50% {
+      background: rgba(212,168,32,0.38);
+      color: #fff;
+      box-shadow: 0 0 8px 2px rgba(212,168,32,0.35);
+    }
+  }
+  .nav-blink {
+    animation: tabBlink 1.1s ease-in-out infinite;
+    border: 1px solid rgba(212,168,32,0.5) !important;
+    color: #f0c040 !important;
+  }
+  .nav-blink:hover {
+    animation: none;
+    background: var(--card-bg-hover) !important;
+    color: var(--card-muted) !important;
+    border-color: rgba(212,168,32,0.3) !important;
+    box-shadow: none !important;
+  }
+
   /* HAMBURGER */
   .ham-btn {
     display: none;
@@ -100,6 +126,17 @@
   .mobile-nav a { font-size: 14px; font-weight: 500; color: #e8e4f0; text-decoration: none; padding: 6px 10px; border-radius: 8px; transition: background 0.15s, color 0.15s; }
   .mobile-nav a:hover { background: var(--card-bg-hover); color: var(--gold-bright); }
   .mob-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--card-muted); padding: 8px 10px 4px; }
+
+  /* Mobile blink */
+  .mobile-nav .nav-blink {
+    color: #b8860b !important;
+    font-weight: 600 !important;
+    animation: mobileBlink 1.1s ease-in-out infinite;
+  }
+  @keyframes mobileBlink {
+    0%, 100% { background: rgba(212,168,32,0.15); }
+    50% { background: rgba(212,168,32,0.32); }
+  }
 
   /* HERO */
   .hero { position: relative; overflow: hidden; padding: 26px 48px 38px; color: white; }
@@ -259,7 +296,7 @@
     .rs-body p { font-size: 13px; }
     .factor-grid { grid-template-columns: 1fr; }
     .finding-num { font-size: 15px; }
-    .pdf-banner { flex-direction: column; align-items: flex-start; padding: 20px; }
+    /* .pdf-banner { flex-direction: column; align-items: flex-start; padding: 20px; } */
     .tableau-wrap iframe { height: 360px; }
     footer { padding: 20px 16px; }
   }
@@ -282,9 +319,9 @@
     <a href="index.html">Home</a>
     <a href="abt.html">About</a>
     <a href="rpfd.html" class="active">Report & Findings</a>
-    <a href="banking1.html">Banking Insights</a>
-    <a href="Prototype.html">mBOB Prototype</a>
-    <a href="finsight.html">FinSight</a>
+    <a href="banking1.html" class="nav-blink">Banking Insights</a>
+    <a href="Prototype.html" class="nav-blink">mBOB Prototype</a>
+    <a href="finsight.html" class="nav-blink">FinSight</a>
     <a href="ct1.html">Contact Us</a>
   </div>
   <button class="ham-btn" onclick="toggleMobileNav()" aria-label="Menu">
@@ -298,9 +335,9 @@
   <a href="index.html" onclick="closeMobileNav()">Home</a>
   <a href="abt.html" onclick="closeMobileNav()">About</a>
   <a href="rpfd.html" onclick="closeMobileNav()">Report & Findings</a>
-  <a href="banking1.html" onclick="closeMobileNav()">Banking Insights</a>
-  <a href="Prototype.html" onclick="closeMobileNav()">mBOB Prototype</a>
-  <a href="finsight.html" onclick="closeMobileNav()">FinSight</a>
+  <a href="banking1.html" class="nav-blink" onclick="closeMobileNav()">Banking Insights</a>
+  <a href="Prototype.html" class="nav-blink" onclick="closeMobileNav()">mBOB Prototype</a>
+  <a href="finsight.html" class="nav-blink" onclick="closeMobileNav()">FinSight</a>
   <a href="ct1.html" onclick="closeMobileNav()">Contact Us</a>
 </div>
 
@@ -309,7 +346,7 @@
   <div class="hero-inner">
     <div class="hero-eyebrow">Report & Findings · 2026</div>
     <h1>Customer banking choices<br><span>in Bhutan</span></h1>
-    <p>Full study report, key findings, data visualisations, and the interactive Tableau dashboard – all in one place.</p>
+    <p>Full report, key findings, data visualisations, and the interactive Tableau dashboard – all in one place.</p>
   </div>
 </div>
 
@@ -344,7 +381,7 @@
 
       <div class="stat-strip" id="stats">
         <div class="stat-box"><strong id="s1">0</strong><span>Respondents</span></div>
-        <div class="stat-box"><strong id="s2">0</strong><span>Banks studied</span></div>
+        <div class="stat-box"><strong id="s2">0</strong><span>Banks referred</span></div>
         <div class="stat-box"><strong id="s3">0</strong><span>Key factors</span></div>
         <div class="stat-box"><strong id="s4">0%</strong><span>BoB preference</span></div>
       </div>
@@ -355,10 +392,10 @@
           <p>Banking services are central to Bhutan's growing digital economy. With the rapid adoption of mobile and internet banking, customer expectations are evolving, and the gap between what banks offer and what customers actually need has become measurable.</p>
           <div class="sub-block">
             <h3>Problem statement</h3>
-            <p style="font-size:13px;color:var(--card-text);line-height:1.75">Customers experience meaningful differences across Bhutan's banks in four dimensions: <strong style="color:var(--gold-bright)">trust</strong>, <strong style="color:var(--gold-bright)">service quality</strong>, <strong style="color:var(--gold-bright)">accessibility</strong>, and <strong style="color:var(--gold-bright)">ease of use</strong>. This study quantifies those differences and maps what drives customer choice.</p>
+            <p style="font-size:13px;color:var(--card-text);line-height:1.75">Customers experience meaningful differences across Bhutan's banks in four dimensions: <strong style="color:var(--gold-bright)">trust</strong>, <strong style="color:var(--gold-bright)">service quality</strong>, <strong style="color:var(--gold-bright)">accessibility</strong>, and <strong style="color:var(--gold-bright)">ease of use</strong>. This analysis quantifies those differences and maps what drives customer choice.</p>
           </div>
           <div class="sub-block">
-            <h3>Research questions</h3>
+            <h3>Key questions</h3>
             <div class="pill-list">
               <div class="pill-item"><div class="pill-dot"></div>What factors most influence a customer's choice of bank?</div>
               <div class="pill-item"><div class="pill-dot"></div>Where do current banking services fall short of expectations?</div>
@@ -383,7 +420,7 @@
       </div>
 
       <div class="rs" id="solutions">
-        <div class="rs-head"><div class="rs-icon">💡</div><div><h2>Discussion & solutions</h2><p>Recommendations based on study findings</p></div></div>
+        <div class="rs-head"><div class="rs-icon">💡</div><div><h2>Discussion & solutions</h2><p>Recommendations based on the findings</p></div></div>
         <div class="rs-body">
           <div class="sub-block">
             <h3>This platform – Ngul Yoen</h3>
@@ -503,7 +540,7 @@
       <div class="rs" id="dashboard">
         <div class="rs-head"><div class="rs-icon">🖥️</div><div><h2>Interactive Tableau dashboard</h2><p>Explore the full dataset interactively</p></div></div>
         <div class="rs-body">
-          <p>The dashboard presents detailed insights on customer banking choices in Bhutan across all 111 respondents. Use the filters to explore by bank, region, and factor.</p>
+          <p>The dashboard presents insights on customer banking choices in Bhutan across all 111 respondents. Use the filters to explore by bank, region, and factor.</p>
           <div class="tableau-wrap">
             <iframe src="tableau-dashboard.html" title="Tableau Banking Dashboard"></iframe>
             <div class="tableau-label">📊 Tableau dashboard · Customer Banking Choices in Bhutan · 2026</div>
@@ -511,7 +548,7 @@
         </div>
       </div>
       <div class="tb-banner">
-        <a href="https://public.tableau.com/views/Book1_2_17748664369600/Story1?:showVizHome=no&:embed=y" target="_blank" class="tb-btn">View Full Storyboard in Tableau →</a>
+        <a href="https://public.tableau.com/views/InsightsonCustomerBankingChoices/Story1" target="_blank" class="tb-btn">View Full Storyboard in Tableau →</a>
       </div>
 
       <div class="goto-grid">
@@ -548,6 +585,13 @@ document.addEventListener('click', function(e) {
   if (nav && btn && !nav.contains(e.target) && !btn.contains(e.target)) {
     nav.classList.remove('open');
   }
+});
+
+// Stop blink on click (optional UX improvement)
+document.querySelectorAll('.nav-blink').forEach(link => {
+  link.addEventListener('click', () => {
+    link.classList.remove('nav-blink');
+  });
 });
 
 // TABS
