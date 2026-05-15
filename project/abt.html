@@ -75,7 +75,7 @@
   .nav-links a { font-size: 14px; font-weight: 500; color: #e8e4f0; text-decoration: none; padding: 7px 12px; border-radius: 20px; transition: background 0.18s, color 0.18s; white-space: nowrap; }
   .nav-links a:hover { background: var(--card-bg-hover); color: var(--card-muted); }
   .nav-links a.active { color: var(--gold-bright); background: rgba(212,168,32,0.15); }
-  
+
   /* BLINK ANIMATION */
   @keyframes tabBlink {
     0%, 100% {
@@ -141,33 +141,86 @@
   /* HERO */
   .hero {
     position: relative; overflow: hidden;
-    padding: 26px 48px 38px;
+    padding: 26px 48px 38px 220px;
     color: white;
   }
   .hero-inner { position: relative; max-width: 800px; }
   .hero-eyebrow { display: inline-flex; align-items: center; margin-left: 8px; font-size: 12px; font-weight: 500; letter-spacing: 0.8em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
-  /* .hero-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); } */
   .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 5vw, 44px); font-weight: 700; line-height: 1.15; letter-spacing: 0.05em; margin-bottom: 14px; }
   .hero p { font-size: 14px; color: whitesmoke; max-width: 600px; line-height: 1.7; font-style: italic; }
 
-  /* ANCHOR NAV */
-  .anchor-nav {
-    background: rgba(26,31,60,0.85);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(212,168,32,0.15);
-    padding: 0 48px; display: flex; overflow-x: auto;
-    position: sticky; top: 64px; z-index: 40;
+  /* SIDEBAR NAV */
+  .side-nav {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    transform: none;
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 16px 0 16px 0;
+    background: rgba(26,31,60,0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212,168,32,0.15);
+    border-left: none;
+    border-radius: 0 14px 14px 0;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.35);
+    min-width: 170px;
   }
-  .anchor-nav a { font-family: 'Segoe UI', sans-serif; font-size: 13px; font-weight: 500; color: var(--card-muted); text-decoration: none; padding: 14px 18px; border-bottom: 2px solid transparent; white-space: nowrap; transition: color 0.15s, border-color 0.15s; }
-  .anchor-nav a:hover { color: var(--gold-bright); border-bottom-color: rgba(212,168,32,0.4); }
-  .anchor-nav a.active-anchor { color: var(--gold-bright); border-bottom-color: var(--gold); }
+  .side-nav-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--card-muted);
+    padding: 0 18px 10px 16px;
+    border-bottom: 1px solid rgba(212,168,32,0.15);
+    margin-bottom: 6px;
+  }
+  .side-nav a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--card-muted);
+    text-decoration: none;
+    padding: 9px 18px 9px 14px;
+    border-left: 3px solid transparent;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
+    white-space: nowrap;
+  }
+  .side-nav a:hover {
+    color: var(--gold-bright);
+    background: rgba(212,168,32,0.07);
+    border-left-color: rgba(212,168,32,0.4);
+  }
+  .side-nav a.active-anchor {
+    color: var(--gold-bright);
+    border-left-color: var(--gold);
+    background: rgba(212,168,32,0.1);
+  }
+  .side-nav-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
+    opacity: 0.55;
+    transition: opacity 0.15s;
+  }
+  .side-nav a.active-anchor .side-nav-dot,
+  .side-nav a:hover .side-nav-dot {
+    opacity: 1;
+  }
 
   /* MAIN */
   .main {
     width: 100%;
     max-width: 100%;
     margin: 0 auto;
-    padding: 52px 200px;
+    padding: 52px 200px 52px 220px;
     display: flex;
     flex-direction: column;
     gap: 32px;
@@ -179,7 +232,7 @@
     border: 1px solid var(--card-border);
     border-radius: var(--radius);
     overflow: hidden;
-    scroll-margin-top: 120px;
+    scroll-margin-top: 90px;
     transition: box-shadow 0.2s, border-color 0.2s;
     backdrop-filter: blur(8px);
   }
@@ -196,11 +249,9 @@
   .asc-head h2 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; margin-bottom: 2px; color: var(--card-heading); }
   .asc-head p { font-size: 14px; font-weight: 400; color: var(--card-muted); font-style: italic; }
   .asc-body { padding: 24px 28px; display: flex; flex-direction: column; gap: 16px; }
-  .asc-body p { font-family: 'Segoe UI', sans-serif; font-size: 16px; font-weight: 400; color: var(--card-text); line-height: 1.85; font-style: italic; }
+  .asc-body p { font-family: 'Segoe UI', sans-serif; font-size: 16px; font-weight: 400; color: var(--card-text); line-height: 1.85; font-style: italic; text-align: justify;}
   .asc-body a { color: var(--gold); text-decoration: none; }
   .asc-body a:hover { color: var(--gold-bright); text-decoration: underline; }
-
-
 
   /* PROFILE CARD */
   .profile-card {
@@ -225,7 +276,7 @@
     text-decoration: none; color: inherit;
     transition: border-color 0.15s, background 0.15s;
   }
-  .platform-item:hover { border-color: rgba(212,168,32,0.4); background: rgba(212,168,32,0.06); }
+  /* .platform-item:hover { border-color: rgba(212,168,32,0.4); background: rgba(212,168,32,0.06); } */
   .platform-item-icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
   .platform-item strong { display: block; font-size: 15px; font-weight: 500; margin-bottom: 2px; color: var(--card-heading); }
   .platform-item span { font-size: 13px; line-height: 1.45; color: var(--card-muted); }
@@ -279,13 +330,15 @@
   footer strong { color: var(--gold-bright); font-weight: 500; }
 
   /* RESPONSIVE */
-  @media (max-width: 1200px) { .main { padding: 48px 80px; } }
+  @media (max-width: 1200px) {
+    .main { padding: 48px 80px 48px 200px; }
+    .hero { padding: 24px 32px 48px 200px; }
+  }
   @media (max-width: 1024px) {
     .navbar { padding: 0 24px; }
     .nav-links a { font-size: 12px; padding: 6px 10px; }
-    .hero { padding: 24px 32px 48px; }
-    .main { padding: 40px 40px; }
-    .anchor-nav { padding: 0 16px; }
+    .main { padding: 40px 40px 40px 190px; }
+    .hero { padding: 24px 32px 48px 190px; }
     footer { padding: 24px 32px; }
   }
   @media (max-width: 768px) {
@@ -293,8 +346,7 @@
     .ham-btn { display: flex; }
     .navbar { padding: 0 16px; height: 54px; }
     .mobile-nav { top: 54px; }
-    .anchor-nav { top: 54px; padding: 0 8px; }
-    .anchor-nav a { font-size: 13px; padding: 11px 10px; }
+    .side-nav { display: none; }
     .hero { padding: 20px 20px 36px; }
     .hero h1 { font-size: 26px; }
     .hero p { font-size: 14px; }
@@ -353,6 +405,14 @@
   <a href="ct1.html" onclick="closeMobileNav()">Contact Us</a>
 </div>
 
+<!-- LEFT SIDEBAR NAV -->
+<div class="side-nav" id="side-nav">
+  <div class="side-nav-label">On this page</div>
+  <a href="#project"><span class="side-nav-dot"></span>The Project</a>
+  <a href="#me"><span class="side-nav-dot"></span>About Me</a>
+  <a href="#bds"><span class="side-nav-dot"></span>Bhutan Data Scientists</a>
+</div>
+
 <!-- HERO -->
 <div class="hero">
   <div class="hero-inner">
@@ -360,13 +420,6 @@
     <h1>About Us</h1>
     <p>A student-built platform on banking in Bhutan – who made it, why it exists, and what it covers.</p>
   </div>
-</div>
-
-<!-- ANCHOR NAV -->
-<div class="anchor-nav">
-  <a href="#project">The Project</a>
-  <a href="#me">About Me</a>
-  <a href="#bds">Bhutan Data Scientists</a>
 </div>
 
 <!-- MAIN -->
@@ -432,7 +485,7 @@
           <span>3rd-year · Business Intelligence (Financial Engineering) · Gedu College of Business Studies</span>
         </div>
       </div>
-      <p>During the time of this internship period (Dec 2025 – Jun 2026) I was in my third-year at GCBS, where I studied Bachelors degree in Business Intelligence with major in Financial Engineering – where data analysis, business strategy, and technology meet. This project was my chance to apply that blend to a real-world problem: understanding how and why Bhutanese banking customers choose their banks. This website is my possible solution to banking challenges faced by major Bhutanese banking customers.</p>
+      <p>During the time of this internship period (Dec 2025 - Jun 2026) I was in my third-year at GCBS, where I studied Bachelors degree in Business Intelligence with major in Financial Engineering, where data analysis, business strategy, and technology meet. This project was my chance to apply that blend to a real-world problem: understanding how and why Bhutanese banking customers choose their banks. This website is my possible solution to banking challenges faced by major Bhutanese banking customers.</p>
       <div>
         <div class="section-label">Internship timeline</div>
         <div class="timeline">
@@ -446,14 +499,14 @@
           <div class="tl-item">
             <div class="tl-dot"></div>
             <div class="tl-content">
-              <strong>Jan – Mar 2026: Survey design, data collection & analysis</strong>
+              <strong>Jan - Mar 2026: Survey design, data collection & analysis</strong>
               <span>111 respondents · Google Forms · Google Sheets · Tableau</span>
             </div>
           </div>
           <div class="tl-item">
             <div class="tl-dot"></div>
             <div class="tl-content">
-              <strong>Apr – Jun 2026: Platform & prototype development</strong>
+              <strong>Apr - Jun 2026: Platform & prototype development</strong>
               <span>Built Ngul Yoen, mBOB prototype, and FinSight analyzer</span>
             </div>
           </div>
@@ -479,7 +532,7 @@
       </div>
     </div>
     <div class="asc-body">
-      <p><a href="https://datascientists.bt/" target="_blank">Bhutan Data Scientists Pvt. Ltd.</a> is a Thimphu-based data science company offering local survey, sensor, and analytics services – led by pioneering data scientist <a href="https://www.linkedin.com/in/troy-sadkowsky/" target="_blank">Troy Sadkowsky</a>. BDS provided the structured environment where this entire project, from survey design to this platform was built and mentored.</p>
+      <p><a href="https://datascientists.bt/" target="_blank">Bhutan Data Scientists Pvt. Ltd.</a> is a Thimphu-based data science company offering local survey, sensor, and analytics services led by pioneering data scientist <a href="https://www.linkedin.com/in/troy-sadkowsky/" target="_blank">Troy Sadkowsky</a>. BDS provided the structured environment where this entire project, from survey design to this platform was built and mentored.</p>
     </div>
   </div>
 
@@ -520,25 +573,23 @@
   });
 
   const sections = document.querySelectorAll('.asc');
-  const anchors  = document.querySelectorAll('.anchor-nav a');
+  const anchors  = document.querySelectorAll('.side-nav a');
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
         anchors.forEach(a => a.classList.remove('active-anchor'));
-        const match = document.querySelector(`.anchor-nav a[href="#${e.target.id}"]`);
+        const match = document.querySelector(`.side-nav a[href="#${e.target.id}"]`);
         if (match) match.classList.add('active-anchor');
       }
     });
   }, { threshold: 0.45 });
   sections.forEach(s => io.observe(s));
 
-  // Stop blink on click (optional UX improvement)
   document.querySelectorAll('.nav-blink').forEach(link => {
     link.addEventListener('click', () => {
       link.classList.remove('nav-blink');
     });
   });
-
 </script>
 
 </body>

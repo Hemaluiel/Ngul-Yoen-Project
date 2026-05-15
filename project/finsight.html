@@ -217,7 +217,7 @@
   .about-card-top { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
   .about-icon { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; background: rgba(212,168,32,0.12); }
   .about-card h3 { font-size: 15px; font-weight: 600; color: var(--card-heading); }
-  .about-card p { font-size: 14px; font-style: italic; line-height: 1.6; color: var(--card-text); }
+  .about-card p { font-size: 14px; font-style: italic; line-height: 1.6; color: var(--card-text); text-align: justify;}
 
   /* HOW IT WORKS */
   .steps { display: flex; flex-direction: column; gap: 0; }
@@ -226,13 +226,13 @@
   .step:first-child { padding-top: 0; }
   .step-num { width: 36px; height: 36px; border-radius: 50%; background: rgba(212,168,32,0.15); border: 1px solid rgba(212,168,32,0.4); color: var(--gold-bright); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
   .step-content h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; color: var(--card-heading); }
-  .step-content p { font-size: 15px; font-style: italic; line-height: 1.65; color: var(--card-text); }
+  .step-content p { font-size: 15px; font-style: italic; line-height: 1.65; color: var(--card-text); text-align: justify;}
   .step-tag { display: inline-block; margin-top: 8px; font-size: 13px; font-weight: 500; padding: 3px 10px; border-radius: 20px; background: rgba(45,106,45,0.2); color: #7dd87d; border: 1px solid rgba(45,106,45,0.3); }
 
   /* CTA BANNER */
   .cta-banner { background: rgba(15,26,15,0.85); border: 1px solid rgba(212,168,32,0.3); border-radius: var(--radius); padding: 32px 36px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; backdrop-filter: blur(8px); }
   .cta-text strong { display: block; font-family: 'Playfair Display', serif; font-size: 20px; color: var(--gold-bright); margin-bottom: 6px; }
-  .cta-text p { font-size: 14px; font-style: italic; color: var(--card-muted); line-height: 1.6; max-width: 620px; }
+  .cta-text p { font-size: 14px; font-style: italic; color: var(--card-muted); line-height: 1.6; max-width: 620px; text-align: justify;}
   .cta-actions { display: flex; gap: 10px; flex-wrap: wrap; }
   .cta-btn { background: var(--fs-accent); color: white; text-decoration: none; border-radius: var(--radius-sm); padding: 12px 22px; font-size: 13px; font-weight: 500; white-space: nowrap; transition: background 0.15s; }
   .cta-btn:hover { background: #246224; }
@@ -392,7 +392,7 @@
         <p>What it is, who it's for, and why it was built</p>
       </div>
     </div>
-    <div class="sc-body" style="display:flex;flex-direction:column;gap:20px">
+    <div class="sc-body" style="display:flex;flex-direction:column;gap:20px;text-align:justify;">
       <p class="about-intro">FinSight is an AI-powered bank statement analyzer designed to take the manual work out of understanding your finances. Instead of scrolling through dozens of transactions and guessing where your money went, you simply upload your bank statement PDF and let FinSight do the work.</p>
       <p class="about-intro">Built with Bhutanese banking in mind and tested on real BoB and DK Bank e-statements: It recognises local transaction formats, merchant names, and payment patterns. The AI engine then maps every debit to a meaningful expense category automatically.</p>
 
