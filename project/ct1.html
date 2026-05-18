@@ -303,6 +303,7 @@
     <a href="abt.html">About</a>
     <a href="rpfd.html">Report & Findings</a>
     <a href="banking1.html" class="nav-blink">Banking Insights</a>
+    <a href="quiz.html">Quizzes</a>
     <a href="Prototype.html" class="nav-blink">mBOB Prototype</a>
     <a href="finsight.html" class="nav-blink">FinSight</a>
     <a href="ct1.html" class="active">Contact Us</a>
@@ -319,6 +320,7 @@
   <a href="abt.html" onclick="closeMobileNav()">About</a>
   <a href="rpfd.html" onclick="closeMobileNav()">Report & Findings</a>
   <a href="banking1.html" class="nav-blink" onclick="closeMobileNav()">Banking Insights</a>
+  <a href="quiz.html" onclick="closeMobileNav()">Quizzes</a>
   <a href="Prototype.html" class="nav-blink" onclick="closeMobileNav()">mBOB Prototype</a>
   <a href="finsight.html" class="nav-blink" onclick="closeMobileNav()">FinSight</a>
   <a href="ct1.html" onclick="closeMobileNav()">Contact Us</a>
@@ -352,16 +354,12 @@
           <div class="contact-item-text"><strong>LinkedIn</strong><span><a href="https://www.linkedin.com/in/hema-luitel-43316b310/" style="color:var(--card-text);">Hema Luitel | Profile</a><span></div>
         </div>
         <div class="contact-item">
-          <div class="contact-item-icon">📞</div>
-          <div class="contact-item-text"><strong>Phone</strong><span>+975 17486283</span></div>
-        </div>
-        <div class="contact-item">
           <div class="contact-item-icon">📍</div>
           <div class="contact-item-text"><strong>Address</strong><span>Olakha, Thimphu, Bhutan</span></div>
         </div>
         <div class="contact-item">
           <div class="contact-item-icon">🕐</div>
-          <div class="contact-item-text"><strong>Response time</strong><span>Within 1–2 business days</span></div>
+          <div class="contact-item-text"><strong>Response time</strong><span>Within 1-2 business days</span></div>
         </div>
       </div>
     </div>
@@ -385,7 +383,7 @@
       <!-- Name row -->
       <div class="field-row">
         <div class="field">
-          <label>First name *</label>
+          <label>First name <span style="font-size:13px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--card-muted)">(optional)</span></label>
           <input type="text" id="fname" placeholder="Karma" autocomplete="given-name">
         </div>
         <div class="field">
@@ -430,7 +428,7 @@
       <!-- Alerts -->
       <div class="alert alert-success" id="alert-success">
         <span class="alert-icon">✅</span>
-        Message sent! We'll reply within 1–2 business days. Tashi Delek! 🙏
+        Message sent! We'll reply within 1–2 business days. Tashi Delek!
       </div>
       <div class="alert alert-error" id="alert-error">
         <span class="alert-icon">⚠️</span>
@@ -554,7 +552,6 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('alert-error').classList.remove('show');
 
     let valid = true;
-    if (!fname)  { highlight('fname'); valid = false; }
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       highlight('email'); valid = false;
     }
@@ -571,12 +568,15 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('spinner').style.display = 'block';
 
     const templateParams = {
-      from_name:  fname + (lname ? ' ' + lname : ''),
+      // from_name: (fname || lname) ? [fname, lname].filter(Boolean).join(' ') : 'Anonymous',
+      from_name: fname || lname || 'there',
       from_email: email,
       phone:      phone || 'Not provided',
       purpose:    selectedPurpose,
       message:    message,
-      to_email:   'hemaluitel5@gmail.com'
+      to_email:   'hemaluitel5@gmail.com',
+      to_name:    fname || 'there',    
+      reply_to:   email,
     };
 
     try {
