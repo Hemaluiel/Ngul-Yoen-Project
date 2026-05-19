@@ -23,8 +23,6 @@
     --radius-sm: 8px;
     --bob: #0d2b45;
     --bob-light: #e8f0f7;
-
-    /* Card theme */
     --card-bg: #1a1f3c;
     --card-bg-hover: #1e2445;
     --card-border: rgba(212,168,32,0.25);
@@ -37,30 +35,22 @@
   html { scroll-behavior: smooth; }
   body { font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: var(--text); font-size: 15px; line-height: 1.6; }
 
-  /* DARK BACKGROUND */
-  .page-bg {
-    position: relative;
-    min-height: 100vh;
-  }
+  .page-bg { position: relative; min-height: 100vh; }
   .page-bg::before {
     content: '';
-    position: fixed;
-    inset: 0;
+    position: fixed; inset: 0;
     background-image: url('https://www.shutterstock.com/image-photo/bank-building-600nw-574713295.jpg');
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
+    background-size: cover; background-position: center top; background-repeat: no-repeat;
     z-index: -2;
   }
   .page-bg::after {
     content: '';
-    position: fixed;
-    inset: 0;
+    position: fixed; inset: 0;
     background: rgba(8, 10, 28, 0.72);
     z-index: -1;
   }
 
-  /* NAVBAR */
+  /* Navbar */
   .navbar { position: sticky; top: 0; z-index: 50; display: flex; justify-content: space-between; align-items: center; padding: 0 48px; height: 64px; background: rgba(26,31,60,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(212,168,32,0.15); }
   .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #d4a820; letter-spacing: -0.02em; text-decoration: none; }
   .logo em { color: var(--red); font-style: normal; }
@@ -69,112 +59,53 @@
   .nav-links a:hover { background: var(--card-bg-hover); color: var(--card-muted); }
   .nav-links a.active { color: var(--gold-bright); background: rgba(212,168,32,0.15); }
 
-  /* BLINK ANIMATION */
   @keyframes tabBlink {
-    0%, 100% {
-      background: rgba(212,168,32,0.18);
-      color: #f0c040;
-      box-shadow: 0 0 0 0 rgba(212,168,32,0);
-    }
-    50% {
-      background: rgba(212,168,32,0.38);
-      color: #fff;
-      box-shadow: 0 0 8px 2px rgba(212,168,32,0.35);
-    }
+    0%, 100% { background: rgba(212,168,32,0.18); color: #f0c040; box-shadow: 0 0 0 0 rgba(212,168,32,0); }
+    50% { background: rgba(212,168,32,0.38); color: #fff; box-shadow: 0 0 8px 2px rgba(212,168,32,0.35); }
   }
-  .nav-blink {
-    animation: tabBlink 1.1s ease-in-out infinite;
-    border: 1px solid rgba(212,168,32,0.5) !important;
-    color: #f0c040 !important;
-  }
-  .nav-blink:hover {
-    animation: none;
-    background: var(--card-bg-hover) !important;
-    color: var(--card-muted) !important;
-    border-color: rgba(212,168,32,0.3) !important;
-    box-shadow: none !important;
-  }
+  .nav-blink { animation: tabBlink 1.1s ease-in-out infinite; border: 1px solid rgba(212,168,32,0.5) !important; color: #f0c040 !important; }
+  .nav-blink:hover { animation: none; background: var(--card-bg-hover) !important; color: var(--card-muted) !important; border-color: rgba(212,168,32,0.3) !important; box-shadow: none !important; }
 
-  /* HAMBURGER */
   .ham-btn { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; flex-shrink: 0; }
   .ham-btn span { display: block; width: 20px; height: 2px; background: var(--gold-bright); border-radius: 2px; }
 
-  /* MOBILE DROPDOWN */
-  .mobile-nav {
-    display: none; flex-direction: column;
-    position: fixed;
-    top: 54px; right: 16px; width: 220px;
-    background: rgba(26,31,60,0.97);
-    border: 1px solid rgba(212,168,32,0.2);
-    border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-    padding: 8px; z-index: 100;
-  }
+  .mobile-nav { display: none; flex-direction: column; position: fixed; top: 54px; right: 16px; width: 220px; background: rgba(26,31,60,0.97); border: 1px solid rgba(212,168,32,0.2); border-radius: 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.4); padding: 8px; z-index: 100; }
   .mobile-nav.open { display: flex; }
   .mobile-nav a { font-size: 14px; font-weight: 500; color: #e8e4f0; text-decoration: none; padding: 6px 10px; border-radius: 8px; transition: background 0.15s, color 0.15s; }
   .mobile-nav a:hover { background: var(--card-bg-hover); color: var(--gold-bright); }
   .mob-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--card-muted); padding: 8px 10px 4px; }
 
-  /* Mobile blink */
-  .mobile-nav .nav-blink {
-    color: #b8860b !important;
-    font-weight: 600 !important;
-    animation: mobileBlink 1.1s ease-in-out infinite;
-  }
-  @keyframes mobileBlink {
-    0%, 100% { background: rgba(212,168,32,0.15); }
-    50% { background: rgba(212,168,32,0.32); }
-  }
+  @keyframes mobileBlink { 0%, 100% { background: rgba(212,168,32,0.15); } 50% { background: rgba(212,168,32,0.32); } }
+  .mobile-nav .nav-blink { color: #b8860b !important; font-weight: 600 !important; animation: mobileBlink 1.1s ease-in-out infinite; }
 
-  /* HERO */
+  /* Hero */
   .hero { position: relative; overflow: hidden; padding: 26px 48px 38px; color: white; }
   .hero-inner { position: relative; max-width: 860px; }
   .hero-eyebrow { display: inline-flex; align-items: center; margin-left: 8px; font-size: 11px; font-weight: 500; letter-spacing: 0.5em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
-  /* .hero-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); } */
   .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 5vw, 44px); font-weight: 700; line-height: 1.15; letter-spacing: 0.05em; margin-bottom: 14px; }
   .hero h1 span { color: #e8755a; }
   .hero p { font-size: 14px; color: whitesmoke; line-height: 1.7; margin-bottom: 12px; max-width: 680px; font-style: italic; }
   .hero-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--red); color: white; text-decoration: none; padding: 6px 22px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; transition: background 0.15s, transform 0.15s; }
   .hero-cta:hover { background: #a93226; transform: translateY(-1px); }
 
-  /* ANCHOR NAV */
-  .anchor-nav {
-    background: rgba(26,31,60,0.90);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(212,168,32,0.15);
-    padding: 0 48px; display: flex; overflow-x: auto;
-    position: sticky; top: 64px; z-index: 40;
-  }
+  /* Anchor nav */
+  .anchor-nav { background: rgba(26,31,60,0.90); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(212,168,32,0.15); padding: 0 48px; display: flex; overflow-x: auto; position: sticky; top: 64px; z-index: 40; }
   .anchor-nav a { font-family: 'Segoe UI', sans-serif; font-size: 13px; font-weight: 500; color: var(--card-muted); text-decoration: none; padding: 14px 18px; border-bottom: 2px solid transparent; white-space: nowrap; transition: color 0.15s, border-color 0.15s; }
   .anchor-nav a:hover { color: var(--gold-bright); border-bottom-color: rgba(212,168,32,0.4); }
 
-  /* MAIN */
-  .main {
-    width: 100%; max-width: 100%; padding: 52px 160px;
-    display: flex; flex-direction: column; gap: 32px;
-  }
+  /* Main */
+  .main { width: 100%; max-width: 100%; padding: 52px 160px; display: flex; flex-direction: column; gap: 32px; }
 
-  /* SECTION CARD */
-  .section-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    scroll-margin-top: 110px;
-    transition: box-shadow 0.2s, border-color 0.2s;
-    backdrop-filter: blur(8px);
-  }
-  .section-card:hover {
-    box-shadow: 0 12px 40px rgba(0,0,0,0.45), 0 0 0 1px rgba(212,168,32,0.3);
-    border-color: var(--card-border-hover);
-  }
+  /* Section card*/
+  .section-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 110px; transition: box-shadow 0.2s, border-color 0.2s; backdrop-filter: blur(8px); }
+  .section-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.45), 0 0 0 1px rgba(212,168,32,0.3); border-color: var(--card-border-hover); }
   .section-head { display: flex; align-items: flex-start; gap: 14px; padding: 22px 28px 18px; border-bottom: 1px solid rgba(212,168,32,0.15); }
   .section-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; background: rgba(212,168,32,0.12); border: 1px solid rgba(212,168,32,0.2); }
   .section-head h2 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 500; margin-bottom: 3px; color: var(--card-heading); }
   .section-head p { font-size: 13px; font-style: italic; color: var(--card-muted); }
   .section-body { padding: 28px; }
 
-  /* PROTOTYPE EMBED */
+  /* Prptotype embed */
   .proto-frame-wrap { border: 1px solid rgba(212,168,32,0.2); border-radius: var(--radius-sm); overflow: hidden; background: #0d1428; }
   .proto-toolbar { padding: 10px 16px; background: rgba(26,31,60,0.9); border-bottom: 1px solid rgba(212,168,32,0.15); display: flex; align-items: center; gap: 10px; }
   .proto-dots { display: flex; gap: 5px; }
@@ -187,130 +118,254 @@
   .proto-note a { color: var(--gold); }
   .proto-note a:hover { color: var(--gold-bright); }
 
-  /* FEATURE GRID */
+  /* Feature grid */
   .feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 4px; }
   .feature-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(212,168,32,0.15); border-radius: var(--radius-sm); padding: 18px; transition: border-color 0.15s, box-shadow 0.15s; }
   .feature-card:hover { border-color: rgba(212,168,32,0.4); box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
   .feature-card-top { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
   .feature-icon { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; background: rgba(212,168,32,0.12); }
   .feature-card h3 { font-size: 15px; font-weight: 600; color: var(--card-heading); }
-  .feature-card p { font-size: 13px; font-style: italic; line-height: 1.6; color: var(--card-text); text-align: justify;}
+  .feature-card p { font-size: 13px; font-style: italic; line-height: 1.6; color: var(--card-text); text-align: justify; }
   .feature-list { list-style: none; margin-top: 8px; display: flex; flex-direction: column; gap: 5px; }
-  .feature-list li { font-size: 13px; display: flex; gap: 7px; align-items: flex-start; font-style: italic; color: var(--card-text); text-align: justify;}
+  .feature-list li { font-size: 13px; display: flex; gap: 7px; align-items: flex-start; font-style: italic; color: var(--card-text); text-align: justify; }
   .feature-list li::before { content: ''; display: block; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 7px; }
 
-  /* STORY */
+  /* Story pop up */
+  /* Button that triggers the modal */
+  .story-reveal-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, rgba(212,168,32,0.15) 0%, rgba(13,43,69,0.6) 100%);
+    border: 1.5px solid rgba(212,168,32,0.45);
+    border-radius: 12px;
+    padding: 18px 28px;
+    cursor: pointer;
+    color: var(--gold-bright);
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: background 0.2s, border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .story-reveal-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(212,168,32,0.07);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .story-reveal-btn:hover { border-color: rgba(212,168,32,0.75); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.45); }
+  .story-reveal-btn:hover::before { opacity: 1; }
+  .story-reveal-btn:active { transform: translateY(0); }
+  .story-reveal-btn .btn-icon { font-size: 22px; }
+  .story-reveal-btn .btn-hint { font-size: 12px; font-style: italic; color: var(--card-muted); display: block; margin-top: 3px; font-family: 'Segoe UI', sans-serif; font-weight: 400; }
+
+  /* Pulsing ring animation on button */
+  @keyframes pulseRing {
+    0% { box-shadow: 0 0 0 0 rgba(212,168,32,0.4); }
+    70% { box-shadow: 0 0 0 12px rgba(212,168,32,0); }
+    100% { box-shadow: 0 0 0 0 rgba(212,168,32,0); }
+  }
+  .story-reveal-btn { animation: pulseRing 2.2s ease-out infinite; }
+  .story-reveal-btn:hover { animation: none; }
+
+  /* Modal overlay */
+  .story-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(6, 8, 22, 0.88);
+    z-index: 200;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 24px 16px 40px;
+    overflow-y: auto;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.28s ease;
+    backdrop-filter: blur(6px);
+  }
+  .story-modal-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  /* Modal box */
+  .story-modal {
+    background: #151b38;
+    border: 1px solid rgba(212,168,32,0.35);
+    border-radius: 18px;
+    width: 100%;
+    max-width: 760px;
+    margin: auto;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(212,168,32,0.1);
+    transform: translateY(24px) scale(0.98);
+    transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), opacity 0.28s;
+    opacity: 0;
+  }
+  .story-modal-overlay.open .story-modal {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+
+  .modal-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 22px 24px 18px;
+    border-bottom: 1px solid rgba(212,168,32,0.18);
+    border-radius: 18px 18px 0 0;
+  }
+  .modal-header-icon { font-size: 24px; padding-top: 2px; flex-shrink: 0; }
+  .modal-header-text { flex: 1; }
+  .modal-header h2 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 500; color: var(--gold); margin-bottom: 3px; }
+  .modal-header p { font-size: 13px; font-style: italic; color: var(--card-muted); }
+  .modal-close-btn {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(212,168,32,0.25);
+    border-radius: 50%;
+    width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    color: var(--card-muted);
+    font-size: 18px;
+    flex-shrink: 0;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    font-weight: 300;
+    line-height: 1;
+  }
+  .modal-close-btn:hover { background: rgba(192,57,43,0.2); color: #e8755a; border-color: rgba(192,57,43,0.4); }
+
+  .modal-body { padding: 28px 28px 32px; }
+
+  /* Progress indicator */
+  .story-progress {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 22px;
+    font-size: 12px;
+    color: var(--card-muted);
+    font-style: italic;
+  }
+  .story-progress-bar {
+    flex: 1;
+    height: 3px;
+    background: rgba(212,168,32,0.15);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .story-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--gold-bright));
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.3s;
+  }
+
+  /* Story content */
   .story-body { font-size: 15px; color: var(--card-text); line-height: 1.85; font-style: italic; }
-  .story-body p { margin-bottom: 16px; text-align: justify;}
+  .story-body p { margin-bottom: 16px; text-align: justify; }
   .story-body p:last-child { margin-bottom: 0; }
   .characters { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
   .char-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(212,168,32,0.15); border-radius: var(--radius-sm); padding: 10px 14px; display: flex; align-items: center; gap: 10px; }
   .char-avatar { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 700; color: white; flex-shrink: 0; }
   .char-info strong { display: block; font-size: 14px; font-weight: 500; color: var(--card-heading); }
   .char-info span { font-size: 12px; color: var(--card-muted); }
-  .dialogue { background: rgba(13,43,69,0.5); border-left: 3px solid var(--gold); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 12px 16px; margin: 12px 0; font-style: italic; font-size: 14px; color: var(--card-text); line-height: 1.65; text-align: justify;}
+  .dialogue { background: rgba(13,43,69,0.5); border-left: 3px solid var(--gold); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 12px 16px; margin: 12px 0; font-style: italic; font-size: 14px; color: var(--card-text); line-height: 1.65; text-align: justify; }
   .dialogue strong { color: var(--gold); font-style: normal; font-size: 12px; display: block; margin-bottom: 4px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
   .story-feature { background: rgba(212,168,32,0.08); border: 1px solid rgba(212,168,32,0.25); border-radius: var(--radius-sm); padding: 14px 16px; margin: 14px 0; }
   .story-feature-label { font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; color: var(--gold-bright); margin-bottom: 6px; font-style: normal; }
   .story-feature p { font-size: 14px; color: var(--card-text); margin: 0; line-height: 1.6; }
 
-  /* WISH LIST */
+  /* Modal footer */
+  .modal-footer {
+    padding: 16px 28px 24px;
+    border-top: 1px solid rgba(212,168,32,0.12);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .modal-footer-note { font-size: 12px; font-style: italic; color: var(--card-muted); }
+  .modal-close-main {
+    background: rgba(212,168,32,0.12);
+    border: 1px solid rgba(212,168,32,0.3);
+    border-radius: var(--radius-sm);
+    padding: 8px 20px;
+    color: var(--gold-bright);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .modal-close-main:hover { background: rgba(212,168,32,0.22); }
+
+  /* Wishlist */
   .wish-list { display: flex; flex-direction: column; gap: 12px; }
   .wish-item { background: rgba(255,255,255,0.04); border: 1px solid rgba(212,168,32,0.15); border-radius: var(--radius-sm); padding: 14px 16px; display: flex; gap: 12px; align-items: flex-start; transition: border-color 0.15s; }
   .wish-item:hover { border-color: rgba(212,168,32,0.4); }
   .wish-num { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--gold); flex-shrink: 0; line-height: 1; padding-top: 1px; min-width: 22px; }
   .wish-text strong { display: block; font-size: 14px; font-weight: 500; margin-bottom: 3px; color: var(--card-heading); }
-  .wish-text p { font-size: 13px; color: var(--card-muted); line-height: 1.55; margin: 0; font-style: italic; text-align: justify;}
+  .wish-text p { font-size: 13px; color: var(--card-muted); line-height: 1.55; margin: 0; font-style: italic; text-align: justify; }
 
-  /* DEV NOTES */
-  .dev-note { background: rgba(255,255,255,0.04); border: 1px solid rgba(212,168,32,0.15); border-radius: var(--radius-sm); padding: 15px 16px; display: flex; gap: 12px; align-items: flex-start; text-align: justify;}
+  /* Dev. notes */
+  .dev-note { background: rgba(255,255,255,0.04); border: 1px solid rgba(212,168,32,0.15); border-radius: var(--radius-sm); padding: 15px 16px; display: flex; gap: 12px; align-items: flex-start; text-align: justify; }
   .dev-note-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
   .dev-note-text { font-size: 14px; color: var(--card-text); line-height: 1.65; font-style: italic; }
   .dev-note-text strong { color: var(--card-heading); font-style: normal; }
 
-  /* CTA BANNER */
+  /* CTA Banner */
   .cta-banner { background: rgba(13,43,69,0.85); border: 1px solid rgba(212,168,32,0.3); border-radius: var(--radius); padding: 28px 32px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; backdrop-filter: blur(8px); }
   .cta-banner-text strong { display: block; font-family: 'Playfair Display', serif; font-size: 18px; color: var(--gold-bright); margin-bottom: 6px; }
-  .cta-banner-text p { font-size: 13px; font-style: italic; color: var(--card-muted); line-height: 1.6; text-align: justify;}
+  .cta-banner-text p { font-size: 13px; font-style: italic; color: var(--card-muted); line-height: 1.6; text-align: justify; }
   .cta-btn { background: var(--red); color: white; text-decoration: none; border-radius: var(--radius-sm); padding: 12px 22px; font-size: 13px; font-weight: 500; white-space: nowrap; transition: background 0.15s; }
   .cta-btn:hover { background: #a93226; }
 
-  /* GOTO */
+  /* Goto */
   .goto-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(125px, 1fr)); gap: 16px; margin-left: 30px; margin-top: 8px; }
-  .goto {
-    border: 1px solid var(--card-border);
-    border-radius: var(--radius);
-    background: var(--card-bg);
-    padding: 18px;
-    cursor: pointer; text-decoration: none; color: inherit;
-    display: flex; flex-direction: column;
-    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-    backdrop-filter: blur(8px);
-  }
-  .goto:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 36px rgba(0,0,0,0.959), 0 0 0 1px rgb(163,127,20);
-    border-color: var(--card-border-hover);
-    background: var(--card-bg-hover);
-  }
+  .goto { border: 1px solid var(--card-border); border-radius: var(--radius); background: var(--card-bg); padding: 18px; cursor: pointer; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; backdrop-filter: blur(8px); }
+  .goto:hover { transform: translateY(-3px); box-shadow: 0 10px 36px rgba(0,0,0,0.959), 0 0 0 1px rgb(163,127,20); border-color: var(--card-border-hover); background: var(--card-bg-hover); }
   .goto-link { font-size: 14px; font-weight: 500; color: var(--gold); display: inline-flex; align-items: center; gap: 4px; letter-spacing: 0.5em; }
 
-
-  /* BACK TO TOP */
   #back-top { position: fixed; bottom: 24px; right: 24px; width: 40px; height: 40px; background: var(--card-bg); color: var(--gold-bright); border: 1px solid rgba(212,168,32,0.3); border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.2s, background 0.2s; box-shadow: 0 4px 16px rgba(0,0,0,0.4); }
   #back-top.visible { opacity: 1; pointer-events: all; }
   #back-top:hover { background: rgba(212,168,32,0.2); }
 
-  /* FOOTER */
-  footer {
-    background: rgba(26,31,60,0.97);
-    text-align: center;
-    padding: 28px 48px;
-    border-top: 1px solid rgba(212,168,32,0.2);
-    font-size: 13px;
-    color: var(--card-muted);
-  }
+  footer { background: rgba(26,31,60,0.97); text-align: center; padding: 28px 48px; border-top: 1px solid rgba(212,168,32,0.2); font-size: 13px; color: var(--card-muted); }
   footer strong { color: var(--gold-bright); font-weight: 500; }
 
-  /* RESPONSIVE */
+  /* Responsive */
   @media (max-width: 1400px) { .main { padding: 48px 80px; } }
-  @media (max-width: 1024px) {
-    .navbar { padding: 0 24px; }
-    .nav-links a { font-size: 12px; padding: 6px 9px; }
-    .hero { padding: 24px 32px 36px; }
-    .anchor-nav { padding: 0 16px; }
-    .main { padding: 40px 40px; }
-    footer { padding: 24px 32px; }
-  }
+  @media (max-width: 1024px) { .navbar { padding: 0 24px; } .nav-links a { font-size: 12px; padding: 6px 9px; } .hero { padding: 24px 32px 36px; } .anchor-nav { padding: 0 16px; } .main { padding: 40px 40px; } footer { padding: 24px 32px; } }
   @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .ham-btn { display: flex; }
-    .navbar { padding: 0 16px; height: 54px; }
-    .mobile-nav { top: 54px; }
-    .anchor-nav { top: 54px; padding: 0 4px; }
-    .anchor-nav a { font-size: 12px; padding: 11px 10px; }
-    .hero { padding: 20px 20px 32px; }
-    .hero h1 { font-size: 24px; }
-    .hero p { font-size: 13px; }
-    .main { padding: 24px 16px 48px; gap: 20px; }
-    .section-body { padding: 18px 16px; }
-    .feature-grid { grid-template-columns: 1fr; }
-    .proto-frame-wrap iframe { height: 420px; }
-    .cta-banner { flex-direction: column; }
-    footer { padding: 20px 16px; font-size: 13px; }
+    .nav-links { display: none; } .ham-btn { display: flex; } .navbar { padding: 0 16px; height: 54px; }
+    .mobile-nav { top: 54px; } .anchor-nav { top: 54px; padding: 0 4px; } .anchor-nav a { font-size: 12px; padding: 11px 10px; }
+    .hero { padding: 20px 20px 32px; } .hero h1 { font-size: 24px; } .hero p { font-size: 13px; }
+    .main { padding: 24px 16px 48px; gap: 20px; } .section-body { padding: 18px 16px; }
+    .feature-grid { grid-template-columns: 1fr; } .proto-frame-wrap iframe { height: 420px; }
+    .cta-banner { flex-direction: column; } footer { padding: 20px 16px; font-size: 13px; }
+    .story-modal { margin: 8px; }
+    .modal-body { padding: 20px 16px 24px; }
+    .modal-header { padding: 16px 16px 14px; }
+    .modal-footer { padding: 12px 16px 20px; }
   }
-  @media (max-width: 380px) {
-    .hero h1 { font-size: 20px; }
-    .main { padding: 16px 12px 40px; }
-    .proto-frame-wrap iframe { height: 340px; }
-  }
+  @media (max-width: 380px) { .hero h1 { font-size: 20px; } .main { padding: 16px 12px 40px; } .proto-frame-wrap iframe { height: 340px; } }
 </style>
 </head>
 <body>
 
 <div class="page-bg">
 
-<!-- NAVBAR -->
+<!-- Nav-bar -->
 <nav class="navbar">
   <a href="index.html" class="logo">Ngul<em>~</em>Yoen</a>
   <div class="nav-links">
@@ -326,7 +381,7 @@
   </button>
 </nav>
 
-<!-- MOBILE DROPDOWN -->
+<!-- Mobile dropdown -->
 <div class="mobile-nav" id="mobile-nav">
   <div class="mob-label">Navigate</div>
   <a href="index.html" onclick="closeMobileNav()">Home</a>
@@ -337,29 +392,29 @@
   <a href="ct1.html" onclick="closeMobileNav()">Contact Us</a>
 </div>
 
-<!-- HERO -->
+<!-- Hero -->
 <div class="hero">
   <div class="hero-inner">
     <div class="hero-eyebrow">Innovation · Bank of Bhutan</div>
     <h1>mBOB <span>Feature Upgrade</span><br>Prototype</h1>
-    <p>A student-driven concept prototype proposing four smart financial features for the mBOB mobile banking app — born from a story: Conversation at a college canteen in Gedu.</p>
+    <p>A student-driven concept prototype proposing four smart financial features for the mBOB mobile banking app - born from a story: Conversation at a college canteen in Gedu.</p>
     <a href="https://prottoo.vercel.app/" target="_blank" class="hero-cta">Open live prototype →</a>
   </div>
 </div>
 
-<!-- ANCHOR NAV -->
+<!-- Anchor nav -->
 <div class="anchor-nav">
   <a href="#prototype">Live Prototype</a>
   <a href="#features">4 Features</a>
   <a href="#devnotes">Dev Notes</a>
-  <a href="#story">The Story</a>
+  <a href="#story">Prototype Story</a>
   <a href="#wishlist">Feature Wishlist</a>
 </div>
 
-<!-- MAIN -->
+<!-- Main -->
 <main class="main">
 
-  <!-- PROTOTYPE EMBED -->
+  <!-- Prototype embed -->
   <div class="section-card" id="prototype">
     <div class="section-head">
       <div class="section-icon">🚀</div>
@@ -382,7 +437,7 @@
     </div>
   </div>
 
-  <!-- 4 FEATURES -->
+  <!-- 4 Featuures -->
   <div class="section-card" id="features">
     <div class="section-head">
       <div class="section-icon">✨</div>
@@ -433,7 +488,7 @@
     </div>
   </div>
 
-  <!-- DEV NOTES -->
+  <!-- Dev. notes -->
   <div class="section-card" id="devnotes">
     <div class="section-head">
       <div class="section-icon">🛠️</div>
@@ -447,57 +502,28 @@
     </div>
   </div>
 
-  <!-- THE STORY -->
+  <!-- Story — popup button version -->
   <div class="section-card" id="story">
     <div class="section-head">
       <div class="section-icon">📖</div>
       <div><h2>The story behind the prototype</h2><p>mBOB Budgeting and Expense Tracking Features · A story from GCBS canteen</p></div>
     </div>
-    <div class="section-body">
-      <div class="characters">
-        <div class="char-card"><div class="char-avatar" style="background:#0d2b45">T</div><div class="char-info"><strong>Tashi</strong><span>Class Representative, GCBS</span></div></div>
-        <div class="char-card"><div class="char-avatar" style="background:#c0392b">S</div><div class="char-info"><strong>Sonam</strong><span>Student, GCBS</span></div></div>
-        <div class="char-card"><div class="char-avatar" style="background:#0a7c5c">P</div><div class="char-info"><strong>Pema</strong><span>Student, GCBS · Ideas person</span></div></div>
-      </div>
-      <div class="story-body">
-        <p>Tashi, Sonam, and Pema sat on chairs around a small round table in the busy Tobgay canteen of Gedu College of Business Studies (GCBS). It was their usual tea break spot: warm <em>suja</em> in hand, plates of momos on the table, and the soft hum of students chatting after class.</p>
-        <p>The three of them had just come out of their financial management lecture. The topic had been <em>budgeting and personal financial control</em>, and now, unknowingly, they were about to test those ideas in real life.</p>
-        <p>Tashi, who also worked as a Class Representative, was staring at his phone with a slightly stressed expression.</p>
-        <div class="dialogue"><strong>Tashi</strong>"I collected SEMSO contributions from five of my self-funded mates yesterday. Now I just want to confirm one payment… but mBOB only shows the last few transactions. The one I need isn't even old... it's just from yesterday. Now I have to request a statement and wait for the email."</div>
-        <div class="dialogue"><strong>Sonam</strong>"Same problem. It's like the app has the data but not in a way that helps us <em>quickly</em>."</div>
-        <p>Just then, Pema joined them, pulling a chair closer.</p>
-        <div class="dialogue"><strong>Pema</strong>"You both look like you're fighting with your bank."</div>
-        <div class="dialogue"><strong>Tashi</strong>"We kind of are."</div>
-        <p>Pema smiled and leaned forward.</p>
-        <div class="dialogue"><strong>Pema</strong>"You know… what if mBOB actually worked like how we studied in class today? Let's start with expenses. Imagine when you make a payment, the app <em>automatically suggests a category</em>."</div>
-        <div class="story-feature">
-          <div class="story-feature-label">💡 Feature idea: Smart Categorization</div>
-          <p>If you transfer money to a friend for food, the app could show options like 'Food & Drinks', 'Fund Collection (SEMSO)', or 'Personal Transfer' based on the transaction pattern – one tap to select instead of typing everything.</p>
-        </div>
-        <div class="dialogue"><strong>Tashi</strong>"That would save time."</div>
-        <div class="dialogue"><strong>Pema</strong>"And not just that. There should also be an option to <em>create your own category</em> like 'SEMSO Collection,' 'Group Study Expenses,' or anything personal."</div>
-        <div class="dialogue"><strong>Sonam</strong>"That would actually help us understand where our money goes. Right now, it's just numbers... no meaning behind them."</div>
-        <div class="dialogue"><strong>Tashi</strong>"But what about saving? Everything is mixed in one account. It's hard to separate money mentally."</div>
-        <div class="dialogue"><strong>Pema</strong>"That's where <strong style="color:var(--gold-bright)">goal-based pockets</strong> come in. Imagine within your main account, you can create custom mini-accounts SEMSO/Fund Collection, Food & Drinks, Travel, Personal Savings... and keep them <em>only as long as you need</em>."</div>
-        <div class="story-feature">
-          <div class="story-feature-label">💡 Feature idea: Goal-Based Pockets</div>
-          <p>Create a SEMSO pocket just for this semester, then remove it later. When you make a payment, the app asks: "Which pocket do you want to use?" – like choosing which wallet to pay from.</p>
-        </div>
-        <div class="dialogue"><strong>Sonam</strong>"Imagine opening the app and seeing dashboard charts showing how much you spent on food, travel, or SEMSO."</div>
-        <div class="dialogue"><strong>Tashi</strong>"That would actually make us aware of our habits. Not just checking balance, but understanding behaviour."</div>
-        <div class="dialogue"><strong>Tashi</strong>"And please... improve the mini statement. Why only 10 transactions? I just want to see yesterday's transactions properly, especially when I'm handling money for others."</div>
-        <div class="dialogue"><strong>Sonam</strong>"They should let us filter by date; today, yesterday, or even increase it to 50 or 100 transactions."</div>
-        <p>They paused, finishing their tea and momo. Around them, students continued their conversations, unaware that a simple tea break had turned into a powerful discussion on the future of mobile banking.</p>
-        <div class="dialogue"><strong>Pema</strong>"If these features were added, mBOB wouldn't just be a banking app… it would become a <em>smart financial companion</em>, especially for <strong style="color:var(--gold-bright)">students</strong> like us."</div>
-        <div class="dialogue"><strong>Sonam</strong>"We learned budgeting in class… but if mBOB evolves like this, we can actually <em>practice it in real life</em>."</div>
-        <div class="dialogue"><strong>Tashi</strong>"And that's when banking becomes more than just transactions."</div>
-        <div class="dialogue"><strong>Pema</strong>"It becomes understanding, control… and smarter living."</div>
-        <p>And with that, they walked out of the GCBS canteen, carrying not just ideas, but a vision of what modern banking could truly become in this digital era.</p>
-      </div>
+    <div class="section-body" style="text-align:center; padding: 36px 28px;">
+      <p style="font-size:14px; color:var(--card-muted); font-style:italic; margin-bottom:24px; line-height:1.7;">
+        Three students. One canteen. A conversation that sparked four ideas for the future of mBOB.<br>
+        Tap below to read how it all began.
+      </p>
+      <button class="story-reveal-btn" onclick="openStoryModal()" aria-haspopup="dialog">
+        <span class="btn-icon">📖</span>
+        <span>
+          Read the story
+          <span class="btn-hint">The GCBS canteen conversation · ~2 min read</span>
+        </span>
+      </button>
     </div>
   </div>
 
-  <!-- FEATURE WISHLIST -->
+  <!-- Feature wishlist -->
   <div class="section-card" id="wishlist">
     <div class="section-head">
       <div class="section-icon">✅</div>
@@ -507,24 +533,24 @@
       <div class="wish-list">
         <div class="wish-item"><div class="wish-num">1</div><div class="wish-text"><strong>Automatic Transaction Categorization (Smart + Customizable)</strong><p>App suggests likely categories based on transaction patterns. One-tap selection, option to create custom categories like SEMSO or group expenses. Helps users understand and track spending behaviour easily.</p></div></div>
         <div class="wish-item"><div class="wish-num">2</div><div class="wish-text"><strong>Goal-Based Savings (Custom Money Pockets)</strong><p>Create temporary or long-term pockets (SEMSO, food, travel, savings) within one account. Choose which pocket to pay from during transactions. Track savings and spending separately per goal.</p></div></div>
-        <div class="wish-item"><div class="wish-num">3</div><div class="wish-text"><strong>Spending Insights Dashboard</strong><p>Visual charts and percentage breakdowns of expenses. Daily, weekly, and monthly reports for better financial awareness and habit understanding.</p></div></div>
-        <div class="wish-item"><div class="wish-num">4</div><div class="wish-text"><strong>Enhanced Mini Statement Feature</strong><p>Increase transaction visibility from 10 to 50 or 100. Filter by specific dates (today, yesterday, custom). Instantly view specific transactions without waiting for email statements.</p></div></div>
+        <div class="wish-item"><div class="wish-num">3</div><div class="wish-text"><strong>Spending Insights Dashboard</strong><p>Visual charts and percentage breakdowns of expenses. Monthly reports for better financial awareness and habit understanding.</p></div></div>
+        <div class="wish-item"><div class="wish-num">4</div><div class="wish-text"><strong>Enhanced Mini Statement Feature</strong><p>Increase transaction visibility from 14 to 50 or 100. Filter by specific dates (today, yesterday, custom). Instantly view specific transactions without waiting for email statements.</p></div></div>
       </div>
     </div>
   </div>
 
-  <!-- CTA BANNER -->
+  <!-- CTA Banner-->
   <div class="cta-banner">
     <div class="cta-banner-text">
       <strong>Try the live prototype</strong>
-      <p>Explore the full mBOB feature flow: transfer, mini statement, pockets, and expense dashboard – all in one interactive demo built on Vercel.</p>
+      <p>Explore the full mBOB feature flow: transfer, mini statement, pockets, and expense dashboard - all in one interactive demo built on Vercel.</p>
     </div>
     <a href="https://prottoo.vercel.app/" target="_blank" class="cta-btn">Open prototype →</a>
   </div>
   
   <div class="goto-grid">
     <a href="finsight.html" class="goto">
-    <span class="goto-link">NEXT →</span>
+      <span class="goto-link">NEXT →</span>
     </a>
   </div>
 
@@ -538,6 +564,80 @@
 
 </div><!-- /page-bg -->
 
+<!-- Story modal -->
+<div class="story-modal-overlay" id="storyModal" role="dialog" aria-modal="true" aria-label="The story behind the prototype" onclick="handleOverlayClick(event)">
+  <div class="story-modal">
+
+    <div class="modal-header">
+      <div class="modal-header-icon">📖</div>
+      <div class="modal-header-text">
+        <h2>The story behind the prototype</h2>
+        <p>mBOB Budgeting and Expense Tracking · A story from GCBS canteen</p>
+      </div>
+      <button class="modal-close-btn" onclick="closeStoryModal()" aria-label="Close story">✕</button>
+    </div>
+
+    <div class="modal-body" id="modalBody" onscroll="updateProgress()">
+
+      <div class="story-progress">
+        <span>Reading...</span>
+        <div class="story-progress-bar"><div class="story-progress-fill" id="progressFill"></div></div>
+        <span id="progressPct">0%</span>
+      </div>
+
+      <div class="characters">
+        <div class="char-card"><div class="char-avatar" style="background:#0d2b45">T</div><div class="char-info"><strong>Tashi</strong><span>Class Representative, GCBS</span></div></div>
+        <div class="char-card"><div class="char-avatar" style="background:#c0392b">S</div><div class="char-info"><strong>Sonam</strong><span>Student, GCBS</span></div></div>
+        <div class="char-card"><div class="char-avatar" style="background:#0a7c5c">P</div><div class="char-info"><strong>Pema</strong><span>Student, GCBS · Ideas person</span></div></div>
+      </div>
+
+      <div class="story-body">
+        <p>Tashi, Sonam, and Pema sat on chairs around a small round table in the busy Tobgay canteen of Gedu College of Business Studies (GCBS). It was their usual tea break spot: warm <em>suja</em> in hand, plates of momos on the table, and the soft hum of students chatting after class.</p>
+        <p>The three of them had just come out of their financial management lecture. The topic had been <em>budgeting and personal financial control</em>, and now, unknowingly, they were about to test those ideas in real life.</p>
+        <p>Tashi, who also worked as a Class Representative, was staring at his phone with a slightly stressed expression.</p>
+        <div class="dialogue"><strong>Tashi</strong>"I collected SEMSO contributions from five of my self-funded mates yesterday. Now I just want to confirm one payment… but mBOB only shows the last few transactions. The one I need isn't even old... it's just from yesterday. Now I have to request a statement and wait for the email."</div>
+        <div class="dialogue"><strong>Sonam</strong>"Same problem. It's like the app has the data but not in a way that helps us <em>quickly</em>."</div>
+        <p>Just then, Pema joined them, pulling a chair closer.</p>
+        <div class="dialogue"><strong>Pema</strong>"You both look like you're fighting with your bank."</div>
+        <div class="dialogue"><strong>Tashi</strong>"We kind of are."</div>
+        <p>Pema smiled and leaned forward.</p>
+        <div class="dialogue"><strong>Pema</strong>"You know… what if mBOB actually worked like how we studied in class today?"</div>
+        <div class="dialogue"><strong>Tashi</strong>"How?"</div>
+        <div class="dialogue"><strong>Pema</strong>" Okay... Let's start with expenses. Imagine when you make a payment, the app <em>automatically suggests a category</em>."</div>
+        <div class="story-feature">
+          <div class="story-feature-label">💡 Feature idea: Smart Categorization</div>
+          <p>If you transfer money to a friend for food, the app could show options like 'Food & Drinks', 'Fund Collection (SEMSO)', or 'Personal Transfer' based on the what you type in purpose or you can just click to category that relates to the purpse of your transaction.</p>
+        </div>
+        <div class="dialogue"><strong>Tashi</strong>"That would save time."</div>
+        <div class="dialogue"><strong>Sonam</strong>"Yes! and... it would actually help us understand where our money goes. Right now, it's just numbers... no meaning behind them."</div>
+        <div class="dialogue"><strong>Tashi</strong>"But what about saving? Everything is mixed in one account. It's hard to separate money mentally."</div>
+        <div class="dialogue"><strong>Pema</strong>"That's where <strong style="color:var(--gold-bright)">goal-based pockets</strong> come in. Imagine within your main account, you can create custom mini-accounts - SEMSO or Fund Collection, Food & Drinks, Travel, Education... and keep them <em>only as long as you need.</em>."</div>
+        <div class="dialogue"><strong>Sonam</strong>"Something like physical wallet with multiple pocket... sounds good!"</div>
+        <div class="story-feature">
+          <div class="story-feature-label">💡 Feature idea: Goal-Based Pockets</div>
+          <p>Create a SEMSO pocket just for this semester, then remove it later. When you make a payment, the app asks: "Which pocket do you want to use?" - like choosing which wallet to pay from.</p>
+        </div>
+        <div class="dialogue"><strong>Sonam</strong>"Imagine opening the app and seeing dashboard charts showing how much you spent on food, travel, or SEMSO."</div>
+        <div class="dialogue"><strong>Tashi</strong>"That would actually make us aware of our habits. Not just checking balance, but understanding behaviour."</div>
+        <div class="dialogue"><strong>Tashi</strong>"And please... improve the mini statement. Why only 10 transactions? I just want to see yesterday's transactions properly, especially when I'm handling money for others."</div>
+        <div class="dialogue"><strong>Sonam</strong>"They should let us filter by date - today, yesterday, or even increase it to 50 or 100 transactions."</div>
+        <p>They paused, finishing their tea and momo. Around them, students continued their conversations, unaware that a simple tea break had turned into a powerful discussion on the future of mobile banking.</p>
+        <div class="dialogue"><strong>Pema</strong>"If these features were added, mBOB wouldn't just be a banking app… it would become a <em>smart financial companion</em>, especially for <strong style="color:var(--gold-bright)">students</strong> like us."</div>
+        <div class="dialogue"><strong>Sonam</strong>"We learned budgeting in class… but if mBOB evolves like this, we can actually <em>practice it in real life</em>."</div>
+        <div class="dialogue"><strong>Tashi</strong>"And that's when banking becomes more than just transactions."</div>
+        <div class="dialogue"><strong>Pema</strong>"It becomes understanding, control… and smarter living."</div>
+        <p>And with that, they walked out of the GCBS canteen, carrying not just ideas, but a vision of what modern banking could truly become in this digital era.</p>
+      </div>
+    </div><!-- /modal-body -->
+
+    <div class="modal-footer">
+      <span class="modal-footer-note">✨ These ideas became the four features in the prototype above.</span>
+      <button class="modal-close-main" onclick="closeStoryModal()">Close story ✕</button>
+    </div>
+
+  </div><!-- /story-modal -->
+</div><!-- /overlay -->
+
 <script>
 function toggleMobileNav() { document.getElementById('mobile-nav').classList.toggle('open'); }
 function closeMobileNav() { document.getElementById('mobile-nav').classList.remove('open'); }
@@ -547,15 +647,49 @@ document.addEventListener('click', function(e) {
   if (nav && btn && !nav.contains(e.target) && !btn.contains(e.target)) nav.classList.remove('open');
 });
 
-// Stop blink on click (optional UX improvement)
 document.querySelectorAll('.nav-blink').forEach(link => {
-  link.addEventListener('click', () => {
-    link.classList.remove('nav-blink');
-  });
+  link.addEventListener('click', () => link.classList.remove('nav-blink'));
 });
 
 window.addEventListener('scroll', () => {
   document.getElementById('back-top').classList.toggle('visible', window.scrollY > 300);
+});
+
+// Story modal
+function openStoryModal() {
+  const overlay = document.getElementById('storyModal');
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  // Reset scroll n progress
+  const body = document.getElementById('modalBody');
+  body.scrollTop = 0;
+  updateProgress();
+}
+
+function closeStoryModal() {
+  const overlay = document.getElementById('storyModal');
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function handleOverlayClick(e) {
+  if (e.target === document.getElementById('storyModal')) closeStoryModal();
+}
+
+function updateProgress() {
+  const body = document.getElementById('modalBody');
+  const fill = document.getElementById('progressFill');
+  const pct = document.getElementById('progressPct');
+  const scrolled = body.scrollTop;
+  const total = body.scrollHeight - body.clientHeight;
+  const progress = total > 0 ? Math.min(100, Math.round((scrolled / total) * 100)) : 0;
+  fill.style.width = progress + '%';
+  pct.textContent = progress + '%';
+}
+
+// Close on Escape
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeStoryModal();
 });
 </script>
 
