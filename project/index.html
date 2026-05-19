@@ -365,13 +365,13 @@
       <span>Reports, findings and more</span>
     </div>
     <div class="cards-grid">
-      <a href="#" onclick="switchTab('about', null); return false;" class="card">
+      <a href="#" onclick="switchTabTo('about', 'about-project'); return false;" class="card">
         <div class="card-icon">📘</div>
         <h3>About the project</h3>
         <p>The reason behind the project, website context, and the goals of this banking insight.</p>
         <span class="card-link">Read more →</span>
       </a>
-      <a href="#" onclick="switchTab('about', null); return false;" class="card">
+      <a href="#" onclick="switchTabTo('about', 'about-me'); return false;" class="card">
         <div class="card-icon">👤</div>
         <h3>About me</h3>
         <p>Hema Luitel – data practitioner intern and creator of Ngul Yoen.</p>
@@ -417,13 +417,13 @@
       <span>Interactive experiences</span>
     </div>
     <div class="cards-grid">
-      <a href="quiz.html" class="card">
+      <a href="banking1.html#quiz-bankfinder" class="card">
         <div class="card-icon">🎮</div>
         <h3>Bank finder quiz</h3>
         <p>Answer 5 questions about your banking needs and get a personalised bank recommendation.</p>
         <span class="card-link">Start quiz →</span>
       </a>
-      <a href="quiz.html" class="card">
+      <a href="banking1.html#quiz-doYouKnow" class="card">
         <div class="card-icon">🧠</div>
         <h3>Do You Know?</h3>
         <p>Test your knowledge of Bhutan's 6 commercial banks: services, history, and digital facts.</p>
@@ -443,7 +443,7 @@
 <div class="tab-panel" id="panel-about">
 <div class="about-main">
 
-  <div class="asc">
+  <div class="asc" id="about-project">
     <div class="asc-head">
       <div class="asc-icon">NY</div>
       <div>
@@ -467,7 +467,7 @@
     </div>
   </div>
 
-  <div class="asc">
+  <div class="asc" id="about-me">
     <div class="asc-head">
       <div class="asc-icon">👤</div>
       <div>
@@ -552,8 +552,14 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // Auto-open About tab if URL has #about
-  if (window.location.hash === '#about') switchTab('about', null);
+  // Switch tab then scroll to a specific card
+  function switchTabTo(id, anchorId) {
+    switchTab(id, null);
+    setTimeout(() => {
+      const el = document.getElementById(anchorId);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 120);
+  }
 
   // Inline read more
   function toggleStory() {

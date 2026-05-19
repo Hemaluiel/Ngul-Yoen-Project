@@ -808,6 +808,8 @@
   </div><!-- end bank-grid -->
 
   <!-- Quiz section -->
+  <div id="quiz-bankfinder" style="scroll-margin-top:130px"></div>
+  <div id="quiz-doYouKnow" style="scroll-margin-top:130px"></div>
   <div class="quiz-section-head">
     <h2>Test Your Knowledge</h2>
     <span>Pick a quiz and get started</span>
@@ -1038,6 +1040,18 @@ function closeDyk(){ document.getElementById('dykOverlay').classList.remove('ope
 document.getElementById('quizOverlay').addEventListener('click',function(e){ if(e.target===this)closeQuiz(); });
 document.getElementById('dykOverlay').addEventListener('click',function(e){ if(e.target===this)closeDyk(); });
 document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ closeQuiz(); closeDyk(); } });
+
+// Auto-launch quiz from URL hash - combined.html#quiz-bankfinder
+window.addEventListener('load', () => {
+  const hash = window.location.hash;
+  if (hash === '#quiz-bankfinder') {
+    document.getElementById('quiz-bankfinder').scrollIntoView({ behavior: 'smooth' });
+    setTimeout(openQuiz, 400);
+  } else if (hash === '#quiz-doYouKnow') {
+    document.getElementById('quiz-doYouKnow').scrollIntoView({ behavior: 'smooth' });
+    setTimeout(openDyk, 400);
+  }
+});
 </script>
 
 </body>
