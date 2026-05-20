@@ -105,7 +105,7 @@
   .section-head p { font-size: 13px; font-style: italic; color: var(--card-muted); }
   .section-body { padding: 28px; }
 
-  /* Prptotype embed */
+  /* Prototype embed */
   .proto-frame-wrap { border: 1px solid rgba(212,168,32,0.2); border-radius: var(--radius-sm); overflow: hidden; background: #0d1428; }
   .proto-toolbar { padding: 10px 16px; background: rgba(26,31,60,0.9); border-bottom: 1px solid rgba(212,168,32,0.15); display: flex; align-items: center; gap: 10px; }
   .proto-dots { display: flex; gap: 5px; }
@@ -117,6 +117,60 @@
   .proto-note { margin-top: 12px; font-size: 13px; color: var(--card-muted); }
   .proto-note a { color: var(--gold); }
   .proto-note a:hover { color: var(--gold-bright); }
+
+  /* Video walkthrough */
+  .video-wrap {
+    margin-top: 28px;
+    border: 1px solid rgba(212,168,32,0.22);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background: #0d1428;
+  }
+  .video-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 16px;
+    background: rgba(26,31,60,0.92);
+    border-bottom: 1px solid rgba(212,168,32,0.15);
+  }
+  .video-header-icon {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    background: rgba(212,168,32,0.13);
+    border: 1px solid rgba(212,168,32,0.25);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; flex-shrink: 0;
+  }
+  .video-header-text strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gold-bright);
+    letter-spacing: 0.01em;
+  }
+  .video-header-text span {
+    font-size: 11px;
+    color: var(--card-muted);
+    font-style: italic;
+  }
+  .video-wrap video {
+    width: 100%;
+    display: block;
+    max-height: 520px;
+    background: #000;
+    outline: none;
+  }
+  .video-footer {
+    padding: 9px 16px;
+    background: rgba(26,31,60,0.7);
+    font-size: 12px;
+    color: var(--card-muted);
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
 
   /* Feature grid */
   .feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 4px; }
@@ -357,6 +411,7 @@
     .modal-body { padding: 20px 16px 24px; }
     .modal-header { padding: 16px 16px 14px; }
     .modal-footer { padding: 12px 16px 20px; }
+    .video-wrap video { max-height: 340px; }
   }
   @media (max-width: 380px) { .hero h1 { font-size: 20px; } .main { padding: 16px 12px 40px; } .proto-frame-wrap iframe { height: 340px; } }
 </style>
@@ -434,10 +489,29 @@
         <iframe src="https://prottoo.vercel.app/" title="mBOB Feature Flow Prototype" allowfullscreen></iframe>
       </div>
       <div class="proto-note">💡 If the prototype doesn't load, <a href="https://prottoo.vercel.app/" target="_blank">open it directly here →</a></div>
+
+      <!-- Video walkthrough -->
+      <div class="video-wrap">
+        <div class="video-header">
+          <div class="video-header-icon">▶️</div>
+          <div class="video-header-text">
+            <strong>How to use these prototype features</strong>
+            <span>A quick walkthrough of all four proposed mBOB features</span>
+          </div>
+        </div>
+        <video controls preload="metadata" poster="">
+          <source src="prototype-walkthrough.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="video-footer">
+          🎬 Watch the walkthrough above, then try the live prototype yourself
+        </div>
+      </div>
+
     </div>
   </div>
 
-  <!-- 4 Featuures -->
+  <!-- 4 Features -->
   <div class="section-card" id="features">
     <div class="section-head">
       <div class="section-icon">✨</div>
