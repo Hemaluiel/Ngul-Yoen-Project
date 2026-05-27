@@ -30,7 +30,7 @@
     --card-border: rgba(212,168,32,0.25);
     --card-border-hover: rgba(192,148,14,0.55);
     --card-heading: #d4a820;
-    --card-text: #e8e4f0;
+    --card-text: rgb(214, 202, 202);
     --card-muted: #a09ab8;
   }
 
@@ -70,74 +70,6 @@
     border-bottom: 1px solid rgba(212,168,32,0.15);
   }
   .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #d4a820; letter-spacing: -0.02em; text-decoration: none; }
-  /* .logo em { color: var(--red); font-style: normal; }
-  .nav-links { display: flex; gap: 4px; }
-  .nav-links a { font-size: 14px; font-weight: 500; color: #e8e4f0; text-decoration: none; padding: 7px 12px; border-radius: 20px; transition: background 0.18s, color 0.18s; white-space: nowrap; }
-  .nav-links a:hover { background: var(--card-bg-hover); color: var(--card-muted); }
-  .nav-links a.active { color: var(--gold-bright); background: rgba(212,168,32,0.15); } */
-
-  /* Blink animation */
-  /* @keyframes tabBlink {
-    0%, 100% {
-      background: rgba(212,168,32,0.18);
-      color: #f0c040;
-      box-shadow: 0 0 0 0 rgba(212,168,32,0);
-    }
-    50% {
-      background: rgba(212,168,32,0.38);
-      color: #fff;
-      box-shadow: 0 0 8px 2px rgba(212,168,32,0.35);
-    }
-  }
-  .nav-blink {
-    animation: tabBlink 1.1s ease-in-out infinite;
-    border: 1px solid rgba(212,168,32,0.5) !important;
-    color: #f0c040 !important;
-  }
-  .nav-blink:hover {
-    animation: none;
-    background: var(--card-bg-hover) !important;
-    color: var(--card-muted) !important;
-    border-color: rgba(212,168,32,0.3) !important;
-    box-shadow: none !important;
-  } */
-
-  /* Hamburger */
-  /* .ham-btn {
-    display: none;
-    flex-direction: column; gap: 5px;
-    background: none; border: none; cursor: pointer; padding: 8px;
-    flex-shrink: 0;
-  }
-  .ham-btn span { display: block; width: 20px; height: 2px; background: var(--gold-bright); border-radius: 2px; } */
-
-  /* Mobile dropdown */
-  /* .mobile-nav {
-    display: none; flex-direction: column;
-    position: fixed;
-    top: 54px; right: 16px; width: 220px;
-    background: rgba(26,31,60,0.97);
-    border: 1px solid rgba(212,168,32,0.2);
-    border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-    padding: 8px; z-index: 100;
-  }
-  .mobile-nav.open { display: flex; }
-  .mobile-nav a { font-size: 14px; font-weight: 500; color: #e8e4f0; text-decoration: none; padding: 6px 10px; border-radius: 8px; transition: background 0.15s, color 0.15s; }
-  .mobile-nav a:hover { background: var(--card-bg-hover); color: var(--gold-bright); }
-  .mob-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--card-muted); padding: 8px 10px 4px; } */
-
-  /* Mobile blink */
-  /* .mobile-nav .nav-blink {
-    color: #b8860b !important;
-    font-weight: 600 !important;
-    animation: mobileBlink 1.1s ease-in-out infinite;
-  }
-  @keyframes mobileBlink {
-    0%, 100% { background: rgba(212,168,32,0.15); }
-    50% { background: rgba(212,168,32,0.32); }
-  } */
-
   .nav-links { display: flex; gap: 2px; align-items: center; }
   .nav-links a {
     font-family:'Times New Roman', Times, serif;
@@ -146,7 +78,7 @@
     color: rgba(232,228,240,0.72);
     text-decoration: none;
     padding: 8px 14px;
-    border-radius: 0;                          /* sharp rectangle */
+    border-radius: 0;                          
     border: 1px solid transparent;
     position: relative;
     transition: color 0.18s, background 0.18s, border-color 0.18s;
@@ -271,7 +203,7 @@
   }
 
   .section-head { margin-bottom: 8px; }
-  .section-head h2 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; margin-bottom: 3px; color: var(--gold); }
+  .section-head h2 { font-family:'Times New Roman', Times, serif; font-size: 22px; font-weight: 700; margin-bottom: 3px; color: var(--gold); text-transform: uppercase; word-spacing: 0.2em; letter-spacing: 0.08em;}
   .section-head p { font-size: 14px; font-style: italic; color: var(--card-muted); }
 
   /* Bank grid */
@@ -294,17 +226,17 @@
   }
 
   .bank-card-head { padding: 18px 20px 14px; border-bottom: 1px solid rgba(212,168,32,0.15); display: flex; align-items: flex-start; gap: 12px; }
-  .bank-logo { width: 42px; height: 42px; border-radius: 10px; background: var(--blue); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; color: white; font-weight: 700; font-family: 'Playfair Display', serif; border: 1px solid rgba(212,168,32,0.2); }
+  /* .bank-logo { width: 42px; height: 42px; border-radius: 10px; background: var(--blue); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; color: white; font-weight: 700; font-family: 'Playfair Display', serif; border: 1px solid rgba(212,168,32,0.2); } */
   .bank-meta { flex: 1; }
-  .bank-name { font-size: 15px; font-weight: 700; margin-bottom: 2px; color: var(--card-heading); }
+  .bank-name { font-size: 15px; font-weight: 700; margin-bottom: 2px; color: var(--card-text); }
   .bank-est { font-size: 12px; color: var(--card-muted); }
-  .bank-type-pill { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px; border: 1px solid rgba(212,168,32,0.3); color: var(--gold-bright); background: rgba(212,168,32,0.12); white-space: nowrap; align-self: flex-start; margin-top: 2px; }
+  .bank-type-pill { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px; border: 1px solid rgba(212,168,32,0.3); color: var(--card-muted); background: rgba(212,168,32,0.12); white-space: nowrap; align-self: flex-start; margin-top: 2px; }
 
   .bank-stats { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(212,168,32,0.12); }
   .bank-stat { padding: 10px 0; text-align: center; border-right: 1px solid rgba(212,168,32,0.12); }
   .bank-stat:last-child { border-right: none; }
-  .bank-stat strong { display: block; font-size: 13px; font-weight: 500; color: var(--gold-bright); }
-  .bank-stat span { font-size: 11px; color: var(--card-muted); }
+  .bank-stat strong { display: block; font-size: 13px; font-weight: 500; color: var(--card-text); }
+  .bank-stat span { font-size: 11px; color: var(--card-text); }
 
   .bank-sections { flex: 1; }
   .acc-item { border-bottom: 1px solid rgba(212,168,32,0.1); }
@@ -343,7 +275,7 @@
     border-color: var(--card-border-hover);
     background: var(--card-bg-hover);
   }
-  .goto-link { font-size: 14px; font-weight: 500; color: var(--gold); display: inline-flex; align-items: center; gap: 4px; letter-spacing: 0.5em; }
+  .goto-link { font-size: 14px; font-weight: 600; color: var(--gold); display: inline-flex; align-items: center; gap: 4px; letter-spacing: 0.2em; text-transform: uppercase; font-family: 'Times New Roman', Times, serif;}
 
 /* back to bank quiz */
   .to-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 16px; margin-left: 30px; margin-top: 8px; }
@@ -379,8 +311,10 @@
     border-top: 1px solid rgba(212,168,32,0.2);
     font-size: 13px;
     color: var(--card-muted);
+    font-family: 'Times New Roman', Times, serif; 
+    word-spacing: 0.2em; letter-spacing: 0.04em;
   }
-  footer strong { color: var(--gold-bright); font-weight: 500; }
+  footer strong { color: var(--gold-bright); font-weight: 600; }
 
   /* Responsive */
   @media (max-width: 1400px) { .main { padding: 48px 80px; } }
@@ -423,7 +357,7 @@
 
   /* Quiz section */
   .quiz-section-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 20px; margin-top: 48px; }
-  .quiz-section-head h2 { font-family: 'Playfair Display', serif; font-size: clamp(18px, 2.5vw, 24px); font-weight: 600; color: var(--gold-bright); text-shadow: 0 2px 12px rgba(0,0,0,0.5); }
+  .quiz-section-head h2 { font-family:'Times New Roman', Times, serif; font-size: clamp(18px, 2.5vw, 24px); font-weight: 600; color: var(--gold-bright); text-shadow: 0 2px 12px rgba(0,0,0,0.5); text-transform: uppercase; word-spacing: 0.08em;}
   .quiz-section-head span { font-family: 'Playfair Display', serif; font-style: italic; font-size: 14px; color: rgba(255,255,255,0.55); }
 
   .quiz-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
@@ -448,10 +382,10 @@
   .quiz-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(212,168,32,0.4); border-color: var(--card-border-hover); }
   .quiz-card:hover::before { opacity: 1; }
 
-  .quiz-icon { font-size: 36px; margin-bottom: 4px; }
+  /* .quiz-icon { font-size: 36px; margin-bottom: 4px; } */
   .quiz-badge { display: inline-block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; padding: 3px 10px; border-radius: 20px; border: 1px solid rgba(212,168,32,0.35); color: var(--gold); background: rgba(212,168,32,0.08); width: fit-content; }
-  .quiz-card h3 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; color: var(--card-heading); line-height: 1.2; }
-  .quiz-card p { font-size: 14px; color: var(--card-muted); line-height: 1.65; font-style: italic; flex: 1; }
+  .quiz-card h3 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; color: var(--card-heading); line-height: 1.2; letter-spacing: 0.05em;}
+  .quiz-card p { font-size: 14px; color: var(--card-muted); line-height: 1.65; font-style: italic; flex: 1; text-align: justify;}
   .quiz-meta { display: flex; gap: 12px; flex-wrap: wrap; }
   .quiz-meta-item { font-size: 12px; color: var(--card-muted); display: flex; align-items: center; gap: 5px; }
   .quiz-meta-item span:first-child { font-size: 14px; }
@@ -464,7 +398,7 @@
   .modal { background: #1a1f3c; border: 1px solid rgba(212,168,32,0.3); border-radius: 18px; width: 100%; max-width: 460px; overflow: hidden; animation: modalIn 0.22s ease; }
   @keyframes modalIn { from { opacity:0; transform:scale(0.96) translateY(8px);} to { opacity:1; transform:scale(1) translateY(0);} }
   .modal-header { padding: 18px 22px 16px; border-bottom: 1px solid rgba(212,168,32,0.2); display: flex; justify-content: space-between; align-items: center; }
-  .modal-header h2 { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 500; color: var(--gold-bright); }
+  .modal-header h2 { font-family:'Times New Roman', Times, serif; font-size: 16px; font-weight: 600; color: var(--gold-bright); text-transform: uppercase;}
   .close-btn { width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); border: 1px solid rgba(212,168,32,0.2); border-radius: 50%; cursor: pointer; font-size: 14px; color: var(--card-muted); transition: background 0.15s; line-height: 1; }
   .close-btn:hover { background: rgba(212,168,32,0.15); color: var(--gold-bright); }
   .modal-body { padding: 22px; }
@@ -554,7 +488,7 @@
     <!-- BANK OF BHUTAN -->
     <div class="bank-card" data-type="state">
       <div class="bank-card-head">
-        <div class="bank-logo">B</div>
+        <!-- <div class="bank-logo">B</div> -->
         <div class="bank-meta">
           <div class="bank-name">Bank of Bhutan (BoB)</div>
           <div class="bank-est">Est. 1968 · Oldest bank in Bhutan</div>
@@ -638,7 +572,7 @@
     <!-- DIGITAL KIDU - DK BANK -->
     <div class="bank-card" data-type="digital">
       <div class="bank-card-head">
-        <div class="bank-logo" style="background:#0a7c5c">DK</div>
+        <!-- <div class="bank-logo" style="background:#0a7c5c">DK</div> -->
         <div class="bank-meta">
           <div class="bank-name">Digital Kidu (DK) Bank</div>
           <div class="bank-est">Digital-first · Inclusive finance for all</div>
@@ -707,7 +641,7 @@
     <!-- BHUTAN NATIONAL BANK -->
     <div class="bank-card" data-type="private">
       <div class="bank-card-head">
-        <div class="bank-logo" style="background:#1a5276">N</div>
+        <!-- <div class="bank-logo" style="background:#1a5276">N</div> -->
         <div class="bank-meta">
           <div class="bank-name">Bhutan National Bank (BNB)</div>
           <div class="bank-est">Est. 1997 · Second largest bank</div>
@@ -765,7 +699,7 @@
     <!-- BDBL -->
     <div class="bank-card" data-type="development">
       <div class="bank-card-head">
-        <div class="bank-logo" style="background:#6e2f8a">D</div>
+        <!-- <div class="bank-logo" style="background:#6e2f8a">D</div> -->
         <div class="bank-meta">
           <div class="bank-name">Bhutan Development Bank (BDBL)</div>
           <div class="bank-est">Est. 1988 · Rural development focus</div>
@@ -822,7 +756,7 @@
     <!-- DRUK PNB -->
     <div class="bank-card" data-type="fdi">
       <div class="bank-card-head">
-        <div class="bank-logo" style="background:#b7770d">P</div>
+        <!-- <div class="bank-logo" style="background:#b7770d">P</div> -->
         <div class="bank-meta">
           <div class="bank-name">Druk PNB Bank</div>
           <div class="bank-est">Est. 2010 · Joint venture bank</div>
@@ -865,7 +799,7 @@
     <!-- T BANK -->
     <div class="bank-card" data-type="private">
       <div class="bank-card-head">
-        <div class="bank-logo" style="background:#1e8449">T</div>
+        <!-- <div class="bank-logo" style="background:#1e8449">T</div> -->
         <div class="bank-meta">
           <div class="bank-name">T Bank</div>
           <div class="bank-est">Est. 2010 · Digital-first bank</div>
@@ -924,7 +858,7 @@
 
     <!-- Bank Finder Quiz -->
     <div class="quiz-card" onclick="openQuiz()">
-      <div class="quiz-icon">🎮</div>
+      <!-- <div class="quiz-icon">🎮</div> -->
       <div class="quiz-badge">5 Questions</div>
       <h3>Bank Finder Quiz</h3>
       <p>Answer 5 quick questions about your banking habits and needs to get a personalised bank recommendation tailored just for you.</p>
@@ -938,10 +872,10 @@
 
     <!-- Do You Know Quiz -->
     <div class="quiz-card" onclick="openDyk()">
-      <div class="quiz-icon">🧠</div>
+      <!-- <div class="quiz-icon">🧠</div> -->
       <div class="quiz-badge">10 Questions</div>
       <h3>Do You Know?</h3>
-      <p>Test your knowledge of Bhutan's 6 commercial banks — their services, history, digital features, and fun facts. How much do you really know?</p>
+      <p>Test your knowledge of Bhutan's 6 commercial banks: their services, history, digital features, and fun facts. How much do you really know?</p>
       <div class="quiz-meta">
         <div class="quiz-meta-item"><span>⏱</span><span>~5 minutes</span></div>
         <div class="quiz-meta-item"><span>📊</span><span>Scored out of 10</span></div>
@@ -954,7 +888,7 @@
 
   <div class="goto-grid" style="margin-top:32px">
     <a href="Prototype.html" class="goto">
-      <span class="goto-link">NEXT →</span>
+      <span class="goto-link">Next →</span>
     </a>
   </div>
 
@@ -1052,7 +986,7 @@ window.addEventListener('scroll', () => {
 
 // quiz scripts
 const quizQs = [
-  { q: 'How important is having a wide branch and ATM network to you?', opts: ['Very important — I visit branches often', 'Somewhat — I occasionally need a branch', 'Not important — I bank digitally', 'I live in a rural area so coverage matters a lot'] },
+  { q: 'How important is having a wide branch and ATM network to you?', opts: ['Very important - I visit branches often', 'Somewhat - I occasionally need a branch', 'Not important - I bank digitally', 'I live in a rural area so coverage matters a lot'] },
   { q: 'Which digital service matters most to you?', opts: ['A reliable mobile wallet & payments app', 'Full internet banking portal', 'USSD offline banking (no internet needed)', 'Digital gold or investment features'] },
   { q: 'What best describes your banking need?', opts: ['Everyday savings and salary account', 'Agriculture or rural development loan', 'Business or SME financing', 'Micro or nano loans for small needs'] },
   { q: 'Which best describes you?', opts: ['Student or young professional', 'Farmer or rural resident', 'Small business owner', 'Government or salaried employee'] },
@@ -1060,12 +994,12 @@ const quizQs = [
 ];
 const quizScoreMap = [[0,2,1,3],[2,0,0,1],[0,3,4,1],[5,3,4,0],[0,1,2,3]];
 const bankResults = [
-  { icon:'🏦', name:'Bank of Bhutan (BoB)', type:'Widest branch network · State-owned', desc:'With 47+ branches and 110 ATMs nationwide, BoB suits you best. Features include mBOB, BoBNET, salary accounts, and online loan applications.' },
-  { icon:'📱', name:'Digital Kidu (DK) Bank', type:'Fully digital · No branch needed', desc:'DK Bank is your match — 100% app-based with daily interest accrual, DK Pay, micro loans, Kidu disbursements, and TER digital gold trading.' },
-  { icon:'🏧', name:'Bhutan National Bank (BNB)', type:'Strong digital + branch balance', desc:'BNB balances strong digital features (mPay, online account opening) with a 30+ branch network and RuPay international debit card.' },
-  { icon:'🌾', name:'Bhutan Development Bank (BDBL)', type:'Rural & agriculture focused', desc:'BDBL is built for rural Bhutan — agriculture and livestock loans, women and youth schemes, and ePay mobile banking.' },
-  { icon:'🤝', name:'Druk PNB Bank', type:'FDI joint venture · Business banking', desc:"The only FDI bank in Bhutan, Druk PNB offers trade finance, forex services, NRI remittance, and business loans." },
-  { icon:'⚡', name:'T Bank', type:'Digital-first · Youth-friendly', desc:"T Bank's TPay, T Wallet (from age 10), online account opening, and internet banking are great for tech-savvy younger users." },
+  { name:'Bank of Bhutan (BoB)', type:'Widest branch network · State-owned', desc:'With 47+ branches and 110 ATMs nationwide, BoB suits you best. Features include mBOB, BoBNET, salary accounts, and online loan applications.' },
+  { name:'Digital Kidu (DK) Bank', type:'Fully digital · No branch needed', desc:'DK Bank is your match - 100% app-based with daily interest accrual, DK Pay, micro loans, Kidu disbursements, and TER digital gold trading.' },
+  { name:'Bhutan National Bank (BNB)', type:'Strong digital + branch balance', desc:'BNB balances strong digital features (mPay, online account opening) with a 30+ branch network and RuPay international debit card.' },
+  { name:'Bhutan Development Bank (BDBL)', type:'Rural & agriculture focused', desc:'BDBL is built for rural Bhutan - agriculture and livestock loans, women and youth schemes, and ePay mobile banking.' },
+  { name:'Druk PNB Bank', type:'FDI joint venture · Business banking', desc:"The only FDI bank in Bhutan, Druk PNB offers trade finance, forex services, NRI remittance, and business loans." },
+  { name:'T Bank', type:'Digital-first · Youth-friendly', desc:"T Bank's TPay, T Wallet (from age 10), online account opening, and internet banking are great for tech-savvy younger users." },
 ];
 let qIdx=0, answers=[];
 function openQuiz(){ qIdx=0; answers=[]; document.getElementById('quizOverlay').classList.add('open'); renderQ(); }
@@ -1136,7 +1070,7 @@ function showDykScore(){
   let emoji,msg;
   if(pct>=80){emoji='🏆';msg="Banking expert! You clearly know Bhutan's financial sector well.";}
   else if(pct>=50){emoji='📚';msg='Good knowledge! Visit our Banking Insights page to learn more.';}
-  else{emoji='🌱';msg='Room to grow! Explore the Banking Insights page to boost your knowledge.';}
+  else{emoji='🌱';msg='Room to grow! Explore the Banking Insights above to boost your knowledge.';}
   document.getElementById('dyk-body').innerHTML=`<div class="result-wrap"><div class="result-emoji">${emoji}</div><div class="result-title">${dykScore} / ${dykQs.length} correct</div><div class="result-desc">${msg}</div><div class="result-badge">${pct}% score</div></div>`;
   const nb=document.getElementById('dyk-next'); nb.style.display='block'; nb.textContent='Try again'; nb.onclick=openDyk;
 }

@@ -30,7 +30,7 @@
     --card-border: rgba(212,168,32,0.25);
     --card-border-hover: rgba(192,148,14,0.55);
     --card-heading: #d4a820;
-    --card-text: #e8e4f0;
+    --card-text: rgb(214, 202, 202);
     --card-muted: #a09ab8;
   }
 
@@ -71,76 +71,6 @@
   }
   .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #d4a820; letter-spacing: -0.02em; text-decoration: none; }
   .logo em { color: var(--red); font-style: normal; }
-  /* .nav-links { display: flex; gap: 4px; }
-  .nav-links a { font-size: 14px; font-weight: 500; color: #e8e4f0; text-decoration: none; padding: 7px 12px; border-radius: 20px; transition: background 0.18s, color 0.18s; white-space: nowrap; }
-  .nav-links a:hover { background: var(--card-bg-hover); color: var(--card-muted); }
-  .nav-links a.active { color: var(--gold-bright); background: rgba(212,168,32,0.15); } */
-
-  /* BLINK ANIMATION */
-  /* @keyframes tabBlink {
-    0%, 100% {
-      background: rgba(212,168,32,0.18);
-      color: #f0c040;
-      box-shadow: 0 0 0 0 rgba(212,168,32,0);
-    }
-    50% {
-      background: rgba(212,168,32,0.38);
-      color: #fff;
-      box-shadow: 0 0 8px 2px rgba(212,168,32,0.35);
-    }
-  }
-  .nav-blink {
-    animation: tabBlink 1.1s ease-in-out infinite;
-    border: 1px solid rgba(212,168,32,0.5) !important;
-    color: #f0c040 !important;
-  }
-  .nav-blink:hover {
-    animation: none;
-    background: var(--card-bg-hover) !important;
-    color: var(--card-muted) !important;
-    border-color: rgba(212,168,32,0.3) !important;
-    box-shadow: none !important;
-  } */
-
-  /* HAMBURGER */
-  /* .ham-btn {
-    display: none;
-    flex-direction: column; gap: 5px;
-    background: none; border: none; cursor: pointer; padding: 8px;
-    flex-shrink: 0;
-  }
-  .ham-btn span { display: block; width: 20px; height: 2px; background: var(--gold-bright); border-radius: 2px; } */
-
-  /* MOBILE DROPDOWN */
-  /* .mobile-nav {
-    display: none; flex-direction: column;
-    position: fixed;
-    top: 54px; right: 16px; width: 220px;
-    background: rgba(26,31,60,0.97);
-    border: 1px solid rgba(212,168,32,0.2);
-    border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-    padding: 8px; z-index: 100;
-  }
-  .mobile-nav.open { display: flex; }
-  .mobile-nav a { font-size: 14px; font-weight: 500; color: #e8e4f0; text-decoration: none; padding: 6px 10px; border-radius: 8px; transition: background 0.15s, color 0.15s; }
-  .mobile-nav a:hover { background: var(--card-bg-hover); color: var(--gold-bright); }
-  .mob-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--card-muted); padding: 8px 10px 4px; } */
-
-  /* Mobile blink */
-  /* .mobile-nav .nav-blink {
-    color: #b8860b !important;
-    font-weight: 600 !important;
-    animation: mobileBlink 1.1s ease-in-out infinite;
-  }
-  @keyframes mobileBlink {
-    0%, 100% { background: rgba(212,168,32,0.15); }
-    50% { background: rgba(212,168,32,0.32); }
-  } */
-
-
-
-  
   .nav-links { display: flex; gap: 2px; align-items: center; }
   .nav-links a {
     font-family:'Times New Roman', Times, serif;
@@ -149,7 +79,7 @@
     color: rgba(232,228,240,0.72);
     text-decoration: none;
     padding: 8px 14px;
-    border-radius: 0;                          /* sharp rectangle */
+    border-radius: 0;
     border: 1px solid transparent;
     position: relative;
     transition: color 0.18s, background 0.18s, border-color 0.18s;
@@ -251,7 +181,7 @@
   /* HERO */
   .hero { position: relative; overflow: hidden; padding: 26px 48px 38px; color: white; }
   .hero-inner { position: relative; max-width: 800px; }
-  .hero-eyebrow { display: inline-flex; align-items: center; margin-left: 8px; font-size: 12px; font-weight: 500; letter-spacing: 0.6em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .hero-eyebrow { display: inline-flex; align-items: center; margin-left: 8px; font-size: 12px; font-weight: 500; letter-spacing: 0.6em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; font-family: 'Times New Roman', Times, serif;}
   /* .hero-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); } */
   .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 5vw, 44px); font-weight: 700; line-height: 1.15; letter-spacing: 0.05em; margin-bottom: 14px; }
   .hero h1 span { color: #e8755a; }
@@ -277,8 +207,8 @@
 
   /* SIDEBAR TOC */
   .toc { position: sticky; top: 120px; padding-right: 28px; border-right: 1px solid rgba(212,168,32,0.15); }
-  .toc-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; color: var(--card-muted); }
-  .toc a { display: block; font-size: 13px; color: var(--card-muted); text-decoration: none; padding: 6px 0 6px 12px; margin-left: -12px; border-left: 2px solid transparent; transition: color 0.15s, border-color 0.15s; line-height: 1.4; }
+  .toc-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; color: var(--card-muted); font-family: 'Times New Roman', Times, serif; }
+  .toc a { display: block; font-size: 10px; color: var(--card-muted); text-decoration: none; padding: 6px 0 6px 12px; margin-left: -12px; border-left: 2px solid transparent; transition: color 0.15s, border-color 0.15s; line-height: 1.4; font-family: 'Times New Roman', Times, serif; text-transform: uppercase; }
   .toc a:hover { color: var(--gold-bright); border-left-color: rgba(212,168,32,0.4); }
   .toc a.active { color: var(--gold-bright); border-left-color: var(--gold); font-weight: 500; }
   .toc-group { margin-bottom: 10px; }
@@ -292,18 +222,18 @@
   .stat-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; scroll-margin-top: 120px; }
   .stat-box { background: rgba(155,120,7,0.5); border: 1px solid rgba(212,168,32,0.3); border-radius: var(--radius-sm); padding: 16px; text-align: center; backdrop-filter: blur(6px); }
   .stat-box strong { display: block; font-family: 'Playfair Display', serif; font-size: 26px; color: var(--gold-bright); font-weight: 700; }
-  .stat-box span { font-size: 12px; color: var(--card-text); }
+  .stat-box span { font-size: 11px; color: var(--card-text); font-family: 'Times New Roman', Times, serif; text-transform: uppercase; letter-spacing: 0.08em; word-spacing: 0.2em;}
 
   /* SECTION CARD */
   .rs { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 120px; transition: box-shadow 0.2s, border-color 0.2s; backdrop-filter: blur(8px); }
   .rs:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.45), 0 0 0 1px rgba(212,168,32,0.3); border-color: var(--card-border-hover); }
   .rs-head { display: flex; align-items: flex-start; gap: 14px; padding: 22px 26px 18px; border-bottom: 1px solid rgba(212,168,32,0.15); }
-  .rs-icon { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; margin-top: 2px; background: rgba(212,168,32,0.12); border: 1px solid rgba(212,168,32,0.2); }
-  .rs-head h2 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 600; margin-bottom: 2px; color: var(--card-heading); border-bottom: 1px solid rgba(212,168,32,0.3); padding-bottom: 4px; }
+  /* .rs-icon { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; margin-top: 2px; background: rgba(212,168,32,0.12); border: 1px solid rgba(212,168,32,0.2); } */
+  .rs-head h2 { font-family:'Times New Roman', Times, serif; font-size: 16px; font-weight: 650; margin-bottom: 2px; color: var(--card-heading); border-bottom: 1px solid rgba(212,168,32,0.3); padding-bottom: 4px; text-transform: uppercase;}
   .rs-head p { font-size: 12px; color: var(--card-muted); font-style: italic; }
   .rs-body { padding: 22px 26px; display: flex; flex-direction: column; gap: 18px; }
   .rs-body p { font-size: 14px; color: var(--card-text); line-height: 1.78; font-style: italic; text-align:justify;}
-  .rs-body h3 { font-size: 13px; font-weight: 500; color: var(--card-heading); margin-bottom: 4px; }
+  .rs-body h3 { font-size: 12px; font-weight: 600; color: var(--card-heading); margin-bottom: 4px; font-family: 'Times New Roman', Times, serif; text-transform: uppercase; letter-spacing: 0.05em; word-spacing: 0.2em;}
 
   .sub-block { background: rgba(255,255,255,0.04); border: 1px solid rgba(212,168,32,0.15); border-radius: var(--radius-sm); padding: 15px 18px; }
   .sub-block h3 { margin-bottom: 8px; color: var(--card-heading); }
@@ -317,13 +247,13 @@
   .finding-item:hover { border-color: rgba(212,168,32,0.5); }
   .finding-num { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--gold); flex-shrink: 0; line-height: 1; padding-top: 2px; min-width: 24px; }
   .finding-text { font-size: 14px; color: var(--card-text); line-height: 1.65; font-style: italic; }
-  .finding-text strong { color: var(--gold-bright); font-weight: 500; }
+  .finding-text strong { font-weight: 650; }
 
   .factor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .factor-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(212,168,32,0.15); border-radius: var(--radius-sm); padding: 15px; }
   .factor-top { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-  .factor-icon { width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; background: rgba(212,168,32,0.12); }
-  .factor-card h4 { font-size: 14px; font-weight: 500; color: var(--card-heading); }
+  /* .factor-icon { width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; background: rgba(212,168,32,0.12); } */
+  .factor-card h4 { font-size: 12px; font-weight: 550; color: var(--card-heading); text-transform: uppercase; font-family: 'Times New Roman', Times, serif;}
   .factor-card p { font-size: 14px; color: var(--card-text); line-height: 1.55; }
   .score-row { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
   .score-bar-wrap { flex: 1; height: 5px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; }
@@ -331,7 +261,7 @@
   .score-val { font-size: 13px; font-weight: 500; color: var(--gold); min-width: 30px; }
 
   .chart-wrap { background: rgba(255,255,255,0.04); border: 1px solid rgba(212,168,32,0.15); border-radius: var(--radius-sm); padding: 18px; }
-  .chart-title { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; color: var(--card-muted); margin-bottom: 14px; }
+  .chart-title { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; color: var(--card-muted); margin-bottom: 14px; font-family: 'Times New Roman', Times, serif; word-spacing: 0.3em;}
   .chart-wrap canvas { max-height: 230px; }
 
   .tableau-wrap { background: rgba(255,255,255,0.04); border: 1px solid rgba(212,168,32,0.15); border-radius: var(--radius-sm); overflow: hidden; }
@@ -339,11 +269,11 @@
   .tableau-label { padding: 12px 18px; font-size: 12px; color: var(--card-muted); border-top: 1px solid rgba(212,168,32,0.15); }
 
   .tb-banner { border-radius: var(--radius); padding: 26px 30px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
-  .tb-btn { background: var(--card-bg); color: var(--gold-bright);     border: 1px solid var(--card-border); border-radius: var(--radius-sm); padding: 20px 30px; font-size: 13px; font-weight: 500; cursor: pointer; text-decoration: none; white-space: nowrap; transition: background 0.15s; letter-spacing: 0.05em;}
+  .tb-btn { background: var(--card-bg); color: var(--gold-bright); border: 1px solid var(--card-border); border-radius: var(--radius-sm); padding: 20px 30px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; white-space: nowrap; transition: background 0.15s; letter-spacing: 0.05em; text-transform: uppercase; font-family: 'Times New Roman', Times, serif; word-spacing: 0.5em;}
   .tb-btn:hover { background: var(--card-bg-hover); border-color: var(--card-border-hover); box-shadow: 0 10px 36px rgba(0,0,0,0.959), 0 0 0 1px rgb(163,127,20); transform: translateY(-3px); }
   
   /* GOTO */
-  .goto-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(125px, 1fr)); gap: 16px; margin-left: 30px; margin-top: 8px; }
+  .goto-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(125px, 1fr)); gap: 16px; margin-left: 30px; margin-top: 4px; }
   .goto {
     border: 1px solid var(--card-border);
     border-radius: var(--radius);
@@ -360,7 +290,7 @@
     border-color: var(--card-border-hover);
     background: var(--card-bg-hover);
   }
-  .goto-link { font-size: 14px; font-weight: 500; color: var(--gold); display: inline-flex; align-items: center; gap: 4px; letter-spacing: 0.5em; }
+  .goto-link { font-size: 14px; font-weight: 600; color: var(--gold); display: inline-flex; align-items: center; gap: 4px; letter-spacing: 0.2em; text-transform: uppercase; font-family: 'Times New Roman', Times, serif;}
 
 
   #back-top { position: fixed; bottom: 24px; right: 24px; width: 40px; height: 40px; background: var(--card-bg); color: var(--gold-bright); border: 1px solid rgba(212,168,32,0.3); border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.2s, background 0.2s; box-shadow: 0 4px 16px rgba(0,0,0,0.4); }
@@ -374,8 +304,11 @@
     border-top: 1px solid rgba(212,168,32,0.2);
     font-size: 13px;
     color: var(--card-muted);
+    font-family: 'Times New Roman', Times, serif; 
+    word-spacing: 0.2em; 
+    letter-spacing: 0.04em;
   }
-  footer strong { color: var(--gold-bright); font-weight: 500; }
+  footer strong { color: var(--gold-bright); font-weight: 600; }
 
   /* RESPONSIVE */
   @media (max-width: 1024px) {
@@ -495,7 +428,7 @@
       </div>
 
       <div class="rs" id="intro">
-        <div class="rs-head"><div class="rs-icon">📘</div><div><h2>Introduction</h2><p>Context and background of the study</p></div></div>
+        <div class="rs-head"><div><h2>Introduction</h2><p>Context and background of the study</p></div></div>
         <div class="rs-body">
           <p>Banking services are central to Bhutan's growing digital economy. With the rapid adoption of mobile and internet banking, customer expectations are evolving, and the gap between what banks offer and what customers actually need has become measurable.</p>
           <div class="sub-block">
@@ -514,7 +447,7 @@
       </div>
 
       <div class="rs" id="methodology">
-        <div class="rs-head"><div class="rs-icon">🔬</div><div><h2>Methodology</h2><p>How the data was collected and analysed</p></div></div>
+        <div class="rs-head"><div><h2>Methodology</h2><p>How the data was collected and analysed</p></div></div>
         <div class="rs-body">
           <div class="sub-block">
             <div class="pill-list">
@@ -528,7 +461,7 @@
       </div>
 
       <div class="rs" id="solutions">
-        <div class="rs-head"><div class="rs-icon">💡</div><div><h2>Discussion & solutions</h2><p>Recommendations based on the findings</p></div></div>
+        <div class="rs-head"><div><h2>Discussion & solutions</h2><p>Recommendations based on the findings</p></div></div>
         <div class="rs-body">
           <div class="sub-block">
             <h3>This platform: Ngul Yoen</h3>
@@ -559,9 +492,9 @@
       </div>
 
       <div class="rs" id="conclusion">
-        <div class="rs-head"><div class="rs-icon">✅</div><div><h2>Conclusion</h2><p>Summary of key takeaways</p></div></div>
+        <div class="rs-head"><div><h2>Conclusion</h2><p>Summary of key takeaways</p></div></div>
         <div class="rs-body">
-          <p>Trust, service quality, accessibility, and ease of use are the four pillars that most strongly shape customer banking choices in Bhutan. Of these, <strong style="color:var(--gold-bright)">ease of use</strong> particularly around digital and mobile banking, presents the greatest opportunity for improvement.</p>
+          <p>Trust, service quality, accessibility, and ease of use are the four pillars that most strongly shape customer banking choices in Bhutan. Of these, <strong style="color:var(--card-text)">ease of use</strong> particularly around digital and mobile banking, presents the greatest opportunity for improvement.</p>
           <p>Ngul Yoen exists to bridge the information gap, helping customers make informed financial choices, and giving banks a clearer picture of what their customers actually value.</p>
         </div>
       </div>
@@ -572,7 +505,7 @@
     <div class="tab-panel" id="panel-findings">
 
       <div class="rs" id="findings-summary">
-        <div class="rs-head"><div class="rs-icon">📌</div><div><h2>Key findings</h2><p>8 headline insights from 111 respondents · Bhutan 2026</p></div></div>
+        <div class="rs-head"><div><h2>Key findings</h2><p>8 headline insights from 111 respondents · Bhutan 2026</p></div></div>
         <div class="rs-body">
           <p>Kuzuzangpo la! <br>The survey captured responses from customers across Bhutan's major banks. Here are the most important patterns that emerged from the data.</p>
           <div class="findings-list">
@@ -589,26 +522,26 @@
       </div>
 
       <div class="rs" id="factors">
-        <div class="rs-head"><div class="rs-icon">🔍</div><div><h2>Four key factors in depth</h2><p>How each dimension scored across survey respondents</p></div></div>
+        <div class="rs-head"><div><h2>Four key factors in depth</h2><p>How each dimension scored across survey respondents</p></div></div>
         <div class="rs-body">
           <div class="factor-grid">
             <div class="factor-card">
-              <div class="factor-top"><div class="factor-icon">🔒</div><h4>Trust</h4></div>
+              <div class="factor-top"><h4>Trust</h4></div>
               <p>Over 80% expressed confidence in their bank. Security concerns around digital transactions are the key concern remaining.</p>
               <div class="score-row"><div class="score-bar-wrap"><div class="score-bar" style="width:82%"></div></div><span class="score-val">4.1/5</span></div>
             </div>
             <div class="factor-card">
-              <div class="factor-top"><div class="factor-icon">⭐</div><h4>Service quality</h4></div>
+              <div class="factor-top"><h4>Service quality</h4></div>
               <p>Most customers are satisfied with in-branch service; complaints focus on long waits and limited digitalisation of services.</p>
               <div class="score-row"><div class="score-bar-wrap"><div class="score-bar" style="width:76%"></div></div><span class="score-val">3.8/5</span></div>
             </div>
             <div class="factor-card">
-              <div class="factor-top"><div class="factor-icon">📍</div><h4>Accessibility</h4></div>
+              <div class="factor-top"><h4>Accessibility</h4></div>
               <p>Urban branches and ATMs are congested; rural areas have limited ATMs and infrequent hours. Biggest regional disparity.</p>
               <div class="score-row"><div class="score-bar-wrap"><div class="score-bar" style="width:74%"></div></div><span class="score-val">3.7/5</span></div>
             </div>
             <div class="factor-card">
-              <div class="factor-top"><div class="factor-icon">📱</div><h4>Ease of use</h4></div>
+              <div class="factor-top"><h4>Ease of use</h4></div>
               <p>Usability of services are fairly rated. Network reliability, limited branches, and agencies reduced scores in some areas.</p>
               <div class="score-row"><div class="score-bar-wrap"><div class="score-bar" style="width:68%"></div></div><span class="score-val">3.4/5</span></div>
             </div>
@@ -625,7 +558,7 @@
     <!-- TAB: CHARTS -->
     <div class="tab-panel" id="panel-charts">
       <div class="rs" id="charts">
-        <div class="rs-head"><div class="rs-icon">📈</div><div><h2>Data visualisation</h2><p>Survey data illustrated with Chart.js</p></div></div>
+        <div class="rs-head"><div><h2>Data visualisation</h2><p>Survey data illustrated with Chart.js</p></div></div>
         <div class="rs-body">
           <div class="chart-wrap">
             <div class="chart-title">Bank account ownership among respondents</div>
@@ -646,7 +579,7 @@
     <!-- TAB: DASHBOARD -->
     <div class="tab-panel" id="panel-dashboard">
       <div class="rs" id="dashboard">
-        <div class="rs-head"><div class="rs-icon">🖥️</div><div><h2>Interactive Tableau dashboard</h2><p>Explore the full dataset interactively</p></div></div>
+        <div class="rs-head"><div><h2>Interactive Tableau dashboard</h2><p>Explore the full dataset interactively</p></div></div>
         <div class="rs-body">
           <p>The dashboard presents insights on customer banking choices in Bhutan across all 111 respondents. Use the filters to explore by bank, region, and factor.</p>
           <div class="tableau-wrap">
@@ -661,7 +594,7 @@
 
       <div class="goto-grid">
         <a href="banking1.html" class="goto">
-          <span class="goto-link">NEXT →</span>
+          <span class="goto-link">Next →</span>
         </a>
       </div>
 

@@ -20,12 +20,12 @@
     --card-border: rgba(212,168,32,0.25);
     --card-border-hover: rgba(192,148,14,0.55);
     --card-heading: #d4a820;
-    --card-text: #e8e4f0;
+    /* --card-text: #e8e4f0; */
+    --card-text: rgb(214, 202, 202);
     --card-muted: #a09ab8;
     --card-divider: rgba(212,168,32,0.3);
     --milestone-bg: #242950;
   }
-
   html { scroll-behavior: smooth; }
   body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: var(--card-text); font-size: 15px; line-height: 1.6; }
 
@@ -50,11 +50,6 @@
   }
   .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #d4a820; letter-spacing: -0.02em; text-decoration: none; }
   .logo em { color: var(--red); font-style: normal; }
-  /* .nav-links { display: flex; gap: 4px; align-items: center; }
-  .nav-links a { font-size: 14px; font-weight: 500; color: #e8e4f0; text-decoration: none; padding: 7px 12px; border-radius: 20px; transition: background 0.18s, color 0.18s; white-space: nowrap; }
-  .nav-links a:hover { background: var(--card-bg-hover); color: var(--card-muted); }
-  .nav-links a.active { color: var(--gold-bright); background: rgba(212,168,32,0.15); } */
-
   .nav-links { display: flex; gap: 2px; align-items: center; }
   .nav-links a {
     font-family:'Times New Roman', Times, serif;
@@ -63,7 +58,7 @@
     color: rgba(232,228,240,0.72);
     text-decoration: none;
     padding: 8px 14px;
-    border-radius: 0;                          /* sharp rectangle */
+    border-radius: 0;
     border: 1px solid transparent;
     position: relative;
     transition: color 0.18s, background 0.18s, border-color 0.18s;
@@ -131,11 +126,11 @@
   .nav-blink { animation: tabBlink 1.3s ease-in-out infinite; }
   .nav-blink:hover { animation: none !important; }
 
- /* ── Hamburger ── */
+ /* Hamburger */
   .ham-btn { display: none; flex-direction: column; gap: 5px; background: none; border: 1px solid rgba(212,168,32,0.25); cursor: pointer; padding: 8px 9px; border-radius: 0; }
   .ham-btn span { display: block; width: 20px; height: 2px; background: var(--gold-bright); }
 
-  /* ── Mobile dropdown ── */
+  /* Mobile dropdown */
   .mobile-nav {
     display: none; flex-direction: column;
     position: fixed; top: 64px; right: 16px; width: 230px;
@@ -160,39 +155,10 @@
   .mobile-nav .nav-blink { color: #f0c040 !important; animation: mobileBlink 1.3s ease-in-out infinite; }
   @keyframes mobileBlink { 0%, 100% { background: rgba(212,168,32,0.1); border-left-color: rgba(212,168,32,0.4); } 50% { background: rgba(212,168,32,0.25); border-left-color: var(--gold); } }
 
-
-
-
-  /* blinking animation */
-  /* @keyframes tabBlink {
-    0%, 100% { background: rgba(212,168,32,0.18); color: #f0c040; box-shadow: 0 0 0 0 rgba(212,168,32,0); }
-    50% { background: rgba(212,168,32,0.38); color: #fff; box-shadow: 0 0 8px 2px rgba(212,168,32,0.35); }
-  }
-  .nav-blink { animation: tabBlink 1.1s ease-in-out infinite; border: 1px solid rgba(212,168,32,0.5) !important; color: #f0c040 !important; }
-  .nav-blink:hover { animation: none; background: var(--card-bg-hover) !important; color: var(--card-muted) !important; border-color: rgba(212,168,32,0.3) !important; box-shadow: none !important; } */
-
-  /* Hamburger -mobile menu button */
-  /* .ham-btn { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
-  .ham-btn span { display: block; width: 20px; height: 2px; background: var(--gold-bright); border-radius: 2px; } */
-  /* Mob navigation- dropdown menu */
-  /* .mobile-nav {
-    display: none; flex-direction: column;
-    position: fixed; top: 54px; right: 16px; width: 220px;
-    background: rgba(26,31,60,0.97); border: 1px solid rgba(212,168,32,0.2);
-    border-radius: 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-    padding: 8px; z-index: 100;
-  }
-  .mobile-nav.open { display: flex; }
-  .mobile-nav a { font-size: 14px; font-weight: 500; color: #e8e4f0; text-decoration: none; padding: 6px 10px; border-radius: 8px; transition: background 0.15s, color 0.15s; }
-  .mobile-nav a:hover { background: var(--card-bg-hover); color: var(--gold-bright); }
-  .mob-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--card-muted); padding: 8px 10px 4px; }
-  .mobile-nav .nav-blink { color: #b8860b !important; font-weight: 600 !important; animation: mobileBlink 1.1s ease-in-out infinite; }
-  @keyframes mobileBlink { 0%, 100% { background: rgba(212,168,32,0.15); } 50% { background: rgba(212,168,32,0.32); } } */
-
   /* Hero - top introductionary section */
   .hero { padding: 26px 48px 32px; color: white; }
   .hero-inner { max-width: 800px; }
-  .hero-eyebrow { display: inline-flex; align-items: center; margin-left: 8px; font-size: 12px; font-weight: 500; letter-spacing: 0.8em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .hero-eyebrow { display: inline-flex; align-items: center; margin-left: 8px; font-size: 12px; font-weight: 500; letter-spacing: 0.8em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; font-family: 'Times New Roman', Times, serif;}
   .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px,5vw,44px); font-weight: 700; line-height: 1.15; letter-spacing: 0.05em; margin-bottom: 14px; }
   .hero h1 span { color: #e8755a; }
   .hero p { font-size: 14px; color: whitesmoke; line-height: 1.7; font-style: italic; margin-bottom: 10px; }
@@ -225,20 +191,20 @@
 
   .section-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 20px; margin-top: 44px; margin-left: 60px; }
   .section-head:first-child { margin-top: 0; }
-  .section-head h1 { font-family: 'Playfair Display', serif; font-size: clamp(22px,3vw,30px); font-weight: 600; color: goldenrod; text-shadow: 0 2px 12px rgba(19,15,1,0.5); letter-spacing: 0.04em; }
-  .section-head h2 { font-family: 'Playfair Display', serif; font-size: clamp(17px,2.5vw,22px); font-weight: 600; color: var(--gold-bright); text-shadow: 0 2px 12px rgba(0,0,0,0.5); }
+  .section-head h1 { font-family:'Times New Roman', Times, serif; font-size: clamp(22px,3vw,30px); font-weight: 600; color: goldenrod; text-shadow: 0 2px 12px rgba(19,15,1,0.5); letter-spacing: 0.04em; }
+  .section-head h2 { font-family:'Times New Roman', Times, serif; font-size: clamp(17px,2.5vw,22px); font-weight: 600; color: var(--gold-bright); text-shadow: 0 2px 12px rgba(0,0,0,0.5); }
   .section-head span { font-family: 'Playfair Display', serif; font-style: italic; font-size: 14px; color: rgba(255,255,255,0.6); font-weight: 400; }
 
   /* story card */
   .back-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-left: 20px; }
   .back { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 36px; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; backdrop-filter: blur(8px); }
   .back:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.45), 0 0 0 1px rgba(212,168,32,0.3); border-color: var(--card-border-hover); }
-  .back h3 { font-family: 'Playfair Display', serif; font-size: clamp(18px,3vw,22px); font-weight: 700; margin-bottom: 4px; color: var(--card-heading); }
+  .back h3 { font-family:'Times New Roman', Times, serif; font-size: clamp(18px,3vw,22px); font-weight: 700; margin-bottom: 4px; color: var(--card-heading); }
   .story-subhead { font-family: 'Playfair Display', serif; font-style: italic; font-size: 14px; color: var(--card-muted); margin-bottom: 16px; }
   .story-divider { width: 90px; height: 1px; background: var(--gold); border-radius: 2px; margin-bottom: 16px; }
 
   /* Inline read more story */
-  .story-text { font-size: 15px; line-height: 1.85; font-style: italic; color: var(--card-text); text-align: justify; }
+  .story-text { font-size: 14px; line-height: 1.75; font-style: italic; color: var(--card-text); text-align: justify; }
   .story-rest { display: none; }
   .story-rest.open { display: inline; }
   .story-dots { font-style: normal; color: var(--card-muted); }
@@ -261,28 +227,28 @@
 
   .story-milestones { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin: 18px 0 4px; }
   .story-milestone { background: var(--milestone-bg); border-radius: 6px; padding: 12px; border: 1px solid rgba(212,168,32,0.15); }
-  .story-milestone-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+  .story-milestone-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; font-style: normal;}
   .story-milestone-text { font-size: 13px; color: var(--card-text); line-height: 1.4; }
 
   .story-sig { display: flex; align-items: center; gap: 12px; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--card-divider); }
-  .story-avatar { width: 38px; height: 38px; border-radius: 50%; background: rgba(212,168,32,0.15); border: 1px solid rgba(212,168,32,0.4); display: flex; align-items: center; justify-content: center; font-weight: 500; font-size: 13px; color: var(--gold-bright); flex-shrink: 0; }
-  .story-sig-name { font-weight: 500; font-size: 14px; color: var(--card-heading); margin-bottom: 2px; }
+  .story-avatar { width: 38px; height: 38px; border-radius: 50%; background: rgba(212,168,32,0.15); border: 1px solid rgba(212,168,32,0.4); display: flex; align-items: center; justify-content: center; font-weight: 500; font-size: 13px; color: var(--gold-bright); flex-shrink: 0; font-family: 'Times New Roman', Times, serif;}
+  .story-sig-name { font-weight: 500; font-size: 14px; color: var(--card-heading); margin-bottom: 2px; font-family: 'Times New Roman', Times, serif;}
   .story-sig-role { font-size: 12px; color: var(--card-muted); }
 
   /* Cards grid */
   .cards-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(240px,1fr)); gap: 16px; margin-left: 30px; }
   .card { border: 1px solid var(--card-border); border-radius: var(--radius); background: var(--card-bg); padding: 28px; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; backdrop-filter: blur(8px); }
   .card:hover { transform: translateY(-3px); box-shadow: 0 10px 36px rgba(0,0,0,0.4), 0 0 0 1px rgba(212,168,32,0.35); border-color: var(--card-border-hover); background: var(--card-bg-hover); }
-  .card-icon { width: 38px; height: 38px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 17px; margin-bottom: 10px; background: rgba(212,168,32,0.12); border: 1px solid rgba(212,168,32,0.2); }
-  .card h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; color: var(--card-heading); }
-  .card p { font-size: 13px; line-height: 1.55; flex: 1; font-style: italic; color: var(--card-text); }
-  .card-link { margin-top: 12px; font-size: 13px; font-weight: 500; color: var(--gold-bright); display: inline-flex; align-items: center; gap: 4px; }
+  /* .card-icon { width: 38px; height: 38px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 17px; margin-bottom: 10px; background: rgba(212,168,32,0.12); border: 1px solid rgba(212,168,32,0.2); } */
+  .card h3 { font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--card-heading); text-transform: uppercase; font-family: 'Times New Roman', Times, serif; }
+  .card p { font-size: 13px; line-height: 1.55; flex: 1; font-style: normal; color: var(--card-text); }
+  .card-link { margin-top: 12px; font-size: 11px; font-weight: 600; color: var(--gold-bright); display: inline-flex; align-items: center; gap: 4px; font-family: 'Times New Roman', Times, serif; text-transform: uppercase; letter-spacing: 0.02em;}
 
   /* Goto */
   .goto-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(125px,1fr)); gap: 16px; margin-left: 60px; margin-top: 8px; margin-bottom: 24px; }
   .goto { border: 1px solid var(--card-border); border-radius: var(--radius); background: var(--card-bg); padding: 18px; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; backdrop-filter: blur(8px); }
   .goto:hover { transform: translateY(-3px); box-shadow: 0 10px 36px rgba(0,0,0,0.959), 0 0 0 1px rgb(163,127,20); border-color: var(--card-border-hover); background: var(--card-bg-hover); }
-  .goto-link { font-size: 14px; font-weight: 500; color: var(--gold); display: inline-flex; align-items: center; gap: 4px; letter-spacing: 0.5em; }
+  .goto-link { font-size: 13px; font-weight: 600; color: var(--gold); display: inline-flex; align-items: center; gap: 4px; letter-spacing: 0.2em;  text-transform: uppercase; font-family: 'Times New Roman', Times, serif; }
 
   /* About panel */
   .about-main { max-width: 960px; margin: 0 auto; padding: 40px 48px 52px; display: flex; flex-direction: column; gap: 24px; }
@@ -291,32 +257,33 @@
   .asc:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.45), 0 0 0 1px rgba(212,168,32,0.3); border-color: var(--card-border-hover); }
   .asc-head { display: flex; align-items: center; gap: 16px; padding: 20px 26px; border-bottom: 1px solid rgba(212,168,32,0.2); }
   .asc-icon { font-family: 'Playfair Display', serif; width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; background: rgba(212,168,32,0.12); border: 1px solid rgba(212,168,32,0.2); color: #e1dfdf; }
-  .asc-head h2 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; margin-bottom: 2px; color: var(--card-heading); }
-  .asc-head p { font-size: 14px; color: var(--card-muted); font-style: italic; }
+  .asc-head h2 { font-family:'Times New Roman', Times, serif; font-size: 20px; font-weight: 600; margin-bottom: 2px; color: var(--card-heading); }
+  .asc-head p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 14px; color: rgba(255,255,255,0.6); font-weight: 400; }
+  /* .asc-head p { font-size: 14px; color: var(--card-muted); font-style: italic; } */
   .asc-body { padding: 22px 26px; display: flex; flex-direction: column; gap: 14px; }
-  .asc-body > p { font-size: 15px; color: var(--card-text); line-height: 1.85; font-style: italic; text-align: justify; }
+  .asc-body p { font-size: 14px; color: var(--card-text); line-height: 1.85; font-style: italic; text-align: justify; }
   .asc-body a { color: var(--gold); text-decoration: none; }
   .asc-body a:hover { color: var(--gold-bright); text-decoration: underline; }
 
   .profile-card { display: flex; align-items: center; gap: 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(212,168,32,0.2); border-radius: var(--radius-sm); padding: 16px 20px; }
-  .profile-avatar { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg,#978bd8,#b4473b); display: flex; align-items: center; justify-content: center; font-size: 18px; color: #fff; font-family: 'Playfair Display', serif; font-weight: 700; flex-shrink: 0; }
-  .profile-info strong { display: block; font-size: 16px; font-weight: 700; margin-bottom: 2px; color: var(--card-heading); }
+  .profile-avatar { width: 42px; height: 44px; border-radius: 50%; background: linear-gradient(135deg,#524982,#37125f); display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--card-text); font-family: 'Playfair Display', serif; font-weight: 700; flex-shrink: 0; }
+  .profile-info strong { display: block; font-size: 16px; font-weight: 700; margin-bottom: 2px; color: var(--card-heading); font-family: 'Times New Roman', Times, serif;}
   .profile-info span { font-size: 14px; color: var(--card-muted); }
 
   .platform-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   .platform-item { background: rgba(255,255,255,0.04); border: 1px solid rgba(212,168,32,0.15); border-radius: var(--radius-sm); padding: 13px 16px; display: flex; align-items: flex-start; gap: 10px; }
   .platform-item-icon { font-size: 26px; flex-shrink: 0; margin-top: 2px; }
-  .platform-item strong { display: block; font-size: 14px; font-weight: 500; margin-bottom: 2px; color: var(--card-heading); }
+  .platform-item strong { display: block; font-size: 12px; font-weight: 600; margin-bottom: 2px; color: var(--card-heading); text-transform: uppercase; font-family: 'Times New Roman', Times, serif; }
   .platform-item span { font-size: 13px; line-height: 1.45; color: var(--card-muted); }
 
-  .section-label { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; color: var(--card-muted); }
+  .section-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; color: var(--card-muted); font-family: 'Times New Roman', Times, serif;}
 
   .timeline { display: flex; flex-direction: column; }
   .tl-item { display: flex; gap: 16px; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid rgba(212,168,32,0.12); }
   .tl-item:last-child { border-bottom: none; padding-bottom: 0; }
   .tl-item:first-child { padding-top: 0; }
-  .tl-dot { width: 8px; height: 8px; border-radius: 100%; background: var(--gold); flex-shrink: 0; margin-top: 7px; }
-  .tl-content strong { display: block; font-size: 15px; font-weight: 600; margin-bottom: 2px; color: var(--card-text); }
+  .tl-dot { width: 8px; height: 8px; border-radius: 100%; background: var(--gold); flex-shrink: 0; margin-top: 10px; }
+  .tl-content strong { display: block; font-size: 13px; font-weight: 600; margin-bottom: 2px; color: var(--card-text); font-family: 'Times New Roman', Times, serif;}
   .tl-content span { font-size: 13px; font-style: italic; color: var(--card-muted); }
 
   /* Back to top */
@@ -325,8 +292,8 @@
   #back-top:hover { background: rgba(212,168,32,0.2); }
 
   /* Footer */
-  footer { background: rgba(26,31,60,0.97); text-align: center; padding: 28px 48px; border-top: 1px solid rgba(212,168,32,0.2); font-size: 13px; color: var(--card-muted); }
-  footer strong { color: var(--gold-bright); font-weight: 500; }
+  footer { background: rgba(26,31,60,0.97); text-align: center; padding: 28px 48px; border-top: 1px solid rgba(212,168,32,0.2); font-size: 13px; color: var(--card-muted); font-family: 'Times New Roman', Times, serif; word-spacing: 0.2em; letter-spacing: 0.04em;}
+  footer strong { color: var(--gold-bright); font-weight: 600; }
 
   /* Responsive */
   @media (max-width: 1024px) {
@@ -439,17 +406,17 @@
 
           <br><br>When I first started college, I struggled to manage my money. No matter how careful I thought I was, my balance would disappear quickly, and I had no clear idea where it was going. Bank mini statements showed too little, and full statements were too complex to understand.
 
-          <br><br>At that moment, I wished my bank provided better tools: something that could help me understand my spending patterns, manage my budget, and make smarter financial decisions.
+          <br><br>At that moment, I wished my bank provided better tools: something that could help me understand my spending patterns, manage my budget, and make smarter financial decisions. I also wished if there could be a tool where I can just upload my bank statement and get a clear insights on my debit expenses.
 
           <br><br>That experience stayed with me. Later, when I started this internship at Bhutan Data Scientists as a data practitioner, I was asked to choose a domain of interest. I immediately remembered this struggle. It made me curious about others too:
-          <br><br>→ How do other students manage their money?
-          <br>→ What factors influence people's choice of banks?
-          <br>→ Are they satisfied with their banking services?
-          <br>→ And most importantly - can these problems be solved?
+          <br>How do other students manage their money?
+          <br>What factors influence people's choice of banks?
+          <br>Are they satisfied with their banking services?
+          <br>And most importantly - can these problems be solved?
 
           <br><br>I began exploring real customer experiences, analysing banking choices, and identifying common challenges. Through this journey, I realised that many people struggle with similar issues: lack of clarity, poor banking knowledge, and limited tools to make informed decisions.
 
-          <br><br>That's when I decided to build this platform, designed to act as a personal financial assistant helping users stay updated with banking information, compare banks, analyse their statements, and make better financial decisions with confidence.
+          <br><br>That's when I decided to build this platform, Ngul Yoen: designed to act as a personal financial assistant helping users stay updated with banking information, compare banks, analyse their statements, and make better financial decisions with confidence.
 
           <br><br>What started as my personal problem has now become a solution I hope can help many others. <button class="show-less-inline" onclick="toggleStory()">show less</button>
 
@@ -478,19 +445,19 @@
     </div>
     <div class="cards-grid">
       <a href="#" onclick="switchTabTo('about', 'about-project'); return false;" class="card">
-        <div class="card-icon">📘</div>
+        <!-- <div class="card-icon">📘</div> -->
         <h3>About the project</h3>
         <p>The reason behind the project, website context, and the goals of this banking insight.</p>
         <span class="card-link">Read more →</span>
       </a>
       <a href="#" onclick="switchTabTo('about', 'about-me'); return false;" class="card">
-        <div class="card-icon">👤</div>
+        <!-- <div class="card-icon">👤</div> -->
         <h3>About me</h3>
         <p>Hema Luitel - data practitioner intern and creator of Ngul Yoen.</p>
         <span class="card-link">Learn more →</span>
       </a>
       <a href="rpfd.html" class="card">
-        <div class="card-icon">📊</div>
+        <!-- <div class="card-icon">📊</div> -->
         <h3>Report & findings</h3>
         <p>Full insights and findings drawn from 111 survey respondents across Bhutan.</p>
         <span class="card-link">View report →</span>
@@ -504,19 +471,19 @@
     </div>
     <div class="cards-grid">
       <a href="banking1.html" class="card">
-        <div class="card-icon">🏦</div>
+        <!-- <div class="card-icon">🏦</div> -->
         <h3>Banking Insights</h3>
         <p>Key information, services, and digital offerings across Bhutan's banking sector.</p>
         <span class="card-link">Explore banks →</span>
       </a>
       <a href="finsight.html" class="card">
-        <div class="card-icon">🤖</div>
+        <!-- <div class="card-icon">🤖</div> -->
         <h3>FinSight</h3>
         <p>Upload your bank statement and get AI-powered automatic expense categorisation.</p>
         <span class="card-link">Try FinSight →</span>
       </a>
       <a href="Prototype.html" class="card">
-        <div class="card-icon">🚀</div>
+        <!-- <div class="card-icon">🚀</div> -->
         <h3>mBOB Prototype</h3>
         <p>Story-based prototype proposing four smart financial features for mBOB.</p>
         <span class="card-link">View prototype →</span>
@@ -530,13 +497,13 @@
     </div>
     <div class="cards-grid">
       <a href="banking1.html#quiz-bankfinder" class="card">
-        <div class="card-icon">🎮</div>
+        <!-- <div class="card-icon">🎮</div> -->
         <h3>Bank finder quiz</h3>
         <p>Answer 5 questions about your banking needs and get a personalised bank recommendation.</p>
         <span class="card-link">Start quiz →</span>
       </a>
       <a href="banking1.html#quiz-doYouKnow" class="card">
-        <div class="card-icon">🧠</div>
+        <!-- <div class="card-icon">🧠</div> -->
         <h3>Do You Know?</h3>
         <p>Test your knowledge of Bhutan's 6 commercial banks: services, history, and digital facts.</p>
         <span class="card-link">Take quiz →</span>
@@ -544,7 +511,7 @@
     </div>
 
     <div class="goto-grid" style="margin-top:32px;">
-      <a href="rpfd.html" class="goto"><span class="goto-link">NEXT →</span></a>
+      <a href="rpfd.html" class="goto"><span class="goto-link">next →</span></a>
     </div>
 
   </div>
@@ -564,16 +531,16 @@
       </div>
     </div>
     <div class="asc-body">
-      <p><strong style="color:var(--gold)">Ngul Yoen</strong> <em>ngul</em> (money) and <em>yoen</em> (scope) in Dzongkha, is a student project that analyses what drives banking choices in Bhutan. It studies four core factors: trust, service quality, accessibility, and ease of use, across 6 banks and 111 respondents, turning raw survey data into insights and tools that help customers make better financial decisions.</p>
+      <p><strong style="color:var(--gold)">Ngul Yoen:</strong> <em>ngul</em> (money) and <em>yoen</em> (scope) in Dzongkha, is a student project that analyses what drives banking choices in Bhutan. It studies four core factors: trust, service quality, accessibility, and ease of use, across 6 banks and 111 respondents, turning raw survey data into insights and tools that help customers make better financial decisions.</p>
       <div>
         <div class="section-label">What's on this platform</div>
         <div class="platform-grid">
-          <div class="platform-item"><span class="platform-item-icon">📊</span><div><strong>Report & Findings</strong><span>Finding report, 8 key findings, charts, and Tableau dashboard</span></div></div>
-          <div class="platform-item"><span class="platform-item-icon">🏦</span><div><strong>Banking Insights</strong><span>Explore all 6 major banks: services, apps, loans</span></div></div>
-          <div class="platform-item"><span class="platform-item-icon">🚀</span><div><strong>mBOB Prototype</strong><span>4 proposed smart features for the mBOB mobile app</span></div></div>
-          <div class="platform-item"><span class="platform-item-icon">🤖</span><div><strong>FinSight Analyzer</strong><span>AI-powered bank statement expense categoriser</span></div></div>
-          <div class="platform-item"><span class="platform-item-icon">🎮</span><div><strong>Bank Finder Quiz</strong><span>Five questions that provide a personalised bank recommendation</span></div></div>
-          <div class="platform-item"><span class="platform-item-icon">🧠</span><div><strong>Do You Know Quiz</strong><span>Quiz to check knowledge on Bhutan's 6 major banks</span></div></div>
+          <div class="platform-item"><div><strong>Report & Findings</strong><span>Finding report, 8 key findings, charts, and Tableau dashboard</span></div></div>
+          <div class="platform-item"><div><strong>Banking Insights</strong><span>Explore all 6 major banks: services, apps, loans</span></div></div>
+          <div class="platform-item"><div><strong>mBOB Prototype</strong><span>4 proposed smart features for the mBOB mobile app</span></div></div>
+          <div class="platform-item"><div><strong>FinSight Analyzer</strong><span>AI-powered bank statement expense categoriser</span></div></div>
+          <div class="platform-item"><div><strong>Bank Finder Quiz</strong><span>Five questions that provide a personalised bank recommendation</span></div></div>
+          <div class="platform-item"><div><strong>Do You Know Quiz</strong><span>Quiz to check knowledge on Bhutan's 6 major banks</span></div></div>
         </div>
       </div>
     </div>
@@ -631,7 +598,7 @@
 <button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <footer>
-  <span>© 2026 <strong>Ngul Yoen</strong> · Hema Luitel · All rights reserved</span>
+  <span>© 2026 <strong>Ngul Yoen</strong> · Hema Luitel · All rights reserved  version:0.05</span>
 </footer>
 
 </div><!-- /page-bg -->
