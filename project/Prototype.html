@@ -29,7 +29,7 @@
     --card-border: rgba(212,168,32,0.25);
     --card-border-hover: rgba(192,148,14,0.55);
     --card-heading: #d4a820;
-    --card-text: #e8e4f0;
+    --card-text: rgb(214, 202, 202);
     --card-muted: #a09ab8;
   }
 
@@ -55,30 +55,6 @@
   .navbar { position: sticky; top: 0; z-index: 50; display: flex; justify-content: space-between; align-items: center; padding: 0 48px; height: 64px; background: rgba(26,31,60,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(212,168,32,0.15); }
   .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #d4a820; letter-spacing: -0.02em; text-decoration: none; }
   .logo em { color: var(--red); font-style: normal; }
-  /* .nav-links { display: flex; gap: 4px; }
-  .nav-links a { font-size: 14px; font-weight: 500; color: #e8e4f0; text-decoration: none; padding: 7px 12px; border-radius: 20px; transition: background 0.18s, color 0.18s; white-space: nowrap; }
-  .nav-links a:hover { background: var(--card-bg-hover); color: var(--card-muted); }
-  .nav-links a.active { color: var(--gold-bright); background: rgba(212,168,32,0.15); }
-
-  @keyframes tabBlink {
-    0%, 100% { background: rgba(212,168,32,0.18); color: #f0c040; box-shadow: 0 0 0 0 rgba(212,168,32,0); }
-    50% { background: rgba(212,168,32,0.38); color: #fff; box-shadow: 0 0 8px 2px rgba(212,168,32,0.35); }
-  }
-  .nav-blink { animation: tabBlink 1.1s ease-in-out infinite; border: 1px solid rgba(212,168,32,0.5) !important; color: #f0c040 !important; }
-  .nav-blink:hover { animation: none; background: var(--card-bg-hover) !important; color: var(--card-muted) !important; border-color: rgba(212,168,32,0.3) !important; box-shadow: none !important; }
-
-  .ham-btn { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; flex-shrink: 0; }
-  .ham-btn span { display: block; width: 20px; height: 2px; background: var(--gold-bright); border-radius: 2px; }
-
-  .mobile-nav { display: none; flex-direction: column; position: fixed; top: 54px; right: 16px; width: 220px; background: rgba(26,31,60,0.97); border: 1px solid rgba(212,168,32,0.2); border-radius: 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.4); padding: 8px; z-index: 100; }
-  .mobile-nav.open { display: flex; }
-  .mobile-nav a { font-size: 14px; font-weight: 500; color: #e8e4f0; text-decoration: none; padding: 6px 10px; border-radius: 8px; transition: background 0.15s, color 0.15s; }
-  .mobile-nav a:hover { background: var(--card-bg-hover); color: var(--gold-bright); }
-  .mob-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--card-muted); padding: 8px 10px 4px; }
-
-  @keyframes mobileBlink { 0%, 100% { background: rgba(212,168,32,0.15); } 50% { background: rgba(212,168,32,0.32); } }
-  .mobile-nav .nav-blink { color: #b8860b !important; font-weight: 600 !important; animation: mobileBlink 1.1s ease-in-out infinite; } */
-
   .nav-links { display: flex; gap: 2px; align-items: center; }
   .nav-links a {
     font-family:'Times New Roman', Times, serif;
@@ -87,7 +63,7 @@
     color: rgba(232,228,240,0.72);
     text-decoration: none;
     padding: 8px 14px;
-    border-radius: 0;                          /* sharp rectangle */
+    border-radius: 0;
     border: 1px solid transparent;
     position: relative;
     transition: color 0.18s, background 0.18s, border-color 0.18s;
@@ -155,11 +131,11 @@
   .nav-blink { animation: tabBlink 1.3s ease-in-out infinite; }
   .nav-blink:hover { animation: none !important; }
 
- /* ── Hamburger ── */
+ /* Hamburger */
   .ham-btn { display: none; flex-direction: column; gap: 5px; background: none; border: 1px solid rgba(212,168,32,0.25); cursor: pointer; padding: 8px 9px; border-radius: 0; }
   .ham-btn span { display: block; width: 20px; height: 2px; background: var(--gold-bright); }
 
-  /* ── Mobile dropdown ── */
+  /* Mobile dropdown */
   .mobile-nav {
     display: none; flex-direction: column;
     position: fixed; top: 64px; right: 16px; width: 230px;
@@ -187,7 +163,7 @@
   /* Hero */
   .hero { position: relative; overflow: hidden; padding: 26px 48px 38px; color: white; }
   .hero-inner { position: relative; max-width: 860px; }
-  .hero-eyebrow { display: inline-flex; align-items: center; margin-left: 8px; font-size: 11px; font-weight: 500; letter-spacing: 0.5em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .hero-eyebrow { display: inline-flex; align-items: center; margin-left: 8px; font-size: 11px; font-weight: 500; letter-spacing: 0.5em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; font-family: 'Times New Roman', Times, serif;}
   .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 5vw, 44px); font-weight: 700; line-height: 1.15; letter-spacing: 0.05em; margin-bottom: 14px; }
   .hero h1 span { color: #e8755a; }
   .hero p { font-size: 14px; color: whitesmoke; line-height: 1.7; margin-bottom: 12px; max-width: 680px; font-style: italic; }
@@ -207,9 +183,10 @@
   .section-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 110px; transition: box-shadow 0.2s, border-color 0.2s; backdrop-filter: blur(8px); }
   .section-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.45), 0 0 0 1px rgba(212,168,32,0.3); border-color: var(--card-border-hover); }
   .section-head { display: flex; align-items: flex-start; gap: 14px; padding: 22px 28px 18px; border-bottom: 1px solid rgba(212,168,32,0.15); }
-  .section-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; background: rgba(212,168,32,0.12); border: 1px solid rgba(212,168,32,0.2); }
-  .section-head h2 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 500; margin-bottom: 3px; color: var(--card-heading); }
-  .section-head p { font-size: 13px; font-style: italic; color: var(--card-muted); }
+  /* .section-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; background: rgba(212,168,32,0.12); border: 1px solid rgba(212,168,32,0.2); } */
+  .section-head h2 { font-family:'Times New Roman', Times, serif; font-size: 18px; font-weight: 600; margin-bottom: 3px; color: var(--card-heading); text-transform: uppercase;}
+  .section-head p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 13px; color: rgba(255,255,255,0.6); font-weight: 400; }
+  /* .section-head p { font-size: 13px; font-style: italic; color: var(--card-muted); } */
   .section-body { padding: 28px; }
 
   /* Prototype embed */
@@ -241,26 +218,31 @@
     background: rgba(26,31,60,0.92);
     border-bottom: 1px solid rgba(212,168,32,0.15);
   }
-  .video-header-icon {
+  /* .video-header-icon {
     width: 28px; height: 28px;
     border-radius: 6px;
     background: rgba(212,168,32,0.13);
     border: 1px solid rgba(212,168,32,0.25);
     display: flex; align-items: center; justify-content: center;
     font-size: 14px; flex-shrink: 0;
-  }
+  } */
   .video-header-text strong {
     display: block;
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 600;
     color: var(--gold-bright);
     letter-spacing: 0.01em;
+    font-family: 'Times New Roman', Times, serif;
+    text-transform: uppercase;
+    word-spacing: 0.08em;
   }
-  .video-header-text span {
+  /* .video-header-text span {
     font-size: 11px;
     color: var(--card-muted);
     font-style: italic;
-  }
+  } */
+  .video-header-text span { font-family: 'Playfair Display', serif; font-style: italic; font-size: 12px; color: rgba(255,255,255,0.6); font-weight: 400; }
+
   .video-wrap video {
     width: 100%;
     display: block;
@@ -284,8 +266,8 @@
   .feature-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(212,168,32,0.15); border-radius: var(--radius-sm); padding: 18px; transition: border-color 0.15s, box-shadow 0.15s; }
   .feature-card:hover { border-color: rgba(212,168,32,0.4); box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
   .feature-card-top { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-  .feature-icon { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; background: rgba(212,168,32,0.12); }
-  .feature-card h3 { font-size: 15px; font-weight: 600; color: var(--card-heading); }
+  /* .feature-icon { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; background: rgba(212,168,32,0.12); } */
+  .feature-card h3 { font-size: 12px; font-weight: 600; color: var(--card-heading);  font-family: 'Times New Roman', Times, serif; text-transform: uppercase; word-spacing: 0.08em;}
   .feature-card p { font-size: 13px; font-style: italic; line-height: 1.6; color: var(--card-text); text-align: justify; }
   .feature-list { list-style: none; margin-top: 8px; display: flex; flex-direction: column; gap: 5px; }
   .feature-list li { font-size: 13px; display: flex; gap: 7px; align-items: flex-start; font-style: italic; color: var(--card-text); text-align: justify; }
@@ -325,7 +307,7 @@
   .story-reveal-btn:hover { border-color: rgba(212,168,32,0.75); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.45); }
   .story-reveal-btn:hover::before { opacity: 1; }
   .story-reveal-btn:active { transform: translateY(0); }
-  .story-reveal-btn .btn-icon { font-size: 22px; }
+  /* .story-reveal-btn .btn-icon { font-size: 22px; } */
   .story-reveal-btn .btn-hint { font-size: 12px; font-style: italic; color: var(--card-muted); display: block; margin-top: 3px; font-family: 'Segoe UI', sans-serif; font-weight: 400; }
 
   /* Pulsing ring animation on button */
@@ -432,18 +414,18 @@
   }
 
   /* Story content */
-  .story-body { font-size: 15px; color: var(--card-text); line-height: 1.85; font-style: italic; }
-  .story-body p { margin-bottom: 16px; text-align: justify; }
+  .story-body { font-size: 14px; color: var(--card-text); line-height: 1.85; font-style: italic; }
+  .story-body p { margin-bottom: 16px; text-align: justify;}
   .story-body p:last-child { margin-bottom: 0; }
   .characters { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
   .char-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(212,168,32,0.15); border-radius: var(--radius-sm); padding: 10px 14px; display: flex; align-items: center; gap: 10px; }
   .char-avatar { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 700; color: white; flex-shrink: 0; }
-  .char-info strong { display: block; font-size: 14px; font-weight: 500; color: var(--card-heading); }
+  .char-info strong { display: block; font-size: 14px; font-weight: 500; color: var(--card-heading); font-family: 'Times New Roman', Times, serif;}
   .char-info span { font-size: 12px; color: var(--card-muted); }
   .dialogue { background: rgba(13,43,69,0.5); border-left: 3px solid var(--gold); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 12px 16px; margin: 12px 0; font-style: italic; font-size: 14px; color: var(--card-text); line-height: 1.65; text-align: justify; }
-  .dialogue strong { color: var(--gold); font-style: normal; font-size: 12px; display: block; margin-bottom: 4px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
+  .dialogue strong { color: var(--gold); font-style: normal; font-size: 12px; display: block; margin-bottom: 4px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; font-family: 'Times New Roman', Times, serif;}
   .story-feature { background: rgba(212,168,32,0.08); border: 1px solid rgba(212,168,32,0.25); border-radius: var(--radius-sm); padding: 14px 16px; margin: 14px 0; }
-  .story-feature-label { font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; color: var(--gold-bright); margin-bottom: 6px; font-style: normal; }
+  .story-feature-label { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--gold-bright); margin-bottom: 6px; font-style: normal; font-family: 'Times New Roman', Times, serif; }
   .story-feature p { font-size: 14px; color: var(--card-text); margin: 0; line-height: 1.6; }
 
   /* Modal footer */
@@ -475,34 +457,39 @@
   .wish-item { background: rgba(255,255,255,0.04); border: 1px solid rgba(212,168,32,0.15); border-radius: var(--radius-sm); padding: 14px 16px; display: flex; gap: 12px; align-items: flex-start; transition: border-color 0.15s; }
   .wish-item:hover { border-color: rgba(212,168,32,0.4); }
   .wish-num { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--gold); flex-shrink: 0; line-height: 1; padding-top: 1px; min-width: 22px; }
-  .wish-text strong { display: block; font-size: 14px; font-weight: 500; margin-bottom: 3px; color: var(--card-heading); }
+  .wish-text strong { display: block; font-size: 14px; font-weight: 500; margin-bottom: 3px; color: var(--card-heading); font-family: 'Times New Roman', Times, serif;}
   .wish-text p { font-size: 13px; color: var(--card-muted); line-height: 1.55; margin: 0; font-style: italic; text-align: justify; }
-
-  /* Dev. notes
-  .dev-note { background: rgba(255,255,255,0.04); border: 1px solid rgba(212,168,32,0.15); border-radius: var(--radius-sm); padding: 15px 16px; display: flex; gap: 12px; align-items: flex-start; text-align: justify; }
-  .dev-note-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
-  .dev-note-text { font-size: 14px; color: var(--card-text); line-height: 1.65; font-style: italic; }
-  .dev-note-text strong { color: var(--card-heading); font-style: normal; } */
-
   /* CTA Banner */
   .cta-banner { background: rgba(13,43,69,0.85); border: 1px solid rgba(212,168,32,0.3); border-radius: var(--radius); padding: 28px 32px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; backdrop-filter: blur(8px); }
-  .cta-banner-text strong { display: block; font-family: 'Playfair Display', serif; font-size: 18px; color: var(--gold-bright); margin-bottom: 6px; }
+  .cta-banner-text strong { display: block; font-family:'Times New Roman', Times, serif; font-size: 14px; color: var(--gold-bright); margin-bottom: 6px; text-transform: uppercase;}
   .cta-banner-text p { font-size: 13px; font-style: italic; color: var(--card-muted); line-height: 1.6; text-align: justify; }
-  .cta-btn { background: var(--red); color: white; text-decoration: none; border-radius: var(--radius-sm); padding: 12px 22px; font-size: 13px; font-weight: 500; white-space: nowrap; transition: background 0.15s; }
+  .cta-btn { background: var(--red); color: white; text-decoration: none; border-radius: var(--radius-sm); padding: 12px 22px; font-size: 13px; font-weight: 500; white-space: nowrap; transition: background 0.15s; font-family: 'Times New Roman', Times, serif;}
   .cta-btn:hover { background: #a93226; }
 
   /* Goto */
   .goto-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(125px, 1fr)); gap: 16px; margin-left: 30px; margin-top: 8px; }
   .goto { border: 1px solid var(--card-border); border-radius: var(--radius); background: var(--card-bg); padding: 18px; cursor: pointer; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; backdrop-filter: blur(8px); }
   .goto:hover { transform: translateY(-3px); box-shadow: 0 10px 36px rgba(0,0,0,0.959), 0 0 0 1px rgb(163,127,20); border-color: var(--card-border-hover); background: var(--card-bg-hover); }
-  .goto-link { font-size: 14px; font-weight: 500; color: var(--gold); display: inline-flex; align-items: center; gap: 4px; letter-spacing: 0.5em; }
+  .goto-link { font-size: 14px; font-weight: 600; color: var(--gold); display: inline-flex; align-items: center; gap: 4px; letter-spacing: 0.2em; font-family: 'Times New Roman', Times, serif; text-transform: uppercase;}
 
   #back-top { position: fixed; bottom: 24px; right: 24px; width: 40px; height: 40px; background: var(--card-bg); color: var(--gold-bright); border: 1px solid rgba(212,168,32,0.3); border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.2s, background 0.2s; box-shadow: 0 4px 16px rgba(0,0,0,0.4); }
   #back-top.visible { opacity: 1; pointer-events: all; }
   #back-top:hover { background: rgba(212,168,32,0.2); }
 
-  footer { background: rgba(26,31,60,0.97); text-align: center; padding: 28px 48px; border-top: 1px solid rgba(212,168,32,0.2); font-size: 13px; color: var(--card-muted); }
-  footer strong { color: var(--gold-bright); font-weight: 500; }
+  
+  footer {
+    background: rgba(26,31,60,0.97);
+    text-align: center;
+    padding: 28px 48px;
+    border-top: 1px solid rgba(212,168,32,0.2);
+    font-size: 13px;
+    color: var(--card-muted);
+    font-family: 'Times New Roman', Times, serif; 
+    word-spacing: 0.2em; 
+    letter-spacing: 0.04em;
+  }
+  footer strong { color: var(--card-text); font-weight: 600; }
+
 
   /* Responsive */
   @media (max-width: 1400px) { .main { padding: 48px 80px; } }
@@ -579,7 +566,7 @@
   <!-- Prototype embed -->
   <div class="section-card" id="prototype">
     <div class="section-head">
-      <div class="section-icon">🚀</div>
+      <!-- <div class="section-icon">🚀</div> -->
       <div><h2>Live prototype</h2><p>Interactive mBOB feature flow – explore all four proposed features</p></div>
     </div>
     <div class="section-body">
@@ -590,7 +577,7 @@
             <div class="proto-dot" style="background:#febc2e"></div>
             <div class="proto-dot" style="background:#28c840"></div>
           </div>
-          <div class="proto-url">prottoo.vercel.app</div>
+          <div class="proto-url">bobprototype.netlify.app</div>
           <a href="https://bobprototype.netlify.app/" target="_blank" class="proto-open-btn">Open full screen ↗</a>
         </div>
         <iframe src="https://bobprototype.netlify.app/" title="mBOB Feature Flow Prototype" allowfullscreen></iframe>
@@ -600,7 +587,7 @@
       <!-- Video walkthrough -->
       <div class="video-wrap">
         <div class="video-header">
-          <div class="video-header-icon">▶️</div>
+          <!-- <div class="video-header-icon">▶️</div> -->
           <div class="video-header-text">
             <strong>How to use these prototype features</strong>
             <span>A quick walkthrough of all four proposed mBOB features</span>
@@ -621,32 +608,32 @@
   <!-- 4 Features -->
   <div class="section-card" id="features">
     <div class="section-head">
-      <div class="section-icon">✨</div>
+      <!-- <div class="section-icon">✨</div> -->
       <div><h2>Four proposed features</h2><p>What customers want mBOB to become – a smart financial companion</p></div>
     </div>
     <div class="section-body">
       <div class="feature-grid">
         <div class="feature-card">
-          <div class="feature-card-top"><div class="feature-icon">🏷️</div><h3>Smart Expense Categorization</h3></div>
+          <div class="feature-card-top"><h3>Smart Expense Categorization</h3></div>
           <p>Automatically suggests spending categories based on transaction patterns.</p>
           <ul class="feature-list">
             <li>Auto-suggests: Food & Drinks, Donations and Contributions, Transport, Personal Transfer</li>
             <li>One-tap selection for fast labelling</li>
-            <li>Select source of debit</li>
+            <li>Select source of debit (main balance/pocket)</li>
           </ul>
         </div>
         <div class="feature-card">
-          <div class="feature-card-top"><div class="feature-icon">👛</div><h3>Goal-Based Savings Pockets</h3></div>
+          <div class="feature-card-top"><h3>Goal-Based Savings Pockets</h3></div>
           <p>Create named mini-accounts within your main account for different goals.</p>
           <ul class="feature-list">
             <li>Custom pockets: SEMSO, Food, Travel, Personal Savings</li>
             <li>Choose which pocket to pay from during a transaction</li>
-            <li>Create and remove pockets anytime as needs change</li>
+            <li>Create and edit pockets anytime as needs change</li>
             <li>Track savings and spending separately per goal</li>
           </ul>
         </div>
         <div class="feature-card">
-          <div class="feature-card-top"><div class="feature-icon">📊</div><h3>Spending Insights Dashboard</h3></div>
+          <div class="feature-card-top"><h3>Spending Insights Dashboard</h3></div>
           <p>Visual charts and breakdowns turning raw data into financial awareness.</p>
           <ul class="feature-list">
             <li>Pie chart of expenses by category</li>
@@ -656,37 +643,23 @@
           </ul>
         </div>
         <div class="feature-card">
-          <div class="feature-card-top"><div class="feature-icon">📋</div><h3>Enhanced Mini Statement</h3></div>
-          <p>Upgrade from 10 visible transactions to a powerful on-demand view.</p>
+          <div class="feature-card-top"><h3>Enhanced Mini Statement</h3></div>
+          <p>Upgrade from 14 visible transactions to a powerful on-demand view.</p>
           <ul class="feature-list">
-            <li>View last 50 or 100 transactions (up from 10)</li>
-            <li>Filter by: today, yesterday, or custom date range</li>
+            <li>View last 50 or 100 transactions (up from 14)</li>
+            <li>Filter by: last 50, today, or custom date range</li>
             <li>Instant access without waiting for email statements</li>
-            <li>Description/purpose field on every transaction</li>
+            <li>Description/purpose field on every transaction for better insight</li>
           </ul>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Dev. notes -->
-  <!-- <div class="section-card" id="devnotes">
-    <div class="section-head">
-      <div class="section-icon">🛠️</div>
-      <div><h2>Prototype development notes</h2><p>What was built and how it works</p></div>
-    </div>
-    <div class="section-body" style="display:flex;flex-direction:column;gap:12px">
-      <div class="dev-note"><div class="dev-note-icon">🔄</div><div class="dev-note-text"><strong>Transfer with Smart Categorization:</strong> Inside the transfer, there is an option to add a description or purpose of payment, plus a selector for choosing an auto-suggested expense category at the point of transaction.</div></div>
-      <div class="dev-note"><div class="dev-note-icon">📋</div><div class="dev-note-text"><strong>Enhanced Mini Statement:</strong> Rebuilt with options for viewing today's transactions, the last 50 transactions, or filtering by a specific custom date. Removes the need to request an email statement for recent activity.</div></div>
-      <div class="dev-note"><div class="dev-note-icon">👛</div><div class="dev-note-text"><strong>Goal-Based Pockets:</strong> Shows existing pockets and includes a clearly labelled option for users to create new pockets based on personal needs. Each pocket is self-contained and removable.</div></div>
-      <div class="dev-note"><div class="dev-note-icon">📊</div><div class="dev-note-text"><strong>Expense Tracking Dashboard:</strong> A visual dashboard showing spending broken down by category, giving users an at-a-glance view of where their money is going across different time periods.</div></div>
-    </div>
-  </div> -->
-
   <!-- Story — popup button version -->
   <div class="section-card" id="story">
     <div class="section-head">
-      <div class="section-icon">📖</div>
+      <!-- <div class="section-icon">📖</div> -->
       <div><h2>The story behind the prototype</h2><p>mBOB Budgeting and Expense Tracking Features · A story from GCBS canteen</p></div>
     </div>
     <div class="section-body" style="text-align:center; padding: 36px 28px;">
@@ -695,7 +668,7 @@
         Tap below to read how it all began.
       </p>
       <button class="story-reveal-btn" onclick="openStoryModal()" aria-haspopup="dialog">
-        <span class="btn-icon">📖</span>
+        <!-- <span class="btn-icon">📖</span> -->
         <span>
           Read the story
           <span class="btn-hint">The GCBS canteen conversation · ~2 min read</span>
@@ -707,7 +680,7 @@
   <!-- Feature wishlist -->
   <div class="section-card" id="wishlist">
     <div class="section-head">
-      <div class="section-icon">✅</div>
+      <!-- <div class="section-icon">✅</div> -->
       <div><h2>What they truly wish to see in mBOB</h2><p>Summarised before heading back to class</p></div>
     </div>
     <div class="section-body">
@@ -731,7 +704,7 @@
   
   <div class="goto-grid">
     <a href="finsight.html" class="goto">
-      <span class="goto-link">NEXT →</span>
+      <span class="goto-link">Next →</span>
     </a>
   </div>
 

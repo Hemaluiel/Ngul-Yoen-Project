@@ -30,7 +30,7 @@
     --card-border: rgba(212,168,32,0.25);
     --card-border-hover: rgba(192,148,14,0.55);
     --card-heading: #d4a820;
-    --card-text: #e8e4f0;
+    --card-text: rgb(214, 202, 202);
     --card-muted: #a09ab8;
   }
 
@@ -73,73 +73,6 @@
   }
   .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #d4a820; letter-spacing: -0.02em; text-decoration: none; }
   .logo em { color: var(--red); font-style: normal; }
-  /* .nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
-  .nav-links a { font-size: 14px; font-weight: 500; color: #e8e4f0; text-decoration: none; padding: 7px 12px; border-radius: 20px; transition: background 0.18s, color 0.18s; white-space: nowrap; }
-  .nav-links a:hover { background: var(--card-bg-hover); color: var(--card-muted); }
-  .nav-links a.active { color: var(--gold-bright); background: rgba(212,168,32,0.15); } */
-
-  /* BLINK ANIMATION */
-  /* @keyframes tabBlink {
-    0%, 100% {
-      background: rgba(212,168,32,0.18);
-      color: #f0c040;
-      box-shadow: 0 0 0 0 rgba(212,168,32,0);
-    }
-    50% {
-      background: rgba(212,168,32,0.38);
-      color: #fff;
-      box-shadow: 0 0 8px 2px rgba(212,168,32,0.35);
-    }
-  }
-  .nav-blink {
-    animation: tabBlink 1.1s ease-in-out infinite;
-    border: 1px solid rgba(212,168,32,0.5) !important;
-    color: #f0c040 !important;
-  }
-  .nav-blink:hover {
-    animation: none;
-    background: var(--card-bg-hover) !important;
-    color: var(--card-muted) !important;
-    border-color: rgba(212,168,32,0.3) !important;
-    box-shadow: none !important;
-  } */
-
-  /* HAMBURGER */
-  /* .ham-btn {
-    display: none;
-    flex-direction: column; gap: 5px;
-    background: none; border: none; cursor: pointer; padding: 8px;
-    flex-shrink: 0;
-  }
-  .ham-btn span { display: block; width: 20px; height: 2px; background: var(--gold-bright); border-radius: 2px; } */
-
-  /* MOBILE DROPDOWN */
-  /* .mobile-nav {
-    display: none; flex-direction: column;
-    position: fixed;
-    top: 54px; right: 16px; width: 220px;
-    background: rgba(26,31,60,0.97);
-    border: 1px solid rgba(212,168,32,0.2);
-    border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-    padding: 8px; z-index: 100;
-  }
-  .mobile-nav.open { display: flex; }
-  .mobile-nav a { font-size: 14px; font-weight: 500; color: #e8e4f0; text-decoration: none; padding: 6px 10px; border-radius: 8px; transition: background 0.15s, color 0.15s; }
-  .mobile-nav a:hover { background: var(--card-bg-hover); color: var(--gold-bright); }
-  .mob-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--card-muted); padding: 8px 10px 4px; } */
-
-  /* Mobile blink */
-  /* .mobile-nav .nav-blink {
-    color: #b8860b !important;
-    font-weight: 600 !important;
-    animation: mobileBlink 1.1s ease-in-out infinite;
-  }
-  @keyframes mobileBlink {
-    0%, 100% { background: rgba(212,168,32,0.15); }
-    50% { background: rgba(212,168,32,0.32); }
-  } */
-
   .nav-links { display: flex; gap: 2px; align-items: center; }
   .nav-links a {
     font-family:'Times New Roman', Times, serif;
@@ -148,7 +81,7 @@
     color: rgba(232,228,240,0.72);
     text-decoration: none;
     padding: 8px 14px;
-    border-radius: 0;                          /* sharp rectangle */
+    border-radius: 0;
     border: 1px solid transparent;
     position: relative;
     transition: color 0.18s, background 0.18s, border-color 0.18s;
@@ -180,7 +113,7 @@
   }
   .nav-links a.active::after { transform: scaleX(1); }
 
-  /* FinSight — distinct CTA button with blink */
+  /* FinSight - distinct CTA button with blink */
   .nav-links a.nav-cta {
     color: #0e1128;
     background: var(--gold);
@@ -208,7 +141,7 @@
     box-shadow: none;
   }
 
-  /* blinking animation — for other nav-blink links */
+  /* blinking animation - for other nav-blink links */
   @keyframes tabBlink {
     0%, 100% { background: rgba(212,168,32,0.12); border-color: rgba(212,168,32,0.35); color: #f0c040; }
     50% { background: rgba(212,168,32,0.28); border-color: rgba(212,168,32,0.6); color: #fff; box-shadow: 0 0 8px rgba(212,168,32,0.3); }
@@ -216,11 +149,11 @@
   .nav-blink { animation: tabBlink 1.3s ease-in-out infinite; }
   .nav-blink:hover { animation: none !important; }
 
- /* ── Hamburger ── */
+ /* Hamburger */
   .ham-btn { display: none; flex-direction: column; gap: 5px; background: none; border: 1px solid rgba(212,168,32,0.25); cursor: pointer; padding: 8px 9px; border-radius: 0; }
   .ham-btn span { display: block; width: 20px; height: 2px; background: var(--gold-bright); }
 
-  /* ── Mobile dropdown ── */
+  /* Mobile dropdown */
   .mobile-nav {
     display: none; flex-direction: column;
     position: fixed; top: 64px; right: 16px; width: 230px;
@@ -248,7 +181,7 @@
   /* HERO */
   .hero { position: relative; overflow: hidden; padding: 30px 48px 40px; color: white; }
   .hero-inner { position: relative; max-width: 900px; }
-  .hero-eyebrow { display: inline-flex; align-items: center; margin-left: 8px; font-size: 12px; font-weight: 500; letter-spacing: 0.9em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .hero-eyebrow { display: inline-flex; align-items: center; margin-left: 8px; font-size: 11px; font-weight: 600; letter-spacing: 0.9em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; font-family: 'Times New Roman', Times, serif; }
   /* .hero-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); } */
   .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 5vw, 44px); font-weight: 700; line-height: 1.15; letter-spacing: 0.05em; margin-bottom: 14px; }
   .hero p { font-size: 16px; color: whitesmoke; line-height: 1.7; font-style: italic; }
@@ -276,27 +209,17 @@
     border-color: var(--card-border-hover);
   }
   .info-card-head { padding: 18px 20px 14px; border-bottom: 1px solid rgba(212,168,32,0.15); }
-  .info-card-head h3 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 500; color: var(--card-heading); }
-  .contact-items { padding: 16px 20px; display: flex; flex-direction: column; gap: 14px; }
-  .contact-item { display: flex; align-items: flex-start; gap: 12px; }
-  .contact-item-icon { width: 34px; height: 38px; margin-top: 6px; border-radius: var(--radius-sm); background: rgba(212,168,32,0.12); border: 1px solid rgba(212,168,32,0.2); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; color: whitesmoke;}
-  .contact-item-text strong { display: block; font-size: 13px; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }
-  .contact-item-text span { font-size: 15px; color: var(--card-text); }
+  .info-card-head h3 { font-family:'Times New Roman', Times, serif; font-size: 16px; font-weight: 800; color: var(--card-heading); text-transform: uppercase; word-spacing: 0.08em; }
+  .info-card-head p { font-family: 'Playfair Display', serif; font-style: normal; font-size: 12px; color: rgba(255,255,255,0.6); font-weight: 400; margin-top: 3px; }
+  .contact-items { padding: 24px 14px 38px; display: flex; flex-direction: column; gap: 12px; }
+  /* .contact-items { padding: 24px 24px 28px; gap: 16px; } */
+  .contact-item { display: flex; align-items: baseline; gap: 5px; }
+  .contact-item-text { display: flex; align-items: baseline; gap: 10px; width: 100%; }
+  .contact-item-text strong { font-size: 11px; font-weight: 500; color: var(--gold); text-transform: uppercase; letter-spacing: 0.05em; font-family: 'Times New Roman', serif; min-width: 90px; flex-shrink: 0; }
+  .contact-item-text span { font-size: 13px; color: var(--card-text); font-family: 'Times New Roman', serif; }
 
-  /* map */
-  .map-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    backdrop-filter: blur(8px);
-  }
-  .map-placeholder { height: 110px; background: linear-gradient(135deg, rgba(26,31,60,0.9) 0%, rgba(30,36,69,0.9) 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; color: var(--card-muted); font-size: 15px; border-bottom: 1px solid rgba(212,168,32,0.15); }
-  .map-placeholder span { font-size: 22px; }
-  .map-label { padding: 10px 16px; font-size: 14px; color: var(--card-muted); font-weight: 500; }
-  .map-label strong { color: var(--card-heading); font-weight: 600; }
 
-  /* FORM COLUMN */
+/* FORM COLUMN */
   .form-card {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
@@ -310,12 +233,13 @@
     border-color: var(--card-border-hover);
   }
   .form-head { padding: 24px 28px 20px; border-bottom: 1px solid rgba(212,168,32,0.15); }
-  .form-head h2 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 500; margin-bottom: 4px; color: var(--card-heading); }
-  .form-head p { font-size: 13px; color: var(--card-muted); }
+  .form-head h2 { font-family:'Times New Roman', Times, serif; font-size: 16px; font-weight: 800; margin-bottom: 4px; color: var(--card-heading); text-transform: uppercase;}
+  .form-head p { font-size: 13px; color: var(--card-muted); font-style: italic;}
   .form-body { padding: 24px 28px; display: flex; flex-direction: column; gap: 16px; }
 
   .field { display: flex; flex-direction: column; gap: 6px; }
-  .field label { font-size: 13px; font-weight: 500; color: var(--gold); text-transform: uppercase; letter-spacing: 0.06em; }
+  .field label { font-size: 11px; font-weight: 500; color: var(--gold); text-transform: uppercase; letter-spacing: 0.06em; font-family: 'Times New Roman', Times, serif; }
+  .field label span { font-size: 13px; font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--card-muted); }
   .field input, .field textarea, .field select {
     font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--card-text);
     background: rgba(255,255,255,0.05); border: 1px solid rgba(212,168,32,0.2); border-radius: var(--radius-sm);
@@ -329,7 +253,7 @@
 
   /* purpose chips */
   .form-chips { display: flex; flex-wrap: wrap; gap: 7px; }
-  .form-chip { font-size: 13px; font-weight: 400; padding: 6px 14px; border-radius: 20px; border: 1px solid rgba(212,168,32,0.2); background: rgba(255,255,255,0.04); cursor: pointer; transition: all 0.15s; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: var(--card-muted); }
+  .form-chip { font-size: 13px; font-weight: 400; padding: 6px 14px; border-radius: 10px; border: 1px solid rgba(212,168,32,0.2); background: rgba(255,255,255,0.04); cursor: pointer; transition: all 0.15s; font-family:'Times New Roman', Times, serif; color: var(--card-muted); }
   .form-chip:hover { border-color: rgba(212,168,32,0.5); color: var(--gold-bright); background: rgba(212,168,32,0.08); }
   .form-chip.sel { border-color: var(--gold); color: var(--gold-bright); background: rgba(212,168,32,0.15); }
 
@@ -356,16 +280,8 @@
   .alert-icon { font-size: 16px; flex-shrink: 0; }
 
   /* FOOTER */
-  footer {
-    background: rgba(26,31,60,0.97);
-    text-align: center;
-    padding: 28px 48px;
-    border-top: 1px solid rgba(212,168,32,0.2);
-    font-size: 13px;
-    color: var(--card-muted);
-    display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; align-items: center;
-  }
-  footer strong { color: var(--gold-bright); font-weight: 500; }
+  footer { background: rgba(26,31,60,0.97); text-align: center; padding: 28px 48px; border-top: 1px solid rgba(212,168,32,0.2); font-size: 13px; color: var(--card-muted); font-family: 'Times New Roman', Times, serif; word-spacing: 0.2em; letter-spacing: 0.04em;}
+  footer strong { color: var(--card-text); font-weight: 600; }
 
   /* RESPONSIVE */
   @media (max-width: 1200px) { main { padding: 48px 80px; } }
@@ -435,6 +351,7 @@
     <div class="hero-eyebrow">Get in touch</div>
     <h1>Contact us</h1>
     <p>Reach out for insights, collaboration opportunities, expense categorizer, or any queries about the project.</p>
+    <div style="width: 100px; height: 1.5px; background: var(--gold); margin-top: 18px; opacity: 0.7;"></div>
   </div>
 </div>
 
@@ -446,31 +363,58 @@
 
     <!-- Contact details -->
     <div class="info-card">
-      <div class="info-card-head"><h3>Contact details</h3></div>
+      <div class="info-card-head"><h3>Contact details</h3><p>Hema Luitel</p></div>
       <div class="contact-items">
         <div class="contact-item">
-          <div class="contact-item-icon">📧</div>
+          <!-- <div class="contact-item-icon">📧</div> -->
           <div class="contact-item-text"><strong>Email</strong><span>hemaluitel5@gmail.com</span></div>
         </div>
         <div class="contact-item">
-          <div class="contact-item-icon"> in </div>
+          <!-- <div class="contact-item-icon"> in </div> -->
           <div class="contact-item-text"><strong>LinkedIn</strong><span><a href="https://www.linkedin.com/in/hema-luitel-43316b310/" style="color:var(--card-text);">Hema Luitel | Profile</a><span></div>
         </div>
         <div class="contact-item">
-          <div class="contact-item-icon">📍</div>
-          <div class="contact-item-text"><strong>Address</strong><span>Olakha, Thimphu, Bhutan</span></div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-icon">🕐</div>
+          <!-- <div class="contact-item-icon">🕐</div> -->
           <div class="contact-item-text"><strong>Response time</strong><span>Within 1-2 business days</span></div>
         </div>
       </div>
     </div>
 
-    <!-- Map -->
-    <div class="map-card">
-      <div class="map-placeholder"><span>🗺️</span>Olakha, Thimphu</div>
-      <div class="map-label"><strong>Bhutan Data Scientists Pvt. Ltd.</strong><br>Olakha, Thimphu, 11001</div>
+    <!-- Host org detail -->
+    <div class="info-card">
+      <div class="info-card-head"><h3>Host organization</h3><p>Bhutan Data Scientist Pvt. Ltd.</p></div>
+      <div class="contact-items">
+                <div class="contact-item">
+          <div class="contact-item-text">
+            <strong>Organization</strong>
+            <span><a href="https://datascientists.bt/" style="color:var(--card-text);">Bhutan Data Scientists Pvt. Ltd.</a></span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-text">
+            <strong>Location</strong>
+            <span>Olakha, Thimphu, Bhutan 11001</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-text">
+            <strong>Email</strong>
+            <span>info@bhutandatascientists.bt</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-text">
+            <strong>Facebook</strong>
+            <span><a href="https://facebook.com/bhutandatascientists" style="color:var(--card-text);">Bhutan Data Scientists</a></span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-text">
+            <strong>Supervisor</strong>
+            <span><a href="https://www.linkedin.com/in/troy-sadkowsky/" style="color:var(--card-text);">Troy Sadkowsky | LinkedIn</a></span>
+          </div>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -486,7 +430,7 @@
       <!-- Name row -->
       <div class="field-row">
         <div class="field">
-          <label>First name <span style="font-size:13px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--card-muted)">(optional)</span></label>
+          <label>First name <span>(optional)</span></label>
           <input type="text" id="fname" placeholder="Karma" autocomplete="given-name">
         </div>
         <div class="field">
@@ -511,12 +455,12 @@
       <div class="field">
         <label>Purpose of contact *</label>
         <div class="form-chips" id="form-chips">
-          <button type="button" class="form-chip" onclick="selectChip('General inquiry', this)">💬 General inquiry</button>
-          <button type="button" class="form-chip" onclick="selectChip('Research collaboration', this)">🤝 Collaboration</button>
-          <button type="button" class="form-chip" onclick="selectChip('Expense categorizor', this)">📊 Expense categorizor</button>
-          <button type="button" class="form-chip" onclick="selectChip('Feedback on findings', this)">📌 Findings feedback</button>
-          <button type="button" class="form-chip" onclick="selectChip('Feedback on prototype', this)">🏦 Prototype feedback</button>
-          <button type="button" class="form-chip" onclick="selectChip('Other', this)">✉️ Other</button>
+          <button type="button" class="form-chip" onclick="selectChip('General inquiry', this)">General inquiry</button>
+          <button type="button" class="form-chip" onclick="selectChip('Research collaboration', this)">Collaboration</button>
+          <button type="button" class="form-chip" onclick="selectChip('Expense categorizor', this)">Expense categorizor</button>
+          <button type="button" class="form-chip" onclick="selectChip('Feedback on findings', this)">Findings feedback</button>
+          <button type="button" class="form-chip" onclick="selectChip('Feedback on prototype', this)">Prototype feedback</button>
+          <button type="button" class="form-chip" onclick="selectChip('Other', this)">Other</button>
         </div>
         <input type="hidden" id="purpose">
       </div>
