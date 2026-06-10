@@ -1,5 +1,7 @@
+/* home */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* reusable variables */
 :root {
 --red: #c0392b;
 --gold: #d4a820;
